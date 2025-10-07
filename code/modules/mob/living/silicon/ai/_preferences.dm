@@ -132,6 +132,7 @@ GLOBAL_LIST_INIT(ai_core_display_screens, sort_list(list(
 	"Triumvirate-M",
 	"Triumvirate",
 	"Weird",
+	"cfc",	// GS13 EDIT
 )))
 
 /// A form of resolve_ai_icon that is guaranteed to never sleep.
