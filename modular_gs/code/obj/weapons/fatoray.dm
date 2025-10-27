@@ -125,14 +125,14 @@
 ///////////////////////////////////////
 
 
-/obj/projectile/beam/fattening/on_hit(atom/target, blocked, pierce_hit)
-	. = ..()
+// /obj/projectile/beam/fattening/on_hit(atom/target, blocked, pierce_hit)
+// 	. = ..()
 
-	var/mob/living/carbon/gainer = target
-	if(!iscarbon(gainer))
-		return FALSE
+// 	var/mob/living/carbon/gainer = target
+// 	if(!iscarbon(gainer))
+// 		return FALSE
 
-	if(!gainer.adjust_fatness(fat_added, FATTENING_TYPE_WEAPON))
-		return FALSE
+// 	if(!gainer.adjust_fatness(fat_added, FATTENING_TYPE_WEAPON))
+// 		return FALSE
 
-	return TRUE
+// 	return TRUE

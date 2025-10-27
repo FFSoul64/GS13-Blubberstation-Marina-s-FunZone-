@@ -72,6 +72,8 @@
 		/obj/item/stack/rods = GLOB.rod_recipes,
 		/obj/item/stack/sheet/runed_metal = GLOB.runed_metal_recipes,
 		// GS13 EDIT MATERIALS
+		/obj/item/stack/sheet/mineral/calorite = GLOB.calorite_recipes,
+		/obj/item/stack/sheet/calorite_glass = GLOB.calorite_glass_recipes,
 		/obj/item/stack/sheet/mineral/shadoww = GLOB.shadoww_recipes,
 		/obj/item/stack/sheet/mineral/plaswood = GLOB.plaswood_recipes,
 		/obj/item/stack/sheet/mineral/gmushroom = GLOB.gmushroom_recipes,

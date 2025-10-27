@@ -6,7 +6,7 @@
 	categories = list(
 		MAT_CATEGORY_SILO = TRUE,
 		MAT_CATEGORY_RIGID=TRUE,
-		MAT_CATEGORY_BASE_RECIPES = FALSE, // doesn't seem to work :(
+		// MAT_CATEGORY_BASE_RECIPES = FALSE, // doesn't seem to work :(
 		MAT_CATEGORY_ITEM_MATERIAL = TRUE,
 		MAT_CATEGORY_ITEM_MATERIAL_COMPLEMENTARY = TRUE,
 	)
@@ -28,6 +28,30 @@
 	fishing_deceleration_mult = 1.2
 	fishing_bounciness_mult = 0.8
 	fishing_gravity_mult = 1.2
+
+/datum/material/calorite/on_applied(atom/source, amount, multiplier) // used to be material_flags instead of multiplier
+	. = ..()
+	// if(!(material_flags & MATERIAL_AFFECT_STATISTICS))
+	// 	return
+
+	if (isobj(source))
+		var/obj/source_obj = source
+		source_obj.damtype = FAT
+		source_obj.AddComponent(\
+		/datum/component/fattening,\
+		5 * amount,\
+		FATTENING_TYPE_ITEM\
+		)
+
+/datum/material/calorite/on_removed(atom/source, multiplier) // used to be material_flags instead of multiplier
+	// if(!(material_flags & MATERIAL_AFFECT_STATISTICS))
+	// 	return ..()
+
+	if (isobj(source))
+		var/obj/source_obj = source
+		source_obj.damtype = initial(source_obj.damtype)
+		qdel(source.GetComponent(/datum/component/fattening))
+		return ..()
 
 /obj/item/stack/ore/calorite //GS13
 	name = "calorite ore"
@@ -59,31 +83,9 @@
 	material_type = /datum/material/calorite
 	walltype = /turf/closed/wall/mineral/calorite
 
-/datum/material/calorite/on_applied(atom/source, amount, multiplier) // used to be material_flags instead of multiplier
+/obj/item/stack/sheet/mineral/calorite/get_main_recipes()
 	. = ..()
-	// if(!(material_flags & MATERIAL_AFFECT_STATISTICS))
-	// 	return
-
-	if (isobj(source))
-		var/obj/source_obj = source
-		source_obj.damtype = FAT
-
-/datum/material/calorite/on_removed(atom/source, multiplier) // used to be material_flags instead of multiplier
-	// if(!(material_flags & MATERIAL_AFFECT_STATISTICS))
-	// 	return ..()
-
-	if (isobj(source))
-		var/obj/source_obj = source
-		source_obj.damtype = initial(source_obj.damtype)
-		return ..()
-
-/datum/export/material/market/calorite
-	material_id = /datum/material/calorite
-	message = "cm3 of calorite"
-
-/turf/closed/mineral/calorite //GS13
-	mineralType = /obj/item/stack/ore/calorite
-	scan_state = "rock_Calorite"
+	. += GLOB.calorite_recipes
 
 /obj/item/stack/sheet/mineral/calorite/five
 	amount = 5
@@ -94,6 +96,14 @@
 /obj/item/stack/sheet/mineral/calorite/fifty
 	amount = 50
 
+/datum/export/material/market/calorite
+	material_id = /datum/material/calorite
+	message = "cm3 of calorite"
+
+/turf/closed/mineral/calorite //GS13
+	mineralType = /obj/item/stack/ore/calorite
+	scan_state = "rock_Calorite"
+
 GLOBAL_LIST_INIT(calorite_recipes, list ( \
 	new/datum/stack_recipe("calorite tile", /obj/item/stack/tile/mineral/calorite, 1, 4, 20, crafting_flags = NONE, category = CAT_TILES), \
 	/*new/datum/stack_recipe("Calorite Ingots", /obj/item/ingot/calorite, time = 30), \*/
@@ -101,83 +111,5 @@ GLOBAL_LIST_INIT(calorite_recipes, list ( \
 	new/datum/stack_recipe("Calorite doors", /obj/structure/mineral_door/calorite, 5, time = 5 SECONDS, crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_ONE_PER_TURF | CRAFT_ON_SOLID_GROUND | CRAFT_APPLIES_MATS, category = CAT_DOORS),\
 	))
 
-/obj/item/stack/sheet/mineral/calorite/get_main_recipes()
-	. = ..()
-	. += GLOB.calorite_recipes
-
 /obj/item/ingot/calorite
 	custom_materials = list(/datum/material/calorite=1500)
-
-GLOBAL_LIST_INIT(calorite_glass_recipes, list ( \
-	new/datum/stack_recipe("directional window", /obj/structure/window/calorite/unanchored, time = 0.5 SECONDS, crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_ON_SOLID_GROUND | CRAFT_CHECK_DIRECTION, category = CAT_WINDOWS), \
-	new/datum/stack_recipe("fulltile window", /obj/structure/window/calorite/fulltile/unanchored, 2, time =  1 SECONDS, crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_ON_SOLID_GROUND | CRAFT_IS_FULLTILE, category = CAT_WINDOWS), \
-	new/datum/stack_recipe("calorite glass shard", /obj/item/shard/calorite_glass, time = 0, crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_ON_SOLID_GROUND, category = CAT_MISC), \
-	/*new/datum/stack_recipe("calorite glass tile", /obj/item/stack/tile/glass, 1, 4, 20, category = CAT_TILES) */\
-))
-
-/obj/item/stack/sheet/calorite_glass
-	name = "calorite glass"
-	icon = 'modular_gs/icons/obj/stack_objects.dmi'
-	icon_state = "sheet-calorite_glass"
-	inhand_icon_state = "sheet-calorite"
-	singular_name = "calorite glass sheet"
-	resistance_flags = ACID_PROOF
-	armor_type = /datum/armor/sheet_glass
-	grind_results = list(/datum/reagent/silicon = 20, /datum/reagent/consumable/lipoifier = 2)
-	mats_per_unit = list(/datum/material/calorite = SHEET_MATERIAL_AMOUNT, /datum/material/glass = (SHEET_MATERIAL_AMOUNT / 2))
-	merge_type = /obj/item/stack/sheet/calorite_glass
-	material_type = /datum/material/alloy/calorite_glass
-
-/datum/material/alloy/calorite_glass
-	name = "calorite glass"
-	desc = "Calorite infused silicate. It is much weaker than regular glass due to calorite's softness."
-	color = "#ff7200"
-	alpha = 150
-	starlight_color = COLOR_TAN_ORANGE
-	init_flags = MATERIAL_INIT_MAPLOAD
-	integrity_modifier = 0.15
-	armor_modifiers = list(MELEE = 0.25, BULLET = 0.25, LASER = 1.1, ENERGY = 1.1, BOMB = 0.1, BIO = 1.2, FIRE = 2, ACID = 2)
-	sheet_type = /obj/item/stack/sheet/calorite_glass
-	shard_type = /obj/item/shard/calorite_glass
-	// debris_type = /obj/effect/decal/cleanable/glass/calorite_glass
-	value_per_unit = 0.1
-	categories = list(
-		MAT_CATEGORY_RIGID=TRUE,
-		MAT_CATEGORY_BASE_RECIPES = TRUE,
-		MAT_CATEGORY_ITEM_MATERIAL = TRUE,
-		MAT_CATEGORY_ITEM_MATERIAL_COMPLEMENTARY = TRUE,
-	)
-	composition = list(/datum/material/glass = 0.5, /datum/material/calorite = 1)
-	fish_weight_modifier = 1.2
-	fishing_difficulty_modifier = 5
-	fishing_experience_multiplier = 1.3
-	fishing_gravity_mult = 0.9
-
-/obj/item/shard/calorite_glass
-	name = "orange shard"
-	desc = "A nasty looking shard of calorite glass."
-	force = 4
-	throwforce = 9
-	icon = 'modular_gs/icons/obj/debris.dmi'
-	icon_state = "calorite_large"
-	inhand_icon_state = "shard-calorite"
-	lefthand_file = 'modular_gs/icons/mob/inhands/melee_lefthand.dmi'
-	righthand_file = 'modular_gs/icons/mob/inhands/melee_righthand.dmi'
-	// inhand_icon_state = "shard-calorite"
-	custom_materials = list(/datum/material/alloy/calorite_glass = SHEET_MATERIAL_AMOUNT)
-	// icon_prefix = "calorite"
-	weld_material = /obj/item/stack/sheet/calorite_glass
-	shiv_type = null
-	craft_time = 1.5 SECONDS
-
-/datum/design/calorite_glass
-	name = "Calorite Glass"
-	id = "calorite_glass"
-	build_type = AUTOLATHE | SMELTER | PROTOLATHE | AWAY_LATHE
-	materials = list(/datum/material/glass = HALF_SHEET_MATERIAL_AMOUNT, /datum/material/calorite = SHEET_MATERIAL_AMOUNT)
-	build_path = /obj/item/stack/sheet/calorite_glass
-	category = list(
-		RND_CATEGORY_INITIAL,
-		RND_CATEGORY_CONSTRUCTION + RND_SUBCATEGORY_CONSTRUCTION_MATERIALS,
-	)
-	// departmental_flags = DEPARTMENT_BITFLAG_ENGINEERING | DEPARTMENT_BITFLAG_SCIENCE
