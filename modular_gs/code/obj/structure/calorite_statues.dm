@@ -12,15 +12,15 @@
 	var/datum/proximity_monitor/proximity_monitor
 
 /obj/structure/statue/calorite/fatty/Initialize(mapload)
-	. = ..()
-	proximity_monitor = new(src, 1, FALSE)
-	proximity_monitor.set_host(src, src)
 	AddComponent(\
 		/datum/component/fattening,\
 		25,\
 		FATTENING_TYPE_ITEM,\
 		item_touch = TRUE,\
 		)
+	. = ..()
+	proximity_monitor = new(src, 1, FALSE)
+	proximity_monitor.set_host(src, src)
 
 /obj/structure/statue/calorite/fatty/proc/beckon()
 	if(!active)
@@ -69,10 +69,13 @@
 	..()
 
 /obj/structure/statue/calorite/fatty/attackby(obj/item/W, mob/living/carbon/M, params)
+	..()
 	statue_fatten(M)
 
 /obj/structure/statue/calorite/fatty/attack_hand(mob/living/carbon/M)
+	..()
 	statue_fatten(M)
 
 /obj/structure/statue/calorite/fatty/attack_paw(mob/living/carbon/M)
+	..()
 	statue_fatten(M)

@@ -6,6 +6,9 @@
  * Created and maintained by Swan on Gain Stations 13 discord, feel free to message me
  * if you have any questions or are interested in expanding/changing this component's
  * functionality
+ * 
+ * When applying for calorite items, in the Initialize proc apply it before you call the ..(), unless you're
+ * fine with using the default value for calorite material items
  */
 /datum/component/fattening
 	dupe_mode = COMPONENT_DUPE_UNIQUE
@@ -27,8 +30,8 @@
 	var/item_touch = FALSE
 	// do we get fat from being bumped
 	var/bumped = FALSE
-	// do we get fat from passing through
-	var/pass_through = FALSE
+	// do we get fat from passing through. Currently does not work
+	// var/pass_through = FALSE
 
 /**
  * Initialize the fattening component behaviour
@@ -43,7 +46,6 @@
  * * touch - can we be fattened by touching this with out bare hands. Default TRUE
  * * item_touch - can we be fattened despite using an item to interact with the object. Default FALSE
  * * bumped - can we be fattened by bumping into this object. Default TRUE
- * * pass_through - can we be fattened by passing through this object/tile it is on. Default FALSE
  */
 /datum/component/fattening/Initialize(
 	real_fatness_amount,
@@ -53,7 +55,7 @@
 	touch = TRUE,
 	item_touch = FALSE,
 	bumped = TRUE,
-	pass_through = FALSE
+	// pass_through = FALSE
 )
 	src.real_fatness_amount = real_fatness_amount
 	src.fattening_type = fattening_type
@@ -62,7 +64,7 @@
 	src.touch = touch
 	src.item_touch = item_touch
 	src.bumped = bumped
-	src.pass_through = pass_through
+	// src.pass_through = pass_through
 
 	if (touch)
 		RegisterSignal(parent, COMSIG_ATOM_ATTACK_HAND, PROC_REF(touch))
@@ -70,8 +72,6 @@
 		RegisterSignal(parent, COMSIG_ATOM_BUMPED, PROC_REF(bump))
 	if (item_touch)
 		RegisterSignal(parent, COMSIG_ATOM_ATTACKBY, PROC_REF(item_touch))
-	if (pass_through)
-		RegisterSignal(parent, COMSIG_ATOM_ENTERED, PROC_REF(pass_through))
 
 
 /**
@@ -132,6 +132,7 @@
 /**
  * receives a signal for when another atom enters the turf of our object. If that atom
  * is a carbon, calls fatten on them. Returns False otherwise
+ * Right now does not work
  */
 /datum/component/fattening/proc/pass_through(datum/source, atom/movable/arrived, atom/old_loc, list/atom/old_locs)
 	SIGNAL_HANDLER

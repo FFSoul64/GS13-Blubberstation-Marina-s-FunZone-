@@ -39,7 +39,7 @@
 		source_obj.damtype = FAT
 		source_obj.AddComponent(\
 		/datum/component/fattening,\
-		amount / 100,\
+		amount / 50,\
 		FATTENING_TYPE_ITEM\
 		)
 

@@ -23,12 +23,12 @@ GLOBAL_LIST_INIT(calorite_glass_recipes, list ( \
 	material_type = /datum/material/alloy/calorite_glass
 
 /obj/item/stack/sheet/calorite_glass/Initialize(mapload, new_amount, merge, list/mat_override, mat_amt)
-	. = ..()
 	AddComponent(\
 		/datum/component/fattening,\
 		1,\
 		FATTENING_TYPE_ITEM\
 		)
+	. = ..()
 
 /obj/item/stack/sheet/calorite_glass/five
 	amount = 5
@@ -100,13 +100,13 @@ GLOBAL_LIST_INIT(calorite_glass_recipes, list ( \
 	damtype = FAT
 
 /obj/item/shard/calorite_glass/Initialize(mapload)
-	. = ..()
 	AddComponent(\
 		/datum/component/fattening,\
 		1,\
 		FATTENING_TYPE_ITEM,\
 		bumped = FALSE\
 		)
+	. = ..()
 
 /datum/design/calorite_glass
 	name = "Calorite Glass"
