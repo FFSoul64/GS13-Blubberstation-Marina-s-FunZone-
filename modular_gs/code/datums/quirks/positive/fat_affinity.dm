@@ -29,16 +29,22 @@
 /datum/quirk/fat_affinity/process(seconds_per_tick)
 	if(quirk_holder.stat == DEAD)
 		return
-	if(!TIMER_COOLDOWN_FINISHED(quirk_holder, FAT_AFFINITY_COOLDOWN)) // 15 second Early return
+	if(!TIMER_COOLDOWN_FINISHED(quirk_holder, FAT_AFFINITY_COOLDOWN)) // 15 second early return
 		return
-	if(!quirk_holder)
+	if(!TIMER_COOLDOWN_FINISHED(quirk_holder, FAT_AFFINITY_ACTIVATION_COOLDOWN))	// 1 minute early return if we have already triggered the effects
+		return
+	if(!quirk_holder)	// if no quirk holder. Could it be isnull(quirk_holder) for added clarity? probably, but this works and I don't intend on changing it
 		return
 
 	var/mob/living/carbon/fatty_holder = quirk_holder
 
+	// we check if quirk_holder is a carbon. If yes, we check if they qualify for being amazed with their own
+	// heftyness and big, round, fat belly that wobbles with every step
+	// if they aren't a carbon, we don't even check their weight
 	if(iscarbon(quirk_holder) && fatty_holder.fatness > FATNESS_LEVEL_FATTER)
 		quirk_holder.add_mood_event(TRAIT_FAT_GOOD_SELF, /datum/mood_event/fat_self)
 
+	// defining . for a later check if nobody qualifies
 	. = FALSE
 	// handles calculating nearby fatties
 	var/list/mob/living/carbon/fatties = viewers(world.view / 2, fatty_holder)
@@ -51,11 +57,6 @@
 	if(!.) // If there's no fatty nearby
 		last_fatty = null
 		return
-	
-	if(last_fatty == .)
-		if(last_fatty.fatness <= highest_recorded_weight)
-			if(!TIMER_COOLDOWN_FINISHED(quirk_holder, SAME_FATTY_COOLDOWN))
-				return
 
 	last_fatty = . // Set new fatty and run new code
 	highest_recorded_weight = highest_weight
@@ -81,9 +82,4 @@
 		quirk_holder.add_mood_event(TRAIT_FAT_GOOD, /datum/mood_event/fat_other)
 
 	to_chat(quirk_holder, span_purple(pick(notices)))
-	TIMER_COOLDOWN_START(quirk_holder, FAT_AFFINITY_COOLDOWN, 15 SECONDS)
-	if (TIMER_COOLDOWN_FINISHED(quirk_holder, SAME_FATTY_COOLDOWN))
-		S_TIMER_COOLDOWN_START(quirk_holder, SAME_FATTY_COOLDOWN, 1 MINUTES)
-	else
-		S_TIMER_COOLDOWN_RESET(quirk_holder, SAME_FATTY_COOLDOWN)
-	// TIMER_COOLDOWN_START(fatty_holder, SAME_FATTY_COOLDOWN, 1 MINUTES)
+	TIMER_COOLDOWN_START(quirk_holder, FAT_AFFINITY_ACTIVATION_COOLDOWN, 2 MINUTES)		// don't get too excited about mommy's heftiness, alright sweety~?

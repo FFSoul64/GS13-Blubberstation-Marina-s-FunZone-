@@ -62,5 +62,5 @@
 	visible_message("<span class='notice'>The numbers on the screen read out: [fatty] has a BFI of [fatty.fatness].</span>")
 
 /mob/living/carbon/proc/calculate_weight_in_pounds()
-	return round((140 + (fatness*FATNESS_TO_WEIGHT_RATIO)))
+	return round((140 + (fatness*FATNESS_TO_WEIGHT_RATIO)) * (dna.current_body_size ** 2))	// huff, being bigger really does raise the number on that scale by quite a bit huh~?
 	//return round((140 + (fatness*FATNESS_TO_WEIGHT_RATIO))*(size_multiplier**2)*((dna.features["taur"] != "None") ? 2.5: 1))

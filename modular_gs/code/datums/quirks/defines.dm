@@ -1,7 +1,7 @@
-#define FAT_AFFINITY_COOLDOWN			"fatty_examine"
-#define SAME_FATTY_COOLDOWN				"same_fatty_cooldown"
-#define PLEASANTLY_SOFT_COOLDOWN		"pleasantly_soft_examine"
-#define FAT_AVERSION_COOLDOWN			"fat_aversion"
+#define FAT_AFFINITY_COOLDOWN				"fatty_examine"
+#define FAT_AFFINITY_ACTIVATION_COOLDOWN	"same_fatty_cooldown"
+#define PLEASANTLY_SOFT_COOLDOWN			"pleasantly_soft_examine"
+#define FAT_AVERSION_COOLDOWN				"fat_aversion"
 
 // /mob/living		// this was a cancer solution
 // 	var/number_of_helplessness_quirks = 0
