@@ -241,41 +241,41 @@
 	custom_materials = list(/datum/material/plastic=1000)
 	w_class = WEIGHT_CLASS_HUGE
 
+*/
+
 
 //weapon prefabs
 
 /obj/item/melee/curator_whip/fattening
 	name = "calorite-lined whip"
 	desc = "The whip seems to glisten with an orange gleam inbetween its threads."
-	damtype = "fat"
-	attack_verb = list("fattened")
+	icon = 'modular_gs/icons/obj/weapons/fat_whip.dmi'
+	icon_state = "calorite"
+	damtype = FAT
 	force = 40
 
 /obj/item/melee/curator_whip/permafattening
 	name = "galbanic whip"
-	desc = "How can a whip even be infused galbanic? No one knows."
-	damtype = "perma_fat"
-	attack_verb = list("fattened")
+	desc = "The whip's threads glisten with a sinister red gleam."
+	icon = 'modular_gs/icons/obj/weapons/fat_whip.dmi'
+	icon_state = "galbanic"
+	damtype = PERMA_FAT
 	force = 20
 
 /obj/item/gavelhammer/fattening
 	desc = "Some madman managed to create a weapon out of calorite... Luckily, it has a rubber handle for you to wield."
 	name = "Calorite Hammer"
-	icon = 'icons/obj/items_and_weapons.dmi'
+	icon = 'icons/obj/weapons/hammer.dmi'
 	icon_state = "toyhammer"
-	damtype = "fat"
+	damtype = FAT
 	throwforce = 40
 	force = 60
-	attack_verb = list("fattened")
 
 /obj/item/gavelhammer/permafattening
-	desc = "You may ask yourself - how did someone make a hammer out of a chemical? The answer is clear: no one knows."
+	desc = "Destroyer of waistlines."
 	name = "Permafat Hammer"
-	icon = 'icons/obj/items_and_weapons.dmi'
+	icon = 'icons/obj/weapons/hammer.dmi'
 	icon_state = "toyhammer"
-	damtype = "perma_fat"
+	damtype = PERMA_FAT
 	throwforce = 10
 	force = 20
-	attack_verb = list("fattened")
-
-*/

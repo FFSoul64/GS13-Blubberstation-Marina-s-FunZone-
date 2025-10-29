@@ -155,3 +155,20 @@
 	icon = 'modular_gs/icons/obj/structure/billboard.dmi'
 	desc = "A billboard advertising GATO. Someone's sprayed a message onto it: Fuck Corpo Pigs."
 	icon_state = "billboard_fuck_corps_gt"
+
+
+//gs13 icon overrides
+/obj/machinery/status_display
+	icon = 'modular_gs/icons/obj/machines/status_display.dmi'
+
+/obj/item/radio/intercom
+	icon = 'modular_gs/icons/obj/machines/wallmounts.dmi'
+
+/obj/machinery/newscaster
+	icon = 'modular_gs/icons/obj/machines/wallmounts.dmi'
+
+/obj/machinery/requests_console
+	icon = 'modular_gs/icons/obj/machines/wallmounts.dmi'
+
+/obj/item/folder
+	icon = 'modular_gs/icons/obj/service/bureaucracy.dmi'

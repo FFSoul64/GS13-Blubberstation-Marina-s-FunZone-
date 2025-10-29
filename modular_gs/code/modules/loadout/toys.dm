@@ -22,3 +22,10 @@
 	name = "Gatito Plushie"
 	item_path = /obj/item/toy/plush/gs13/gatito
 
+/datum/loadout_item/toys/sam_plush
+	name = "Blueish Fopps Plush"
+	item_path = /obj/item/toy/plush/gs13/sam
+
+/datum/loadout_item/toys/flint_plush
+	name = "Flimbus Plush"
+	item_path = /obj/item/toy/plush/gs13/flint

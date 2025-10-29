@@ -41,8 +41,8 @@
 /datum/reagent/fermi_fat/on_mob_life(mob/living/carbon/M)
 	if(!iscarbon(M))
 		return ..()
-	M.adjust_fatness(30, FATTENING_TYPE_CHEM)
-	M.adjust_perma(1, FATTENING_TYPE_CHEM)
+	M.adjust_fatness(27, FATTENING_TYPE_CHEM)
+	M.adjust_perma(3, FATTENING_TYPE_CHEM)
 	..()
 	. = 1
 

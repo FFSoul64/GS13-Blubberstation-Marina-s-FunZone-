@@ -1,5 +1,5 @@
-/obj/machinery/status_display
-	icon = 'modular_skyrat/modules/aesthetics/status_display/icons/status_display.dmi'
+// /obj/machinery/status_display
+// 	icon = 'modular_skyrat/modules/aesthetics/status_display/icons/status_display.dmi' //gs13 - icon overrdine in gato.dm
 
 /obj/machinery/status_display/post_machine_initialize()
 	. = ..()
