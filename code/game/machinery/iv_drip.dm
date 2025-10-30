@@ -47,6 +47,8 @@
 		/obj/item/reagent_containers/cup,
 		/obj/item/reagent_containers/chem_pack,
 	))
+	// GS13 EDIT ALERT TYPE
+	var/alert_type = /atom/movable/screen/alert/iv_connected
 
 /obj/machinery/iv_drip/Initialize(mapload)
 	. = ..()
@@ -300,7 +302,7 @@
 	add_fingerprint(usr)
 	if(isliving(target))
 		var/mob/living/target_mob = target
-		target_mob.throw_alert(ALERT_IV_CONNECTED, /atom/movable/screen/alert/iv_connected)
+		target_mob.throw_alert(ALERT_IV_CONNECTED, alert_type) // GS13 EDIT - Original target_mob.throw_alert(ALERT_IV_CONNECTED, /atom/movable/screen/alert/iv_connected)
 
 	qdel(attachment)
 	attachment = new(src, target)
@@ -316,7 +318,7 @@
 		visible_message(span_notice("[attachment.attached_to] is detached from [src]."))
 		if(isliving(attachment.attached_to))
 			var/mob/living/attached_mob = attachment.attached_to
-			attached_mob.clear_alert(ALERT_IV_CONNECTED, /atom/movable/screen/alert/iv_connected)
+			attached_mob.clear_alert(ALERT_IV_CONNECTED, alert_type) // GS13 EDIT - Original attached_mob.clear_alert(ALERT_IV_CONNECTED, /atom/movable/screen/alert/iv_connected)
 	SEND_SIGNAL(src, COMSIG_IV_DETACH, attachment?.attached_to)
 	QDEL_NULL(attachment)
 	update_appearance(UPDATE_ICON)
@@ -327,7 +329,7 @@
 
 /obj/machinery/iv_drip/verb/eject_beaker()
 	set category = "Object"
-	set name = "Remove IV Container"
+	set name = "Remove Container" //GS13 EDIT
 	set src in view(1)
 
 	if(!isliving(usr))
