@@ -990,7 +990,7 @@
 	if(HAS_TRAIT(affected_mob, TRAIT_LIPOLICIDE_TOLERANCE))
 		affected_mob.adjust_fatness(-0.5, FATTENING_TYPE_WEIGHT_LOSS)
 	else
-		affected_mob.adjust_fatness(-10, FATTENING_TYPE_WEIGHT_LOSS)
+		affected_mob.adjust_fatness(-17.5, FATTENING_TYPE_WEIGHT_LOSS)
 	//GS13 EDIT END
 
 /datum/reagent/toxin/coniine
