@@ -28,7 +28,7 @@
 
 	using = TRUE
 	to_chat(user, "<span>You do a rep with the [src]. YEEEEEAH!!!</span>")
-	if(do_after(user, CLICK_CD_RESIST-reps && lifter.work_out(1), src)
+	if(do_after(user, CLICK_CD_RESIST-reps && lifter.work_out(1), src))
 		if(reps < 16)
 			reps += 0.4
 	else

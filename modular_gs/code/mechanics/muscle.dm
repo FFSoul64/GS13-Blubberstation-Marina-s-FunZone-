@@ -12,6 +12,9 @@
 
 /// Adjusts the muscle mass of the parent mob.
 /mob/living/carbon/proc/adjust_muscle(amount, ignore_rate = FALSE)
+	if(!client?.prefs?.read_preference(/datum/preference/toggle/muscle_gain))
+		return FALSE
+
 	if(amount == 0)
 		return FALSE
 
