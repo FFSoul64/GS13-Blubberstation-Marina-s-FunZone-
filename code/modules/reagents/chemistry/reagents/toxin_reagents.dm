@@ -978,9 +978,11 @@
 
 /datum/reagent/toxin/lipolicide/on_mob_life(mob/living/carbon/affected_mob, seconds_per_tick, times_fired)
 	. = ..()
+	/* GS13 EDIT, DON'T HURT PLS :(
 	if(affected_mob.nutrition <= NUTRITION_LEVEL_STARVING)
 		if(affected_mob.adjustToxLoss(1 * REM * seconds_per_tick, updating_health = FALSE, required_biotype = affected_biotype))
 			. = UPDATE_MOB_HEALTH
+	*/
 	affected_mob.adjust_nutrition(-3 * REM * normalise_creation_purity() * seconds_per_tick) // making the chef more valuable, one meme trap at a time
 	affected_mob.overeatduration = 0
 
