@@ -1,7 +1,7 @@
 /obj/item/portable_blender
 	name = "portable blender"
 	desc = "Perfect for grinding food up into an unrecognizable paste! Will not work with non-foods!"
-	icon = 'modular_gs/icons/obj/items/blender.dmi'
+	icon = 'modular_gs/icons/obj/items/blender.dmi' //Sprites made by @greenwoman
 	icon_state = "blender"
 	base_icon_state = "blender"
 	/// What reagent container do we have currently in this baby?
@@ -11,12 +11,15 @@
 
 /obj/item/portable_blender/Initialize(mapload)
 	. = ..()
-
 	if(ispath(starting_container))
 		loaded_reagent_container = new starting_container(src)
 
 	update_appearance(UPDATE_OVERLAYS)
 
+	// in case we are spawned inside of a feeding tube.
+	var/obj/machinery/iv_drip/feeding_tube/our_tube = loc
+	if(istype(our_tube))
+		our_tube.insert_blender(src)
 
 /obj/item/portable_blender/Destroy()
 	if(loaded_reagent_container)
@@ -44,7 +47,7 @@
 		. += "[base_icon_state]-beaker"
 
 /// Insert food into the blender, return FALSE if the food is unable to be processed for whatever reason.
-/obj/item/portable_blender/proc/insert_food(obj/item/food/inserted_food, mob/living/user)
+/obj/item/portable_blender/proc/insert_food(obj/item/food/inserted_food, mob/living/user, ignore_distance = FALSE)
 	if(!loaded_reagent_container)
 		to_chat(user, span_warning("You aren't able to blend without a container."))
 		return FALSE
@@ -64,8 +67,11 @@
 
 	playsound(src, 'sound/machines/blender.ogg', 50, TRUE)
 	Shake(pixelshiftx = 1, pixelshifty = 0, duration = grind_time)
-	if(!do_after(user, grind_time) || !food_reagents.trans_to(loaded_reagent_container, food_reagents.total_volume))
+	if(!ignore_distance && !do_after(user, grind_time))
 		to_chat(user, span_warning("Blending interrupted!"))
+		return FALSE
+
+	if(!food_reagents.trans_to(loaded_reagent_container, food_reagents.total_volume))
 		return FALSE
 
 	balloon_alert(user, "Blending complete!")

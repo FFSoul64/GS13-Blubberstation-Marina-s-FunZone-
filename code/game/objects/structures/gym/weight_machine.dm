@@ -172,6 +172,12 @@
 			user.mind.adjust_experience(/datum/skill/athletics, WORKOUT_XP * gravity_modifier)
 			user.apply_status_effect(/datum/status_effect/exercised, EXERCISE_STATUS_DURATION)
 
+			//GS13 EDIT START
+			var/mob/living/carbon/puncher = user
+			puncher.work_out(4, 0)
+			//GS13 EDIT END
+
+
 	end_workout()
 
 /obj/structure/weightmachine/proc/end_workout()

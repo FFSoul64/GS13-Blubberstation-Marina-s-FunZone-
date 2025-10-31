@@ -19664,11 +19664,6 @@
 	},
 /turf/open/floor/wood/large,
 /area/centcom/holding/cafe/park)
-"tXR" = (
-/obj/effect/light_emitter/interlink,
-/obj/structure/chair/sofa/bench/corner,
-/turf/open/floor/grass,
-/area/centcom/interlink)
 "tYf" = (
 /obj/machinery/vending/autodrobe,
 /obj/effect/turf_decal/bot,
@@ -31715,7 +31710,7 @@ vat
 vat
 vat
 vat
-tXR
+vat
 vat
 vat
 vat

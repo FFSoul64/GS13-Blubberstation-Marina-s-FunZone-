@@ -62,6 +62,8 @@
 	if (isnull(fatty.client.prefs))
 		return FALSE
 
+	var/effective_fatness = calculate_effective_fatness()
+
 	var/datum/preferences/preferences = fatty.client.prefs
 	if(HAS_TRAIT(fatty, TRAIT_NO_HELPLESSNESS))
 		return FALSE
@@ -73,14 +75,14 @@
 			immobility_BFI = FATNESS_LEVEL_BLOB
 		if (HAS_TRAIT(fatty, TRAIT_WEAKLEGS))
 			immobility_BFI = FATNESS_LEVEL_BARELYMOBILE
-	
+
 	if (immobility_BFI > 0)
 		if(!HAS_TRAIT_FROM(fatty, TRAIT_NO_MOVE, HELPLESSNESS_TRAIT))
-			if(fatty.fatness >= immobility_BFI)
+			if(effective_fatness >= immobility_BFI)
 				to_chat(fatty, span_warning("You have become too fat to move anymore."))
 				ADD_TRAIT(fatty, TRAIT_NO_MOVE, HELPLESSNESS_TRAIT)
 
-		else if(fatty.fatness < immobility_BFI)
+		else if(effective_fatness < immobility_BFI)
 			to_chat(fatty, span_notice("You have become thin enough to regain some of your mobility."))
 			REMOVE_TRAIT(fatty, TRAIT_NO_MOVE, HELPLESSNESS_TRAIT)
 
@@ -94,12 +96,12 @@
 
 	if (clumsy_BFI > 0)
 		if(!HAS_TRAIT_FROM(fatty, TRAIT_CLUMSY, HELPLESSNESS_TRAIT))
-			if(fatty.fatness >= clumsy_BFI)
+			if(effective_fatness >= clumsy_BFI)
 				to_chat(fatty, span_warning("Your newfound weight has made it hard to manipulate objects."))
 				ADD_TRAIT(fatty, TRAIT_CLUMSY, HELPLESSNESS_TRAIT)
 				ADD_TRAIT(fatty, TRAIT_CHUNKYFINGERS, HELPLESSNESS_TRAIT)
 
-		else if(fatty.fatness < clumsy_BFI)
+		else if(effective_fatness < clumsy_BFI)
 			to_chat(fatty, span_notice("You feel like you have lost enough weight to recover your dexterity."))
 			REMOVE_TRAIT(fatty, TRAIT_CLUMSY, HELPLESSNESS_TRAIT)
 			REMOVE_TRAIT(fatty, TRAIT_CHUNKYFINGERS, HELPLESSNESS_TRAIT)
@@ -112,14 +114,14 @@
 	var/nearsighted_BFI = preferences.read_preference(/datum/preference/numeric/helplessness/nearsighted)
 	if (HAS_TRAIT(fatty, TRAIT_HELPLESS_BIG_CHEEKS))
 		nearsighted_BFI = FATNESS_LEVEL_BLOB
-	
+
 	if(nearsighted_BFI > 0)
 		if(!fatty.is_nearsighted_from(HELPLESSNESS_TRAIT))
-			if(fatty.fatness >= nearsighted_BFI)
+			if(effective_fatness >= nearsighted_BFI)
 				to_chat(fatty, span_warning("Your fat makes it difficult to see the world around you. "))
 				fatty.become_nearsighted(HELPLESSNESS_TRAIT)
 
-		else if(fatty.fatness < nearsighted_BFI)
+		else if(effective_fatness < nearsighted_BFI)
 			to_chat(fatty, span_notice("You are thin enough to see your enviornment again. "))
 			fatty.cure_nearsighted(HELPLESSNESS_TRAIT)
 
@@ -133,11 +135,11 @@
 
 	if(hidden_face_BFI > 0)
 		if(!HAS_TRAIT_FROM(fatty, TRAIT_DISFIGURED, HELPLESSNESS_TRAIT))
-			if(fatty.fatness >= hidden_face_BFI)
+			if(effective_fatness >= hidden_face_BFI)
 				to_chat(fatty, span_warning("You have gotten fat enough that your face is now unrecognizable. "))
 				ADD_TRAIT(fatty, TRAIT_DISFIGURED, HELPLESSNESS_TRAIT)
 
-		else if(fatty.fatness < hidden_face_BFI)
+		else if(effective_fatness < hidden_face_BFI)
 			to_chat(fatty, span_notice("You have lost enough weight to allow people to now recognize your face."))
 			REMOVE_TRAIT(fatty, TRAIT_DISFIGURED, HELPLESSNESS_TRAIT)
 
@@ -151,11 +153,11 @@
 
 	if(mute_BFI > 0)
 		if(!HAS_TRAIT_FROM(fatty, TRAIT_MUTE, HELPLESSNESS_TRAIT))
-			if(fatty.fatness >= mute_BFI)
+			if(effective_fatness >= mute_BFI)
 				to_chat(fatty, span_warning("Your fat makes it impossible for you to speak."))
 				ADD_TRAIT(fatty, TRAIT_MUTE, HELPLESSNESS_TRAIT)
 
-		else if(fatty.fatness < mute_BFI)
+		else if(effective_fatness < mute_BFI)
 			to_chat(fatty, span_notice("You are thin enough now to be able to speak again. "))
 			REMOVE_TRAIT(fatty, TRAIT_MUTE, HELPLESSNESS_TRAIT)
 
@@ -169,13 +171,13 @@
 
 	if(immobile_arms_BFI > 0)
 		if(!HAS_TRAIT_FROM(fatty, TRAIT_PARALYSIS_L_ARM, HELPLESSNESS_TRAIT))
-			if(fatty.fatness >= immobile_arms_BFI)
+			if(effective_fatness >= immobile_arms_BFI)
 				to_chat(fatty, span_warning("Your arms are now engulfed in fat, making it impossible to move your arms. "))
 				ADD_TRAIT(fatty, TRAIT_PARALYSIS_L_ARM, HELPLESSNESS_TRAIT)
 				ADD_TRAIT(fatty, TRAIT_PARALYSIS_R_ARM, HELPLESSNESS_TRAIT)
 				fatty.update_body_parts()
 
-		else if(fatty.fatness < immobile_arms_BFI)
+		else if(effective_fatness < immobile_arms_BFI)
 			to_chat(fatty, span_notice("You are able to move your arms again. "))
 			REMOVE_TRAIT(fatty, TRAIT_PARALYSIS_L_ARM, HELPLESSNESS_TRAIT)
 			REMOVE_TRAIT(fatty, TRAIT_PARALYSIS_R_ARM, HELPLESSNESS_TRAIT)
@@ -193,7 +195,7 @@
 
 	if(jumpsuit_bursting_BFI > 0)
 		if(!HAS_TRAIT_FROM(fatty, TRAIT_NO_JUMPSUIT, HELPLESSNESS_TRAIT))
-			if(fatty.fatness >= jumpsuit_bursting_BFI)
+			if(effective_fatness >= jumpsuit_bursting_BFI)
 				ADD_TRAIT(fatty, TRAIT_NO_JUMPSUIT, HELPLESSNESS_TRAIT)
 
 				var/obj/item/clothing/under/jumpsuit = fatty.w_uniform
@@ -201,7 +203,7 @@
 					to_chat(fatty, span_warning("[jumpsuit] can no longer contain your weight!"))
 					fatty.dropItemToGround(jumpsuit)
 
-		else if(fatty.fatness < jumpsuit_bursting_BFI)
+		else if(effective_fatness < jumpsuit_bursting_BFI)
 			to_chat(fatty, span_notice("You feel thin enough to put on jumpsuits now."))
 			REMOVE_TRAIT(fatty, TRAIT_NO_JUMPSUIT, HELPLESSNESS_TRAIT)
 
@@ -215,7 +217,7 @@
 
 	if(clothing_bursting_BFI > 0)
 		if(!HAS_TRAIT_FROM(fatty, TRAIT_NO_MISC, HELPLESSNESS_TRAIT))
-			if(fatty.fatness >= clothing_bursting_BFI)
+			if(effective_fatness >= clothing_bursting_BFI)
 				ADD_TRAIT(fatty, TRAIT_NO_MISC, HELPLESSNESS_TRAIT)
 
 				var/obj/item/clothing/suit/worn_suit = fatty.wear_suit
@@ -233,7 +235,7 @@
 					to_chat(fatty, span_warning("[worn_shoes] can no longer contain your weight!"))
 					fatty.dropItemToGround(worn_shoes)
 
-		else if(fatty.fatness < clothing_bursting_BFI)
+		else if(effective_fatness < clothing_bursting_BFI)
 			to_chat(fatty, span_notice("You feel thin enough to put on suits, shoes, and gloves now."))
 			REMOVE_TRAIT(fatty, TRAIT_NO_MISC, HELPLESSNESS_TRAIT)
 
@@ -247,11 +249,11 @@
 
 	if(belt_BFI > 0)
 		if(!HAS_TRAIT_FROM(fatty, TRAIT_NO_BELT, HELPLESSNESS_TRAIT))
-			if(fatty.fatness >= belt_BFI)
+			if(effective_fatness >= belt_BFI)
 				ADD_TRAIT(fatty, TRAIT_NO_BELT, HELPLESSNESS_TRAIT)
 
 				var/obj/item/bluespace_belt/primitive/PBS_belt = fatty.belt
-				if(istype(PBS_belt) && fatty.fatness > belt_BFI)
+				if(istype(PBS_belt) && effective_fatness > belt_BFI)
 					fatty.visible_message(span_warning("[PBS_belt] fails as it's unable to contain [fatty]'s bulk!"),
 					span_warning("[PBS_belt] fails as it's unable to contain your bulk!"))
 					fatty.dropItemToGround(PBS_belt)
@@ -263,7 +265,7 @@
 						span_warning("With a loud ripping sound, your [belt] snaps open!"))
 					fatty.dropItemToGround(belt)
 
-		else if(fatty.fatness < belt_BFI)
+		else if(effective_fatness < belt_BFI)
 			to_chat(fatty, span_notice("You feel thin enough to put on belts now."))
 			REMOVE_TRAIT(fatty, TRAIT_NO_BELT, HELPLESSNESS_TRAIT)
 
@@ -274,17 +276,17 @@
 	var/back_BFI = preferences.read_preference(/datum/preference/numeric/helplessness/clothing_back)
 	if (HAS_TRAIT(fatty, TRAIT_HELPLESS_BACKPACKS))
 		back_BFI = FATNESS_LEVEL_IMMOBILE
-	
+
 	if(back_BFI > 0)
 		if(!HAS_TRAIT_FROM(fatty, TRAIT_NO_BACKPACK, HELPLESSNESS_TRAIT))
-			if(fatty.fatness >= back_BFI)
+			if(effective_fatness >= back_BFI)
 				ADD_TRAIT(fatty, TRAIT_NO_BACKPACK, HELPLESSNESS_TRAIT)
 				var/obj/item/back_item = fatty.back
 				if(istype(back_item) && !istype(back_item, /obj/item/mod))
 					to_chat(fatty, span_warning("Your weight makes it impossible for you to carry [back_item]."))
 					fatty.dropItemToGround(back_item)
 
-		else if(fatty.fatness < back_BFI)
+		else if(effective_fatness < back_BFI)
 			to_chat(fatty, span_notice("You feel thin enough to hold items on your back now."))
 			REMOVE_TRAIT(fatty, TRAIT_NO_BACKPACK, HELPLESSNESS_TRAIT)
 
@@ -298,11 +300,11 @@
 
 	if(no_buckle_BFI > 0)
 		if(!HAS_TRAIT_FROM(fatty, TRAIT_NO_BUCKLE, HELPLESSNESS_TRAIT))
-			if(fatty.fatness >= no_buckle_BFI)
+			if(effective_fatness >= no_buckle_BFI)
 				to_chat(fatty, span_warning("You feel like you've gotten too big to fit on anything."))
 				ADD_TRAIT(fatty, TRAIT_NO_BUCKLE, HELPLESSNESS_TRAIT)
 
-		else if(fatty.fatness < no_buckle_BFI)
+		else if(effective_fatness < no_buckle_BFI)
 			to_chat(fatty, span_warning("You feel thin enough to sit on things again."))
 			REMOVE_TRAIT(fatty, TRAIT_NO_BUCKLE, HELPLESSNESS_TRAIT)
 
@@ -358,20 +360,21 @@
 /mob/living/carbon/human/proc/handle_fatness()
 	// handle_modular_items()
 	var/mob/living/carbon/human/H = src
+	var/effective_fatness = calculate_effective_fatness()
 	// update movement speed
 	var/fatness_delay = 0
-	if(H.fatness && !HAS_TRAIT(H, TRAIT_NO_FAT_SLOWDOWN))
-		fatness_delay = (H.fatness / FATNESS_DIVISOR)
+	if(effective_fatness && !HAS_TRAIT(H, TRAIT_NO_FAT_SLOWDOWN))
+		fatness_delay = (effective_fatness / FATNESS_DIVISOR)
 		fatness_delay = min(fatness_delay, FATNESS_MAX_MOVE_PENALTY)
 
 		if(HAS_TRAIT(H, TRAIT_STRONGLEGS))
 			fatness_delay = fatness_delay * FATNESS_STRONGLEGS_MODIFIER
 
 		if(HAS_TRAIT(H, TRAIT_WEAKLEGS))
-			if(H.fatness <= FATNESS_LEVEL_IMMOBILE)
+			if(effective_fatness <= FATNESS_LEVEL_IMMOBILE)
 				fatness_delay += fatness_delay * FATNESS_WEAKLEGS_MODIFIER / 100
-			if(H.fatness > FATNESS_LEVEL_IMMOBILE)
-				fatness_delay += (H.fatness / FATNESS_LEVEL_IMMOBILE) * FATNESS_WEAKLEGS_MODIFIER
+			if(effective_fatness > FATNESS_LEVEL_IMMOBILE)
+				fatness_delay += (effective_fatness / FATNESS_LEVEL_IMMOBILE) * FATNESS_WEAKLEGS_MODIFIER
 				fatness_delay = min(fatness_delay, 60)
 
 	if(fatness_delay)

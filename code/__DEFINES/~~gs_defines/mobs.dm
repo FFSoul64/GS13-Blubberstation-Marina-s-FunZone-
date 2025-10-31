@@ -24,6 +24,7 @@
 // Maximum genital sizes
 #define MAX_BUTT_SIZE 10
 #define MAX_BELLY_SIZE 9
+#define MAX_BREASTS_SIZE 18		// HUGE mommy milkers :drooling_face:. Actually, a bit too huge so we limit them
 
 //Math stuff for fatness movement speed
 #define FATNESS_DIVISOR 860

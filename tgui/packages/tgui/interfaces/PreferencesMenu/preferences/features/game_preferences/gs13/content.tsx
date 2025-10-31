@@ -65,3 +65,9 @@ export const size_xwg: FeatureToggle = {
   category: 'Size',
   component: CheckboxInput,
 };
+
+export const muscle_gain: FeatureToggle = {
+  name: 'Muscle gain',
+  category: 'WG Sources',
+  component: CheckboxInput,
+};

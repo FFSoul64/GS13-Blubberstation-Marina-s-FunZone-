@@ -158,6 +158,15 @@
 			if(S.use(1))
 				new /obj/structure/reflector/box(drop_location())
 				qdel(src)
+		// GS13 EDIT - calorite reflector
+		if(istype(S, /obj/item/stack/sheet/calorite_glass))
+			if(S.use(5))
+				new /obj/structure/reflector/single/calorite(drop_location())
+				qdel(src)
+			else
+				to_chat(user, span_warning("You need five sheets of calorite glass to create a reflector!"))
+				return
+		// GS13 END EDIT
 	else
 		return ..()
 

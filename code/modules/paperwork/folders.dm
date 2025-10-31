@@ -1,7 +1,7 @@
 /obj/item/folder
 	name = "folder"
 	desc = "A folder."
-	icon = 'icons/obj/service/bureaucracy.dmi'
+	icon = 'icons/obj/service/bureaucracy.dmi' //GS13 - icon overriden in gato.dm
 	icon_state = "folder"
 	w_class = WEIGHT_CLASS_SMALL
 	pressure_resistance = 2

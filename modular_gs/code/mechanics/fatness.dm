@@ -6,6 +6,8 @@
 	// -If you are making a mob simply gain or lose weight, use adjust_fatness. Try to not touch the variables directly unless you know 'em well
 	// -fatness is the value a mob is being displayed and calculated as by most things. Changes to fatness are not permanent
 	// -fatness_real is the value a mob is actually at, even if it's being hidden. For permanent changes, use this one
+	// PLEASE NOTE - If you add more fatness variables and you want them to show on scales, please add them to `modular_gs\code\modules\mob\living\carbon\weight_helpers.dm`!
+
 	//What level of fatness is the parent mob currently at?
 	var/fatness = 0
 	//The list of items/effects that are being added/subtracted from our real fatness
@@ -302,3 +304,24 @@
 	var/fat_to_add = ((amount * CONFIG_GET(number/damage_multiplier)) * PERMA_FAT_DAMAGE_TO_FATNESS)
 	adjust_perma(fat_to_add, FATTENING_TYPE_WEAPON)
 	return fat_to_add
+
+/mob/living/carbon/apply_damage(
+	damage = 0,
+	damagetype = BRUTE,
+	def_zone = null,
+	blocked = 0,
+	forced = FALSE,
+	spread_damage = FALSE,
+	wound_bonus = 0,
+	exposed_wound_bonus = 0,
+	sharpness = NONE,
+	attack_direction = null,
+	attacking_item,
+	wound_clothing = TRUE,
+)
+	if (damagetype == FAT)
+		applyFatnessDamage(damage)
+	if (damagetype == PERMA_FAT)
+		applyPermaFatnessDamage(damage)
+
+	. = ..()

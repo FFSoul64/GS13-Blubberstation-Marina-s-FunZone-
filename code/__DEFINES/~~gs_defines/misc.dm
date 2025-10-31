@@ -14,5 +14,8 @@
 #define TRANSFORMATION "transformation"
 
 #define FATNESS_TO_WEIGHT_RATIO 0.25
+#define MUSCLE_TO_WEIGHT_RATIO 0.4 // Muscle is heavier than fat.
+#define POUNDS_TO_KG_RAITO 0.454 // This isn't exact, but we don't want super long numbers.
 
 #define FATNESS_FROM_VORE 0.8
+#define BASE_WEIGHT_VALUE 140

@@ -7,13 +7,18 @@
 	resistance_flags = NONE
 	max_integrity = 250
 	integrity_failure = 25
+	layer = OBJ_LAYER
+
 	var/buildstacktype = /obj/item/stack/sheet/iron
 	var/buildstackamount = 3
-	layer = OBJ_LAYER
 	//stores the weight of the last person to step on in Lbs
 	var/lastreading = 0
-	//the conversion ratio for how much a point of fatness weighs on a 6' person
-	var/fatnessToWeight = 0.25
+	/// What was the last carbon mob standing on this?
+	var/mob/living/carbon/most_recent_carbon
+	/// Is there a mob currently standing on this?
+	var/currently_weighing = FALSE
+	/// What datum are we using to track weight?
+	var/datum/weigh_out/weight_datum
 
 /obj/structure/scale/attackby(obj/item/W, mob/user, params)
 	if(W.tool_behaviour == TOOL_WRENCH && !(flags_1 & NO_DEBRIS_AFTER_DECONSTRUCTION))
@@ -25,9 +30,11 @@
 /obj/structure/scale/Initialize(mapload)
 	. = ..()
 	var/static/list/loc_connections = list(
-		COMSIG_ATOM_ENTERED = PROC_REF(weighperson)
+		COMSIG_ATOM_ENTERED = PROC_REF(weighperson),
+		COMSIG_ATOM_EXITED = PROC_REF(stop_weighing),
 	)
 	AddElement(/datum/element/connect_loc, loc_connections)
+	weight_datum = new (src)
 
 /obj/structure/scale/examine(mob/user)
 	. = ..()
@@ -61,6 +68,10 @@
 	visible_message("<span class='notice'>The numbers on the screen settle on: [src.lastreading]Lbs.</span>")
 	visible_message("<span class='notice'>The numbers on the screen read out: [fatty] has a BFI of [fatty.fatness].</span>")
 
-/mob/living/carbon/proc/calculate_weight_in_pounds()
-	return round((140 + (fatness*FATNESS_TO_WEIGHT_RATIO)))
-	//return round((140 + (fatness*FATNESS_TO_WEIGHT_RATIO))*(size_multiplier**2)*((dna.features["taur"] != "None") ? 2.5: 1))
+	currently_weighing = TRUE
+	most_recent_carbon = fatty
+
+/obj/structure/scale/proc/stop_weighing(datum/source)
+	SIGNAL_HANDLER
+	currently_weighing = FALSE
+

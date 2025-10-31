@@ -18,18 +18,22 @@
 
 /obj/item/dumbbell/attack_self(mob/user)
 	. = ..()
-	if(!using)
-		using = TRUE
-		to_chat(user, "<span>You do a rep with the [src]. YEEEEEAH!!!</span>")
-		if(do_after(usr, CLICK_CD_RESIST-reps, 0, usr, 1))
-			if(iscarbon(user))
-				var/mob/living/carbon/U = user
-				U.adjust_fatness(-10, FATTENING_TYPE_WEIGHT_LOSS)
-			if(reps < 16)
-				reps += 0.4
-		else
-			to_chat(user, "<span>You couldn't complete the rep. YOU'LL GET IT NEXT TIME CHAMP!!!</span>")
-		using = FALSE
+	if(using)
+		return
+
+	var/mob/living/carbon/lifter = user
+	if(!istype(lifter))
+		to_chat(user, span_notice("You don't feel like using this would do you much good."))
+		return
+
+	using = TRUE
+	to_chat(user, "<span>You do a rep with the [src]. YEEEEEAH!!!</span>")
+	if(do_after(user, CLICK_CD_RESIST-reps && lifter.work_out(1), src))
+		if(reps < 16)
+			reps += 0.4
+	else
+		to_chat(user, "<span>You couldn't complete the rep. YOU'LL GET IT NEXT TIME CHAMP!!!</span>")
+	using = FALSE
 
 /obj/machinery/treadmill
 	name = "treadmill"
@@ -38,7 +42,7 @@
 	icon_state = "treadmill"
 	circuit = /obj/item/circuitboard/machine/treadmill
 
-	var/fatloss = -10
+	var/stamina_cost_divider = 1
 
 /obj/machinery/treadmill/Initialize(mapload)
 	. = ..()
@@ -79,13 +83,16 @@
 				"\The [src] audibly strains under [fatty]'s weight...",
 				"\The [src] creeaaaaks under [fatty]'s strain..."
 			)))
-	fatty.adjust_fatness(fatloss, FATTENING_TYPE_WEIGHT_LOSS)
+	var/base_intensity = 0.1
+	var/custom_stamina_cost = (base_intensity * INTENSITY_TO_STAMINA_RATIO) * stamina_cost_divider
+
+	fatty.work_out(base_intensity, custom_stamina_cost)
 	return COMPONENT_ATOM_BLOCK_EXIT
 
 /obj/machinery/treadmill/RefreshParts(obj/item/O, mob/user, params)
 	..()
 	for(var/obj/item/stock_parts/servo/servo in component_parts)
-		fatloss += servo.rating * -10
+		stamina_cost_divider += servo.rating * 1
 
 /obj/machinery/treadmill/attackby(obj/item/O, mob/living/user, params)
 	if(default_deconstruction_screwdriver(user, "conveyor0", "conveyor0", O))
@@ -129,17 +136,3 @@
 	build_path = /obj/item/conveyor_construct/treadmill
 	category = list("initial", "Construction")
 */
-
-/obj/structure/punching_bag/attack_hand(mob/living/user, list/modifiers)
-	. = ..()
-
-	if (iscarbon(user))
-		var/mob/living/carbon/puncher = user
-		puncher.adjust_fatness(-5, FATTENING_TYPE_WEIGHT_LOSS)
-
-/obj/structure/weightmachine/perform_workout(mob/living/user)
-	..()
-
-	if (iscarbon(user))
-		var/mob/living/carbon/puncher = user
-		puncher.adjust_fatness(-30, FATTENING_TYPE_WEIGHT_LOSS)
