@@ -7,17 +7,17 @@
  * Or just tell me what a good little coder boy I am that'll make me happy too.
  */
 /datum/helplessness
-	// the helplessness mechanic this triggers
+	/// the helplessness mechanic this triggers
 	var/helplessness_trait = 0
-	// default BFI value at which this triggers - essentially the value used by quirks
+	/// default BFI value at which this triggers - essentially the value used by quirks
 	var/default_trigger_weight = 0
-	// quirk trait which overrides the pref
+	/// quirk trait which overrides the pref
 	var/override_quirk = 0
-	// reference to the preference
+	/// reference to the preference
 	var/datum/preference/numeric/helplessness/preference = null
-	// message we send on player gaining this helplessness
+	/// message we send on player gaining this helplessness
 	var/gain_message = ""
-	// message we send on player losing this helplessness
+	/// message we send on player losing this helplessness
 	var/lose_message = ""
 
 /**
