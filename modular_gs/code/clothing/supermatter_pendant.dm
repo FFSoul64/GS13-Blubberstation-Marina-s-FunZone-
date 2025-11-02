@@ -1,3 +1,5 @@
+#define SM_PENDANT_COOLDOWN "supermatter_pendant_cooldown"
+
 /obj/item/clothing/neck/supermatter_pendant
 	name = "Supermatter Pendant"
 	desc = "A tiny capsule containing a piece of the Supermatter crystal, suspended in Hyper-Noblium gas."
@@ -13,10 +15,9 @@
 	light_color = COLOR_VERY_SOFT_YELLOW
 	light_range = 2
 	light_power = 1
-	light_on = TRUE
+	light_on = FALSE
 	COOLDOWN_DECLARE(disabled_time)
-	var/toggle_context = TRUE
-	var/start_on = TRUE
+	var/start_on = FALSE
 
 /obj/item/clothing/neck/supermatter_pendant/Initialize(mapload)
 	. = ..()
@@ -29,7 +30,6 @@
 		update_light()
 
 /obj/item/clothing/neck/supermatter_pendant/proc/toggle_light(mob/user)
-	playsound(src, SFX_SM_CALM, 25, FALSE, 40, 30, falloff_distance = 10)
 	if(!COOLDOWN_FINISHED(src, disabled_time))
 		if(user)
 			balloon_alert(user, "disrupted!")
@@ -41,6 +41,9 @@
 	set_light_on(!light_on)
 	update_brightness()
 	update_item_action_buttons()
+	if (TIMER_COOLDOWN_FINISHED(src, SM_PENDANT_COOLDOWN))
+		playsound(src, SFX_SM_CALM, 25, FALSE, 40, 30, falloff_distance = 10)
+		TIMER_COOLDOWN_START(src, SM_PENDANT_COOLDOWN, 2 SECONDS)
 	return light_on != old_light_on // If the value of light_on didn't change, return false. Otherwise true.
 
 /obj/item/clothing/neck/supermatter_pendant/attack_self(mob/user)
@@ -53,5 +56,10 @@
 /obj/item/clothing/neck/supermatter_pendant/suicide_act(mob/living/carbon/human/user)
 	user.visible_message(span_suicide("[user] is opening the top of [src]! It looks like [user.p_theyre()] trying to commit suicide!"))
 	playsound(src, SFX_SM_DELAM, 25, FALSE, 40, 30, falloff_distance = 10)
+	user.visible_message(span_danger("\The [user] touches the [src] inducing a resonance... [user.p_their()] body starts to glow and burst into flames before flashing into dust!"),
+		span_userdanger("You touch the exposed crystal within the [src] as your ears are filled with unearthly ringing. Your last thought is \"Ah, shit.\""),
+		span_hear("You hear an unearthly noise as a wave of heat washes over you."))
 	user.dust(force = TRUE)
 	return MANUAL_SUICIDE
+
+#undef SM_PENDANT_COOLDOWN
