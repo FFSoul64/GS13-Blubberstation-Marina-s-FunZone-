@@ -142,6 +142,10 @@
 			if(!client?.prefs?.read_preference(/datum/preference/toggle/weight_gain_atmos))
 				return FALSE
 
+		if(FATTENING_TYPE_MOBS)
+			if(!client?.prefs?.read_preference(/datum/preference/toggle/weight_gain_mobs))
+				return FALSE
+
 		if(FATTENING_TYPE_WEIGHT_LOSS)
 			if(HAS_TRAIT(src, TRAIT_WEIGHT_LOSS_IMMUNE))
 				return FALSE

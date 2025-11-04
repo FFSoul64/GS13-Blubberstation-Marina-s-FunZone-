@@ -7002,6 +7002,7 @@
 #include "modular_gs\code\modules\loadout\under.dm"
 #include "modular_gs\code\modules\mapping\areas.dm"
 #include "modular_gs\code\modules\mob\dead\new_player\sprite_accessories\ears.dm"
+#include "modular_gs\code\modules\mob\living\basic\calorite_slime.dm"
 #include "modular_gs\code\modules\mob\living\genital_sprite_accessories.dm"
 #include "modular_gs\code\modules\mob\living\genitals.dm"
 #include "modular_gs\code\modules\mob\living\species.dm"
