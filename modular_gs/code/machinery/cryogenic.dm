@@ -1,7 +1,7 @@
 /obj/machinery/cryopod/tele //lore-friendly cryo thing
 	name = "Long-range Central Command teleporter"
 	desc = "A special teleporter for sending employees back to Central Command for reassignments, adjustments or simply to end their shift."
-	icon = 'modular_gs/icons/obj/machinery/cryogenics.dmi'
+	icon = 'modular_gs/icons/obj/machines/cryogenics.dmi'
 	icon_state = "telepod-open"
 	on_store_message = "has teleported back to Central Command."
 	on_store_name = "Teleporter Oversight"
