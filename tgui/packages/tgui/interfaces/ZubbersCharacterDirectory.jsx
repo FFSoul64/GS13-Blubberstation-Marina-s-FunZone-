@@ -310,9 +310,9 @@ const CharacterDirectoryList = (props) => {
             <Table.Cell>{character.erp}</Table.Cell>
             <Table.Cell>{character.vore}</Table.Cell>
             <Table.Cell>{character.feeding}</Table.Cell>
-            <Table.Cell>{character.feeding_nc}</Table.Cell>
             <Table.Cell>{character.muscle}</Table.Cell>
             <Table.Cell>{character.inflation}</Table.Cell>
+            <Table.Cell>{character.feeding_nc}</Table.Cell>
             <Table.Cell>{character.hypno}</Table.Cell>
             <Table.Cell>{character.noncon}</Table.Cell>
             <Table.Cell collapsing textAlign="right">
