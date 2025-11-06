@@ -122,3 +122,14 @@ GLOBAL_LIST_INIT(calorite_recipes, list ( \
 
 /obj/item/ingot/calorite
 	custom_materials = list(/datum/material/calorite=1500)
+
+/datum/design/calorite
+	name = "Calorite"
+	id = "calorite"
+	build_type = AUTOLATHE
+	materials = list(/datum/material/calorite = SHEET_MATERIAL_AMOUNT)
+	build_path = /obj/item/stack/sheet/mineral/calorite
+	category = list(
+		RND_CATEGORY_INITIAL,
+		RND_CATEGORY_CONSTRUCTION + RND_SUBCATEGORY_CONSTRUCTION_MATERIALS,
+	)

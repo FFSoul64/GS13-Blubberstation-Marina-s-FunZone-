@@ -106,7 +106,7 @@
 
 /datum/reagent/micro_calorite
 	name = "Micro calorite"
-	description = "Tiny pieces of grinded calorite, shining with a strange, orange glow. They have a multitude of effects on living beings, ranging from phychological to physical alteration. Metabolizes very slowly."
+	description = "Tiny pieces of grinded calorite, shining with a strange, orange glow. They cause living beings to accumulate fat faster, as well as increase hunger, at high concentrations causing passive weight gain. Metabolizes very slowly."
 	color = "#eb6e00"
 	taste_description = "sugar"
 	metabolization_rate = 0.05 * REAGENTS_METABOLISM

@@ -24,52 +24,58 @@
 // 	ammo_type = list(/obj/item/ammo_casing/energy/laser/shrinkray, /obj/item/ammo_casing/energy/laser/growthray)
 
 
-/obj/projectile/alter_ray
+/obj/projectile/beam/alter_ray
 	name = "sizeray beam"
 	icon_state = "omnilaser"
 	hitsound = null
 	damage = 0
+	eyeblur = 0
 	damage_type = STAMINA
-	pass_flags = PASSTABLE | PASSGLASS | PASSGRILLE
+	// pass_flags = PASSTABLE | PASSGLASS | PASSGRILLE
 	ricochets_max = 50
 	ricochet_chance = 80
+	light_range = 2
 	var/ratechange_amount = 0.1
 
 
 //projectile biz
 
-/obj/projectile/alter_ray/gain_rate/decrease
+/obj/projectile/beam/alter_ray/gain_rate/decrease
 	icon_state="bluelaser"
+	light_color = LIGHT_COLOR_DARK_BLUE
 	ratechange_amount = -0.1
 
-/obj/projectile/alter_ray/gain_rate/increase
+/obj/projectile/beam/alter_ray/gain_rate/increase
 	icon_state="laser"
+	light_color = LIGHT_COLOR_INTENSE_RED
 	ratechange_amount = 0.1
 
-/obj/projectile/alter_ray/loss_rate/decrease
+/obj/projectile/beam/alter_ray/loss_rate/decrease
 	icon_state="bluelaser"
+	light_color = LIGHT_COLOR_DARK_BLUE
 	ratechange_amount = -0.1
 
-/obj/projectile/alter_ray/loss_rate/increase
+/obj/projectile/beam/alter_ray/loss_rate/increase
 	icon_state="laser"
+	light_color = LIGHT_COLOR_INTENSE_RED
 	ratechange_amount = 0.1
 
-// /obj/projectile/alter_ray/breast_decrease
+// /obj/projectile/beam/alter_ray/breast_decrease
 // 	icon_state="bluelaser"
 
-// /obj/projectile/alter_ray/breast_increase
+// /obj/projectile/beam/alter_ray/breast_increase
 // 	icon_state="laser"
 
-// /obj/projectile/alter_ray/butt_decrease
+// /obj/projectile/beam/alter_ray/butt_decrease
 // 	icon_state="bluelaser"
 
-// /obj/projectile/alter_ray/butt_increase
+// /obj/projectile/beam/alter_ray/butt_increase
 // 	icon_state="laser"
 
 //laser hitting / changing code
 
 //wg rate increase
-/obj/projectile/alter_ray/gain_rate/on_hit(atom/target, blocked, pierce_hit)
+/obj/projectile/beam/alter_ray/gain_rate/on_hit(atom/target, blocked, pierce_hit)
 	. = ..()
 
 	var/mob/living/carbon/gainer = target
@@ -81,7 +87,7 @@
 	return FALSE
 
 //wl rate change
-/obj/projectile/alter_ray/loss_rate/on_hit(atom/target, blocked, pierce_hit)
+/obj/projectile/beam/alter_ray/loss_rate/on_hit(atom/target, blocked, pierce_hit)
 	. = ..()
 
 	var/mob/living/carbon/gainer = target
@@ -94,19 +100,19 @@
 
 //ammo casings - these are needed to allow guns to switch between firing modes
 /obj/item/ammo_casing/energy/laser/gainrate_increase
-	projectile_type = /obj/projectile/alter_ray/gainrate_increase
+	projectile_type = /obj/projectile/beam/alter_ray/gain_rate/increase
 	select_name = "Weight Gain Increase"
 
 /obj/item/ammo_casing/energy/laser/gainrate_decrease
-	projectile_type = /obj/projectile/alter_ray/gainrate_decrease
+	projectile_type = /obj/projectile/beam/alter_ray/gain_rate/decrease
 	select_name = "Weight Gain Decrease"
 
 /obj/item/ammo_casing/energy/laser/lossrate_increase
-	projectile_type = /obj/projectile/alter_ray/lossrate_increase
+	projectile_type = /obj/projectile/beam/alter_ray/loss_rate/increase
 	select_name = "Weight Loss Increase"
 
 /obj/item/ammo_casing/energy/laser/lossrate_decrease
-	projectile_type = /obj/projectile/alter_ray/lossrate_decrease
+	projectile_type = /obj/projectile/beam/alter_ray/loss_rate/decrease
 	select_name = "Weight Loss Decrease"
 
 
@@ -119,19 +125,19 @@
 	ammo_type = list(/obj/item/ammo_casing/energy/laser/lossrate_reverse)
 
 /obj/item/ammo_casing/energy/laser/lossrate_reverse
-	projectile_type = /obj/projectile/alter_ray/lossrate_reverse
+	projectile_type = /obj/projectile/beam/alter_ray/lossrate_reverse
 	select_name = "Weight Loss Reverse"
 
-/obj/projectile/alter_ray/lossrate_reverse
+/obj/projectile/beam/alter_ray/lossrate_reverse
 	ratechange_amount = 0
 	icon_state = "laser"
 
-/obj/projectile/alter_ray/lossrate_reverse/on_hit(atom/target, blocked, pierce_hit)
+/obj/projectile/beam/alter_ray/lossrate_reverse/on_hit(atom/target, blocked, pierce_hit)
 	. = ..()
 
 	var/mob/living/carbon/gainer = target
 
 	if(iscarbon(gainer))
-		gainer.flip_loss_rate = !flip_loss_rate
+		gainer.flip_loss_rate = !gainer.flip_loss_rate
 		return TRUE
 

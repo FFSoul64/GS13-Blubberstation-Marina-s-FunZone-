@@ -203,14 +203,14 @@
 	var/local_loss_rate = weight_loss_rate
 
 	if (HAS_TRAIT(src, TRAIT_UNIVERSAL_GAINER))
-		local_lose_rate = max(0.2, local_lose_rate)
+		local_loss_rate = max(0.2, local_loss_rate)
 	
-	local_lose_rate += get_weight_lose_modifiers()
+	local_loss_rate += get_weight_loss_modifiers()
 	
-	if (flip_lose_rate)
-		local_lose_rate = -local_lose_rate
+	if (flip_loss_rate)
+		local_loss_rate = -local_loss_rate
 	
-	return local_lose_rate
+	return local_loss_rate
 
 /mob/living/carbon/get_fullness(only_consumable)
 	. = ..()
@@ -218,7 +218,7 @@
 	return max(0, fullness - fullness_reduction)
 
 /mob/living/carbon/proc/fullness_reduction()
-	var/max_fullness_reduction = (2000 * (1 + eater.overeatduration / (4000 SECONDS)))	// slightly over the default
+	var/max_fullness_reduction = (2000 * (1 + src.overeatduration / (4000 SECONDS)))	// slightly over the default
 	fullness_reduction -= 15
 	fullness_reduction = clamp(fullness_reduction, 0, max_fullness_reduction)
 
