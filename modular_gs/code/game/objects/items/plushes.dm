@@ -89,3 +89,4 @@
 	name = "Flimbus plushie"
 	desc = "Fill him with oil and throw him at a wall!"
 	icon_state = "flint"
+

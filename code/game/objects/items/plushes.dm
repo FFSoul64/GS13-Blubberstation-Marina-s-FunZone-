@@ -60,6 +60,9 @@
 	heartbroken_message = list("\n[src] looks so sad.")
 	vowbroken_message = list("\n[src] lost \his ring...")
 	parent_message = list("\n[src] can't remember what sleep is.")
+	//GS13 EDIT START
+	default_icon_state = icon_state
+	//GS13 EDIT END
 
 	normal_desc = desc
 
