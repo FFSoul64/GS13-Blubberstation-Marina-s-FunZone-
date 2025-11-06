@@ -33,6 +33,9 @@
 #define MIN_PREFS_WEIGHT_GAIN_AND_LOSS_RATE 0
 #define DEFAULT_PREFS_WEIGHT_GAIN_AND_LOSS_RATE 0.5
 
+// defines for weight gain/loss modifiers
+#define MODIFIER_MAX_VALUE		2
+
 #define BUTT_LAYER_OFFSET        0.8
 #define ANUS_LAYER_OFFSET        0.7
 #define VAGINA_LAYER_OFFSET        0.6
