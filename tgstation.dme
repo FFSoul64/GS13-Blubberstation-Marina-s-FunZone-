@@ -7042,6 +7042,7 @@
 #include "modular_gs\code\obj\items\bluespace_belt.dm"
 #include "modular_gs\code\obj\items\floor_tiles.dm"
 #include "modular_gs\code\obj\items\gato.dm"
+#include "modular_gs\code\obj\items\incense.dm"
 #include "modular_gs\code\obj\items\minor_items.dm"
 #include "modular_gs\code\obj\items\portable_blender.dm"
 #include "modular_gs\code\obj\items\tiles.dm"
