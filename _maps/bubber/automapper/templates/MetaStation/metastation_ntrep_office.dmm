@@ -111,9 +111,7 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
-/obj/item/banner{
-	inspiration_available = 0
-	},
+/obj/item/banner/gato,
 /turf/open/floor/iron,
 /area/station/hallway/primary/port)
 "x" = (

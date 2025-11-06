@@ -166,6 +166,10 @@ GLOBAL_DATUM(character_directory, /datum/character_directory)
 		data["personalGender"] = READ_PREFS(user, choiced/display_gender)
 		data["personalErpTag"] = READ_PREFS(user, choiced/erp_status)
 		data["personalVoreTag"] = READ_PREFS(user, choiced/erp_status_v)
+		data["personalFeedingTag"] = READ_PREFS(user, choiced/erp_status_feed) //GS13 EDIT
+		data["personalMuscleTag"] = READ_PREFS(user, choiced/erp_status_muscle) //GS13 EDIT
+		data["personalInflationTag"] = READ_PREFS(user, choiced/erp_status_inflation) //GS13 EDIT
+		data["personalNonconFeedingTag"] = READ_PREFS(user, choiced/erp_status_feed_nc) //GS13 EDIT
 		data["personalHypnoTag"] = READ_PREFS(user, choiced/erp_status_hypno)
 		data["personalNonconTag"] = READ_PREFS(user, choiced/erp_status_nc)
 		data["prefsOnly"] = TRUE
@@ -191,6 +195,10 @@ GLOBAL_DATUM(character_directory, /datum/character_directory)
 		var/gender = "Nonbinary"
 		var/erp = "Ask"
 		var/vore = "Ask"
+		var/feeding = "Ask" //GS13 EDIt
+		var/muscle = "Ask" //GS13 EDIt
+		var/inflation = "Ask" //GS13 EDIt
+		var/feeding_nc = "Ask" //GS13 EDIt
 		var/hypno = "Ask"
 		var/noncon = "Ask"
 		var/character_ad = ""
@@ -203,7 +211,7 @@ GLOBAL_DATUM(character_directory, /datum/character_directory)
 		if(ishuman(mob))
 			var/mob/living/carbon/human/human = mob
 			//If someone is obscured without flavor text visible, we don't want them on the Directory.
-			if((human.wear_mask && (human.wear_mask.flags_inv & HIDEFACE) && READ_PREFS(human, toggle/obscurity_examine)) || (human.head && (human.head.flags_inv & HIDEFACE) && READ_PREFS(human, toggle/obscurity_examine)) || (HAS_TRAIT(human, TRAIT_UNKNOWN)))
+			if(((human.covered_slots & HIDEFACE) && READ_PREFS(human, toggle/obscurity_examine)) || (HAS_TRAIT(human, TRAIT_UNKNOWN_APPEARANCE)))
 				continue
 			//Display custom species, otherwise show base species instead
 			species = (READ_PREFS(human, text/custom_species))
@@ -231,6 +239,12 @@ GLOBAL_DATUM(character_directory, /datum/character_directory)
 		gender = READ_PREFS(mob, choiced/display_gender)
 		erp = READ_PREFS(mob, choiced/erp_status)
 		vore = READ_PREFS(mob, choiced/erp_status_v)
+		//GS13 EDIT START
+		feeding = READ_PREFS(mob, choiced/erp_status_feed)
+		muscle = READ_PREFS(mob, choiced/erp_status_muscle)
+		inflation = READ_PREFS(mob, choiced/erp_status_inflation)
+		feeding_nc = READ_PREFS(mob, choiced/erp_status_feed_nc)
+		//GS13 EDIT END
 		hypno = READ_PREFS(mob, choiced/erp_status_hypno)
 		noncon = READ_PREFS(mob, choiced/erp_status_nc)
 		character_ad = READ_PREFS(mob, text/character_ad)
@@ -245,6 +259,12 @@ GLOBAL_DATUM(character_directory, /datum/character_directory)
 			"gender" = gender,
 			"erp" = erp,
 			"vore" = vore,
+			// GS13 EDIT START
+			"feeding" = feeding,
+			"muscle" = muscle,
+			"inflation" = inflation,
+			"feeding_nc" = feeding_nc,
+			// GS13 EDIT END
 			"hypno" = hypno,
 			"noncon" = noncon,
 			"character_ad" = character_ad,

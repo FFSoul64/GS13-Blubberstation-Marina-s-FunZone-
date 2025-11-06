@@ -8,13 +8,11 @@ GLOBAL_LIST_INIT_TYPED(quirk_blacklist, /list/datum/quirk, list(
 	list(/datum/quirk/item_quirk/blindness, /datum/quirk/item_quirk/scarred_eye),
 	list(/datum/quirk/item_quirk/blindness, /datum/quirk/item_quirk/fluoride_stare),
 	list(/datum/quirk/item_quirk/blindness, /datum/quirk/touchy),
-	list(/datum/quirk/jolly, /datum/quirk/depression, /datum/quirk/apathetic, /datum/quirk/hypersensitive),
+	list(/datum/quirk/jolly, /datum/quirk/depression, /datum/quirk/hypersensitive),
 	list(/datum/quirk/no_taste, /datum/quirk/vegetarian, /datum/quirk/deviant_tastes, /datum/quirk/gamer),
 	list(/datum/quirk/pineapple_liker, /datum/quirk/pineapple_hater, /datum/quirk/gamer),
 	list(/datum/quirk/alcohol_tolerance, /datum/quirk/light_drinker),
 	list(/datum/quirk/item_quirk/clown_enjoyer, /datum/quirk/item_quirk/mime_fan),
-	list(/datum/quirk/bad_touch, /datum/quirk/friendly),
-	list(/datum/quirk/extrovert, /datum/quirk/introvert),
 	list(/datum/quirk/prosthetic_limb, /datum/quirk/quadruple_amputee, /datum/quirk/body_purist),
 	list(/datum/quirk/transhumanist, /datum/quirk/body_purist),
 	list(/datum/quirk/prosthetic_organ, /datum/quirk/tin_man, /datum/quirk/body_purist),
@@ -45,13 +43,18 @@ GLOBAL_LIST_INIT_TYPED(quirk_blacklist, /list/datum/quirk, list(
 	//SKYRAT EDIT ADDITION END
 	//BUBBER EDIT ADDITION BEGIN
 	list(/datum/quirk/featherweight, /datum/quirk/oversized),
-	list(/datum/quirk/overweight, /datum/quirk/obese),
+	//list(/datum/quirk/overweight, /datum/quirk/obese), GS13 EDIT
 	list(/datum/quirk/dominant_aura, /datum/quirk/well_trained),
 	list(/datum/quirk/equipping/entombed, /datum/quirk/equipping/seamless_clothes),
 	list(/datum/quirk/equipping/entombed, /datum/quirk/badback),
 	list(/datum/quirk/unblinking, /datum/quirk/item_quirk/fluoride_stare),
 	list(/datum/quirk/micro, /datum/quirk/micro/smaller, /datum/quirk/micro/smallest, /datum/quirk/oversized),
 	//BUBBER EDIT ADDITION END
+	// GS13 EDIT
+	list(/datum/quirk/fat_aversion, /datum/quirk/fat_affinity),
+	list(/datum/quirk/weak_legs, /datum/quirk/strong_legs),
+	list(/datum/quirk/helplessness/chair_breakage, /datum/quirk/helplessness/no_buckle),
+	// GS13 END EDIT
 ))
 
 GLOBAL_LIST_INIT(quirk_string_blacklist, generate_quirk_string_blacklist())
@@ -140,7 +143,7 @@ PROCESSING_SUBSYSTEM_DEF(quirks)
  *Randomises the quirks for a specified mob
  */
 /datum/controller/subsystem/processing/quirks/proc/randomise_quirks(mob/living/user)
-	var/bonus_quirks = max((length(user.quirks) + rand(-RANDOM_QUIRK_BONUS, RANDOM_QUIRK_BONUS)), MINIMUM_RANDOM_QUIRKS)
+	var/bonus_quirks = max((LAZYLEN(user.quirks) + rand(-RANDOM_QUIRK_BONUS, RANDOM_QUIRK_BONUS)), MINIMUM_RANDOM_QUIRKS)
 	var/added_quirk_count = 0 //How many we've added
 	var/list/quirks_to_add = list() //Quirks we're adding
 	var/good_count = 0
@@ -214,7 +217,7 @@ PROCESSING_SUBSYSTEM_DEF(quirks)
 	var/list/positive_quirks = list()
 	var/points_enabled = !CONFIG_GET(flag/disable_quirk_points)
 	var/max_positive_quirks = CONFIG_GET(number/max_positive_quirks)
-	var/balance = 0
+	var/balance = -CONFIG_GET(number/default_quirk_points)
 
 	var/list/all_quirks = get_quirks()
 

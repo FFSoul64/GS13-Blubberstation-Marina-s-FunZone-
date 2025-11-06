@@ -1,0 +1,4 @@
+author: "sheepishgoat"
+delete-after: True
+changes:
+  - rscdel: "disables dogborgs"

@@ -1,7 +1,4 @@
 /datum/loadout_item/uniform/jumpsuit/gs13
-
-
-/datum/loadout_item/uniform/jumpsuit/gs13
 	name = "Grey Jumpsuit (Modular)"
 	item_path = /obj/item/clothing/under/color/grey
 
@@ -40,6 +37,6 @@
 	item_path = /obj/item/clothing/under/color/grey/service
 	// We don't have bitflags for all of service sooooooooooo
 
-
-
-
+/datum/loadout_item/uniform/jumpsuit/gs13/white_dual_tone
+	name = "White dual tone jumpsuit (Modular)"
+	item_path = /obj/item/clothing/under/color/dual_tone

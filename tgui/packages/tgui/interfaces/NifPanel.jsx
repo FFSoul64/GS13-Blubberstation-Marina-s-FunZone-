@@ -197,6 +197,8 @@ const NifSettings = (props) => {
     blood_drain,
     minimum_blood_level,
     blood_level,
+    fatness,
+    fat_drain,
     stored_points,
     nif_examine_text,
   } = data;
@@ -239,6 +241,15 @@ const NifSettings = (props) => {
           tooltip="Toggles the ability for the NIF to drain blood from you. This will automatically shut off once you get close to an unsafe blood level"
           onClick={() => act('toggle_blood_drain')}
           disabled={blood_level < minimum_blood_level}
+        />
+      </LabeledList.Item>
+      <LabeledList.Item label="Fat Drain">
+        <Button
+          fluid
+          content={fat_drain === 0 ? 'Fat Drain Disabled' : 'Fat Drain Enabled'}
+          tooltip="Toggles the ability for the NIF to generate power by consuming fat."
+          onClick={() => act('toggle_fatness_drain')}
+          disabled={fatness < 6}
         />
       </LabeledList.Item>
       <LabeledList.Item
@@ -309,6 +320,9 @@ const NifStats = (props) => {
               '% Usage)'}
           </ProgressBar>
         </LabeledList.Item>
+        <LabeledList.Item label="User BFI">
+          <NifFatBar />
+        </LabeledList.Item>
         {nutrition_drain === 1 && (
           <LabeledList.Item label="User Nutrition">
             <NifNutritionBar />
@@ -355,5 +369,24 @@ const NifBloodBar = (props) => {
         bad: [0, 336],
       }}
     />
+  );
+};
+
+const NifFatBar = (props) => {
+  const { act, data } = useBackend();
+  const { fatness, fatness_total } = data;
+  return (
+    <ProgressBar
+      value={fatness_total}
+      minValue={0}
+      maxValue={3500}
+      ranges={{
+        bad: [2540, Infinity],
+        average: [440, 2540],
+        good: [0, 440],
+      }}
+    >
+      {fatness_total} ({fatness} usable)
+    </ProgressBar>
   );
 };

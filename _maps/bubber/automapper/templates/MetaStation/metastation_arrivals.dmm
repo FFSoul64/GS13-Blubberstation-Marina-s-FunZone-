@@ -158,7 +158,6 @@
 /turf/open/floor/iron,
 /area/station/hallway/secondary/entry)
 "gp" = (
-/obj/structure/sign/warning/vacuum/external/directional/north,
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
@@ -479,9 +478,8 @@
 /turf/open/floor/iron/white/corner,
 /area/station/hallway/secondary/entry)
 "qo" = (
-/obj/effect/turf_decal/stripes/line,
-/obj/structure/sign/warning/vacuum/external/directional/south,
-/turf/open/floor/iron,
+/obj/structure/sign/warning/gato/vacuum,
+/turf/closed/wall,
 /area/station/hallway/secondary/entry)
 "qt" = (
 /obj/structure/extinguisher_cabinet/directional/north,
@@ -605,10 +603,12 @@
 /turf/open/floor/iron,
 /area/station/hallway/secondary/entry)
 "tV" = (
-/obj/structure/cable,
-/obj/structure/sign/warning/vacuum/external/directional/west,
-/turf/open/floor/plating,
-/area/station/maintenance/port)
+/obj/structure/sign/warning/gato/vacuum{
+	pixel_x = 32;
+	pixel_y = 0
+	},
+/turf/open/floor/iron,
+/area/station/hallway/secondary/entry)
 "ut" = (
 /obj/docking_port/stationary{
 	dir = 8;
@@ -747,7 +747,7 @@
 "xW" = (
 /obj/structure/closet/firecloset,
 /obj/effect/turf_decal/delivery,
-/obj/effect/landmark/start/hangover/closet,
+/obj/effect/landmark/start/hangover,
 /turf/open/floor/iron,
 /area/station/hallway/secondary/entry)
 "ye" = (
@@ -1401,7 +1401,7 @@
 "Oy" = (
 /obj/structure/closet/emcloset,
 /obj/effect/turf_decal/delivery,
-/obj/effect/landmark/start/hangover/closet,
+/obj/effect/landmark/start/hangover,
 /turf/open/floor/iron,
 /area/station/hallway/secondary/entry)
 "OF" = (
@@ -1825,11 +1825,6 @@
 /obj/effect/turf_decal/stripes/corner{
 	dir = 8
 	},
-/turf/open/floor/iron,
-/area/station/hallway/secondary/entry)
-"Yj" = (
-/obj/structure/sign/warning/vacuum/external/directional/south,
-/obj/effect/turf_decal/stripes/line,
 /turf/open/floor/iron,
 /area/station/hallway/secondary/entry)
 "YI" = (
@@ -2673,8 +2668,8 @@ FF
 "}
 (20,1,1) = {"
 En
+zd
 qo
-bO
 tx
 FF
 FF
@@ -3082,7 +3077,7 @@ NO
 gO
 NO
 Vj
-NO
+tV
 RG
 bO
 FF
@@ -3166,7 +3161,7 @@ FH
 vV
 be
 Ta
-tV
+SI
 SI
 Ab
 NI
@@ -3220,8 +3215,8 @@ bB
 (33,1,1) = {"
 Pq
 NO
-Yj
-bO
+zd
+qo
 bO
 bO
 aJ
@@ -3229,7 +3224,7 @@ aJ
 aJ
 bO
 bO
-bO
+qo
 gp
 NO
 Vq

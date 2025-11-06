@@ -1,10 +1,7 @@
-#define FULLNESS_LEVEL_NOMOREPLZ 280
-#define FULLNESS_LEVEL_BEEG 140
-#define FULLNESS_LEVEL_BLOATED 80
-#define FULLNESS_LEVEL_FILLED 40
-#define FULLNESS_LEVEL_HALF_FULL 20
-#define FULLNESS_LEVEL_EMPTY 0
-#define FULLNESS_STUFFED_EXTRA_SPRITE_SIZES 2
+// extends NUTRITION_LEVELs from code/__DEFINES/mobs.dm
+#define FULLNESS_LEVEL_NOMOREPLZ 1700
+#define FULLNESS_LEVEL_BEEG 1300
+#define FULLNESS_LEVEL_BLOATED 900
 
 //Fullness emote cooldown
 #define FULLNESS_REDUCTION_COOLDOWN 50
@@ -24,6 +21,7 @@
 // Maximum genital sizes
 #define MAX_BUTT_SIZE 10
 #define MAX_BELLY_SIZE 9
+#define MAX_BREASTS_SIZE 18		// HUGE mommy milkers :drooling_face:. Actually, a bit too huge so we limit them
 
 //Math stuff for fatness movement speed
 #define FATNESS_DIVISOR 860
@@ -34,6 +32,9 @@
 #define MAX_PREFS_WEIGHT_GAIN_AND_LOSS_RATE 2
 #define MIN_PREFS_WEIGHT_GAIN_AND_LOSS_RATE 0
 #define DEFAULT_PREFS_WEIGHT_GAIN_AND_LOSS_RATE 0.5
+
+// defines for weight gain/loss modifiers
+#define MODIFIER_MAX_VALUE		2
 
 #define BUTT_LAYER_OFFSET        0.8
 #define ANUS_LAYER_OFFSET        0.7

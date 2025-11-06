@@ -204,6 +204,14 @@
 	if(blood_drain)
 		linked_mob.blood_volume -= blood_drain_rate
 
+	//GS13 EDIT START
+	if(fat_drain && !fatness_check())
+		toggle_fatness_drain()
+
+	if(fat_drain)
+		linked_mob.adjust_fatness(-NIF_FATNESS_DRAIN_RATE, FATTENING_TYPE_NANITES, TRUE)
+	//GS13 EDIT ENDs
+
 	if(power_usage > power_level)
 		for(var/datum/nifsoft/nifsoft as anything in loaded_nifsofts)
 			if(!nifsoft.active)

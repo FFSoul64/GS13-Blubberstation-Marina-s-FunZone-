@@ -5,10 +5,10 @@
 	color = "#E70C0C"
 	taste_description = "hunger"
 	ph = 7
-	overdose_threshold = 50
 	metabolization_rate = REAGENTS_METABOLISM / 2
 	overdose_threshold = 50
 	addiction_types = list(/datum/addiction/fermi_fat = 4)
+	process_flags = REAGENT_ORGANIC | REAGENT_SYNTHETIC | REAGENT_PROTEAN // Allow all kinds of humanoids to process the chem
 
 
 //Reaction
@@ -39,11 +39,20 @@
 //Effects
 /datum/reagent/fermi_fat/on_mob_life(mob/living/carbon/M)
 	if(!iscarbon(M))
-		return..()
-	M.adjust_fatness(30, FATTENING_TYPE_CHEM)
-	M.adjust_perma(1, FATTENING_TYPE_CHEM)
+		return ..()
+	M.adjust_fatness(27, FATTENING_TYPE_CHEM)
+	M.adjust_perma(3, FATTENING_TYPE_CHEM)
 	..()
 	. = 1
+
+/datum/reagent/fermi_fat/on_mob_metabolize(mob/living/affected_mob)
+	. = ..()
+	if (HAS_TRAIT(affected_mob, TRAIT_NUTRICIOUS_BOOST))
+		affected_mob.add_movespeed_modifier(/datum/movespeed_modifier/nutricious_boost/galbanic)
+
+/datum/reagent/fermi_fat/on_mob_end_metabolize(mob/living/affected_mob)
+	. = ..()
+	affected_mob.remove_movespeed_modifier(/datum/movespeed_modifier/nutricious_boost/galbanic)
 
 //While overdosed
 /datum/reagent/fermi_fat/overdose_process(mob/living/M)
@@ -74,7 +83,7 @@
 	affected_carbon.nutrition = max(0, affected_carbon.nutrition-1)
 	if(addiction_mults < 1)
 		// affected_carbon.nutri_mult += 0.5 commenting out since I can't be bothered for now
-		affected_carbon.weight_gain_rate += 0.25
+		affected_carbon.add_weight_gain_modifier("galbanic", 0.25)
 		addiction_mults = 1
 
 /datum/addiction/fermi_fat/withdrawal_stage_2_process(mob/living/carbon/affected_carbon, seconds_per_tick)
@@ -86,7 +95,7 @@
 	affected_carbon.nutrition = max(0, affected_carbon.nutrition-2)
 	if(addiction_mults < 2)
 		// affected_carbon.nutri_mult += 0.5
-		affected_carbon.weight_gain_rate += 0.25
+		affected_carbon.add_weight_gain_modifier("galbanic", 0.25)
 		addiction_mults = 2
 
 /datum/addiction/fermi_fat/withdrawal_stage_3_process(mob/living/carbon/affected_carbon, seconds_per_tick)
@@ -98,14 +107,14 @@
 	affected_carbon.nutrition = max(0, affected_carbon.nutrition-4)
 	if(addiction_mults < 4)
 		// affected_carbon.nutri_mult += 0.5
-		affected_carbon.weight_gain_rate += 0.25
+		affected_carbon.add_weight_gain_modifier("galbanic", 0.25)
 		addiction_mults = 4
 
-/datum/addiction/fermi_fat/end_withdrawal(mob/living/carbon/C)
+/datum/addiction/fermi_fat/end_withdrawal(mob/living/carbon/carbon)
 	. = ..()
 	if(addiction_mults > 0)
 		// C.nutri_mult = max(1, 0.5 * addiction_mults)
-		C.weight_gain_rate = max(0,11, 0.25 * addiction_mults)
+		carbon.set_weight_gain_modifier("galbanic", 0.25 * addiction_mults)
 
 
 //Reagent
@@ -117,6 +126,7 @@
 	ph = 7
 	metabolization_rate = REAGENTS_METABOLISM / 2
 	overdose_threshold = 50
+	process_flags = REAGENT_ORGANIC | REAGENT_SYNTHETIC | REAGENT_PROTEAN // Allow all kinds of humanoids to process the chem
 
 //Reaction
 /datum/chemical_reaction/fermi_slim

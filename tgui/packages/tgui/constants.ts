@@ -324,6 +324,15 @@ const GASES = [
     color: 'green',
   },
   // BUBBERSTATION CHANGE END: ADDS GOBLIN GAS
+  // GS13 CHANGE: ADD LIPOIFIUM
+  {
+    id: 'lipoifium',
+    path: '/datum/gas/lipoifium',
+    name: 'Lipoifium',
+    label: 'Lipoifium',
+    color: 'yellow',
+  },
+  // GS13 END CHANGE
 ] as const;
 
 // Returns gas label based on gasId

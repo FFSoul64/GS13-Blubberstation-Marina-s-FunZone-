@@ -13,16 +13,33 @@
 /mob/living/simple_animal/hostile/proc/check_target_prefs(mob/living/carbon/target)
 	if(!istype(target))
 		return FALSE
-
-	return target?.client?.prefs?.weight_gain_weapons
-
-/mob/living/simple_animal/hostile/feed/AttackingTarget()
-	. = ..()
-	var/mob/living/carbon/L = target
-	if(!istype(L) || !L.reagents || !L.is_mouth_covered(head_only = 1))
+	if(isnull(target.client))
+		return FALSE
+	if(isnull(target.client.prefs))
 		return FALSE
 
-	L.reagents.add_reagent(food_fed, food_per_feeding)
+	var/datum/preferences/preferences = target.client.prefs
+
+	// return target?.client?.prefs?.weight_gain_weapons
+	return preferences.read_preference(/datum/preference/toggle/weight_gain_weapons) || HAS_TRAIT(target, TRAIT_UNIVERSAL_GAINER)
+
+/mob/living/simple_animal/hostile/feed/AttackingTarget(atom/target)
+	. = ..()
+	if(!iscarbon(target))
+		return FALSE
+
+
+	var/mob/living/carbon/soon_to_be_fatty = target
+
+	var/obj/item/organ/stomach/belly = soon_to_be_fatty.get_organ_slot(ORGAN_SLOT_STOMACH)
+
+	if(!belly)
+		return FALSE
+	
+	if(soon_to_be_fatty.is_mouth_covered())
+		return FALSE
+
+	belly.reagents.add_reagent(food_fed, food_per_feeding)
 
 /mob/living/simple_animal/hostile/feed/chocolate_slime
 	name = "Chocolate slime"
@@ -50,9 +67,10 @@
 	gold_core_spawnable = HOSTILE_SPAWN
 	see_in_dark = 3
 	blood_volume = 0
-	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE
+	// lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE
+	lighting_cutoff = LIGHTING_CUTOFF_LOW
 	initial_language_holder = /datum/language_holder/slime
-	vore_flags = DEVOURABLE | DIGESTABLE | FEEDING
+	// vore_flags = DEVOURABLE | DIGESTABLE | FEEDING
 
 //Creambeast - basically a bit tougher mob that has feeding ranged attacks
 /mob/living/simple_animal/hostile/feed/chocolate_slime/creambeast
@@ -64,7 +82,7 @@
 	icon_gib = "icecream_monster_dead"
 	move_to_delay = 10
 	projectiletype = /obj/projectile/beam/fattening/icecream
-	projectilesound = 'sound/weapons/pierce.ogg'
+	projectilesound = 'sound/items/weapons/pierce.ogg'
 	ranged = 1
 	ranged_message = "schlorps"
 	ranged_cooldown_time = 30
@@ -86,18 +104,18 @@
 	icon_state = "icecream_projectile"
 	ricochets_max = 0
 	ricochet_chance = 0
-	hitsound = 'sound/weapons/tap.ogg'
-	hitsound_wall = 'sound/weapons/tap.ogg'
-	is_reflectable = FALSE
+	hitsound = 'sound/items/weapons/tap.ogg'
+	hitsound_wall = 'sound/items/weapons/tap.ogg'
+	reflectable = FALSE
 	light_range = 0
 	var/food_per_feeding = 5
 	var/food_fed = /datum/reagent/consumable/nutriment
 	var/fullness_add = 30
 
-/obj/projectile/beam/fattening/icecream/on_hit(atom/target, blocked)
+/obj/projectile/beam/fattening/icecream/on_hit(atom/target, blocked, pierce_hit)
 	. = ..()
 	var/mob/living/carbon/L = target
-	if(!istype(L) || !L.reagents || L.is_mouth_covered(head_only = 1))
+	if(!istype(L) || !L.reagents || L.is_mouth_covered(ITEM_SLOT_HEAD))
 		return FALSE
 
 	L.reagents.add_reagent(food_fed, food_per_feeding)
@@ -108,6 +126,9 @@
 
 
 //should probably put this in elsewhere or whatever, but for now it'll do
+
+/mob/living/simple_animal/hostile/fatten
+	var/fat_per_hit = 30
 
 /mob/living/simple_animal/hostile/fatten/magehand
 	name = "Magehand"
@@ -134,19 +155,17 @@
 	movement_type = FLYING
 	attack_verb_continuous = "pokes"
 	attack_verb_simple = "pokes"
-	a_intent = INTENT_HARM
+	// a_intent = INTENT_HARM
 	pass_flags = PASSTABLE
 	move_to_delay = 2 //very fast
-	attack_sound = 'sound/weapons/pulse.ogg'
+	attack_sound = 'sound/items/weapons/pulse.ogg'
 	unique_name = 1
 	faction = list(ROLE_WIZARD)
-	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE
-	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
+	lighting_cutoff = LIGHTING_CUTOFF_LOW
+	// atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
+	unsuitable_atmos_damage = 0
 	minbodytemp = 0
 	maxbodytemp = INFINITY
-
-/mob/living/simple_animal/hostile/fatten
-	var/fat_per_hit = 30
 
 /mob/living/simple_animal/hostile/fatten/AttackingTarget()
 	. = ..()
@@ -164,4 +183,14 @@
 	return ..()
 
 /mob/living/simple_animal/hostile/fatten/check_target_prefs(mob/living/carbon/target)
-	return target?.client?.prefs?.weight_gain_magic
+	if(!istype(target))
+		return FALSE
+	if(isnull(target.client))
+		return FALSE
+	if(isnull(target.client.prefs))
+		return FALSE
+
+	var/datum/preferences/preferences = target.client.prefs
+
+	// return target?.client?.prefs?.weight_gain_weapons
+	return preferences.read_preference(/datum/preference/toggle/weight_gain_magic) || HAS_TRAIT(target, TRAIT_UNIVERSAL_GAINER)

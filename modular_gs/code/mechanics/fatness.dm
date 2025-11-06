@@ -6,6 +6,8 @@
 	// -If you are making a mob simply gain or lose weight, use adjust_fatness. Try to not touch the variables directly unless you know 'em well
 	// -fatness is the value a mob is being displayed and calculated as by most things. Changes to fatness are not permanent
 	// -fatness_real is the value a mob is actually at, even if it's being hidden. For permanent changes, use this one
+	// PLEASE NOTE - If you add more fatness variables and you want them to show on scales, please add them to `modular_gs\code\modules\mob\living\carbon\weight_helpers.dm`!
+
 	//What level of fatness is the parent mob currently at?
 	var/fatness = 0
 	//The list of items/effects that are being added/subtracted from our real fatness
@@ -18,12 +20,22 @@
 	var/weight_gain_rate = 1
 	//At what rate does the parent mob lose weight? 1 = 100%
 	var/weight_loss_rate = 1
+	/// modifier for weight gain rate. Don't modify this directly, instead use the set and add_weight_gain_modifier procs
+	var/weight_gain_modifiers = list()
+	/// modifier for weight loss rate. Don't modify this directly, instead use the set and add_weight_loss_modifier procs
+	var/weight_loss_modifiers = list()
+	/// whether we flip the sign on the final WG rate. This will make any fattening action make you lose weight instead
+	var/flip_gain_rate = FALSE
+	/// whether we flip the sign on the final WL rate. This will make any slimming action make you gain weight
+	var/flip_loss_rate = FALSE
 	//Variable related to door stuckage code
 	var/doorstuck = 0
 	/// What is the maximum amount of weight we can put on?
 	var/max_weight
 
-	var/fullness = FULLNESS_LEVEL_HALF_FULL
+	var/fullness = 20
+	/// by how much we reduce the mob fullness compared to what it actually is
+	var/fullness_reduction = 0
 	var/fullness_reduction_timer = 0 // When was the last time they emoted to reduce their fullness
 
 	/// How many humanoid mobs have been digested by this mob?
@@ -45,16 +57,20 @@
 			return FALSE
 
 	var/amount_to_change = adjustment_amount
+
+	var/gain_rate = get_weight_gain_rate()
+	var/lose_rate = get_weight_loss_rate()
+
 	if(!ignore_rate)
 		if(adjustment_amount > 0)
-			amount_to_change = amount_to_change * weight_gain_rate
+			amount_to_change = amount_to_change * gain_rate
 		else
-			amount_to_change = amount_to_change * weight_loss_rate
+			amount_to_change = amount_to_change * lose_rate
 
 	fatness_real += amount_to_change
 	fatness_real = max(fatness_real, MINIMUM_FATNESS_LEVEL) //It would be a little silly if someone got negative fat.
 
-	if(max_weight) // GS13
+	if(max_weight && !HAS_TRAIT(src, TRAIT_UNIVERSAL_GAINER))
 		fatness_real = min(fatness_real, (max_weight - 1))
 
 	fatness = fatness_real //Make their current fatness their real fatness
@@ -85,6 +101,126 @@
 		*/
 
 	return TRUE
+
+/// returns the total value of all WG modifiers
+/mob/living/carbon/proc/get_weight_gain_modifiers()
+	var/total_modifier = 0
+	for (var/key in weight_gain_modifiers)
+		total_modifier += clamp(weight_gain_modifiers[key], -2, 2)
+	return total_modifier
+
+/// returns the total value of all WL modifiers
+/mob/living/carbon/proc/get_weight_loss_modifiers()
+	var/total_modifier = 0
+	for (var/key in weight_loss_modifiers)
+		total_modifier += clamp(weight_loss_modifiers[key], -2, 2)
+	return total_modifier
+
+/**
+ * Adds a weight gain modifier to the modifier list
+ * 
+ * If the modifier doesn't exist yet, adds it as an entry and sets it's value. If it does exist, adds value to it.
+ * 
+ * Arguments: 
+ * * source - value containing the identifier of the source, IDEALLY a string
+ * * value - value to add to the modifier
+ */
+/mob/living/carbon/proc/add_weight_gain_modifier(source, value)
+	if (weight_gain_modifiers[source])
+		weight_gain_modifiers[source] += value
+		return
+	
+	weight_gain_modifiers[source] = value
+
+/**
+ * Sets a weight gain modifier in the modifier list
+ * 
+ * Will always set the modifier to the set value, regardless of the previously stored value
+ * Arguments:
+ * * source - value containing the identifier of the source, IDEALLY a string
+ * * value - value to add to the modifier
+ */
+/mob/living/carbon/proc/set_weight_gain_modifier(source, value)
+	weight_gain_modifiers[source] = value
+
+/**
+ * Adds a weight loss modifier to the modifier list
+ * 
+ * If the modifier doesn't exist yet, adds it as an entry and sets it's value. If it does exist, adds value to it.
+ * 
+ * Arguments: 
+ * * source - value containing the identifier of the source, IDEALLY a string
+ * * value - value to add to the modifier
+ */
+/mob/living/carbon/proc/add_weight_loss_modifier(source, value)
+	if (weight_loss_modifiers[source])
+		weight_loss_modifiers[source] += value
+		return
+	
+	weight_loss_modifiers[source] = value
+
+/**
+ * Sets a weight loss modifier in the modifier list
+ * 
+ * Will always set the modifier to the set value, regardless of the previously stored value
+ * Arguments:
+ * * source - value containing the identifier of the source, IDEALLY a string
+ * * value - value to add to the modifier
+ */
+/mob/living/carbon/proc/set_weight_loss_modifier(source, value)
+	weight_loss_modifiers[source] = value
+
+/// returns the current value of given weight gain modifier. If such a modifier doesn't exits, returns 0
+/mob/living/carbon/proc/get_weight_gain_modifier(source)
+	if (weight_gain_modifiers[source])
+		return weight_gain_modifiers[source]
+	
+	return 0
+
+/// returns the current value of given weight loss modifier. If such a modifier doesn't exits, returns 0
+/mob/living/carbon/proc/get_weight_loss_modifier(source)
+	if (weight_loss_modifiers[source])
+		return weight_loss_modifiers[source]
+	
+	return 0
+
+/// returns the final weight gain rate of a carbon, taking into account all modifiers, flips, traits etc
+/mob/living/carbon/proc/get_weight_gain_rate()
+	var/local_gain_rate = weight_gain_rate
+
+	if (HAS_TRAIT(src, TRAIT_UNIVERSAL_GAINER))
+		local_gain_rate = max(0.2, local_gain_rate)
+	
+	local_gain_rate += get_weight_gain_modifiers()
+	
+	if (flip_gain_rate)
+		local_gain_rate = -local_gain_rate
+	
+	return local_gain_rate
+
+/// returns the final weight loss rate of a carbon, taking into account all modifiers, flips, traits etc
+/mob/living/carbon/proc/get_weight_loss_rate()
+	var/local_loss_rate = weight_loss_rate
+
+	if (HAS_TRAIT(src, TRAIT_UNIVERSAL_GAINER))
+		local_loss_rate = max(0.2, local_loss_rate)
+	
+	local_loss_rate += get_weight_loss_modifiers()
+	
+	if (flip_loss_rate)
+		local_loss_rate = -local_loss_rate
+	
+	return local_loss_rate
+
+/mob/living/carbon/get_fullness(only_consumable)
+	. = ..()
+	var/fullness = .	// old fullness
+	return max(0, fullness - fullness_reduction)
+
+/mob/living/carbon/proc/fullness_reduction()
+	var/max_fullness_reduction = (2000 * (1 + src.overeatduration / (4000 SECONDS)))	// slightly over the default
+	fullness_reduction -= 15
+	fullness_reduction = clamp(fullness_reduction, 0, max_fullness_reduction)
 
 /mob/living/carbon/fully_heal(admin_revive)
 	fatness = 0
@@ -130,6 +266,10 @@
 
 		if(FATTENING_TYPE_ATMOS)
 			if(!client?.prefs?.read_preference(/datum/preference/toggle/weight_gain_atmos))
+				return FALSE
+
+		if(FATTENING_TYPE_MOBS)
+			if(!client?.prefs?.read_preference(/datum/preference/toggle/weight_gain_mobs))
 				return FALSE
 
 		if(FATTENING_TYPE_WEIGHT_LOSS)
@@ -193,17 +333,27 @@
 	if(!HAS_TRAIT(src, TRAIT_UNIVERSAL_GAINER) && client?.prefs)
 		if(!check_weight_prefs(type_of_fattening))
 			return FALSE
+
 	var/amount_to_change = adjustment_amount
 
-	if(adjustment_amount > 0)
-		amount_to_change = amount_to_change * (weight_gain_rate * !ignore_rate)
-	else
-		amount_to_change = amount_to_change * (weight_loss_rate * !ignore_rate)
+	var/local_gain_rate = weight_gain_rate
+	var/local_lose_rate = weight_loss_rate
+
+	if (HAS_TRAIT(src, TRAIT_UNIVERSAL_GAINER))
+		local_gain_rate = 0.2
+		local_lose_rate = 0.2
+
+
+	if(!ignore_rate)
+		if(adjustment_amount > 0)
+			amount_to_change = amount_to_change * local_gain_rate
+		else
+			amount_to_change = amount_to_change * local_lose_rate
 
 	fatness_perma += amount_to_change
 	fatness_perma = max(fatness_perma, MINIMUM_FATNESS_LEVEL)
 
-	if(max_weight)
+	if(max_weight && !HAS_TRAIT(src, TRAIT_UNIVERSAL_GAINER))
 		fatness_perma = min(fatness_perma, (max_weight - 1))
 
 /mob/living/carbon/human/handle_breathing(times_fired)
@@ -277,10 +427,31 @@
 /mob/living/carbon/proc/applyPermaFatnessDamage(amount)
 	if (isnull(client))
 		return
-	
+
 	if (!client.prefs.read_preference(/datum/preference/toggle/weight_gain_permanent)) // If we cant apply permafat, apply regular fat
 		return applyFatnessDamage(amount)
 
 	var/fat_to_add = ((amount * CONFIG_GET(number/damage_multiplier)) * PERMA_FAT_DAMAGE_TO_FATNESS)
 	adjust_perma(fat_to_add, FATTENING_TYPE_WEAPON)
 	return fat_to_add
+
+/mob/living/carbon/apply_damage(
+	damage = 0,
+	damagetype = BRUTE,
+	def_zone = null,
+	blocked = 0,
+	forced = FALSE,
+	spread_damage = FALSE,
+	wound_bonus = 0,
+	exposed_wound_bonus = 0,
+	sharpness = NONE,
+	attack_direction = null,
+	attacking_item,
+	wound_clothing = TRUE,
+)
+	if (damagetype == FAT)
+		applyFatnessDamage(damage)
+	if (damagetype == PERMA_FAT)
+		applyPermaFatnessDamage(damage)
+
+	. = ..()

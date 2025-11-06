@@ -115,7 +115,7 @@ GLOBAL_LIST_INIT(turfs_pass_meteor, typecacheof(list(
 
 //Human sub-species
 #define isabductor(A) (is_species(A, /datum/species/abductor))
-#define isspirit(A) (is_species(A, /datum/species/spirit))
+#define isghostspecies(A) (is_species(A, /datum/species/ghost))
 #define isgolem(A) (is_species(A, /datum/species/golem))
 #define islizard(A) (is_species(A, /datum/species/lizard))
 #define isashwalker(A) (is_species(A, /datum/species/lizard/ashwalker))
@@ -271,7 +271,7 @@ GLOBAL_LIST_INIT(turfs_pass_meteor, typecacheof(list(
 
 #define ispickedupmob(A) (istype(A, /obj/item/mob_holder)) // Checks if clothing item is actually a held mob
 
-#define iscash(A) (istype(A, /obj/item/coin) || istype(A, /obj/item/stack/spacecash) || istype(A, /obj/item/holochip))
+#define iscash(A) (istype(A, /obj/item/coin) || istype(A, /obj/item/stack/spacecash) || istype(A, /obj/item/holochip) || istype(A, /obj/item/poker_chip))
 
 #define isbodypart(A) (istype(A, /obj/item/bodypart))
 
@@ -302,7 +302,10 @@ GLOBAL_LIST_INIT(glass_sheet_types, typecacheof(list(
 	/obj/item/stack/sheet/plasmaglass,
 	/obj/item/stack/sheet/plasmarglass,
 	/obj/item/stack/sheet/titaniumglass,
-	/obj/item/stack/sheet/plastitaniumglass)))
+	/obj/item/stack/sheet/plastitaniumglass,
+	// GS13 EDIT - add calorite glass
+	/obj/item/stack/sheet/calorite_glass
+	)))
 
 #define is_glass_sheet(O) (is_type_in_typecache(O, GLOB.glass_sheet_types))
 

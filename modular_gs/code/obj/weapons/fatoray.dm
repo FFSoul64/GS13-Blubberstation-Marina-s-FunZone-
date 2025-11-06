@@ -30,7 +30,7 @@
 	light_range = 2
 	light_color = LIGHT_COLOR_ORANGE
 	///How much fat is added to the target mob?
-	var/fat_added = 200
+	fat_added = 200
 
 
 
@@ -125,14 +125,14 @@
 ///////////////////////////////////////
 
 
-/obj/projectile/beam/fattening/on_hit(atom/target, blocked, pierce_hit)
-	. = ..()
+// /obj/projectile/beam/fattening/on_hit(atom/target, blocked, pierce_hit)
+// 	. = ..()
 
-	var/mob/living/carbon/gainer = target
-	if(!iscarbon(gainer))
-		return FALSE
+// 	var/mob/living/carbon/gainer = target
+// 	if(!iscarbon(gainer))
+// 		return FALSE
 
-	if(!gainer.adjust_fatness(fat_added, FATTENING_TYPE_WEAPON))
-		return FALSE
+// 	if(!gainer.adjust_fatness(fat_added, FATTENING_TYPE_WEAPON))
+// 		return FALSE
 
-	return TRUE
+// 	return TRUE

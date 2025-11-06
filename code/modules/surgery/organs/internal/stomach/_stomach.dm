@@ -133,8 +133,10 @@
 		to_chat(body, span_warning("Your stomach reels in pain as you're incapable of holding down all that food!"))
 
 /obj/item/organ/stomach/proc/handle_hunger(mob/living/carbon/human/human, seconds_per_tick, times_fired)
-	if(HAS_TRAIT(human, TRAIT_NOHUNGER))
-		return //hunger is for BABIES
+	//	GS13 Edit - NOHUNGER now skips JUST the nutrition decrease over time and satiety not all hunger code.
+	//	Species who can eat but are not subject to hunger can still gain from food
+	//if(HAS_TRAIT(human, TRAIT_NOHUNGER))
+	//	return //hunger is for BABIES
 
 	//The fucking TRAIT_FAT mutation is the dumbest shit ever. It makes the code so difficult to work with
 	//GS13 edit - we don't add/remove fatness based on a simple overeatduration, this conflicts with our own sysems
@@ -149,8 +151,9 @@
 			human.add_traits(list(TRAIT_FAT, TRAIT_OFF_BALANCE_TACKLER), OBESITY)*/
 	//end GS13 edit
 
+	//GS13 Edit - No hunger see edit at the top of the proc
 	// nutrition decrease and satiety
-	if (human.nutrition > 0 && human.stat != DEAD)
+	if (human.nutrition > 0 && human.stat != DEAD && !HAS_TRAIT(human, TRAIT_NOHUNGER)) //GS13 EDIT - ORIGINAL : if (human.nutrition > 0 && human.stat != DEAD)
 		// THEY HUNGER
 		var/hunger_rate = HUNGER_FACTOR
 		if(human.mob_mood && human.mob_mood.sanity > SANITY_DISTURBED)
@@ -195,8 +198,20 @@
 			to_chat(human, span_notice("You no longer feel vigorous."))
 		human.metabolism_efficiency = 1
 
+	//Gs13 EDIT START
+	if(nutrition > NUTRITION_LEVEL_FULL)
+		// fatConversionRate is functionally useless. It seems under normal curcumstances, each tick only processes, at most, 1 nutrition anyway. reducing the value has no effect.
+		var/fatConversionRate = 250 //GS13 what percentage of the excess nutrition should go to fat (total nutrition to transfer can't be under 1)
+		var/nutritionThatBecomesFat = max((nutrition - NUTRITION_LEVEL_FULL)*(fatConversionRate / 100),1)
+		human.adjust_nutrition(-nutritionThatBecomesFat, TRUE) // Force adjust_nutrition to happen ignoring TRAIT_NOHUNGER
+		human.adjust_fatness(nutritionThatBecomesFat, FATTENING_TYPE_FOOD)
+	//GS13 EDIT END
+
 	//GS13 EDIT Handle Weight gain
 	handle_weight_gain(human)
+
+	// GS13 EDIT handle fullness reduction
+	human.fullness_reduction()
 
 	//Hunger slowdown for if mood isn't enabled
 	if(CONFIG_GET(flag/disable_human_mood))

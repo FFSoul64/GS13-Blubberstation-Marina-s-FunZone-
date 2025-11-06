@@ -37,6 +37,7 @@
 		"sensor_voice_nanites",
 		"stealth_nanites",
 		"voice_nanites",
+		"fat_sensor_nanites", //GS13 EDIT
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_3_POINTS, TECHWEB_POINT_TYPE_NANITE = TECHWEB_TIER_1_POINTS)
 
@@ -54,6 +55,7 @@
 		"refractive_nanites",
 		"shock_nanites",
 		"temperature_nanites",
+		"fat_converter_nanites", //GS13 EDIT
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_4_POINTS, TECHWEB_POINT_TYPE_NANITE = TECHWEB_TIER_2_POINTS)
 
@@ -119,6 +121,7 @@
 		"defib_nanites",
 		"fakedeath_nanites",
 		"purging_plus_nanites",
+		"fat_adjuster_nanites",//GS13 EDIt
 		// "regenerative_plus_nanites",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_4_POINTS, TECHWEB_POINT_TYPE_NANITE = TECHWEB_TIER_2_POINTS)

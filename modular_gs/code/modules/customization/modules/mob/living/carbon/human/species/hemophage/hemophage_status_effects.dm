@@ -1,0 +1,120 @@
+/// Maximum an Hemophage will drain, they will drain less if they hit their cap.
+#define HEMOPHAGE_DRAIN_AMOUNT_GS 50
+/// The multiplier for blood received by Hemophages out of humans with ckeys.
+#define BLOOD_DRAIN_MULTIPLIER_CKEY_GS 1.15
+
+/datum/status_effect/blood_thirst_satiated
+	var/times_fed = 0
+	var/blood_fatness = 1
+	var/perma_blood_fatness = 0
+
+/datum/status_effect/blood_thirst_satiated/tick(seconds_between_ticks)
+	. = ..()
+
+	if(!ishuman(owner))
+		return
+
+	var/mob/living/carbon/human/h = owner
+	h.adjust_fatness(sqrt(times_fed) * (sqrt(blood_fatness) / (100 / seconds_between_ticks)), FATTENING_TYPE_FOOD)
+	h.adjust_perma(sqrt(perma_blood_fatness) / (100 / seconds_between_ticks), FATTENING_TYPE_ITEM)
+
+/datum/action/cooldown/hemophage/drain_victim/proc/fatness_drain(mob/living/carbon/hemophage, mob/living/carbon/human/victim)
+	if(!ishuman(victim))
+		return
+
+	for(var/datum/status_effect/status in hemophage.status_effects)
+
+		if(istype(status, /datum/status_effect/blood_thirst_satiated))
+
+			var/datum/status_effect/blood_thirst_satiated/bts = status
+			bts.times_fed += 1
+
+			var/client_mult = BLOOD_DRAIN_MULTIPLIER_CKEY_GS
+			if(!victim.client)
+				client_mult = 1.0
+
+			if(victim.fatness_real * client_mult > bts.blood_fatness)
+				bts.blood_fatness = victim.fatness_real * client_mult
+			victim.adjust_fatness(-sqrt(victim.fatness_real) * 9, FATTENING_TYPE_WEIGHT_LOSS)
+
+			if(victim.fatness_perma * client_mult > bts.perma_blood_fatness)
+				bts.perma_blood_fatness = victim.fatness_perma  * client_mult
+			victim.adjust_perma(-sqrt(victim.fatness_perma) * 9, FATTENING_TYPE_WEIGHT_LOSS)
+
+// GS13 - It doesn't return anything so I can't ever know if the drain was successful if I override and call the parent.
+// Gotta just duplicate it and add in our stuff.
+/datum/action/cooldown/hemophage/drain_victim/drain_victim(mob/living/carbon/hemophage, mob/living/carbon/victim)
+	var/blood_volume_difference = BLOOD_VOLUME_MAXIMUM - hemophage.blood_volume //How much capacity we have left to absorb blood
+	// We start by checking that the victim is a human and they have a client, so we can give them the
+	// beneficial status effect for drinking higher-quality blood.
+	var/is_target_human_with_client = istype(victim, /mob/living/carbon/human) && victim.client
+	var/horrible_feeding = FALSE
+
+	if(ismonkey(victim))
+		is_target_human_with_client = FALSE // Sorry, not going to get the status effect from monkeys, even if they have a client in them.
+		hemophage.add_mood_event("gross_food", /datum/mood_event/disgust/hemophage_feed_monkey) // drinking from a monkey is inherently gross, like, REALLY gross
+		hemophage.adjust_disgust(DISGUST_LEVEL_GROSS + 15, DISGUST_LEVEL_MAXEDOUT)
+		blood_volume_difference = BLOOD_VOLUME_NORMAL - hemophage.blood_volume
+		horrible_feeding = TRUE
+
+	if(istype(victim, /mob/living/carbon/human/species/monkey))
+		is_target_human_with_client = FALSE // yep you're still not getting the status effect from humonkeys either. your tumour knows.
+		hemophage.add_mood_event("gross_food", /datum/mood_event/disgust/hemophage_feed_humonkey)
+		hemophage.adjust_disgust(DISGUST_LEVEL_GROSS / 4, DISGUST_LEVEL_GROSS) // it's still gross but nowhere near as bad, though.
+		horrible_feeding = TRUE
+
+	StartCooldown()
+
+	if(!do_after(hemophage, 3 SECONDS, target = victim))
+		hemophage.balloon_alert(hemophage, "stopped feeding")
+		return
+
+	var/drained_blood = min(victim.blood_volume, HEMOPHAGE_DRAIN_AMOUNT_GS, blood_volume_difference)
+	// if you drained from a human with a client, congrats
+	var/drained_multiplier = (is_target_human_with_client ? BLOOD_DRAIN_MULTIPLIER_CKEY_GS : 1)
+
+	var/obj/item/organ/stomach/hemophage/stomach_reference = hemophage.get_organ_slot(ORGAN_SLOT_STOMACH)
+	if(isnull(stomach_reference))
+		victim.blood_volume = clamp(victim.blood_volume - drained_blood, 0, BLOOD_VOLUME_MAXIMUM)
+
+	else
+		if(!victim.transfer_blood_to(stomach_reference, drained_blood, forced = TRUE))
+			victim.blood_volume = clamp(victim.blood_volume - drained_blood, 0, BLOOD_VOLUME_MAXIMUM)
+	hemophage.blood_volume = clamp(hemophage.blood_volume + (drained_blood * drained_multiplier), 0, BLOOD_VOLUME_MAXIMUM)
+
+	log_combat(hemophage, victim, "drained [drained_blood]u of blood from", addition = " (NEW BLOOD VOLUME: [victim.blood_volume] cL)")
+	victim.show_message(span_danger("[hemophage] drains some of your blood!"))
+
+	if(horrible_feeding)
+		if(istype(victim, /mob/living/carbon/human/species/monkey))
+			to_chat(hemophage, span_notice("You take tentative draws of blood from [victim], each mouthful awash with the taste of ozone and a strange artificial twinge."))
+		else
+			to_chat(hemophage, span_warning("You choke back tepid mouthfuls of foul blood from [victim]. The taste is absolutely vile."))
+	else
+		to_chat(hemophage, span_notice("You pull greedy gulps of precious lifeblood from [victim]'s veins![is_target_human_with_client ? " That tasted particularly good!" : ""]"))
+
+	playsound(hemophage, 'sound/items/drink.ogg', 30, TRUE, -2)
+
+	// just let the hemophage know they're capped out on blood if they're trying to go for an exsanguinate and wondering why it isn't working
+	if(drained_blood != HEMOPHAGE_DRAIN_AMOUNT_GS && hemophage.blood_volume >= (BLOOD_VOLUME_MAXIMUM - HEMOPHAGE_DRAIN_AMOUNT_GS))
+		to_chat(hemophage, span_boldnotice("Your thirst is temporarily slaked, and you can digest no more new blood for the moment."))
+
+	if(victim.blood_volume <= BLOOD_VOLUME_OKAY)
+		to_chat(hemophage, span_warning("That definitely left them looking pale..."))
+		to_chat(victim, span_warning("A groaning lethargy creeps into your muscles as you begin to feel slightly clammy...")) //let the victim know too
+
+	// GS13 - I think it's fine to give them the status even if the target has no client in.
+	// But they will get a buff if it does have a client
+	//if(is_target_human_with_client)
+	if(ishuman(victim))
+		hemophage.apply_status_effect(/datum/status_effect/blood_thirst_satiated)
+		hemophage.add_mood_event("drank_human_blood", /datum/mood_event/hemophage_feed_human) // absolutely scrumptious
+		hemophage.clear_mood_event("gross_food") // it's a real palate cleanser, you know
+		hemophage.disgust *= 0.85 //also clears a little bit of disgust too
+		fatness_drain(hemophage, victim)
+
+	// for this to ever occur, the hemophage actually has to be decently hungry, otherwise they'll cap their own blood reserves and be unable to pull it off.
+	if(!victim.blood_volume || victim.blood_volume <= BLOOD_VOLUME_SURVIVE)
+		to_chat(hemophage, span_boldwarning("A final sputter of blood trickles from [victim]'s collapsing veins as your terrible hunger drains them almost completely dry."))
+	else if ((victim.blood_volume + HEMOPHAGE_DRAIN_AMOUNT_GS) <= BLOOD_VOLUME_SURVIVE)
+		to_chat(hemophage, span_warning("A sense of hesitation gnaws: you know for certain that taking much more blood from [victim] WILL kill them. <b>...but another part of you sees only opportunity.</b>"))

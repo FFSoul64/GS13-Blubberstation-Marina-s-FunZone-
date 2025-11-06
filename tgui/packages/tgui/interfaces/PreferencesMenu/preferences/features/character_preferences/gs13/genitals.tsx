@@ -1,13 +1,14 @@
 import {
   CheckboxInput,
-  Feature,
-  FeatureChoicedServerData,
+  type Feature,
+  type FeatureChoiced,
+  type FeatureChoicedServerData,
   FeatureNumberInput,
-  FeatureNumeric,
-  FeatureToggle,
+  type FeatureNumeric,
+  type FeatureToggle,
   FeatureTriBoolInput,
   FeatureTriColorInput,
-  FeatureValueProps,
+  type FeatureValueProps,
 } from '../../base';
 import { FeatureDropdownInput } from '../../dropdowns';
 
@@ -79,4 +80,24 @@ export const belly_emissive: Feature<boolean[]> = {
   name: 'Belly Emissives',
   description: 'Emissive parts glow in the dark.',
   component: FeatureTriBoolInput,
+};
+
+export const erp_status_pref_feed: FeatureChoiced = {
+  name: 'ERP Feeding Status',
+  component: FeatureDropdownInput,
+};
+
+export const erp_status_pref_feed_nc: FeatureChoiced = {
+  name: 'ERP Non-Con Feeding Status',
+  component: FeatureDropdownInput,
+};
+
+export const erp_status_pref_muscle: FeatureChoiced = {
+  name: 'ERP Muscle Gain Status',
+  component: FeatureDropdownInput,
+};
+
+export const erp_status_pref_inflation: FeatureChoiced = {
+  name: 'ERP Inflation Status',
+  component: FeatureDropdownInput,
 };

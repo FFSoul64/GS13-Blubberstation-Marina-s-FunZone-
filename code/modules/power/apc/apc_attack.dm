@@ -2,7 +2,9 @@
 /// How long it takes an ethereal to drain or charge APCs. Also used as a spam limiter.
 #define ETHEREAL_APC_DRAIN_TIME (3 SECONDS)
 /// How much power ethereals gain/drain from APCs.
-#define ETHEREAL_APC_POWER_GAIN (0.1 * STANDARD_ETHEREAL_CHARGE)
+//GS13 Edit - Made the charge three times faster because otherwise it is SLOOOOW
+//#define ETHEREAL_APC_POWER_GAIN (0.1 * STANDARD_ETHEREAL_CHARGE)
+#define ETHEREAL_APC_POWER_GAIN (0.3 * STANDARD_ETHEREAL_CHARGE)
 /// Delay between ethereal action and balloon alert, to avoid colliding with previously queued balloon alerts.
 #define ETHEREAL_APC_ALERT_DELAY (0.75 SECONDS)
 

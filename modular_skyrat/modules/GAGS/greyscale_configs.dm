@@ -1344,7 +1344,7 @@ TREK
 /datum/greyscale_config/sandals/worn/oldvox
 	icon_file = 'modular_skyrat/modules/GAGS/icons/shoes/shoes_oldvox.dmi'
 
-// WRAPS
+// WRAPS AND GLOVES
 
 /datum/greyscale_config/clothwraps
 	name = "Cloth Wraps"
@@ -1381,6 +1381,15 @@ TREK
 	name = "Cloth Arm Wraps (Worn)"
 	icon_file = 'modular_skyrat/master_files/icons/donator/mob/clothing/hands.dmi'
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/arm_wraps/arm_wraps_worn.json'
+
+/datum/greyscale_config/catgloves
+	name = "Catgloves"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/catglove.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/gloves/catgloves.json'
+
+/datum/greyscale_config/catgloves/worn
+	name = "Catgloves Worn"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/catglove_worn.dmi'
 
 // MISC SHOES
 
@@ -1568,6 +1577,22 @@ TREK
 	name = "Hypovial"
 	icon_file = 'modular_skyrat/modules/hyposprays/icons/vials.dmi'
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/items/hypovial.json'
+
+/datum/greyscale_config/umbrella
+	name = "Umbrella"
+	icon_file = 'modular_zubbers/icons/obj/equipment/umbrella.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/items/_umbrella.json'
+
+/datum/greyscale_config/umbrella_inhand_left
+	name = "Held Umbrella, Left, Closed"
+	icon_file = 'modular_zubbers/icons/obj/equipment/umbrella_inhand_l.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/items/_umbrella_inhand.json'
+
+/datum/greyscale_config/umbrella_inhand_right
+	name = "Held Umbrella, Right, Closed"
+	icon_file = 'modular_zubbers/icons/obj/equipment/umbrella_inhand_r.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/items/_umbrella_inhand.json'
+
 
 // Evil primitive catgirl clothing
 

@@ -2,12 +2,12 @@
 /datum/loadout_item/neck/gatobadge_employee //these are available only to admins with CC-related characters
 	name = "GATO Badge - Employee"
 	item_path = /obj/item/clothing/accessory/medal/gato_badge/employee
-	ckeywhitelist = list("sonoida", "yeeny")
+	ckeywhitelist = list("sonoida")
 
 /datum/loadout_item/neck/gatobadge_middleman //these are available to players who were granted permission to have their characters to CC
 	name = "GATO Badge - Correspondent"
 	item_path = /obj/item/clothing/accessory/medal/gato_badge/middleman
-	ckeywhitelist = list("johnjimjim", "sonoida")
+	ckeywhitelist = list("johnjimjim", "sonoida", "JohnJimJim")
 
 // /datum/loadout_item/suit/halsey_overcoat
 // 	name = "Halsey's Commander Overcoat"
@@ -68,3 +68,8 @@
 // 	name = "Sam's Unlucky Welder"
 // 	item_path = /obj/item/weldingtool/bronze
 // 	ckeywhitelist = list("almaniak", "Almaniak", "AlManiak")
+
+/datum/loadout_item/neck/sm_pendant
+	name = "Supermatter Pendant"
+	item_path = /obj/item/clothing/neck/supermatter_pendant
+	ckeywhitelist = list("absolutelyfree")

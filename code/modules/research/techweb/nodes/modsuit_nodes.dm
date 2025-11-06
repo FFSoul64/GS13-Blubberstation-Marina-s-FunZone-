@@ -17,6 +17,9 @@
 		"mod_storage",
 		"mod_plasma",
 		"mod_flashlight",
+		//GS13 EDIT START
+		"mod_exoskeleton",
+		//GS13 EDIT END
 	)
 
 /datum/techweb_node/mod_equip

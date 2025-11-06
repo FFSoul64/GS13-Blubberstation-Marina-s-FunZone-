@@ -21,9 +21,14 @@
 
 	var/chair_breakage = fatty.client.prefs.read_preference(/datum/preference/numeric/helplessness/chair_breakage)
 
+	if (HAS_TRAIT(fatty, TRAIT_HELPLESS_CHAIR_DESTROYER))
+		chair_breakage = FATNESS_LEVEL_BARELYMOBILE
+
 	if (chair_breakage)
 		if (fatty.fatness > chair_breakage)
 			. = ..()
+			playsound(loc, 'sound/effects/snap.ogg', 50, 1)
+			playsound(loc, 'sound/effects/woodhit.ogg', 50, 1)
 			deconstruct()
 			return
 
@@ -44,6 +49,9 @@
 
 	var/chair_breakage = fatty.client.prefs.read_preference(/datum/preference/numeric/helplessness/chair_breakage)
 
+	if (HAS_TRAIT(fatty, TRAIT_HELPLESS_CHAIR_DESTROYER))
+		chair_breakage = FATNESS_LEVEL_BARELYMOBILE
+
 	if (chair_breakage == 0)
 		return
 	
@@ -52,10 +60,6 @@
 		span_notice("[buckler] slowly buckles [fatty] to [src]. Their movements slow and deliberate. As [fatty] settles into the seat, a sudden, violent crash echoes through the air. [fatty]'s massive weight mercilessly crushes the poor [src], reducing it to pieces!"),
 		span_notice("You slowly try to buckle yourself to [src]. But it breaks under your massive ass!")
 		)
-
-		playsound(loc, 'sound/effects/snap.ogg', 50, 1)
-		playsound(loc, 'sound/effects/woodhit.ogg', 50, 1)
-		// playsound(loc, 'sound/effects/bodyfall4.ogg', 50, 1)
 
 		return
 	

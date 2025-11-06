@@ -978,9 +978,11 @@
 
 /datum/reagent/toxin/lipolicide/on_mob_life(mob/living/carbon/affected_mob, seconds_per_tick, times_fired)
 	. = ..()
+	/* GS13 EDIT, DON'T HURT PLS :(
 	if(affected_mob.nutrition <= NUTRITION_LEVEL_STARVING)
 		if(affected_mob.adjustToxLoss(1 * REM * seconds_per_tick, updating_health = FALSE, required_biotype = affected_biotype))
 			. = UPDATE_MOB_HEALTH
+	*/
 	affected_mob.adjust_nutrition(-3 * REM * normalise_creation_purity() * seconds_per_tick) // making the chef more valuable, one meme trap at a time
 	affected_mob.overeatduration = 0
 
@@ -988,7 +990,7 @@
 	if(HAS_TRAIT(affected_mob, TRAIT_LIPOLICIDE_TOLERANCE))
 		affected_mob.adjust_fatness(-0.5, FATTENING_TYPE_WEIGHT_LOSS)
 	else
-		affected_mob.adjust_fatness(-10, FATTENING_TYPE_WEIGHT_LOSS)
+		affected_mob.adjust_fatness(-17.5, FATTENING_TYPE_WEIGHT_LOSS)
 	//GS13 EDIT END
 
 /datum/reagent/toxin/coniine
@@ -1062,7 +1064,7 @@
 	toxpwr = 0
 	ph = 11.6
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
-	metabolized_traits = list(TRAIT_BLOODY_MESS)
+	metabolized_traits = list(TRAIT_BLOOD_FOUNTAIN)
 
 /datum/reagent/toxin/heparin/on_mob_life(mob/living/carbon/affected_mob, seconds_per_tick, times_fired)
 	if(holder.has_reagent(/datum/reagent/medicine/coagulant)) //Directly purges coagulants from the system. Get rid of the heparin BEFORE attempting to use coagulants.

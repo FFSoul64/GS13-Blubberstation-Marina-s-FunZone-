@@ -24,10 +24,10 @@
 	var/list/spawnable_foods = list(
 		/obj/item/food/burger/bigbite,
 		/obj/item/food/donut/plain,
-		/obj/item/food/donut/glaze,
+		// /obj/item/food/donut/glaze,
 		/obj/item/food/cake/cheese,
-		/obj/item/food/cake/bscc,
-		/obj/item/food/cake/bsvc,
+		/obj/item/food/cake/berry_chocolate_cake,
+		/obj/item/food/cake/berry_vanilla_cake,
 		/obj/item/food/cake/chocolate,
 		/obj/item/food/hotdog,
 		/obj/item/food/pizza/margherita,

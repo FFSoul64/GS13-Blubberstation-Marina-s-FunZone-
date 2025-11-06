@@ -77,6 +77,10 @@
 	data["blood_drain"] = blood_drain
 	data["minimum_blood_level"] = minimum_blood_level
 
+	data["fatness"] = linked_mob.fatness_real //GS13 EDIT SHOW FATNESS ON NIFs
+	data["fatness_total"] = linked_mob.fatness //GS13 EDIT SHOW FATNESS ON NIFs
+	data["fat_drain"] = fat_drain //GS13 EDIT SHOW FATNESS ON NIFs
+
 	var/datum/component/nif_examine/nif_examine = linked_mob.GetComponent(/datum/component/nif_examine)
 	data["nif_examine_text"] = nif_examine?.nif_examine_text
 
@@ -96,6 +100,11 @@
 
 		if("toggle_blood_drain")
 			toggle_blood_drain()
+
+		// GS13 EDIT START
+		if("toggle_fatness_drain")
+			toggle_fatness_drain()
+		// GS13 EDIT END
 
 		if("change_examine_text")
 			var/text_to_use = html_encode(params["new_text"])

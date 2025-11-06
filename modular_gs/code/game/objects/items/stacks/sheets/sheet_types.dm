@@ -19,7 +19,6 @@ GLOBAL_LIST_INIT(shadoww_recipes, list ( \
 	icon_state = "sheet-shadoww"
 	icon = 'modular_gs/icons/obj/stack_objects.dmi'
 	mats_per_unit = list(/datum/material/wood=SHEET_MATERIAL_AMOUNT)
-	sheettype = "shadoww"
 	resistance_flags = FLAMMABLE
 	merge_type = /obj/item/stack/sheet/mineral/shadoww
 	novariants = TRUE
@@ -61,7 +60,6 @@ GLOBAL_LIST_INIT(gmushroom_recipes, list ( \
 	singular_name = "mushroom plank"
 	icon_state = "sheet-gmushroom"
 	icon = 'modular_gs/icons/obj/stack_objects.dmi'
-	sheettype = "gmushroom"
 	resistance_flags = FIRE_PROOF
 	merge_type = /obj/item/stack/sheet/mineral/gmushroom
 	novariants = TRUE
@@ -103,7 +101,6 @@ GLOBAL_LIST_INIT(plaswood_recipes, list ( \
 	singular_name = "plaswood plank"
 	icon_state = "sheet-plaswood"
 	icon = 'modular_gs/icons/obj/stack_objects.dmi'
-	sheettype = "plaswood"
 	resistance_flags = FLAMMABLE | ACID_PROOF
 	throwforce = 10
 	merge_type = /obj/item/stack/sheet/mineral/plaswood

@@ -268,6 +268,10 @@
 					WD = new/obj/structure/window/reinforced/plasma/plastitanium(drop_location())
 				else if(istype(W, /obj/item/stack/sheet/bronze))
 					WD = new/obj/structure/window/bronze/fulltile(drop_location())
+				// GS13 EDIT calorite glass
+				else if(istype(W, /obj/item/stack/sheet/calorite_glass))
+					WD = new/obj/structure/window/calorite/fulltile(drop_location())
+				// GS13 END EDIT
 				else
 					WD = new/obj/structure/window/fulltile(drop_location()) //normal window
 				WD.setDir(dir_to_set)

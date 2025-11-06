@@ -1,9 +1,8 @@
-/area/fatlab //GS13 - move this elsewhere later
+/area/fatlab
 	name = "Mysterious Facility"
 	icon_state = "centcom"
-	dynamic_lighting = DYNAMIC_LIGHTING_FORCED
 	requires_power = FALSE
-	has_gravity = STANDARD_GRAVITY
+	default_gravity = STANDARD_GRAVITY
 	flags_1 = NONE
 
 /area/crew_quarters/fitness/sauna
@@ -22,20 +21,20 @@
 
 /area/ruin/space/has_grav/fastfood_main
 	name = "GATO Restaurant - Main Area"
-	has_gravity = TRUE
+	default_gravity = STANDARD_GRAVITY
 
 /area/ruin/space/has_grav/fastfood_employee
 	name = "Restaurant Employee Area"
-	has_gravity = TRUE
+	default_gravity = STANDARD_GRAVITY
 
 /area/ruin/space/has_grav/feedersden
 	name = "Unknown Outpost"
-	has_gravity = TRUE
+	default_gravity = STANDARD_GRAVITY
 
 /area/xenoarch
 	icon = 'modular_gs/icons/turf/areas.dmi'
 	icon_state = "xenogen"
-	has_gravity = STANDARD_GRAVITY
+	default_gravity = STANDARD_GRAVITY
 
 /area/xenoarch/arch
 	name = "Xenoarchaeology"
@@ -64,7 +63,8 @@
 /area/xenoarch/nothinghere
 	name = "Nothing Here"
 	icon_state = "yellow"
-	ambientsounds = SPOOKY
+	// ambientsounds = SPOOKY
+	ambience_index = AMBIENCE_SPOOKY
 
 
 /area/lavaland/demone

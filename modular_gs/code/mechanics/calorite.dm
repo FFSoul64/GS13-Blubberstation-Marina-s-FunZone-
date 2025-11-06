@@ -2,10 +2,11 @@
 	name = "calorite"
 	color = list(340/255, 150/255, 50/255,0, 0,0,0,0, 0,0,0,0, 0,0,0,1, 0,0,0,0)
 	strength_modifier = 1.5
+	integrity_modifier = 0.25
 	categories = list(
 		MAT_CATEGORY_SILO = TRUE,
 		MAT_CATEGORY_RIGID=TRUE,
-		MAT_CATEGORY_BASE_RECIPES = FALSE, // doesn't seem to work :(
+		// MAT_CATEGORY_BASE_RECIPES = FALSE, // doesn't seem to work :(
 		MAT_CATEGORY_ITEM_MATERIAL = TRUE,
 		MAT_CATEGORY_ITEM_MATERIAL_COMPLEMENTARY = TRUE,
 	)
@@ -15,7 +16,7 @@
 	tradable = TRUE
 	tradable_base_quantity = MATERIAL_QUANTITY_RARE
 	beauty_modifier = 0.05
-	armor_modifiers = list(MELEE = 1.1, BULLET = 1.1, LASER = 1.15, ENERGY = 1.15, BOMB = 1, BIO = 1, RAD = 1, FIRE = 0.7, ACID = 1.1) // Same armor as gold.
+	armor_modifiers = list(MELEE = 1.1, BULLET = 1.1, LASER = 1.15, ENERGY = 1.15, BOMB = 1, BIO = 1, FIRE = 0.7, ACID = 1.1) // Same armor as gold.
 	mineral_rarity = MATERIAL_RARITY_PRECIOUS
 	points_per_unit = 40 / SHEET_MATERIAL_AMOUNT
 	fish_weight_modifier = 1.5 // fishing values copied from gold
@@ -27,6 +28,30 @@
 	fishing_deceleration_mult = 1.2
 	fishing_bounciness_mult = 0.8
 	fishing_gravity_mult = 1.2
+
+/datum/material/calorite/on_applied(atom/source, amount, multiplier) // used to be material_flags instead of multiplier
+	. = ..()
+	// if(!(material_flags & MATERIAL_AFFECT_STATISTICS))
+	// 	return
+
+	if (isobj(source))
+		var/obj/source_obj = source
+		source_obj.damtype = FAT
+		source_obj.AddComponent(\
+		/datum/component/fattening,\
+		amount / 50,\
+		FATTENING_TYPE_ITEM\
+		)
+
+/datum/material/calorite/on_removed(atom/source, multiplier) // used to be material_flags instead of multiplier
+	// if(!(material_flags & MATERIAL_AFFECT_STATISTICS))
+	// 	return ..()
+
+	if (isobj(source))
+		var/obj/source_obj = source
+		source_obj.damtype = initial(source_obj.damtype)
+		qdel(source.GetComponent(/datum/component/fattening))
+		return ..()
 
 /obj/item/stack/ore/calorite //GS13
 	name = "calorite ore"
@@ -49,9 +74,8 @@
 	icon_state = "sheet-calorite"
 	inhand_icon_state = "sheet-calorite"
 	singular_name = "calorite sheet"
-	sheettype = "calorite"
-	novariants = TRUE
-	grind_results = list(/datum/reagent/consumable/lipoifier = 2)
+	// novariants = FALSE
+	grind_results = list(/datum/reagent/consumable/lipoifier = 2, /datum/reagent/micro_calorite = 0.5)
 	// point_value = 40
 	// custom_materials = list(/datum/material/calorite=MINERAL_MATERIAL_AMOUNT)
 	mats_per_unit = list(/datum/material/calorite = SHEET_MATERIAL_AMOUNT)
@@ -59,28 +83,18 @@
 	material_type = /datum/material/calorite
 	walltype = /turf/closed/wall/mineral/calorite
 
-/datum/material/calorite/on_applied(atom/source, amount, multiplier) // used to be material_flags instead of multiplier
+/obj/item/stack/sheet/mineral/calorite/Initialize(mapload, new_amount, merge, list/mat_override, mat_amt)
+	AddComponent(\
+		/datum/component/fattening,\
+		2,\
+		FATTENING_TYPE_ITEM\
+		)
 	. = ..()
-	// if(!(material_flags & MATERIAL_AFFECT_STATISTICS))
-	// 	return
-
-	if (isobj(source))
-		var/obj/source_obj = source
-		source_obj.damtype = FAT
-
-/datum/material/calorite/on_removed(atom/source, multiplier) // used to be material_flags instead of multiplier
-	// if(!(material_flags & MATERIAL_AFFECT_STATISTICS))
-	// 	return ..()
-
-	if (isobj(source))
-		var/obj/source_obj = source
-		source_obj.damtype = initial(source_obj.damtype)
-		return ..()
 
 
-/turf/closed/mineral/calorite //GS13
-	mineralType = /obj/item/stack/ore/calorite
-	scan_state = "rock_Calorite"
+/obj/item/stack/sheet/mineral/calorite/get_main_recipes()
+	. = ..()
+	. += GLOB.calorite_recipes
 
 /obj/item/stack/sheet/mineral/calorite/five
 	amount = 5
@@ -91,16 +105,31 @@
 /obj/item/stack/sheet/mineral/calorite/fifty
 	amount = 50
 
+/datum/export/material/market/calorite
+	material_id = /datum/material/calorite
+	message = "cm3 of calorite"
+
+/turf/closed/mineral/calorite //GS13
+	mineralType = /obj/item/stack/ore/calorite
+	scan_state = "rock_Calorite"
+
 GLOBAL_LIST_INIT(calorite_recipes, list ( \
 	new/datum/stack_recipe("calorite tile", /obj/item/stack/tile/mineral/calorite, 1, 4, 20, crafting_flags = NONE, category = CAT_TILES), \
 	/*new/datum/stack_recipe("Calorite Ingots", /obj/item/ingot/calorite, time = 30), \*/
 	new/datum/stack_recipe("Fatty statue", /obj/structure/statue/calorite/fatty, 5, time = 10 SECONDS, crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_ON_SOLID_GROUND | CRAFT_ONE_PER_TURF),\
-	/*new/datum/stack_recipe("Calorite doors", /obj/structure/mineral_door/calorite, 5, time = 5 SECONDS, crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_ONE_PER_TURF | CRAFT_ON_SOLID_GROUND | CRAFT_APPLIES_MATS, category = CAT_DOORS),\*/
+	new/datum/stack_recipe("Calorite doors", /obj/structure/mineral_door/calorite, 5, time = 5 SECONDS, crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_ONE_PER_TURF | CRAFT_ON_SOLID_GROUND | CRAFT_APPLIES_MATS, category = CAT_DOORS),\
 	))
-
-/obj/item/stack/sheet/mineral/calorite/get_main_recipes()
-	. = ..()
-	. += GLOB.calorite_recipes
 
 /obj/item/ingot/calorite
 	custom_materials = list(/datum/material/calorite=1500)
+
+/datum/design/calorite
+	name = "Calorite"
+	id = "calorite"
+	build_type = AUTOLATHE
+	materials = list(/datum/material/calorite = SHEET_MATERIAL_AMOUNT)
+	build_path = /obj/item/stack/sheet/mineral/calorite
+	category = list(
+		RND_CATEGORY_INITIAL,
+		RND_CATEGORY_CONSTRUCTION + RND_SUBCATEGORY_CONSTRUCTION_MATERIALS,
+	)

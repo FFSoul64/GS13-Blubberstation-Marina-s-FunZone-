@@ -6,7 +6,7 @@
 	return null
 
 /mob/living/carbon/examine(mob/user)
-	if(HAS_TRAIT(src, TRAIT_UNKNOWN))
+	if(HAS_TRAIT(src, TRAIT_UNKNOWN_APPEARANCE))
 		return list(span_warning("You're struggling to make out any details..."))
 
 	var/t_He = p_They()
@@ -141,8 +141,11 @@
 
 	. += get_fullness_text()
 	. += get_weight_text()
+	. += get_muscle_text()
+	if(user.can_see_bfi())
+		. += span_notice("[src] weighs [calculate_weight_in_pounds()] pounds (BFI: [fatness_real])")
 	// GS13 END EDIT
-	
+
 	switch(disgust)
 		if(DISGUST_LEVEL_GROSS to DISGUST_LEVEL_VERYGROSS)
 			. += "[t_He] look[p_s()] a bit grossed out."
@@ -188,7 +191,7 @@
 			if(appears_dead)
 				bleed_text += ", but it has pooled and is not flowing."
 			else
-				if(HAS_TRAIT(src, TRAIT_BLOODY_MESS))
+				if(HAS_TRAIT(src, TRAIT_BLOOD_FOUNTAIN))
 					bleed_text += " incredibly quickly"
 				bleed_text += "!"
 
@@ -238,7 +241,7 @@
 						living_user.add_mood_event("encountered_evil", /datum/mood_event/encountered_evil)
 						living_user.set_jitter_if_lower(15 SECONDS)
 
-			if(HAS_TRAIT(user, TRAIT_SPIRITUAL) && mind?.holy_role)
+			if(HAS_TRAIT(user, TRAIT_SPIRITUAL) && mind?.holy_role && user != src)
 				. += "[t_He] [t_has] a holy aura about [t_him]."
 				living_user.add_mood_event("religious_comfort", /datum/mood_event/religiously_comforted)
 
@@ -321,7 +324,7 @@
 	var/preview_text = copytext_char((dna.features["flavor_text"]), 1, FLAVOR_PREVIEW_LIMIT)
 	// What examine_tgui.dm uses to determine if flavor text appears as "Obscured".
 	var/obscurity_examine_pref = (client?.prefs?.read_preference(/datum/preference/toggle/obscurity_examine)) //BUBBERSTATION EDIT
-	var/face_obscured = (wear_mask && (wear_mask.flags_inv & HIDEFACE) && obscurity_examine_pref) || (head && (head.flags_inv & HIDEFACE) && obscurity_examine_pref) // BUBBERSTATION EDIT
+	var/face_obscured = (covered_slots & HIDEFACE) && obscurity_examine_pref // BUBBERSTATION EDIT
 
 	if (!(face_obscured))
 		flavor_text_link = span_notice("[preview_text]... <a href='byond://?src=[REF(src)];lookup_info=open_examine_panel'>\[Look closer?\]</a>")
@@ -651,7 +654,7 @@
 		if(undershirt.has_sensor == BROKEN_SENSORS)
 			. += list(span_notice("\The [undershirt]'s medical sensors are sparking."))
 
-	if(HAS_TRAIT(src, TRAIT_UNKNOWN) || HAS_TRAIT(src, TRAIT_INVISIBLE_MAN))
+	if(HAS_TRAIT(src, TRAIT_UNKNOWN_APPEARANCE) || HAS_TRAIT(src, TRAIT_INVISIBLE_MAN))
 		return
 
 	var/limbs_text = get_mismatched_limb_text()

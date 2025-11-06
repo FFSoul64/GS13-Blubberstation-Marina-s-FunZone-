@@ -18,7 +18,7 @@
 
 #undef INGAME_TIME_NEEDED
 /datum/vote/transfer_vote
-	allow_ghosts = FALSE
+	allow_ghosts = TRUE	// GS13 EDIT - changed it to TRUTH NUKE
 	// Has this vote been run before?
 	var/has_ran = FALSE
 	winner_method = VOTE_WINNER_METHOD_SIMPLE

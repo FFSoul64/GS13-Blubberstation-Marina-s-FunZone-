@@ -3,7 +3,7 @@
 /obj/machinery/newscaster
 	name = "newscaster"
 	desc = "A standard Nanotrasen-licensed newsfeed handler for use in commercial space stations. All the news you absolutely have no use for, in one place!"
-	icon = 'icons/obj/machines/wallmounts.dmi'
+	icon = 'icons/obj/machines/wallmounts.dmi' //GS13 - icon overriden in gato.dm
 	icon_state = "newscaster_off"
 	base_icon_state = "newscaster"
 	verb_say = "beeps"
@@ -781,7 +781,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/newscaster, 30)
 	if(current_channel.receiving_cross_sector)
 		return
 
-	var/temp_message = tgui_input_text(user, "Write your Feed story", "Network Channel Handler", feed_channel_message, max_length = MAX_BROADCAST_LEN, multiline = TRUE)
+	var/temp_message = tgui_input_text(user, "Write your Feed story", "Network Channel Handler", feed_channel_message, max_length = MAX_MESSAGE_LEN, multiline = TRUE)
 	if(length(temp_message) <= 1)
 		return TRUE
 

@@ -41,5 +41,5 @@
 	name = "Calorite dance floor"
 	icon_state = "calorite_dance"
 	floor_tile = /obj/item/stack/tile/mineral/calorite/dance
-	icons = "calorite_dance"
+	icons = list("calorite_dance")
 	damaged_dmi = null

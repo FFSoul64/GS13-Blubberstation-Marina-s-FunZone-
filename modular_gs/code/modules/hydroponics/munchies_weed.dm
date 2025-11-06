@@ -2,9 +2,14 @@
 	var/nutri_mult = 1
 
 /obj/item/seeds/cannabis
-	mutatelist = list(/obj/item/seeds/cannabis/rainbow,
-						/obj/item/seeds/cannabis/death,
-						/obj/item/seeds/cannabis/munchies)
+	mutatelist = list(
+		/obj/item/seeds/cannabis/anti,
+		/obj/item/seeds/cannabis/death,
+		/obj/item/seeds/cannabis/rainbow,
+		/obj/item/seeds/cannabis/ultimate,
+		/obj/item/seeds/cannabis/white,
+		/obj/item/seeds/cannabis/munchies
+		)
 
 /datum/plant_gene/trait/glow/orange
 	name = "Orange Bioluminescence"
@@ -38,10 +43,10 @@
 
 /datum/reagent/drug/munchies
 	name = "Appetite Stimulant"
-	value = 6
+	//value = 6
 	description = "A chemical compound that makes one mindlessly ravenous."
 	color = "#60A584"
-	pH = 9
+	ph = 9
 	metabolization_rate = REAGENTS_METABOLISM / 4
 
 /datum/reagent/drug/munchies/on_mob_add(mob/living/L, amount)
@@ -56,11 +61,8 @@
 		var/mob/living/carbon/C = L
 		C.nutri_mult -= 0.5
 
-/datum/reagent/drug/munchies/on_mob_life(mob/living/carbon/M)
+/datum/reagent/drug/munchies/on_mob_life(mob/living/carbon/person)
 	. = ..()
 	if(prob(10))
-		to_chat(M, "<span class='warning'>[pick("You feel a little ravenous...", "You could really go for a snack right now...", "The taste of food seems really enticing right now...", "Your belly groans, demanding food...")]</span>")
-	if(M.fullness > 10)
-		M.fullness -= 1
-	if(M.nutrition > 150)
-		M.nutrition -= 1
+		to_chat(person, "<span class='warning'>[pick("You feel a little ravenous...", "You could really go for a snack right now...", "The taste of food seems really enticing right now...", "Your belly groans, demanding food...")]</span>")
+	person.fullness_reduction += 30		// 15 fullness reduced per tick

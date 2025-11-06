@@ -27,8 +27,8 @@
 	icon = 'modular_gs/icons/obj/hydroponics/harvest.dmi'
 	icon_state = "blueberrypile"
 	filling_color = "#5d00c7"
-	foodtype = FRUIT
-	juice_results = list(/datum/reagent/blueberry_juice = 20)
+	foodtypes = FRUIT
+	juice_typepath = /datum/reagent/consumable/berryjuice
 	tastes = list("blueberry" = 1)
 	distill_reagent = null
 	wine_power = 50

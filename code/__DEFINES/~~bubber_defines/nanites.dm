@@ -69,3 +69,7 @@
 #define NES_BUTTON_NAME "Button Name"
 #define NES_ICON "Icon"
 #define NANITE_HARMONIC_ID "Nano Harmonic ID"
+
+//GS13 DEFINES
+#define NES_FATNESS "BFI"
+#define NES_FAT_GAIN_LOSS "Loss/Gain"

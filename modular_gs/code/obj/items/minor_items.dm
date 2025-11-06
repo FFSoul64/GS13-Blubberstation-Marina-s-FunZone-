@@ -23,13 +23,13 @@
 /obj/item/reagent_containers/cup/beaker/galbanic
 	list_reagents = list(/datum/reagent/fermi_fat = 50)
 
-/*
-/obj/item/reagent_containers/glass/beaker/cornoil
-	list_reagents = list(/datum/reagent/consumable/cornoil = 50)
+
+///obj/item/reagent_containers/glass/beaker/cornoil
+	//list_reagents = list(/datum/reagent/consumable/cornoil = 50)
 
 /obj/item/reagent_containers/glass/beaker/blueberry_juice
 	list_reagents = list(/datum/reagent/blueberry_juice = 50)
-
+/*
 /obj/item/reagent_containers/glass/beaker/fizulphite
 	list_reagents = list(/datum/reagent/consumable/fizulphite = 50)
 
@@ -53,6 +53,7 @@
 	bitesize = 100 // Always eat it in one bite
 	list_reagents = list(/datum/reagent/fermi_fat = 120, /datum/reagent/consumable/lipoifier = 70, /datum/reagent/consumable/cornoil = 70)
 	tastes = list("imminent immobility" = 10)
+*/
 
 //blueberry gum snack
 
@@ -61,12 +62,12 @@
 	icon = 'modular_gs/icons/obj/gum.dmi'
 	icon_state = "gum_wrapped"
 	desc = "Doesn't cause anything more than some discoloration... probably."
-	trash = /obj/item/trash/blueberry_gum
-	list_reagents = list(/datum/reagent/blueberry_juice = 50)
-	bitesize = 5
-	filling_color = "#001aff"
+	trash_type = /obj/item/trash/blueberry_gum
+	food_reagents = list(/datum/reagent/blueberry_juice = 50)
+	bite_consumption = 5
+	//filling_colors = "#001aff"
 	tastes = list("blueberry gum" = 1)
-	foodtype = FRUIT
+	foodtypes = FRUIT
 
 //blueberry gum trash
 
@@ -74,7 +75,7 @@
 	name = "chewed gum"
 	icon = 'modular_gs/icons/obj/gum.dmi'
 	icon_state = "gum_chewed"
-
+/*
 // nutriment pump turbo
 
 /obj/item/autosurgeon/nutripump_turbo
@@ -188,27 +189,29 @@
 	icon_state = "datadisk0"
 	desc = "A dusty disk, desconstruction will be needed to recover data."
 
+*/
+
 //GS 13 Port - Big gulps in all sizes
-/obj/item/reagent_containers/cup/flask/paper_cup
+/obj/item/reagent_containers/cup/paper_cup
 	name = "paper cup"
 	icon = 'modular_gs/icons/obj/paper_cups.dmi'
 	amount_per_transfer_from_this = 10
 	possible_transfer_amounts = list(5, 10, 15, 20, 25, 30, 50)
 	volume = 50
-	reagent_flags = OPENCONTAINER
+	// reagent_flags = OPENCONTAINER
 	spillable = TRUE
-	container_HP = 5
-	pickup_sound = 'sound/items/handling/cardboardbox_pickup.ogg'
-	drop_sound = 'sound/items/handling/cardboardbox_drop.ogg'
+	// container_HP = 5
+	pickup_sound = 'sound/items/handling/cardboard_box/cardboardbox_pickup.ogg'
+	drop_sound = 'sound/items/handling/cardboard_box/cardboardbox_drop.ogg'
 
-/obj/item/reagent_containers/cup/flask/paper_cup/small
+/obj/item/reagent_containers/cup/paper_cup/small
 	name = "Small Gulp Cup"
 	desc = "A paper cup. It can hold up to 50 units. It's not very strong."
 	icon_state = "small"
 	custom_materials = list(/datum/material/plastic=200)
 	w_class = WEIGHT_CLASS_SMALL
 
-/obj/item/reagent_containers/cup/flask/paper_cup/medium
+/obj/item/reagent_containers/cup/paper_cup/medium
 	name = "Medium Gulp Cup"
 	desc = "It's a paper cup, but you wouldn't call it 'medium' though. It can hold up to 75 units. It's not very strong."
 	icon_state = "medium"
@@ -216,7 +219,7 @@
 	custom_materials = list(/datum/material/plastic=300)
 	w_class = WEIGHT_CLASS_SMALL
 
-/obj/item/reagent_containers/cup/flask/paper_cup/big
+/obj/item/reagent_containers/cup/paper_cup/big
 	name = "Big Gulp Cup"
 	desc = "A huge paper cup, a normal person would struggle to drink it all in one sitting. It can hold up to 120 units. It's not very strong."
 	icon_state = "big"
@@ -224,7 +227,7 @@
 	custom_materials = list(/datum/material/plastic=500)
 	w_class = WEIGHT_CLASS_NORMAL
 
-/obj/item/reagent_containers/cup/flask/paper_cup/extra_big
+/obj/item/reagent_containers/cup/paper_cup/extra_big
 	name = "Extra Big Gulp Cup"
 	desc = "A comically large paper cup. It can hold up to 160 units. It's not very strong."
 	icon_state = "extra_big"
@@ -232,7 +235,7 @@
 	custom_materials = list(/datum/material/plastic=600)
 	w_class = WEIGHT_CLASS_BULKY
 
-/obj/item/reagent_containers/cup/flask/paper_cup/super_extra_big
+/obj/item/reagent_containers/cup/paper_cup/super_extra_big
 	name = "Super Extra Big Gulp Cup"
 	desc = "Its called a paper 'cup', but it looks more like an oversized bucket to you. It can hold up to 250 units. It's not very strong."
 	icon_state = "super_extra_big"
@@ -246,35 +249,33 @@
 /obj/item/melee/curator_whip/fattening
 	name = "calorite-lined whip"
 	desc = "The whip seems to glisten with an orange gleam inbetween its threads."
-	damtype = "fat"
-	attack_verb = list("fattened")
+	icon = 'modular_gs/icons/obj/weapons/fat_whip.dmi'
+	icon_state = "calorite"
+	damtype = FAT
 	force = 40
 
 /obj/item/melee/curator_whip/permafattening
 	name = "galbanic whip"
-	desc = "How can a whip even be infused galbanic? No one knows."
-	damtype = "perma_fat"
-	attack_verb = list("fattened")
+	desc = "The whip's threads glisten with a sinister red gleam."
+	icon = 'modular_gs/icons/obj/weapons/fat_whip.dmi'
+	icon_state = "galbanic"
+	damtype = PERMA_FAT
 	force = 20
 
 /obj/item/gavelhammer/fattening
 	desc = "Some madman managed to create a weapon out of calorite... Luckily, it has a rubber handle for you to wield."
 	name = "Calorite Hammer"
-	icon = 'icons/obj/items_and_weapons.dmi'
+	icon = 'icons/obj/weapons/hammer.dmi'
 	icon_state = "toyhammer"
-	damtype = "fat"
+	damtype = FAT
 	throwforce = 40
 	force = 60
-	attack_verb = list("fattened")
 
 /obj/item/gavelhammer/permafattening
-	desc = "You may ask yourself - how did someone make a hammer out of a chemical? The answer is clear: no one knows."
+	desc = "Destroyer of waistlines."
 	name = "Permafat Hammer"
-	icon = 'icons/obj/items_and_weapons.dmi'
+	icon = 'icons/obj/weapons/hammer.dmi'
 	icon_state = "toyhammer"
-	damtype = "perma_fat"
+	damtype = PERMA_FAT
 	throwforce = 10
 	force = 20
-	attack_verb = list("fattened")
-
-*/

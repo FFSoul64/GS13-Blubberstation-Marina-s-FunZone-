@@ -7,6 +7,7 @@
 		"botnavbeacon",
 		"mechfab",
 		"paicard",
+		"borg_upgrade_foodgrip", //GS13 EDIT
 	)
 
 /datum/techweb_node/exodrone

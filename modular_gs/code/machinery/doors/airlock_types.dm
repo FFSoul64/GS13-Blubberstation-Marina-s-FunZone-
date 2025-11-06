@@ -22,6 +22,10 @@
 	var/stuckage_weight = fatty.client.prefs.read_preference(/datum/preference/numeric/helplessness/stuckage)
 	var/chance_to_get_stuck = fatty.client.prefs.read_preference(/datum/preference/numeric/helplessness/stuckage_custom)
 
+	if (HAS_TRAIT(fatty, TRAIT_HELPLESS_STUCKAGE))
+		stuckage_weight = FATNESS_LEVEL_EXTREMELY_OBESE
+		chance_to_get_stuck = 0
+
 	if (stuckage_weight == 0)
 		return
 

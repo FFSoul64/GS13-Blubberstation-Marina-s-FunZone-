@@ -137,7 +137,8 @@
 		/datum/gas/helium,
 		/datum/gas/antinoblium,
 		/datum/gas/halon,
-		/datum/gas/goblin //BUBBERSTATION CHANGE
+		/datum/gas/goblin, //BUBBERSTATION CHANGE
+		/datum/gas/lipoifium	// GS13 CHANGE
 	)
 
 	for(var/gasID in gases_to_check)

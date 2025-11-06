@@ -1,3 +1,4 @@
+/* GS13 EDIT
 /datum/quirk/overweight
 	name = "Overweight"
 	desc = "You weigh more than an average person of your size. Being fat from food still bothers you."
@@ -17,3 +18,5 @@
 	icon = FA_ICON_HAMBURGER
 	medical_record_text = "Patient is considered obese by 101% of medical textbooks, with a 1% margin of error."
 	mob_trait = TRAIT_FAT
+
+*/
