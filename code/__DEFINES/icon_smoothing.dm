@@ -224,11 +224,6 @@ DEFINE_BITFIELD(smoothing_junction, list(
 #define SMOOTH_GROUP_SPIDER_WEB_WALL_TOUGH S_OBJ(73) // /obj/structure/spider/stickyweb/sealed/thick
 #define SMOOTH_GROUP_SPIDER_WEB_WALL_MIRROR S_OBJ(74) // /obj/structure/spider/stickyweb/sealed/reflector
 
-//SKYRAT EDIT ADDITION
-#define SMOOTH_GROUP_SHUTTERS S_OBJ(75)
-
-#define SMOOTH_GROUP_WATER S_OBJ(76) ///obj/effect/abstract/liquid_turf
-//SKYRAT EDIT END
 #define SMOOTH_GROUP_GRAV_FIELD S_OBJ(75)
 #define SMOOTH_GROUP_GIRDER S_OBJ(76)
 #define SMOOTH_GROUP_TEST_WALL S_OBJ(77) // I'm a lazy bum who doesn't want to increment all of these up by 1 ~Lemon
@@ -246,6 +241,12 @@ DEFINE_BITFIELD(smoothing_junction, list(
 #define SMOOTH_GROUP_CALORITE_WALL S_OBJ(78) // I'm of the same opinion as the last guy
 // also none of us noticed that we lost the "S" in WALLS
 //GS13 END EDIT
+#define SMOOTH_GROUP_BOULDER_PLATFORM S_OBJ(87) ///obj/structure/lattice/catwalk/boulder
+//SKYRAT EDIT ADDITION
+#define SMOOTH_GROUP_SHUTTERS S_OBJ(88)
+
+#define SMOOTH_GROUP_WATER S_OBJ(89) ///obj/effect/abstract/liquid_turf
+//SKYRAT EDIT END
 
 /// Performs the work to set smoothing_groups and canSmoothWith.
 /// An inlined function used in both turf/Initialize and atom/Initialize.
