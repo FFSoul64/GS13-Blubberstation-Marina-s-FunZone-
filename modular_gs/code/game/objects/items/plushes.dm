@@ -103,8 +103,8 @@
 	edible_object_types = list(/obj/item/food, /obj/item/stack/sheet/cotton, /obj/item/trash)
 
 /obj/item/toy/plush/gs13/protogen
-	name = "Protogen plushie"
-	desc = "A round protogen plushie. Despite her shape, she looks like she likes to exercise."
+	name = "Proto-orb plushie"
+	desc = "A round proto-orb plushie. Despite her shape, she looks like she likes to exercise."
 	icon_state = "proot"
 
 /obj/item/toy/plush/gs13/yeen
