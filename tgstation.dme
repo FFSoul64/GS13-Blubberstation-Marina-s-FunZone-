@@ -6912,6 +6912,8 @@
 #include "modular_gs\code\datums\quirks\defines.dm"
 #include "modular_gs\code\datums\quirks\negative\fat_aversion.dm"
 #include "modular_gs\code\datums\quirks\negative\negative_quirks.dm"
+#include "modular_gs\code\datums\quirks\neutral\metal_cruncher.dm"
+#include "modular_gs\code\datums\quirks\neutral\neutral_quirks.dm"
 #include "modular_gs\code\datums\quirks\positive\fat_affinity.dm"
 #include "modular_gs\code\datums\quirks\positive\pleasant_softness.dm"
 #include "modular_gs\code\datums\quirks\positive\positive_quirks.dm"

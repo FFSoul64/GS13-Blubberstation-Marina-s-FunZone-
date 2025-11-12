@@ -1,7 +1,8 @@
 /datum/quirk/metal_cruncher
 	name = "Metal Cruncher"
 	desc = "You can eat most minerals. Brush your teeth."
-	value = 0 //ERP quirk
+	icon = "fa-compact-disc"
+	value = 0
 	gain_text = "<span class='notice'>You feel like you could eat steel.</span>"
 	lose_text = "<span class='notice'>Your teeth hurt too much...</span>"
 	mob_trait = TRAIT_METAL_CRUNCHER
@@ -10,7 +11,7 @@
 	var/crunch_value = 0
 
 /obj/item/stack/attack(mob/living/M, mob/living/user)
-	if(HAS_TRAIT(M, TRAIT_METAL_CRUNCHER))
+	if(HAS_TRAIT(M, TRAIT_METAL_CRUNCHER) || istype(src, /obj/item/stack/sheet/mineral/calorite))
 		if(crunch_value > 0)
 			if(M == user)
 				user.visible_message("<span class='notice'>[user] crunches on some of [src].</span>", "<span class='notice'>You crunch on some of [src].</span>")
@@ -57,7 +58,7 @@
 /obj/item/stack/sheet/mineral/sandstone
 	crunch_value = 1
 /obj/item/stack/sheet/mineral/uranium
-	crunch_value = 50
+	crunch_value = 90	// 20 billion calories. So if you really want to bulk up, you have a source
 /obj/item/stack/sheet/mineral/plasma
 	crunch_value = 10
 /obj/item/stack/sheet/mineral/gold
