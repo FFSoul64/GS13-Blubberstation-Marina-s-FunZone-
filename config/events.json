@@ -164,7 +164,7 @@
 		"earliest_start": 18000
 	},
 	"Supermatter Surge": {
-		"min_players": 0,
+		"min_players": 10,
 		"weight": 15
 	},
 	"Supermatter Surge: Poly's Revenge": {
@@ -205,7 +205,7 @@
 		"weight": 1
 	},
 	"Anomaly: Energetic Flux": {
-		"min_players": 1,
+		"min_players": 5,
 		"weight": 15
 	},
 	"Anomaly: Bioscrambler": {
@@ -241,7 +241,7 @@
 		"weight": 20
 	},
 	"Anomaly: Pyroclastic": {
-		"min_players": 1,
+		"min_players": 8,
 		"weight": 20
 	},
 	"Anomaly: Vortex": {
