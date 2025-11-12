@@ -51,6 +51,9 @@
 
 	return -(amount_to_hide)
 
+/obj/item/bluespace_belt/click_alt(mob/user)
+	ui_interact(user, null)
+
 /obj/item/bluespace_belt/ui_data(mob/user)
 	var/list/data = list()
 	data["current_mode"] = current_mode
