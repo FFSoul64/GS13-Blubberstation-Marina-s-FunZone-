@@ -34,6 +34,8 @@
 	name = "Plant Snake plush"
 	desc = "An energetic looking snake toy with a silly little rose hanging from the side of his head."
 	icon_state = "rose"
+	stuffed_icon_state = "rose_stuffed"
+	can_eat_food = TRUE
 
 /obj/item/toy/plush/gs13/kinichi
 	name = "Jani-liz plush"
@@ -68,6 +70,7 @@
 	icon_state = "metis"
 	prey_plush = TRUE
 	can_eat_food = TRUE
+	stuffed_icon_state = "metis_stuffed"
 	fatness_to_max = 15
 
 /obj/item/toy/plush/gs13/sharky
@@ -135,3 +138,19 @@
 	prey_plush = TRUE
 	can_eat_food = TRUE
 	max_plushie_scale = 1.5 // Already pretty huge
+
+/obj/item/toy/plush/gs13/val
+	name = "Abhorrent fen plushie"
+	desc = "You feel like it's staring at you... it's quite unnerving."
+	icon_state = "val"
+	stuffed_icon_state = "val_stuffed"
+	can_eat_food = TRUE
+
+/obj/item/toy/plush/gs13/isaac
+	name = "Plump dragon plush"
+	desc = "If he were were green, he too would die.."
+	icon_state = "isaac"
+	stuffed_icon_state = "isaac_stuffed"
+	can_eat_food = TRUE
+	pred_plush = TRUE
+	prey_plush = TRUE
