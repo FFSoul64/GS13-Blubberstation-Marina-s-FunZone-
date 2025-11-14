@@ -2853,7 +2853,7 @@
 /turf/open/openspace,
 /area/station/command/gateway)
 "aSR" = (
-/obj/machinery/vending/gato_merch,
+/obj/machinery/vending/cigarette,
 /turf/open/floor/iron,
 /area/station/commons/dorms)
 "aSW" = (
@@ -58518,7 +58518,7 @@
 /turf/open/floor/wood,
 /area/station/maintenance/starboard/lesser)
 "qzo" = (
-/obj/machinery/vending/dorms,
+/obj/machinery/vending/mealdor,
 /turf/open/floor/iron,
 /area/station/commons/dorms)
 "qzu" = (
@@ -76728,7 +76728,7 @@
 /turf/open/floor/iron/dark,
 /area/station/engineering/storage/tcomms)
 "vMd" = (
-/obj/machinery/vending/mealdor,
+/obj/machinery/vending/gato_merch,
 /turf/open/floor/iron/large,
 /area/station/hallway/primary/central)
 "vMn" = (
@@ -77864,8 +77864,8 @@
 /turf/open/openspace,
 /area/station/science/explab)
 "wcT" = (
-/obj/machinery/vending/cigarette,
 /obj/machinery/camera/autoname/directional/west,
+/obj/machinery/vending/dorms,
 /turf/open/floor/iron/dark,
 /area/station/commons/dorms)
 "wcV" = (
@@ -120952,7 +120952,7 @@ otb
 aSR
 gpU
 sAS
-fLr
+vMd
 wFP
 oQu
 xaH
@@ -121465,7 +121465,7 @@ vfe
 vfe
 qzo
 gpU
-vMd
+fLr
 fwq
 uFo
 wFP
