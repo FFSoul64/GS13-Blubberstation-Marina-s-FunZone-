@@ -39,7 +39,7 @@
 	item_path = /obj/item/toy/plush/gs13/flint
 
 /datum/loadout_item/toys/protogen_plush
-	name = "Protogen Plush"
+	name = "Proto-orb Plush"
 	item_path = /obj/item/toy/plush/gs13/protogen
 
 /datum/loadout_item/toys/yeen_plush

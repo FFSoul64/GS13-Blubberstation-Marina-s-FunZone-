@@ -44,6 +44,8 @@
 	name = "Trashbot plush"
 	desc = "An attempt to market one of cleaning machines from the local market, in the form of a purchasable plushie."
 	icon_state = "lgo"
+	can_eat_food = TRUE
+	edible_object_types = list(/obj/item/food, /obj/item/stack/sheet/cotton, /obj/item/trash)
 
 /obj/item/toy/plush/gs13/oliver
 	name = "Sharkie plush"
@@ -82,11 +84,15 @@
 	name = "Gatito plushie"
 	desc = "Cutie kitty meow meow gatito plushie! Corporate flavor!!"
 	icon_state = "gatito"
+	can_eat_food = TRUE
 
 /obj/item/toy/plush/gs13/sam
 	name = "Blueish Fopps plushie"
 	desc = "If he was green, he would die."
 	icon_state = "sam"
+	stuffed_icon_state = "sam_stuffed"
+	pred_plush = TRUE
+	can_eat_food = TRUE
 
 /obj/item/toy/plush/gs13/flint
 	name = "Flimbus plushie"
@@ -97,8 +103,8 @@
 	edible_object_types = list(/obj/item/food, /obj/item/stack/sheet/cotton, /obj/item/trash)
 
 /obj/item/toy/plush/gs13/protogen
-	name = "Protogen plushie"
-	desc = "A round protogen plushie. Despite her shape, she looks like she likes to exercise."
+	name = "Proto-orb plushie"
+	desc = "A round proto-orb plushie. Despite her shape, she looks like she likes to exercise."
 	icon_state = "proot"
 
 /obj/item/toy/plush/gs13/yeen
@@ -116,6 +122,9 @@
 	desc = "A large, very unwieldly plush toy of cargo's biggest workplace hazard. a small tag says \"squeeze me!\" on the seam of one of the legs."
 	icon = 'modular_gs/icons/obj/plushes_big.dmi'
 	icon_state = "noms"
+	stuffed_icon_state = "noms_stuffed"
+	pred_plush = TRUE
+	can_eat_food = TRUE
 
 /obj/item/toy/plush/gs13/fala
 	name = "Fala'squee plushie"
