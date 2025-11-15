@@ -21797,7 +21797,6 @@
 	},
 /obj/effect/landmark/start/medical_doctor,
 /obj/machinery/iv_drip,
-/obj/machinery/iv_drip,
 /turf/open/floor/iron/white/textured_large,
 /area/station/medical/medbay/central)
 "gif" = (
