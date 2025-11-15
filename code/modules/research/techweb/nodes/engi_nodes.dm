@@ -156,6 +156,9 @@
 		"manusorter",
 		"manurouter",
 		"mailsorter",
+		//GS13 EDIT START
+		"treadmill",
+		//GS13 EDIT END
 	)
 
 /datum/techweb_node/energy_manipulation
