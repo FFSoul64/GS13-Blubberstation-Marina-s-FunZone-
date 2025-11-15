@@ -9,16 +9,6 @@
 	name = "Saunas"
 	icon_state = "dk_yellow"
 
-/area/xenoarch/caloriteresearch_powered
-	name = "Research Facility Ruins"
-	icon_state = "dk_yellow"
-	power_light = TRUE
-
-
-/area/xenoarch/caloriteresearch_unpowered
-	name = "Research Facility Ruins"
-	icon_state = "dk_yellow"
-	power_light = TRUE
 
 /area/ruin/space/has_grav/fastfood_main
 	name = "GATO Restaurant - Main Area"
@@ -36,6 +26,23 @@
 	icon = 'modular_gs/icons/turf/areas.dmi'
 	icon_state = "xenogen"
 	default_gravity = STANDARD_GRAVITY
+
+/area/xenoarch/outside
+	icon_state = "yellow"
+	default_gravity = STANDARD_GRAVITY
+	outdoors = TRUE
+	flags_1 = NONE
+	area_flags = VALID_TERRITORY | UNIQUE_AREA | FLORA_ALLOWED
+	sound_environment = SOUND_AREA_LAVALAND
+	ambient_buzz = 'sound/ambience/lavaland/magma.ogg'
+	always_unpowered = TRUE
+	power_environ = FALSE
+	power_equip = FALSE
+	power_light = FALSE
+	requires_power = TRUE
+	ambience_index = AMBIENCE_MINING
+	area_flags = VALID_TERRITORY | UNIQUE_AREA
+
 
 /area/xenoarch/arch
 	name = "Xenoarchaeology"
@@ -110,3 +117,33 @@
 /area/ruin/unpowered/syndicate_lava_base/outdoors //Putting this area down should prevent fauna from spawning nearby
 	name = "Syndicate Lavaland Approach"
 	icon_state = "red"
+
+
+/area/xenoarch/calorite_temple
+	name = "Calorite Temple"
+	icon_state = "caloritetemple"
+	power_light = TRUE
+
+
+/area/xenoarch/caloriteresearch_powered
+	name = "Research Facility Ruins"
+	icon_state = "caloriteresearch"
+	power_light = TRUE
+
+/area/xenoarch/caloriteresearch_unpowered
+	name = "Research Facility Ruins"
+	icon_state = "caloriteresearch"
+	power_light = FALSE
+
+/area/xenoarch/donut_factory
+	name = "GATO Donut Factory"
+	icon_state = "donutfactory"
+
+/area/xenoarch/candy_outpost
+	name = "Candyland Survey Post"
+	icon_state = "candyoutpost"
+
+/area/xenoarch/candyland
+	name = "Candyland"
+	icon_state = "candyland"
+	power_light = TRUE
