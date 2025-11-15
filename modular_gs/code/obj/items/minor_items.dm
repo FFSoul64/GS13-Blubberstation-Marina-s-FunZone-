@@ -277,8 +277,8 @@
 /obj/item/gavelhammer/permafattening
 	desc = "Destroyer of waistlines."
 	name = "Permafat Hammer"
-	icon = 'icons/obj/weapons/hammer.dmi'
-	icon_state = "toyhammer"
+	icon = 'modular_gs/icons/obj/weapons/calorite_hammer.dmi'
+	icon_state = "hammer"
 	damtype = PERMA_FAT
 	throwforce = 10
 	force = 20
