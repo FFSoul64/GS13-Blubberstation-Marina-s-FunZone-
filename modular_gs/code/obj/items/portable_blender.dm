@@ -104,5 +104,5 @@
 	user.put_in_hands(loaded_reagent_container)
 	loaded_reagent_container = null
 	update_appearance(UPDATE_OVERLAYS)
-	balloon_alert(user, "Container removed!")
+	balloon_alert(user, "container removed!")
 
