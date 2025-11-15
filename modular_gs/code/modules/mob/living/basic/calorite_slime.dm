@@ -241,7 +241,7 @@
 	icon = 'modular_gs/icons/mob/slimes.dmi'
 	icon_state = "calorite-core"
 	//crossbreed_modification = "symbiont" - Let's not do crossbred cores JUST yet
-	activate_reagents = list(/datum/reagent/toxin/plasma)
+	//activate_reagents = list(/datum/reagent/toxin/plasma)
 
 /obj/item/slime_extract/calorite/activate(mob/living/carbon/human/user, datum/species/jelly/luminescent/species, activation_type)
 	switch(activation_type)

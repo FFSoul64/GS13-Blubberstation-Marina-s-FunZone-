@@ -1047,7 +1047,7 @@ GLOBAL_VAR_INIT(narsie_summon_count, 0)
 		new_human.equipOutfit(/datum/outfit/ghost_cultist) //give them armor
 		new_human.apply_status_effect(/datum/status_effect/cultghost) //ghosts can't summon more ghosts
 		new_human.set_invis_see(SEE_INVISIBLE_OBSERVER)
-		new_human.add_traits(list(TRAIT_NOBREATH, TRAIT_PERMANENTLY_MORTAL), INNATE_TRAIT) // permanently mortal can be removed once this is a bespoke kind of mob
+		new_human.add_traits(list(TRAIT_NOBREATH, TRAIT_SPAWNED_MOB, TRAIT_PERMANENTLY_MORTAL), INNATE_TRAIT) // permanently mortal can be removed once this is a bespoke kind of mob
 		ghosts++
 		playsound(src, 'sound/effects/magic/exit_blood.ogg', 50, TRUE)
 		visible_message(span_warning("A cloud of red mist forms above [src], and from within steps... a [new_human.gender == FEMALE ? "wo":""]man."))
@@ -1170,7 +1170,7 @@ GLOBAL_VAR_INIT(narsie_summon_count, 0)
 
 	for(var/mob/living/target in range(src, 3))
 		target.Paralyze(30)
-	empulse(T, 0.42*(intensity), 1)
+	empulse(T, 0.42*(intensity), 1, emp_source = src)
 
 	var/list/images = list()
 	for(var/mob/living/M in GLOB.alive_mob_list)

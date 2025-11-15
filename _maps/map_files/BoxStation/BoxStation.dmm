@@ -14520,7 +14520,7 @@
 /turf/open/floor/catwalk_floor,
 /area/station/maintenance/port)
 "bcM" = (
-/obj/machinery/light/small/built/directional/west,
+/obj/machinery/light/small/empty/directional/west,
 /turf/open/floor/iron,
 /area/station/maintenance/starboard/fore)
 "bcN" = (

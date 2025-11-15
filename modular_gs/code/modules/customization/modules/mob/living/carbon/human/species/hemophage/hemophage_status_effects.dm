@@ -18,7 +18,7 @@
 	h.adjust_fatness(sqrt(times_fed) * (sqrt(blood_fatness) / (100 / seconds_between_ticks)), FATTENING_TYPE_FOOD)
 	h.adjust_perma(sqrt(perma_blood_fatness) / (100 / seconds_between_ticks), FATTENING_TYPE_ITEM)
 
-/datum/action/cooldown/hemophage/drain_victim/proc/fatness_drain(mob/living/carbon/hemophage, mob/living/carbon/human/victim)
+/datum/action/cooldown/bloodsucker/feed/proc/fatness_drain(mob/living/carbon/hemophage, mob/living/carbon/human/victim)
 	if(!ishuman(victim))
 		return
 
@@ -41,6 +41,7 @@
 				bts.perma_blood_fatness = victim.fatness_perma  * client_mult
 			victim.adjust_perma(-sqrt(victim.fatness_perma) * 9, FATTENING_TYPE_WEIGHT_LOSS)
 
+/*
 // GS13 - It doesn't return anything so I can't ever know if the drain was successful if I override and call the parent.
 // Gotta just duplicate it and add in our stuff.
 /datum/action/cooldown/hemophage/drain_victim/drain_victim(mob/living/carbon/hemophage, mob/living/carbon/victim)
@@ -118,3 +119,4 @@
 		to_chat(hemophage, span_boldwarning("A final sputter of blood trickles from [victim]'s collapsing veins as your terrible hunger drains them almost completely dry."))
 	else if ((victim.blood_volume + HEMOPHAGE_DRAIN_AMOUNT_GS) <= BLOOD_VOLUME_SURVIVE)
 		to_chat(hemophage, span_warning("A sense of hesitation gnaws: you know for certain that taking much more blood from [victim] WILL kill them. <b>...but another part of you sees only opportunity.</b>"))
+*/
