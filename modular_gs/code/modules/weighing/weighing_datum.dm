@@ -110,7 +110,7 @@
 	data["weight_data"] = list()
 	// Time for list bullshit :3
 	var/list/weight_data = generate_category_list()
-	for(var/category as anything in weight_data) // Go through all the different generated categories
+	for(var/category in weight_data) // Go through all the different generated categories
 		var/list/parsed_data_points = list()
 		var/list/unparsed_data_points = weight_data[category]
 		var/muscle_category = FALSE
@@ -119,7 +119,7 @@
 			muscle_category = TRUE
 
 
-		for(var/data_point as anything in unparsed_data_points) // Parse a data point and add it to parsed_data_points
+		for(var/data_point in unparsed_data_points) // Parse a data point and add it to parsed_data_points
 			var/data_point_as_list = list(
 				"name" = data_point,
 				"pounds" = unparsed_data_points[data_point][1],

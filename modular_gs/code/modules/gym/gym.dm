@@ -91,8 +91,8 @@
 
 /obj/machinery/treadmill/RefreshParts(obj/item/O, mob/user, params)
 	..()
-	for(var/obj/item/stock_parts/servo/servo in component_parts)
-		stamina_cost_divider += servo.rating * 1
+	for(var/datum/stock_part/servo/servo in component_parts)
+		stamina_cost_divider += servo.tier * 1
 
 /obj/machinery/treadmill/attackby(obj/item/item, mob/living/user, params)
 	if(default_deconstruction_screwdriver(user, "treadmill", "treadmill", item))

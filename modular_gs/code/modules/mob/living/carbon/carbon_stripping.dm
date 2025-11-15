@@ -17,7 +17,7 @@
 /proc/strippable_alternate_action_bluespace_belt(obj/item/item, atom/source, mob/user)
 	if (!istype(item, /obj/item/bluespace_belt))
 		return
-	
+
 	if (istype(item, /obj/item/bluespace_belt/primitive))
 		return
 

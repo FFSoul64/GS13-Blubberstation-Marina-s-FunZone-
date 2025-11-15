@@ -36,11 +36,11 @@
 
 /obj/item/toy/plush/proc/devour_item(obj/item/item_to_devour, mob/living/user)
 	if(currently_digesting)
-		to_chat(span_warning("[src] seems full right now..."))
+		to_chat(user, span_warning("[src] seems full right now..."))
 		return FALSE
 
 	var/can_eat = FALSE
-	for(var/type as anything in edible_object_types)
+	for(var/type in edible_object_types)
 		if(istype(item_to_devour, type))
 			can_eat = TRUE
 			break
@@ -50,7 +50,7 @@
 		can_eat = TRUE
 
 	if(!can_eat)
-		to_chat(span_warning("[src] seems to be unable to eat [item_to_devour]!"))
+		to_chat(user, span_warning("[src] seems to be unable to eat [item_to_devour]!"))
 		return FALSE
 
 	var/digestion_value = PLUSHIE_FOOD_VALUE
@@ -72,6 +72,7 @@
 	if(stuffed_icon_state)
 		icon_state = stuffed_icon_state
 
+	currently_digesting = TRUE
 	addtimer(CALLBACK(src, PROC_REF(finish_digestion)), digestion_time)
 	return TRUE
 
@@ -83,6 +84,7 @@
 	fatness += last_item_value
 	visible_message(span_notice("[src] seems to get fatter..."))
 	last_item_value = 0
+	currently_digesting = FALSE
 
 	update_scale()
 	return TRUE

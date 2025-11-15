@@ -7043,7 +7043,7 @@
 #include "modular_gs\code\modules\surgery\organs\internal\stomach\stomach_ethereal.dm"
 #include "modular_gs\code\modules\vending\gs_vendors.dm"
 #include "modular_gs\code\modules\vending\vending.dm"
-#include "modular_gs\code\modules\vending\wadrobes.dm"
+#include "modular_gs\code\modules\vending\wardrobes.dm"
 #include "modular_gs\code\modules\vore\vore_wg.dm"
 #include "modular_gs\code\modules\voting\vote.dm"
 #include "modular_gs\code\modules\weighing\scale.dm"

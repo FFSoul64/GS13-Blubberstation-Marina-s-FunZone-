@@ -10,5 +10,5 @@
 	if (iscarbon(target))
 		var/mob/living/carbon/carbon_target = target
 		carbon_target.adjust_fatness(fat_added, FATTENING_TYPE_WEAPON)
-	
+
 	return .

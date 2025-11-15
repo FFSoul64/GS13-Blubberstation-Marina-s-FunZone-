@@ -1,12 +1,12 @@
 /**
  * Fattening component
- * 
+ *
  * Add this component to an object to have it fatten a mob on a certain interaction
- * 
+ *
  * Created and maintained by Swan on Gain Stations 13 discord, feel free to message me
  * if you have any questions or are interested in expanding/changing this component's
  * functionality
- * 
+ *
  * When applying for calorite items, in the Initialize proc apply it before you call the ..(), unless you're
  * fine with using the default value for calorite material items
  */
@@ -35,9 +35,9 @@
 
 /**
  * Initialize the fattening component behaviour
- * 
+ *
  * When applied to any atom in the game, touching it will cause the touching person to gain weight
- * 
+ *
  * Arguments:
  * * real_fatness_amount - amount of real_fat the touching person obtains. Required
  * * fattening_type - the type of fattening (item, weapon, magic, etc). Required
@@ -76,13 +76,13 @@
 
 /**
  * fattens given carbon
- * 
+ *
  * This assumes it was called from other procs of this component, and thus that we've already
  * made sure that the mob is in fact a carbon
- * 
+ *
  * Arguments:
  * * user - the person touching us, and therefore getting fat
- * 
+ *
  */
 /datum/component/fattening/proc/fatten(mob/living/carbon/fatty)
 	fatty.adjust_fatness(real_fatness_amount, fattening_type, ignore_rate)
@@ -90,15 +90,15 @@
 
 /**
  * receives a signal when our object was touched by an empty hand. If the mob
- * is a carbon, checks if they have gloves on. If they don't, calls fatten of them. 
- * If they are wearing gloves, it checks if we can fatten through items, and if yes, calls fatten on them. 
+ * is a carbon, checks if they have gloves on. If they don't, calls fatten of them.
+ * If they are wearing gloves, it checks if we can fatten through items, and if yes, calls fatten on them.
  * Returns False otherwise
  */
 /datum/component/fattening/proc/touch(atom/parent, mob/user)
 	SIGNAL_HANDLER
 	if (!iscarbon(user))
 		return FALSE
-	
+
 	var/mob/living/carbon/fatty = user
 	// if we have gloves on, don't fatten. Unless we can fatten through items, then fuckem
 	if (!isnull(fatty.gloves) && !item_touch)
@@ -113,19 +113,19 @@
 	SIGNAL_HANDLER
 	if (!iscarbon(bumped_atom))
 		return
-	
+
 	var/mob/living/carbon/fatty = bumped_atom
 	fatten(fatty)
 
 /**
- * receives a signal for when our object gets touched through an item. If the person holding 
+ * receives a signal for when our object gets touched through an item. If the person holding
  * the item is a carbon, calls fatten on them. Returns False otherwise
  */
 /datum/component/fattening/proc/item_touch(datum/source, obj/item/attacking_item, mob/living/user, params)
 	SIGNAL_HANDLER
 	if (!iscarbon(user))
 		return FALSE
-	
+
 	var/mob/living/carbon/fatty = user
 	fatten(fatty)
 
@@ -138,6 +138,6 @@
 	SIGNAL_HANDLER
 	if (!iscarbon(arrived))
 		return FALSE
-	
+
 	var/mob/living/carbon/fatty = arrived
 	fatten(fatty)

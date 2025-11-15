@@ -27,12 +27,12 @@
 	else
 		reaction_efficiency = -((temperature - 5) / 95) + 1		// will equal 1 at 5 kelvin, and will linearly fall until 0 at 100k
 
-	
+
 	var/old_heat_capacity = air.heat_capacity()
 
 	var/used_moles = min((reaction_efficiency * min(plasma[MOLES], tritium[MOLES]) * 0.5), 4)
 	var/energy_released = used_moles * FIRE_CARBON_ENERGY_RELEASED
-	
+
 	ASSERT_GAS(/datum/gas/lipoifium, air)
 	cached_gases[/datum/gas/lipoifium][MOLES] += used_moles
 	cached_gases[/datum/gas/plasma][MOLES] -= used_moles

@@ -10,11 +10,11 @@
 	if (iscarbon(target))
 		var/mob/living/carbon/person = target
 		person.save_persistent_fat()
-	
+
 	return ..()
 
 /obj/machinery/cryopod
 	/// Do we want to inform comms when someone cryos?
 	var/alert_comms = TRUE
-	var/on_store_message = "has entered the centcomm teleportation pod."
+	var/on_store_message = "has entered the centcom teleportation pod."
 	var/on_store_name = "Telepod Oversight"

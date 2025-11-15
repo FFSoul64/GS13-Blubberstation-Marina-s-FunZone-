@@ -42,7 +42,7 @@
 		to_chat(U, "<span class='warning'>The belt is opened, letting your mass flow out!</span>")
 	U.hider_remove(src)
 
-/obj/item/bluespace_belt/proc/fat_hide(var/mob/living/carbon/user)
+/obj/item/bluespace_belt/proc/fat_hide(mob/living/carbon/user)
 	var/amount_to_hide = user.fatness_real	// not gonna be that easy to hide your chubbyness now fatty~
 	if (current_mode == MODE_SHOW_AMOUNT)	// show BFI_percentage% of our fatness_real
 		amount_to_hide *= (100 - BFI_percentage) / 100
