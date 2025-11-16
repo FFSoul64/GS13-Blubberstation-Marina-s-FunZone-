@@ -51,17 +51,6 @@
 /obj/structure/sauna_oven,
 /turf/open/floor/wood/tile,
 /area/station/commons/fitness/recreation/sauna)
-"m" = (
-/obj/machinery/door/airlock/maintenance{
-	name = "Mothtainence Access"
-	},
-/obj/effect/mapping_helpers/airlock/abandoned,
-/obj/effect/turf_decal/tile/purple/opposingcorners,
-/obj/effect/turf_decal/tile/yellow/opposingcorners{
-	dir = 1
-	},
-/turf/open/floor/iron,
-/area/station/maintenance/starboard/fore)
 "n" = (
 /obj/item/towel,
 /obj/item/clothing/under/misc/skyrat/gear_harness,
@@ -333,7 +322,7 @@ B
 a
 a
 a
-m
+a
 "}
 (7,1,1) = {"
 B
@@ -354,7 +343,7 @@ g
 b
 B
 a
-m
+a
 a
 a
 a

@@ -9,15 +9,6 @@
 	name = "Saunas"
 	icon_state = "dk_yellow"
 
-/area/xenoarch/caloriteresearch_powered
-	name = "Research Facility Ruins"
-	icon_state = "dk_yellow"
-	power_light = TRUE
-
-/area/xenoarch/caloriteresearch_unpowered
-	name = "Research Facility Ruins"
-	icon_state = "dk_yellow"
-	power_light = TRUE
 
 /area/ruin/space/has_grav/fastfood_main
 	name = "GATO Restaurant - Main Area"
@@ -35,6 +26,23 @@
 	icon = 'modular_gs/icons/turf/areas.dmi'
 	icon_state = "xenogen"
 	default_gravity = STANDARD_GRAVITY
+
+/area/xenoarch/outside
+	icon_state = "yellow"
+	default_gravity = STANDARD_GRAVITY
+	outdoors = TRUE
+	flags_1 = NONE
+	area_flags = VALID_TERRITORY | UNIQUE_AREA | FLORA_ALLOWED
+	sound_environment = SOUND_AREA_LAVALAND
+	ambient_buzz = 'sound/ambience/lavaland/magma.ogg'
+	always_unpowered = TRUE
+	power_environ = FALSE
+	power_equip = FALSE
+	power_light = FALSE
+	requires_power = TRUE
+	ambience_index = AMBIENCE_MINING
+	area_flags = VALID_TERRITORY | UNIQUE_AREA
+
 
 /area/xenoarch/arch
 	name = "Xenoarchaeology"
@@ -59,102 +67,6 @@
 /area/xenoarch/med
 	name = "Xenoarchaeology Medical"
 	icon_state = "xenomed"
-
-/area/xenoarch/nothinghere
-	name = "Nothing Here"
-	icon_state = "yellow"
-	// ambientsounds = SPOOKY
-	ambience_index = AMBIENCE_SPOOKY
-
-
-/area/lavaland/demone
-	icon = 'modular_gs/icons/turf/areas.dmi'
-
-/area/lavaland/demone/tele
-	name= "Demone Teleporter Room"
-	icon_state= "demonetp"
-
-
-/area/lavaland/demone/living
-	name= "Demone Living Area"
-	icon_state= "demoneliving"
-
-/area/lavaland/demone/kitchen
-	name= "Demone Mining Kitchen"
-	icon_state= "demonekitchen"
-
-/area/lavaland/demone/minestorage
-	name= "Demone Mining Storage"
-	icon_state= "demonestorage"
-
-/area/lavaland/demone/factoryoffice
-	name= "Factory CEO Office"
-	icon_state= "demonceo"
-
-/area/lavaland/demone/lobby
-	name= "Factory Lobby"
-	icon_state= "demonelobby"
-
-/area/lavaland/demone/reception
-	name= "Factory Reception"
-	icon_state= "demonereception"
-
-/area/lavaland/demone/factorystorage
-	name= "Factory Storage"
-	icon_state= "factorystorage"
-
-/area/lavaland/demone/factory
-	name= "Factory"
-	icon_state= "demonefactory"
-
-/area/lavaland/demone/factorygen
-	name= "Factory Generator Room"
-	icon_state= "demonegen"
-
-/area/lavaland/demone/villagesilo
-	name= "Demone Village Silo"
-	icon_state= "demonesilo"
-
-/area/lavaland/demone/villagepsu
-	name= "Village Generator Room"
-	icon_state= "demonevilpsu"
-
-/area/lavaland/demone/demonevillage
-	name= "Village "
-	icon_state= "demonevillage"
-
-
-/obj/structure/sign/logo/donutsign1
-	name = "Hella Nice Sign"
-	desc = "Made from the hottest planet itself!"
-	icon = 'modular_gs/icons/obj/decals.dmi'
-	icon_state = "donut_signBL"
-
-/obj/structure/sign/logo/donutsign2
-	name = "Hella Nice Sign"
-	desc = "Made from the hottest planet itself!"
-	icon = 'modular_gs/icons/obj/decals.dmi'
-	icon_state = "donut_signBR"
-
-
-/obj/structure/sign/logo/donutsign3
-	name = "Hella Nice Sign"
-	desc = "Made from the hottest planet itself!"
-	icon = 'modular_gs/icons/obj/decals.dmi'
-	icon_state = "donut_signTL"
-
-/obj/structure/sign/logo/donutsign4
-	name = "Hella Nice Sign"
-	desc = "Made from the hottest planet itself!"
-	icon = 'modular_gs/icons/obj/decals.dmi'
-	icon_state = "donut_signTR"
-
-
-/obj/structure/sign/carts
-	name = "CARTS"
-	desc = "You are entering a motorized cart area."
-	icon = 'modular_gs/icons/obj/decals.dmi'
-	icon_state = "carts"
 
 /area/ruin/powered/gluttony
 	icon_state = "dk_yellow"
@@ -205,3 +117,33 @@
 /area/ruin/unpowered/syndicate_lava_base/outdoors //Putting this area down should prevent fauna from spawning nearby
 	name = "Syndicate Lavaland Approach"
 	icon_state = "red"
+
+
+/area/xenoarch/calorite_temple
+	name = "Calorite Temple"
+	icon_state = "caloritetemple"
+	power_light = TRUE
+
+
+/area/xenoarch/caloriteresearch_powered
+	name = "Research Facility Ruins"
+	icon_state = "caloriteresearch"
+	power_light = TRUE
+
+/area/xenoarch/caloriteresearch_unpowered
+	name = "Research Facility Ruins"
+	icon_state = "caloriteresearch"
+	power_light = FALSE
+
+/area/xenoarch/donut_factory
+	name = "GATO Donut Factory"
+	icon_state = "donutfactory"
+
+/area/xenoarch/candy_outpost
+	name = "Candyland Survey Post"
+	icon_state = "candyoutpost"
+
+/area/xenoarch/candyland
+	name = "Candyland"
+	icon_state = "candyland"
+	power_light = TRUE

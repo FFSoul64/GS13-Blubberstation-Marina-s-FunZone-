@@ -79,3 +79,23 @@
 /obj/structure/statue/calorite/fatty/attack_paw(mob/living/carbon/M)
 	..()
 	statue_fatten(M)
+
+//other variants
+
+/obj/structure/statue/calorite/fatty/fattha
+	name = "statue of a sitting fatty"
+	desc = "A statue of some obscure deity, laden in calorite."
+	icon =  'modular_gs/icons/obj/structure/statues.dmi'
+	icon_state = "fattha_statue"
+	anchored = TRUE
+
+/obj/structure/statue/calorite/fatty/huge
+	name = "Monument to Hedonism"
+	desc = "A vast, sprawling monument portraying a faceless blob, packed full of calorite-laden lard. It's strangely enticing."
+	icon =  'modular_gs/icons/obj/structure/statue_64x64.dmi'
+	icon_state = "hugecalorite"
+	anchored = TRUE
+	pixel_y = -16
+	pixel_x = -16
+
+
