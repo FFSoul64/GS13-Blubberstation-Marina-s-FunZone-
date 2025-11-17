@@ -26,6 +26,7 @@
 	icon = 'modular_gs/icons/turf/walls/wall_candy.dmi'
 	icon_state = "choco_wall1"
 
+/*
 /turf/closed/indestructible/shadoww
 	name = "shadow wall"
 	desc = "A wall with shadow wood plating."
@@ -49,3 +50,4 @@
 	icon_state = "gmushroom"
 	baseturfs = /turf/closed/indestructible/gmushroom
 	canSmoothWith = list(/turf/closed/wall/mineral/gmushroom, /obj/structure/falsewall/gmushroom, /turf/closed/indestructible/gmushroom)
+*/

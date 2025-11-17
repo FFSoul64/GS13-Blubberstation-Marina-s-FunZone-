@@ -23,8 +23,7 @@
 
 /obj/item/portable_blender/Destroy()
 	if(loaded_reagent_container)
-		loaded_reagent_container.forceMove(get_turf(src))
-		loaded_reagent_container = FALSE
+		QDEL_NULL(loaded_reagent_container)
 
 	return ..()
 
