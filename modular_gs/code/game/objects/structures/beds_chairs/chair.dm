@@ -6,7 +6,7 @@
 	icon_state = "shadoww_chair"
 	resistance_flags = FLAMMABLE
 	max_integrity = 70
-	buildstacktype = /obj/item/stack/sheet/mineral/shadoww
+	//buildstacktype = /obj/item/stack/sheet/mineral/shadoww
 	buildstackamount = 3
 	item_chair = /obj/item/chair/shadoww
 
@@ -18,7 +18,7 @@
 	icon_state = "plaswood_chair"
 	resistance_flags = FLAMMABLE | ACID_PROOF
 	max_integrity = 90
-	buildstacktype = /obj/item/stack/sheet/mineral/plaswood
+	//buildstacktype = /obj/item/stack/sheet/mineral/plaswood
 	buildstackamount = 3
 	item_chair = /obj/item/chair/plaswood
 
@@ -30,7 +30,7 @@
 	icon_state = "gmushroom_chair"
 	resistance_flags = FIRE_PROOF
 	max_integrity = 70
-	buildstacktype = /obj/item/stack/sheet/mineral/gmushroom
+	//buildstacktype = /obj/item/stack/sheet/mineral/gmushroom
 	buildstackamount = 3
 	item_chair = /obj/item/chair/gmushroom
 

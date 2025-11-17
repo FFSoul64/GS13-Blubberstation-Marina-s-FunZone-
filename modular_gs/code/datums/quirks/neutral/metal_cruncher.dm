@@ -84,12 +84,14 @@
 	crunch_value = 4
 /obj/item/stack/sheet/mineral/bamboo
 	crunch_value = 10
+/*
 /obj/item/stack/sheet/mineral/shadoww
 	crunch_value = 15
 /obj/item/stack/sheet/mineral/gmushroom
 	crunch_value = 15
 /obj/item/stack/sheet/mineral/plaswood
 	crunch_value = 15
+*/
 /obj/item/stack/sheet/mineral/diamond
 	crunch_value = 25
 

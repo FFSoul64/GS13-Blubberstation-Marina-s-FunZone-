@@ -4,7 +4,7 @@
 
 /obj/effect/turf_decal/candy //used for baseline
 	icon = 'modular_gs/icons/turf/decals_candy.dmi'
-	icon_state = ""
+	icon_state = "candy_decal1"
 
 /obj/effect/turf_decal/candy/redwhite
 	icon_state = "candy_decal1"
