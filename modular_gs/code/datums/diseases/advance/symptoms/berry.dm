@@ -40,20 +40,24 @@ GLOBAL_LIST_INIT(no_random_cure_symptoms, list(/datum/symptom/berry, /datum/symp
 			to_chat(M, "<span class='warning'><i>[pick("A deep slosh comes from inside you...", "Your mind feels light...", "You think blue really suits you...", "Your skin feels so tight...")]</i></span>")
 	M.reagents.add_reagent(infection_reagent, (max(A.totalStageSpeed(), 0.2)) * A.stage)
 
-/obj/item/reagent_containers/canconsume(mob/eater, mob/user)
-	if(eater?.reagents.get_reagent_amount(/datum/reagent/blueberry_juice) > 0 && (reagents.total_volume + min(amount_per_transfer_from_this, 10)) <= volume)
-		reagents.add_reagent(/datum/reagent/blueberry_juice, min(10, amount_per_transfer_from_this))
-		eater.reagents.remove_reagent(/datum/reagent/blueberry_juice, min(10, amount_per_transfer_from_this))
-		if(eater != user)
-			to_chat(user, "<span class='warning'>You juice [eater.name]...</span>")
-			to_chat(eater, "<span class='warning'>[user.name] juices you...</span>")
+/obj/item/reagent_containers/interact_with_atom_secondary(atom/interacting_with, mob/living/user, list/modifiers)
+	if(user.combat_mode || !ishuman(interacting_with))
+		return ..()
+
+	var/mob/living/carbon/human/berry = interacting_with
+	if(berry.reagents.get_reagent_amount(/datum/reagent/blueberry_juice) <= 0)
+		return ..()
+
+	while(in_range(user, berry) && berry.reagents.get_reagent_amount(/datum/reagent/blueberry_juice) > 0 && reagents.total_volume < reagents.maximum_volume && do_after(user, 1 SECONDS, berry))
+		var/move_volume = min(berry.reagents.get_reagent_amount(/datum/reagent/blueberry_juice), min(10,amount_per_transfer_from_this), reagents.maximum_volume - reagents.total_volume)
+		reagents.add_reagent(/datum/reagent/blueberry_juice, move_volume)
+		berry.reagents.remove_reagent(/datum/reagent/blueberry_juice, move_volume)
+		if(berry != user)
+			to_chat(user, "<span class='warning'>You juice [berry.name]...</span>")
+			to_chat(berry, "<span class='warning'>[user.name] juices you...</span>")
 		else
 			to_chat(user, "<span class='warning'>You get some juice out of you...</span>")
-		/*if(prob(5))
-			new /obj/effect/decal/cleanable/juice(M.loc)
-			playsound(M.loc, 'sound/effects/splat.ogg',rand(10,50), 1)*/
-		return
-	. = ..()
+
 /*
 /obj/effect/decal/cleanable/juice
 	name = "berry juice"

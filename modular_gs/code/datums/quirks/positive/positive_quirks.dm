@@ -153,7 +153,7 @@
 
 /datum/quirk/slime_eater
 	name = "Slime eater"
-	desc = "Slimes make your mouth water! You can safely metabolize slime jelly for nutrition and can gobble up a xenobiology slime you are aggressively grabbing!"
+	desc = "Slimes make your mouth water! You can safely metabolize slime jelly for nutrition and can gobble up a xenobiology slime you are aggressively grabbing with Ctrl + LMB!"
 	icon = "fa-shield"
 	medical_record_text = "Patient's digestive system is able to process slime jelly."
 	value = 1
