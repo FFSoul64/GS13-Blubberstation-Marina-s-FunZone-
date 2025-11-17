@@ -6,8 +6,8 @@
 	//reagent_state = LIQUID
 	metabolization_rate = 0.25 * REAGENTS_METABOLISM
 	color = "#0004ff"
-	var/picked_color
-	var/list/random_color_list = list("#0058db","#5d00c7","#0004ff","#0057e7")
+	var/mob_color = "#0004ff"
+	//var/list/random_color_list = list("#0058db","#5d00c7","#0004ff","#0057e7")
 	taste_description = "blueberry pie"
 	var/no_mob_color = FALSE
 	// put this back in later value = 10	//it sells. Make that berry factory
@@ -19,8 +19,8 @@
 			M.reagents.remove_reagent(/datum/reagent/blueberry_juice, volume)
 			return
 		if(!no_mob_color)
-			M.add_atom_colour(picked_color, WASHABLE_COLOUR_PRIORITY)
-		M.adjust_fatness(1, FATTENING_TYPE_CHEM)
+			M.add_atom_colour(color, WASHABLE_COLOUR_PRIORITY)
+		//M.adjust_fatness(1, FATTENING_TYPE_CHEM)
 	if(volume >= 999)
 		M.add_quirk(/datum/quirk/permaberry)
 	..()
@@ -31,7 +31,6 @@
 		if(!affected_mob?.client || !(affected_mob?.client?.prefs?.read_preference(/datum/preference/toggle/blueberry_inflation)))
 			affected_mob.reagents.remove_reagent(/datum/reagent/blueberry_juice, volume)
 			return
-		picked_color = pick(random_color_list)
 		affected_mob.hider_add(src)
 	else
 		L.reagents.remove_reagent(/datum/reagent/blueberry_juice, volume)
