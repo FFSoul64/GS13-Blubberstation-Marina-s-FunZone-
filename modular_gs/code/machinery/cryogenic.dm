@@ -6,12 +6,12 @@
 	on_store_message = "has teleported back to Central Command."
 	on_store_name = "Teleporter Oversight"
 
-/obj/machinery/cryopod/tele/mouse_drop_receive(mob/living/target, mob/living/user, params)
-	if (iscarbon(target))
-		var/mob/living/carbon/person = target
-		person.save_persistent_fat()
+// /obj/machinery/cryopod/tele/mouse_drop_receive(mob/living/target, mob/living/user, params)
+// 	if (iscarbon(target))
+// 		var/mob/living/carbon/person = target
+// 		person.save_persistent_fat()
 
-	return ..()
+// 	return ..()
 
 /obj/machinery/cryopod
 	/// Do we want to inform comms when someone cryos?

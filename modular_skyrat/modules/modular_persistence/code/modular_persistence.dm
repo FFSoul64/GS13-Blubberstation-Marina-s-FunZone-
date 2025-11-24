@@ -75,6 +75,7 @@ GLOBAL_LIST_INIT(modular_persistence_ignored_vars, list(
 
 	var/mob/living/carbon/human/human = owner.owner
 	human.load_nif_data(src)
+	human.load_persistent_fat(src)	// GS13 EDIT - persistent/perma fat
 
 /datum/modular_persistence/Destroy(force, ...)
 	owner = null
@@ -86,6 +87,7 @@ GLOBAL_LIST_INIT(modular_persistence_ignored_vars, list(
 
 	var/mob/living/carbon/human/human = owner.owner
 	human.save_nif_data(src)
+	human.save_persistent_fat(src)	// GS13 EDIT - persistent/perma fat
 
 	for(var/var_name in vars)
 		if(var_name in GLOB.modular_persistence_ignored_vars)

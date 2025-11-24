@@ -18,6 +18,10 @@
 	melee_damage_lower = 0
 	melee_damage_upper = 0
 
+/mob/living/basic/slime/calorite/Initialize(mapload, new_type, new_life_stage)
+	. = ..()
+	set_slime_type(/datum/slime_type/calorite)
+
 /mob/living/basic/slime/calorite/reproduce()
 
 	if(stat != CONSCIOUS)

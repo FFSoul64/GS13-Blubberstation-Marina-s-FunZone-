@@ -171,7 +171,7 @@
 				shape = "round"
 	else
 		shape = "stuffed"
-		var/stuffed_modifier
+		var/stuffed_modifier = 0
 		switch(G.owner.fullness)
 			if(FULLNESS_LEVEL_BLOATED to FULLNESS_LEVEL_BEEG) // Take the stuffed sprite of the same size
 				stuffed_modifier = 0
@@ -331,3 +331,29 @@
 
 /obj/item/clothing/under/color/dual_tone/get_butt_alt()
 	return ""
+
+/obj/item/clothing/under/color/dual_tone/get_belly_size(obj/item/organ/genital/G)
+	var/size = G.genital_size
+	if(G.genital_size > 9)
+		size = 9
+	var/shape = "soft"
+	// commenting out since dual tones don't have alt shapes
+	// if(G.owner.fullness <= FULLNESS_LEVEL_BLOATED)
+	// 	switch(G.genital_type)
+	// 		if("belly")
+	// 			shape = "soft"
+	// 		if("round")
+	// 			shape = "round"
+	// else
+	// 	shape = "stuffed"
+	var/stuffed_modifier = 0
+	switch(G.owner.fullness)
+		if(FULLNESS_LEVEL_BLOATED to FULLNESS_LEVEL_BEEG) // Take the stuffed sprite of the same size
+			stuffed_modifier = 0
+		if(FULLNESS_LEVEL_BEEG to FULLNESS_LEVEL_NOMOREPLZ) // Take the stuffed sprite of size + 1
+			stuffed_modifier = 1
+		if(FULLNESS_LEVEL_NOMOREPLZ to INFINITY)// Take the stuffed sprite of size + 2
+			stuffed_modifier = 2
+	size = size + stuffed_modifier
+
+	return "[shape]_[size]"

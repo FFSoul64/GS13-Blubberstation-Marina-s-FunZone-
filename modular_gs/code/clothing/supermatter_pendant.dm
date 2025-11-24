@@ -17,6 +17,7 @@
 	light_power = 1
 	light_on = FALSE
 	COOLDOWN_DECLARE(disabled_time)
+	resistance_flags = INDESTRUCTIBLE | UNACIDABLE | FREEZE_PROOF | SHUTTLE_CRUSH_PROOF | BOMB_PROOF | FIRE_PROOF | LAVA_PROOF
 	var/start_on = FALSE
 
 /obj/item/clothing/neck/supermatter_pendant/Initialize(mapload)
