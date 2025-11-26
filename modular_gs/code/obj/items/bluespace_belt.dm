@@ -53,6 +53,7 @@
 
 /obj/item/bluespace_belt/click_alt(mob/user)
 	ui_interact(user, null)
+	return CLICK_ACTION_BLOCKING
 
 /obj/item/bluespace_belt/ui_data(mob/user)
 	var/list/data = list()
