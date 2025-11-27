@@ -22,11 +22,29 @@
 	icon_state = "libraryposter"
 	icon = 'modular_gs/icons/obj/contraband.dmi'
 
-/obj/structure/sign/poster/official/gato_logo
-	name = "GATO Logo"
-	desc = "A poster of our glorious GATO Corp!"
-	icon_state = "poster2_legit"
-	icon = 'modular_gs/icons/obj/contraband.dmi'
+/obj/structure/sign/poster/official/hoverchair
+    name = "Take A Load Off"
+    desc = "A poster advertising freely available wheelchairs and hoverchairs, not only for the disabled, but for horizontally tall too."
+    icon_state = "poster36_legit"
+    icon = 'modular_gs/icons/obj/contraband.dmi'
+
+/obj/structure/sign/poster/official/calorite
+    name = "Calorite Warning"
+    desc = "A poster warning workers of the dangers of calorite. Be wary when making contact with this mass-multiplicating material!"
+    icon_state = "poster37_legit"
+    icon = 'modular_gs/icons/obj/contraband.dmi'
+
+/obj/structure/sign/poster/official/fatorays
+    name = "NutriTech Weapons"
+    desc = "An informative poster showing off a line of weapon designs from the NutriTech design line."
+    icon_state = "poster38_legit"
+    icon = 'modular_gs/icons/obj/contraband.dmi'
+
+/obj/structure/sign/poster/official/waddle
+    name = "Waddle"
+    desc = "A poster enticing GATO employees to enjoy the free benefit of a mobility support exoskeleton."
+    icon_state = "poster39_legit"
+    icon = 'modular_gs/icons/obj/contraband.dmi'
 
 /obj/structure/sign/poster/contraband/corn_oil
 	name = "Corn Oil Poster"
@@ -64,6 +82,17 @@
 	icon_state = "poster50"
 	icon = 'modular_gs/icons/obj/contraband.dmi'
 
+/obj/structure/sign/poster/contraband/gulp
+    name = "Just Gulp"
+    desc = "Keep that hose strapped to your mouth and let your worries melt away. Just keep gulping."
+    icon_state = "poster51"
+    icon = 'modular_gs/icons/obj/contraband.dmi'
+
+/obj/structure/sign/poster/contraband/loosen
+    name = "Loosen"
+    desc = "A broken belt is a sign progress - so loosen up!"
+    icon_state = "poster52"
+    icon = 'modular_gs/icons/obj/contraband.dmi'
 
 //recoloring of propaganda posters - from NT blue to GT pink
 /obj/structure/sign/poster/gato
@@ -74,10 +103,11 @@
 	desc = "A poster glorifying the station's security force."
 	icon_state = "poster1_legit"
 
-/obj/structure/sign/poster/gato/lovegato
+/obj/structure/sign/poster/official/lovegato
 	name = "GATO Poster"
 	desc = "A poster with the GATO's friendly feline mascot."
 	icon_state = "poster2_legit"
+	icon = 'modular_gs/icons/obj/contraband.dmi'
 
 /obj/structure/sign/poster/gato/cleanhands
 	name = "Cleanliness"
