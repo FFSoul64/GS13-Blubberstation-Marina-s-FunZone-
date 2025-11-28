@@ -52,9 +52,9 @@
 	name = "Xenomorph Maid Plushie"
 	item_path = /obj/item/toy/plush/xenoplush/xenomaidplush
 
-/datum/loadout_item/toys/tunafish
-	name = "Tuna Fish Plush"
-	item_path = /obj/item/toy/plush/tunafish
+// /datum/loadout_item/toys/tunafish
+// 	name = "Tuna Fish Plush"
+// 	item_path = /obj/item/toy/plush/tunafish
 
 // /datum/loadout_item/toys/purplecat
 // 	name = "Purple Cat Plush"
@@ -88,9 +88,9 @@
 // 	name = "CentCom Synth Fox Plush"
 // 	item_path = /obj/item/toy/plush/bottomsynf
 
-/datum/loadout_item/toys/squeaky_toy
-	name = "Squeaky Rat Plushie"
-	item_path = /obj/item/toy/plush/squeaky_toy
+// /datum/loadout_item/toys/squeaky_toy
+// 	name = "Squeaky Rat Plushie"
+// 	item_path = /obj/item/toy/plush/squeaky_toy
 
 // /datum/loadout_item/toys/androiddog
 // 	name = "Android Dog Plushie"
