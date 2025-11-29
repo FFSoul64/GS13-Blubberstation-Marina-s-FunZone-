@@ -6998,6 +6998,7 @@
 #include "modular_gs\code\modules\gym\gym.dm"
 #include "modular_gs\code\modules\hud\alert.dm"
 #include "modular_gs\code\modules\hud\BFI.dm"
+#include "modular_gs\code\modules\hydroponics\lipoplant.dm"
 #include "modular_gs\code\modules\hydroponics\munchies_weed.dm"
 #include "modular_gs\code\modules\hydroponics\grown\berries.dm"
 #include "modular_gs\code\modules\loadout\belt.dm"
