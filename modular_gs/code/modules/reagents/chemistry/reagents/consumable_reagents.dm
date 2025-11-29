@@ -9,6 +9,7 @@
 	metabolization_rate = 0.5 * REAGENTS_METABOLISM
 	process_flags = REAGENT_ORGANIC | REAGENT_SYNTHETIC | REAGENT_PROTEAN // Allow all kinds of humanoids to process the chem
 	var/fat_to_add = 15
+	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 
 /datum/reagent/consumable/lipoifier/on_mob_life(mob/living/carbon/M)
 	M.adjust_fatness(fat_to_add, FATTENING_TYPE_CHEM)
@@ -103,6 +104,7 @@
 	name = "Weak lipoifier"
 	description = "A weaker variant of lipoifier. Causes those that ingest it to build up fat cells."
 	fat_to_add = 6
+	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 
 /datum/reagent/micro_calorite
 	name = "Micro calorite"
@@ -111,6 +113,7 @@
 	taste_description = "sugar"
 	metabolization_rate = 0.01	// just absolutely fuck them up
 	overdose_threshold = 100
+	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 
 /datum/reagent/micro_calorite/on_mob_life(mob/living/carbon/affected_mob, seconds_per_tick, times_fired)
 	. = ..()
@@ -138,7 +141,7 @@
 	..()
 	if (!iscarbon(affected_mob))
 		return
-	
+
 	var/mob/living/carbon/affected_carbon = affected_mob
 	affected_carbon.add_weight_gain_modifier("micro_calorite", 0.6)
 	affected_carbon.add_weight_loss_modifier("micro_calorite", -0.6)
@@ -146,6 +149,6 @@
 /datum/reagent/micro_calorite/overdose_process(mob/living/affected_mob, seconds_per_tick, times_fired)
 	if (!iscarbon(affected_mob))
 		return
-	
+
 	var/mob/living/carbon/affected_carbon = affected_mob
 	affected_carbon.adjust_fatness(5, FATTENING_TYPE_CHEM)

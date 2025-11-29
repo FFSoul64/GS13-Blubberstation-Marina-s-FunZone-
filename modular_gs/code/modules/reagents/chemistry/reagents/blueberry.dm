@@ -12,6 +12,7 @@
 	var/no_mob_color = FALSE
 	// put this back in later value = 10	//it sells. Make that berry factory
 	purge_multiplier = 3
+	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 
 /datum/reagent/blueberry_juice/on_mob_life(mob/living/carbon/M)
 	if(M?.client)

@@ -9,6 +9,7 @@
 	overdose_threshold = 50
 	addiction_types = list(/datum/addiction/fermi_fat = 4)
 	process_flags = REAGENT_ORGANIC | REAGENT_SYNTHETIC | REAGENT_PROTEAN // Allow all kinds of humanoids to process the chem
+	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 
 
 //Reaction
@@ -127,6 +128,7 @@
 	metabolization_rate = REAGENTS_METABOLISM / 2
 	overdose_threshold = 50
 	process_flags = REAGENT_ORGANIC | REAGENT_SYNTHETIC | REAGENT_PROTEAN // Allow all kinds of humanoids to process the chem
+	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 
 //Reaction
 /datum/chemical_reaction/fermi_slim
