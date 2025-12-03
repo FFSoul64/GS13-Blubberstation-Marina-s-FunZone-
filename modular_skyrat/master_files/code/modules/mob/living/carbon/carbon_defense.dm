@@ -3,6 +3,9 @@
 
 // Emotes
 /mob/living/carbon/disarm(mob/living/carbon/target)
+	//GS13 EDIT Fix Non-Human Disarm
+	if(!istype(target))
+		return ..()
 
 	//GS13 EDIT - Adipohazard and adipoluri effect
 	disarm_fatten(target)
