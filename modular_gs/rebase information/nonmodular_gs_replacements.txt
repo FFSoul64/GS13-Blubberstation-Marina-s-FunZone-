@@ -14,3 +14,6 @@ commented or changed out item pathing in following folders (removing donator ite
 - modular_zubbers\code\modules\loadout\categories\toys.dm
 
 
+automapper changes in this file:
+- GS13-Blubberstation\_maps\bubber\automapper\automapper_config.toml - changed line 157 to move coordinates
+
