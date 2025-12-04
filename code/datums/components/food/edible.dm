@@ -362,7 +362,7 @@ Behavior that's still missing from this component that original food items had t
 	return TRUE
 
 /// Normal time to forcefeed someone something
-#define EAT_TIME_FORCE_FEED (3 SECONDS)
+#define EAT_TIME_FORCE_FEED (2 SECONDS)		// GS13 EDIT makes force feeding faster
 /// Multiplier for eat time if the eater has TRAIT_VORACIOUS
 #define EAT_TIME_VORACIOUS_MULT 0.65 // voracious folk eat 35% faster
 /// Multiplier for how much longer it takes a voracious folk to eat while full
@@ -389,10 +389,13 @@ Behavior that's still missing from this component that original food items had t
 
 	var/time_to_eat = (eater == feeder) ? eat_time : EAT_TIME_FORCE_FEED
 	if(HAS_TRAIT(eater, TRAIT_VORACIOUS) && !HAS_TRAIT(eater, TRAIT_GLUTTON)) //with TRAIT_GLUTTON you consume food without delay
-		if(fullness < NUTRITION_LEVEL_FAT || (eater != feeder)) // No extra delay when being forcefed
-			time_to_eat *= EAT_TIME_VORACIOUS_MULT
-		else
-			time_to_eat *= (fullness / NUTRITION_LEVEL_FAT) * EAT_TIME_VORACIOUS_FULL_MULT // takes longer to eat the more well fed you are
+		// GS13 EDIT - makes it so voracious trait always increases eat speed, no matter what
+		time_to_eat *= EAT_TIME_VORACIOUS_MULT
+		// if(fullness < NUTRITION_LEVEL_FAT || (eater != feeder)) // No extra delay when being forcefed
+		// 	time_to_eat *= EAT_TIME_VORACIOUS_MULT
+		// else
+		// 	time_to_eat *= (fullness / NUTRITION_LEVEL_FAT) * EAT_TIME_VORACIOUS_FULL_MULT // takes longer to eat the more well fed you are
+		// GS13 END EDIT
 	if(eater == feeder)//If you're eating it yourself.
 		if(eat_time > 0 && !do_after(feeder, time_to_eat, eater, timed_action_flags = food_flags & FOOD_FINGER_FOOD ? IGNORE_USER_LOC_CHANGE | IGNORE_TARGET_LOC_CHANGE : NONE)) //Gotta pass the minimal eat time
 			return
@@ -445,7 +448,7 @@ Behavior that's still missing from this component that original food items had t
 		if(isbrain(eater))
 			to_chat(feeder, span_warning("[eater] doesn't seem to have a mouth!"))
 			return
-		if(fullness <= (600 * (1 + eater.overeatduration / (2000 SECONDS))) || HAS_TRAIT(eater, TRAIT_VORACIOUS))
+		if(fullness <= (1800 * (1 + eater.overeatduration / (4000 SECONDS))) || HAS_TRAIT(eater, TRAIT_VORACIOUS))	// GS13 EDIT - increases max fullness for feeding others
 			eater.visible_message(
 				span_danger("[feeder] attempts to [eater.get_bodypart(BODY_ZONE_HEAD) ? "feed [eater] [parent]." : "stuff [parent] down [eater]'s throat hole! Gross."]"),
 				span_userdanger("[feeder] attempts to [eater.get_bodypart(BODY_ZONE_HEAD) ? "feed you [parent]." : "stuff [parent] down your throat hole! Gross."]")
@@ -475,7 +478,7 @@ Behavior that's still missing from this component that original food items had t
 	TakeBite(eater, feeder)
 
 	//If we're not force-feeding and there's an eat delay, try take another bite
-	if(eater == feeder && eat_time > 0)
+	if(eat_time > 0)	// GS13 edit - makes it so feeding others can be queued
 		INVOKE_ASYNC(src, PROC_REF(TryToEat), eater, feeder)
 
 #undef EAT_TIME_FORCE_FEED
