@@ -1,3 +1,5 @@
+//temporarily commented out to add the parts back in
+/*
 /mob/living/carbon/human/species/mammal/mootant
 	race = /datum/species/mammal/mootant
 
@@ -23,79 +25,40 @@
 	species_category = SPECIES_CATEGORY_FURRY
 
 	allowed_limb_ids = list("mammal","aquatic","avian")
+*/
 
 //mootant body parts
 //maws
-/datum/sprite_accessory/snouts/mam_snouts/mootant
+/datum/sprite_accessory/snouts/mammal/mootant
 	name = "Mootant"
 	icon = 'modular_gs/icons/mob/markings/mam_snouts.dmi'
-	icon_state = "mootantone"
-	color_src = MATRIXED
-	matrixed_sections = MATRIX_RED
+	icon_state = "mootant"
 
-/datum/sprite_accessory/snouts/mam_snouts/mootant_tertiary
-	name = "Mootant ALT (Tertiary)"
-	icon = 'modular_gs/icons/mob/markings/mam_snouts.dmi'
-	icon_state = "mootanttwo"
-	color_src = MATRIXED
-	matrixed_sections = MATRIX_RED_BLUE
-//tails
-/datum/sprite_accessory/ears/mam_ears/mootant
+//ears
+/datum/sprite_accessory/ears/mootant
 	name = "Mootant"
-	icon_state = "mootantone"
+	icon_state = "mootant"
 	icon = 'modular_gs/icons/mob/markings/mam_ears.dmi'
-	color_src = MATRIXED
-	matrixed_sections = MATRIX_RED
-
-/datum/sprite_accessory/ears/mam_ears/mootant_tertiary
-	name = "Mootant ALT (Tertiary)"
-	icon_state = "mootanttwo"
-	icon = 'modular_gs/icons/mob/markings/mam_ears.dmi'
-	color_src = MATRIXED
-	matrixed_sections = MATRIX_RED_BLUE
 
 /datum/sprite_accessory/ears/human/mootant
 	name = "Mootant"
-	icon_state = "mootantone"
+	icon_state = "mootant"
 	icon = 'modular_gs/icons/mob/markings/mam_ears.dmi'
-	color_src = MATRIXED
-	matrixed_sections = MATRIX_RED
 
-/datum/sprite_accessory/ears/human/mootant_secondary
-	name = "Mootant (Secondary)"
-	icon_state = "mootanttwo"
-	icon = 'modular_gs/icons/mob/markings/mam_ears.dmi'
-	color_src = MATRIXED
-	matrixed_sections = MATRIX_RED_BLUE
 //tails
 /datum/sprite_accessory/tails/human/mootant
 	name = "Mootant"
 	icon_state = "mootant"
 	icon = 'modular_gs/icons/mob/markings/mam_tails.dmi'
-	color_src = MATRIXED
-	matrixed_sections = MATRIX_RED_GREEN
 
-/datum/sprite_accessory/tails_animated/human/mootant
+/datum/sprite_accessory/tails/mammal/mootant
 	name = "Mootant"
 	icon_state = "mootant"
 	icon = 'modular_gs/icons/mob/markings/mam_tails.dmi'
-	color_src = MATRIXED
-	matrixed_sections = MATRIX_RED_GREEN
-
-/datum/sprite_accessory/tails/mam_tails/mootant
-	name = "Mootant"
-	icon_state = "mootant"
-	icon = 'modular_gs/icons/mob/markings/mam_tails.dmi'
-	matrixed_sections = MATRIX_RED_GREEN
-
-/datum/sprite_accessory/tails_animated/mam_tails_animated/mootant
-	name = "Mootant"
-	icon_state = "mootant"
-	icon = 'modular_gs/icons/mob/markings/mam_tails.dmi'
-	matrixed_sections = MATRIX_RED_GREEN
 
 //mutation toxin
-
+//temporarily commented out to add the parts back in
+/*
 /datum/reagent/mutationtoxin/mootant
 	name = "Mootant Mutation Toxin"
 	description = "A milk-colored toxin."
@@ -132,4 +95,4 @@
 	if(!H?.client?.prefs?.transformation)
 		to_chat(H, span_warning("It seems like [H] resisted the effects of the mutation toxin."))
 		return FALSE
-
+*/
