@@ -34,7 +34,7 @@ export const max_weight: Feature<number> = {
 
 export const weight_gain_persistent: FeatureToggle = {
   name: 'Persistent weight',
-  description: 'Endround/cryo weight becomes your new start weight.',
+  description: 'Endround/cryo weight becomes your new start weight. This will override your starting fatness.',
   component: CheckboxInput,
 };
 
