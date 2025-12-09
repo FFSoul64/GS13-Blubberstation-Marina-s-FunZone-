@@ -56185,6 +56185,12 @@
 /obj/effect/spawner/random/clothing/backpack,
 /turf/open/floor/iron,
 /area/station/commons/dorms)
+"pOL" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/station/commons/dorms)
 "pON" = (
 /obj/structure/sign/poster/official/safety_report/directional/south,
 /obj/effect/decal/cleanable/dirt,
@@ -64873,9 +64879,6 @@
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
-	dir = 1
-	},
 /turf/open/floor/iron/dark,
 /area/station/commons/dorms)
 "snd" = (
@@ -188182,7 +188185,7 @@ pRO
 uRZ
 tnp
 iur
-tqQ
+pOL
 tqQ
 ios
 fmN
