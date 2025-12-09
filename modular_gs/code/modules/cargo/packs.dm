@@ -5,6 +5,52 @@
 	contains = list(/obj/item/vending_refill/mealdor)
 	crate_name = "meal vendor supply crate"
 
+/datum/supply_pack/organic/feeding_tube
+	name = "Feeding Tube Crate"
+	desc = "A machine commonly found in automated barns, used for feeding livestock... though it can be used for just about anything. Or anyone. Comes with an inbuilt state-of-the-art grinder-beaker."
+	cost = CARGO_CRATE_VALUE * 3.5
+	contains = list(
+		/obj/machinery/iv_drip/feeding_tube,
+	)
+	crate_name = "feeding tube"
+	crate_type = /obj/structure/closet/crate/wooden
+
+/datum/supply_pack/organic/greaseburger_combo
+	name = "Greaseburger Combo Crate"
+	desc = "GATO is not responsible for any clogged arteries that may result from the consumption of this combo meal. Now comes with a big bottle of soda, so there's something else in your throat besides just grease!"
+	cost = CARGO_CRATE_VALUE * 5
+	contains = list(
+		/obj/item/food/burger/greaseburger,
+		/obj/item/food/burger/greaseburger,
+		/obj/item/food/burger/greaseburger,
+		/obj/item/reagent_containers/cup/bigbottle/cola,
+	)
+	crate_name = "greaseburger combo"
+	crate_type = /obj/structure/closet/crate/wooden
+
+/datum/supply_pack/materials/material_starter
+	name = "Material Starter Crate"
+	desc = "A set of basic materials required to 'jumpstart' station set-up. Bluespace crystals and calorite not included."
+	cost = CARGO_CRATE_VALUE * 22
+	contains = list(
+		/obj/item/stack/sheet/iron/twenty,
+		/obj/item/stack/sheet/glass/fifty,
+		/obj/item/stack/sheet/mineral/titanium, //no presets for 5 titaniums or golds I'm afraid
+		/obj/item/stack/sheet/mineral/titanium,
+		/obj/item/stack/sheet/mineral/titanium,
+		/obj/item/stack/sheet/mineral/titanium,
+		/obj/item/stack/sheet/mineral/gold,
+		/obj/item/stack/sheet/mineral/gold,
+		/obj/item/stack/sheet/mineral/gold,
+		/obj/item/stack/sheet/mineral/gold,
+		/obj/item/stack/sheet/mineral/uranium/five,
+		/obj/item/stack/sheet/mineral/plasma/five,
+		/obj/item/stack/sheet/mineral/diamond,
+
+	)
+	crate_name = "starter materials"
+
+
 /*
 
 /datum/supply_pack/misc/livestock
@@ -16,21 +62,6 @@
 	crate_name = "livestock implant crate"
 	contraband = TRUE
 
-
-/datum/supply_pack/misc/stripperpole //oldcode port
-	name = "Stripper Pole Crate"
-	desc = "No private bar is complete without a stripper pole, show off the goods! Comes with a ready-to-assemble stripper pole, and a complementary wrench to get things set up!"
-	cost = 3550
-	contains = list(/obj/item/polepack,
-					/obj/item/wrench)
-	crate_name = "stripper pole crate"
-
-/datum/supply_pack/critter/fennec //ported from CHOMPstation2
-	name = "Fennec Crate"
-	desc = "Why so ears?"
-	cost = 5000
-	contains = list(/mob/living/simple_animal/pet/fox/fennec)
-	crate_name = "fennec crate"
 
 /datum/supply_pack/vending/wardrobes/clothing //existing game item not in cargo for some reason
 	name = "ClothesMate Supply Crate"

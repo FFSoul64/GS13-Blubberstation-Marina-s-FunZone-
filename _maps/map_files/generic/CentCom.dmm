@@ -242,12 +242,10 @@
 /area/centcom/central_command_areas/evacuation)
 "aQ" = (
 /obj/structure/table,
-/obj/structure/window{
-	dir = 1
-	},
 /obj/effect/turf_decal/siding/purple{
 	dir = 1
 	},
+/obj/structure/window/spawner/directional/north,
 /turf/open/floor/carpet/gato,
 /area/centcom/central_command_areas/admin)
 "aR" = (
@@ -1529,11 +1527,11 @@
 /turf/open/floor/iron,
 /area/centcom/central_command_areas/control)
 "ew" = (
-/obj/structure/window/reinforced,
 /obj/structure/statue/sandstone/venus{
 	dir = 8;
 	anchored = 1
 	},
+/obj/structure/window/spawner/directional/south,
 /turf/open/floor/light,
 /area/centcom/central_command_areas/admin)
 "ey" = (
@@ -9896,13 +9894,6 @@
 /area/centcom/central_command_areas/admin)
 "DR" = (
 /obj/machinery/computer/bsa_control,
-/obj/machinery/door/window/brigdoor{
-	base_state = "rightsecure";
-	dir = 8;
-	icon_state = "rightsecure";
-	name = "CentCom Customs"
-	},
-/obj/structure/window/reinforced/spawner,
 /obj/effect/turf_decal/siding/wideplating_new/dark{
 	dir = 5
 	},
@@ -10021,14 +10012,12 @@
 /turf/open/floor/iron/dark,
 /area/centcom/central_command_areas/control)
 "El" = (
-/obj/structure/window/reinforced{
-	dir = 4
-	},
 /obj/structure/statue/sandstone/venus{
 	pixel_x = -4;
 	pixel_y = 0
 	},
 /obj/machinery/light/small/directional/west,
+/obj/structure/window/spawner/directional/east,
 /turf/open/floor/mineral/silver,
 /area/centcom/central_command_areas/admin)
 "Em" = (
@@ -11630,8 +11619,8 @@
 /turf/open/floor/carpet/gato,
 /area/centcom/central_command_areas/admin)
 "Jt" = (
-/obj/structure/window/reinforced,
 /obj/structure/statue/sandstone/venus,
+/obj/structure/window/spawner/directional/south,
 /turf/open/floor/light,
 /area/centcom/central_command_areas/admin)
 "Jv" = (
@@ -15684,15 +15673,13 @@
 /area/centcom/central_command_areas/admin)
 "VL" = (
 /obj/structure/table,
-/obj/structure/window{
-	dir = 1
-	},
 /obj/machinery/computer/communications{
 	dir = 8
 	},
 /obj/effect/turf_decal/siding/purple{
 	dir = 1
 	},
+/obj/structure/window/spawner/directional/north,
 /turf/open/floor/carpet/gato,
 /area/centcom/central_command_areas/admin)
 "VM" = (
@@ -15838,14 +15825,12 @@
 /turf/open/floor/iron/dark/diagonal,
 /area/centcom/central_command_areas/admin)
 "Wi" = (
-/obj/structure/window/reinforced{
-	dir = 4
-	},
 /obj/item/statuebust{
 	pixel_x = -3;
 	pixel_y = 0
 	},
 /obj/machinery/light/small/directional/west,
+/obj/structure/window/spawner/directional/east,
 /turf/open/floor/mineral/silver,
 /area/centcom/central_command_areas/admin)
 "Wj" = (
