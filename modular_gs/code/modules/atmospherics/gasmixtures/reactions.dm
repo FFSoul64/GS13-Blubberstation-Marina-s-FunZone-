@@ -30,7 +30,7 @@
 
 	var/old_heat_capacity = air.heat_capacity()
 
-	var/used_moles = min((reaction_efficiency * min(plasma[MOLES], tritium[MOLES]) * 0.5), 4)
+	var/used_moles = min((reaction_efficiency * min(plasma[MOLES], tritium[MOLES]) * 0.5), 10)
 	var/energy_released = used_moles * FIRE_CARBON_ENERGY_RELEASED
 
 	ASSERT_GAS(/datum/gas/lipoifium, air)
