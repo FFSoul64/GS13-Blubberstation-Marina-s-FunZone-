@@ -13,7 +13,7 @@
 		return
 
 	var/calorite_poisoning = micro_calorite_poisoning / 100	// we assume 100 micro calorite poisoning is 100%, so we divide by 100 to get the percentage value
-	micro_calorite_poisoning -= 0.0001
+	adjust_calorite_poisoning(-0.0001)
 
 	if (isnull(client))
 		return
@@ -63,18 +63,19 @@
 	if (calorite_poisoning > 0.97)
 		adjust_perma(1, FATTENING_TYPE_MAGIC, TRUE)
 
-/// in case we ever want to add special effects onto it
+/// returns true if we changed it, false if we didn't
 /mob/living/carbon/proc/adjust_calorite_poisoning(amount)
 	if (isnull(client))
-		return
+		return FALSE
 	
 	if (isnull(client.prefs))
-		return
+		return FALSE
 
 	if (!client.prefs.read_preference(/datum/preference/toggle/severe_fatness_penalty))
-		return
+		return FALSE
 
 	micro_calorite_poisoning += amount
+	return TRUE
 
 /datum/mood_event/calorite_poisoning_hunger
 	description = span_bolddanger("I'm so hungry!")
