@@ -20,8 +20,6 @@
 	var/weight_gain_rate = 1
 	///At what rate does the parent mob lose weight? 1 = 100%
 	var/weight_loss_rate = 1
-	/// how severe is their calorite poisoning? 100 = 100%
-	var/micro_calorite_poisoning = 0
 	/// modifier for weight gain rate. Don't modify this directly, instead use the set and add_weight_gain_modifier procs
 	var/list/weight_gain_modifiers = list()
 	/// modifier for weight loss rate. Don't modify this directly, instead use the set and add_weight_loss_modifier procs

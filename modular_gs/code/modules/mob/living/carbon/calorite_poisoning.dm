@@ -2,6 +2,10 @@
 #define CALORITE_HUNGER		"calorite_hunger"
 #define CALORITE_STARVATION	"calorite_starvation"
 
+/mob/living/carbon
+	/// how severe is their calorite poisoning? 100 = 100%
+	var/micro_calorite_poisoning = 0
+
 /mob/living/carbon/proc/handle_calorite_poisoning()
 	micro_calorite_poisoning = clamp(micro_calorite_poisoning, 0, 100)
 
@@ -20,6 +24,7 @@
 	if (!client.prefs.read_preference(/datum/preference/toggle/severe_fatness_penalty))
 		remove_weight_gain_modifier(CALORITE_POISONING)
 		remove_weight_loss_modifier(CALORITE_POISONING)
+		remove_movespeed_modifier(/datum/movespeed_modifier/calorite_poisoning)
 
 	set_weight_gain_modifier(CALORITE_POISONING, calorite_poisoning)
 	set_weight_loss_modifier(CALORITE_POISONING, -calorite_poisoning)
@@ -31,20 +36,26 @@
 			emote("gurgle")
 
 	if (calorite_poisoning > 0.4)
-		if (has_quirk(/datum/quirk/fat_aversion))
-			remove_quirk(/datum/quirk/fat_aversion)
+		remove_quirk(/datum/quirk/fat_aversion)
 
 	if (calorite_poisoning > 0.5)
 		if (get_fullness() < NUTRITION_LEVEL_FAT)
+			add_mood_event(CALORITE_HUNGER, /datum/mood_event/calorite_poisoning_hunger)
+		if (get_fullness() < NUTRITION_LEVEL_WELL_FED)
 			add_mood_event(CALORITE_STARVATION, /datum/mood_event/calorite_poisoning_starving)
 
-	if (calorite_poisoning > 0.7 && !has_quirk(/datum/quirk/fat_affinity))
+
+	if (calorite_poisoning > 0.7)
 		add_quirk(/datum/quirk/fat_affinity)
 
-	if (calorite_poisoning > 0.8 && get_fullness() < FULLNESS_LEVEL_BLOATED)
-		add_mood_event(CALORITE_HUNGER, /datum/mood_event/calorite_poisoning_hunger)
-		if(prob(1 * calorite_poisoning))
-			Stun(20, ignore_canstun = TRUE)
+	if (calorite_poisoning > 0.8)
+		if (get_fullness() < FULLNESS_LEVEL_BLOATED)
+			add_mood_event(CALORITE_HUNGER, /datum/mood_event/calorite_poisoning_hunger)
+		if (get_fullness() < NUTRITION_LEVEL_FAT)
+			add_mood_event(CALORITE_STARVATION, /datum/mood_event/calorite_poisoning_starving)
+		add_movespeed_modifier(/datum/movespeed_modifier/calorite_poisoning)
+	else
+		remove_movespeed_modifier(/datum/movespeed_modifier/calorite_poisoning)
 
 	if (calorite_poisoning > 0.9)
 		adjust_fatness(10 * (calorite_poisoning - 0.9), FATTENING_TYPE_MAGIC)
@@ -54,6 +65,15 @@
 
 /// in case we ever want to add special effects onto it
 /mob/living/carbon/proc/adjust_calorite_poisoning(amount)
+	if (isnull(client))
+		return
+	
+	if (isnull(client.prefs))
+		return
+
+	if (!client.prefs.read_preference(/datum/preference/toggle/severe_fatness_penalty))
+		return
+
 	micro_calorite_poisoning += amount
 
 /datum/mood_event/calorite_poisoning_hunger
@@ -65,3 +85,9 @@
 	description = span_bolddanger("I'M STARVING!!")
 	mood_change = -8
 	timeout = 3 MINUTES
+
+/datum/movespeed_modifier/calorite_poisoning
+	id = CALORITE_POISONING
+	variable = FALSE
+	conflicts_with = CALORITE_POISONING
+	multiplicative_slowdown = 0.6
