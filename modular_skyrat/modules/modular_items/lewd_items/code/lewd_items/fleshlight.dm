@@ -90,25 +90,24 @@
 						'modular_skyrat/modules/modular_items/lewd_items/sounds/bang5.ogg',
 						'modular_skyrat/modules/modular_items/lewd_items/sounds/bang6.ogg'), 70, 1, -1)
 
-//GS13 edit - commented out
-// /obj/item/toy/plush/fleshlight/screws
-// 	name = "Chief Screws Plush"
-// 	desc = "An adorable blue Lizard plushie wearing a Chief Engineer's Uniform... her upturned skirt revealing a tight, pre-lubed pussy."
-// 	icon = 'modular_zubbers/icons/obj/toys/plushes.dmi'
-// 	icon_state = "cescrewsplush"
-// 	base_icon_state = "cescrewsplush"
+/obj/item/toy/plush/fleshlight/screws
+	name = "Chief Screws Plush"
+	desc = "An adorable blue Lizard plushie wearing a Chief Engineer's Uniform... her upturned skirt revealing a tight, pre-lubed pussy."
+	icon = 'modular_zubbers/icons/obj/toys/plushes.dmi'
+	icon_state = "cescrewsplush"
+	base_icon_state = "cescrewsplush"
 
-// /obj/item/toy/plush/fleshlight/screws/examine(mob/user)
-// 	. = ..()
-// 	. += span_notice("Alt-click to cover her up.")
+/obj/item/toy/plush/fleshlight/screws/examine(mob/user)
+	. = ..()
+	. += span_notice("Alt-click to cover her up.")
 
-// /obj/item/toy/plush/fleshlight/screws/click_alt(mob/user)
-// 	user.visible_message(span_notice("[user] turns [src], hiding the hole underneath."), span_notice("You turn [src], covering her up with her little skirt."))
-// 	playsound(user, 'sound/effects/blob/blobattack.ogg', 50, TRUE)
-// 	var/obj/item/toy/plush/cescrewsplush/plushie = new(null)
-// 	qdel(src)
-// 	user.put_in_hands(plushie)
-// 	return TRUE
+/obj/item/toy/plush/fleshlight/screws/click_alt(mob/user)
+	user.visible_message(span_notice("[user] turns [src], hiding the hole underneath."), span_notice("You turn [src], covering her up with her little skirt."))
+	playsound(user, 'sound/effects/blob/blobattack.ogg', 50, TRUE)
+	var/obj/item/toy/plush/cescrewsplush/plushie = new(null)
+	qdel(src)
+	user.put_in_hands(plushie)
+	return TRUE
 
 /obj/item/toy/plush/fleshlight/attack(mob/living/carbon/human/target, mob/living/carbon/human/user)
 	. = ..()

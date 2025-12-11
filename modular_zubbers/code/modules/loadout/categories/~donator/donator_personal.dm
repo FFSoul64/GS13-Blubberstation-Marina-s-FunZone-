@@ -147,20 +147,20 @@
 *	TOYS
 */
 
-// /datum/loadout_item/toys/nobl_plush
-// 	name = "Fluffy Skog Plushie"
-// 	item_path = /obj/item/toy/plush/nobl
-// 	ckeywhitelist = list("nobledreameater")
+/datum/loadout_item/toys/nobl_plush
+	name = "Fluffy Skog Plushie"
+	item_path = /obj/item/toy/plush/nobl
+	ckeywhitelist = list("nobledreameater")
 
-// /datum/loadout_item/toys/carrotbag
-// 	name = "Carrot Bag"
-// 	item_path = /obj/item/sbeacondrop/carrot
-// 	//ckeywhitelist = list("slippyjoe")
+/datum/loadout_item/toys/carrotbag
+	name = "Carrot Bag"
+	item_path = /obj/item/sbeacondrop/carrot
+	//ckeywhitelist = list("slippyjoe")
 
-// /datum/loadout_item/toys/largeredslime
-// 	name = "Large Red Slime Plush"
-// 	item_path = /obj/item/toy/plush/largeredslime
-// 	ckeywhitelist = list("blovy")
+/datum/loadout_item/toys/largeredslime
+	name = "Large Red Slime Plush"
+	item_path = /obj/item/toy/plush/largeredslime
+	ckeywhitelist = list("blovy")
 
 /*
 *	GLOVES
