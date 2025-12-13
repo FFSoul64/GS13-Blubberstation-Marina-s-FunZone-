@@ -1236,6 +1236,12 @@
 	dir = 4;
 	name = "Assistant Shredder"
 	},
+/obj/effect/turf_decal/siding/wideplating/dark{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/dark{
+	dir = 1
+	},
 /turf/open/floor/engine,
 /area/station/cargo/miningdock)
 "ami" = (
@@ -8217,6 +8223,7 @@
 /area/station/maintenance/rus_gambling)
 "bDS" = (
 /obj/structure/shipping_container/gato,
+/obj/effect/turf_decal/stripes/white/line,
 /turf/open/floor/iron/dark/small,
 /area/station/cargo/miningdock)
 "bDV" = (
@@ -17249,9 +17256,6 @@
 	},
 /turf/open/floor/plating/airless,
 /area/space/nearstation)
-"djJ" = (
-/turf/open/floor/iron/dark/small,
-/area/station/cargo/miningdock)
 "djK" = (
 /obj/structure/cable,
 /obj/machinery/light/small/directional/north,
@@ -18108,6 +18112,7 @@
 	network = list("ss13","medbay")
 	},
 /obj/structure/scale,
+/obj/effect/turf_decal/bot,
 /turf/open/floor/iron/white,
 /area/station/medical/medbay/lobby)
 "dsK" = (
@@ -19621,9 +19626,9 @@
 /turf/open/floor/iron/white,
 /area/station/medical/chemistry)
 "dHA" = (
-/obj/item/soap/nanotrasen,
-/obj/item/bikehorn/rubberducky,
 /obj/machinery/duct,
+/obj/item/soap/gato,
+/obj/item/bikehorn/rubberducky,
 /turf/open/floor/iron/freezer,
 /area/station/medical/aslyum)
 "dHC" = (
@@ -21472,12 +21477,12 @@
 /turf/open/floor/iron/white,
 /area/station/science/xenobiology)
 "eaD" = (
-/obj/effect/turf_decal/bot,
-/obj/structure/bed/medical/emergency,
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 9
 	},
 /obj/structure/extinguisher_cabinet/directional/north,
+/obj/machinery/self_actualization_device,
+/obj/effect/turf_decal/delivery,
 /turf/open/floor/iron/white,
 /area/station/medical/medbay/lobby)
 "eaL" = (
@@ -34721,9 +34726,6 @@
 	},
 /area/station/medical/medbay/lobby)
 "gAw" = (
-/obj/structure/sign/nanotrasen{
-	pixel_x = -32
-	},
 /obj/effect/landmark/start/hangover,
 /turf/open/floor/wood,
 /area/station/hallway/primary/port)
@@ -52137,6 +52139,7 @@
 "jRs" = (
 /obj/structure/closet/crate,
 /obj/effect/spawner/random/maintenance/six,
+/obj/effect/turf_decal/stripes/white/line,
 /turf/open/floor/iron/dark/small,
 /area/station/cargo/miningdock)
 "jRz" = (
@@ -53517,6 +53520,9 @@
 /area/station/hallway/primary/central)
 "kev" = (
 /obj/structure/shipping_container/donk_co,
+/obj/effect/turf_decal/stripes/white/line{
+	dir = 1
+	},
 /turf/open/floor/iron/dark/small,
 /area/station/cargo/miningdock)
 "key" = (
@@ -56040,6 +56046,12 @@
 /obj/structure/table/rolling,
 /obj/item/key/atv{
 	pixel_y = 4
+	},
+/obj/effect/turf_decal/siding/wideplating/dark{
+	dir = 10
+	},
+/obj/effect/turf_decal/siding/dark{
+	dir = 10
 	},
 /turf/open/floor/engine,
 /area/station/cargo/miningdock)
@@ -65141,6 +65153,11 @@
 /obj/structure/window/reinforced/spawner/directional/north,
 /turf/open/floor/plating,
 /area/station/maintenance/disposal)
+"mqU" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/tile/purple/full,
+/turf/open/floor/iron/shuttle/evac/airless,
+/area/space/nearstation)
 "mqY" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -65758,6 +65775,12 @@
 /obj/structure/rack/shelf,
 /obj/item/wrench,
 /obj/item/weldingtool,
+/obj/effect/turf_decal/siding/wideplating/dark{
+	dir = 9
+	},
+/obj/effect/turf_decal/siding/dark{
+	dir = 9
+	},
 /turf/open/floor/engine,
 /area/station/cargo/miningdock)
 "myB" = (
@@ -70031,7 +70054,7 @@
 /area/station/security/prison/safe)
 "noz" = (
 /obj/structure/table/wood/poker,
-/obj/item/toy/cards/deck,
+/obj/item/toy/cards/deck/gato,
 /turf/open/floor/wood,
 /area/station/service/bar/atrium)
 "noB" = (
@@ -75516,6 +75539,7 @@
 "ooc" = (
 /obj/structure/closet/secure_closet/bar,
 /obj/effect/turf_decal/siding/wood,
+/obj/item/book/manual/blubbery_bartender,
 /turf/open/floor/iron/dark,
 /area/station/hallway/secondary/service)
 "oof" = (
@@ -84271,6 +84295,7 @@
 /area/station/security/prison/garden)
 "pXg" = (
 /obj/effect/spawner/random/structure/crate,
+/obj/effect/turf_decal/stripes/white/line,
 /turf/open/floor/iron/dark/small,
 /area/station/cargo/miningdock)
 "pXh" = (
@@ -95631,6 +95656,12 @@
 /turf/open/floor/plating,
 /area/station/maintenance/fore/upper)
 "sdi" = (
+/obj/effect/turf_decal/siding/wideplating/dark{
+	dir = 5
+	},
+/obj/effect/turf_decal/siding/dark{
+	dir = 5
+	},
 /turf/open/floor/engine,
 /area/station/cargo/miningdock)
 "sdu" = (
@@ -99097,7 +99128,7 @@
 /area/station/security/checkpoint/engineering)
 "sKD" = (
 /obj/structure/table,
-/obj/item/lighter,
+/obj/item/book/lorebooks/welcome_to_gato,
 /turf/open/floor/iron/dark,
 /area/station/hallway/secondary/entry)
 "sKI" = (
@@ -101075,6 +101106,8 @@
 /area/station/maintenance/department/science/xenobiology)
 "tdb" = (
 /obj/structure/railing,
+/obj/effect/turf_decal/siding/wideplating/dark,
+/obj/effect/turf_decal/siding/dark,
 /turf/open/floor/engine,
 /area/station/cargo/miningdock)
 "tdi" = (
@@ -108520,7 +108553,6 @@
 /turf/open/floor/iron,
 /area/station/engineering/atmos)
 "uyx" = (
-/obj/item/toy/plush/skyrat/plushie_syntax1112,
 /obj/item/paper/fluff{
 	default_raw_text = "if yor readin this!! its 2 late! it has been unleahsed";
 	name = "Ominous Note"
@@ -121241,6 +121273,9 @@
 /area/station/service/chapel)
 "wRL" = (
 /obj/structure/closet/crate/large,
+/obj/effect/turf_decal/stripes/white/line{
+	dir = 1
+	},
 /turf/open/floor/iron/dark/small,
 /area/station/cargo/miningdock)
 "wRM" = (
@@ -122388,6 +122423,12 @@
 "xdQ" = (
 /obj/structure/railing/corner/end/flip{
 	dir = 8
+	},
+/obj/effect/turf_decal/siding/wideplating/dark{
+	dir = 6
+	},
+/obj/effect/turf_decal/siding/dark{
+	dir = 6
 	},
 /turf/open/floor/engine,
 /area/station/cargo/miningdock)
@@ -169866,11 +169907,11 @@ ilS
 bld
 lVQ
 ktY
-djJ
+ryA
 bDS
 ktY
-djJ
-djJ
+ryA
+jvp
 ktY
 kev
 pXg
@@ -170380,14 +170421,14 @@ eiY
 sdF
 lVQ
 ktY
-djJ
-djJ
+ryA
+jvp
 ktY
 wRL
 jRs
 ktY
-djJ
-djJ
+ryA
+jvp
 txY
 ktY
 uGt
@@ -220159,7 +220200,7 @@ gLc
 gLc
 gLc
 soz
-soz
+tvM
 rZJ
 hJA
 dhd
@@ -220416,7 +220457,7 @@ gLc
 gLc
 gLc
 soz
-soz
+tvM
 xRc
 jAY
 mex
@@ -220673,7 +220714,7 @@ gLc
 gLc
 gLc
 soz
-soz
+tvM
 xRc
 bpH
 rRh
@@ -220930,7 +220971,7 @@ gLc
 gLc
 gLc
 soz
-soz
+tvM
 xRc
 jAY
 xnZ
@@ -221186,8 +221227,8 @@ gLc
 gLc
 gLc
 gLc
-soz
-soz
+tvM
+tvM
 rZJ
 yln
 kly
@@ -221443,7 +221484,7 @@ xQw
 gLc
 gLc
 gLc
-soz
+tvM
 rZJ
 rZJ
 dga
@@ -221700,7 +221741,7 @@ xQw
 gLc
 gLc
 gLc
-soz
+tvM
 xRc
 dpw
 ukJ
@@ -221957,7 +221998,7 @@ xQw
 gLc
 gLc
 soz
-soz
+tvM
 xRc
 jAY
 xAH
@@ -223483,7 +223524,7 @@ ulx
 ulx
 ulx
 nvJ
-soz
+tvM
 soz
 soz
 soz
@@ -223499,7 +223540,7 @@ soz
 soz
 loJ
 soz
-soz
+tvM
 rBP
 nmi
 mLZ
@@ -223740,7 +223781,7 @@ ulx
 ulx
 ulx
 nvJ
-soz
+tvM
 avR
 gLc
 gLc
@@ -223756,7 +223797,7 @@ gLc
 gLc
 loJ
 gLc
-soz
+tvM
 rBP
 kyr
 lMo
@@ -223997,8 +224038,8 @@ ulx
 ulx
 nvJ
 nvJ
-soz
-soz
+tvM
+tvM
 soz
 soz
 soz
@@ -224013,7 +224054,7 @@ gLc
 gLc
 loJ
 gLc
-soz
+tvM
 rBP
 hPm
 sdR
@@ -224269,8 +224310,8 @@ soz
 soz
 gLc
 loJ
-soz
-soz
+tvM
+tvM
 rBP
 wXy
 otl
@@ -224367,8 +224408,8 @@ tHR
 aTW
 rSM
 soz
-gLc
-gLc
+rhu
+rhu
 soz
 jYw
 cAc
@@ -224525,8 +224566,8 @@ gLc
 gLc
 gLc
 gLc
-qFa
-qFa
+mqU
+mqU
 rBP
 rBP
 xMM
@@ -224624,8 +224665,8 @@ irK
 tbm
 rSM
 soz
-gLc
-gLc
+rhu
+rhu
 soz
 jYw
 rws
@@ -224782,7 +224823,7 @@ gLc
 gLc
 gLc
 gLc
-soz
+tvM
 rBP
 rBP
 qPD
@@ -224917,11 +224958,11 @@ tUz
 tUz
 tUz
 uZC
-gLc
-gLc
-gLc
-gLc
-gLc
+rhu
+rhu
+rhu
+rhu
+rhu
 fge
 fge
 tTt
@@ -225025,8 +225066,8 @@ ulx
 wgK
 wgK
 wgK
-soz
-soz
+tvM
+tvM
 soz
 soz
 soz
@@ -225039,7 +225080,7 @@ gLc
 wgK
 wgK
 gLc
-soz
+tvM
 rBP
 mjA
 fJl
@@ -225283,7 +225324,7 @@ wgK
 wgK
 wgK
 wgK
-soz
+tvM
 ioc
 ioc
 ioc
@@ -225296,7 +225337,7 @@ wgK
 wgK
 wgK
 wgK
-soz
+tvM
 rBP
 qyf
 rOc
@@ -225431,9 +225472,9 @@ jzy
 dYs
 sny
 tUz
-gLc
-gLc
-gLc
+rhu
+rhu
+rhu
 qyl
 ohL
 aAo
@@ -225540,7 +225581,7 @@ jxv
 uDZ
 wgK
 wgK
-soz
+tvM
 eCI
 fWL
 ioc
@@ -225553,7 +225594,7 @@ wgK
 wgK
 wgK
 wgK
-soz
+tvM
 rBP
 cDt
 bbG
@@ -225797,7 +225838,7 @@ wgK
 wgK
 wgK
 wgK
-soz
+tvM
 ioc
 ioc
 ioc
@@ -225810,7 +225851,7 @@ wgK
 wgK
 wgK
 wgK
-soz
+tvM
 rBP
 qyf
 rOc
@@ -225945,9 +225986,9 @@ duL
 jFw
 fJJ
 tUz
-gLc
-gLc
-gLc
+rhu
+rhu
+rhu
 qyl
 ooY
 aAo
@@ -226053,8 +226094,8 @@ ulx
 wgK
 wgK
 wgK
-soz
-soz
+tvM
+tvM
 soz
 soz
 soz
@@ -226067,7 +226108,7 @@ gLc
 wgK
 wgK
 gLc
-soz
+tvM
 rBP
 aGV
 gcs
@@ -226324,7 +226365,7 @@ gLc
 gLc
 gLc
 gLc
-soz
+tvM
 rBP
 rBP
 axB
@@ -226459,11 +226500,11 @@ tUz
 tUz
 tUz
 uZC
-gLc
-gLc
-gLc
-gLc
-gLc
+rhu
+rhu
+rhu
+rhu
+rhu
 fge
 fge
 xeS
@@ -226581,8 +226622,8 @@ gLc
 gLc
 gLc
 gLc
-qFa
-qFa
+mqU
+mqU
 rBP
 rBP
 puZ
@@ -226680,8 +226721,8 @@ sEZ
 uNG
 rSM
 soz
-gLc
-gLc
+rhu
+rhu
 soz
 jYw
 wmv
@@ -226839,8 +226880,8 @@ soz
 soz
 gLc
 loJ
-soz
-soz
+tvM
+tvM
 rBP
 wVO
 otl
@@ -226937,8 +226978,8 @@ sEZ
 pgN
 rSM
 soz
-gLc
-gLc
+rhu
+rhu
 soz
 jYw
 tLf
@@ -227081,8 +227122,8 @@ ulx
 ulx
 nvJ
 nvJ
-soz
-soz
+tvM
+tvM
 soz
 soz
 soz
@@ -227097,7 +227138,7 @@ gLc
 gLc
 loJ
 gLc
-soz
+tvM
 rBP
 xuX
 ptX
@@ -227338,7 +227379,7 @@ ulx
 ulx
 ulx
 nvJ
-soz
+tvM
 avR
 gLc
 gLc
@@ -227354,7 +227395,7 @@ gLc
 gLc
 loJ
 gLc
-soz
+tvM
 rBP
 vBa
 lMo
@@ -227595,7 +227636,7 @@ ulx
 ulx
 ulx
 nvJ
-soz
+tvM
 soz
 soz
 soz
@@ -227611,7 +227652,7 @@ dzB
 dzB
 loJ
 soz
-soz
+tvM
 rBP
 vJj
 sVD
@@ -229153,7 +229194,7 @@ fKg
 gLc
 gLc
 qFa
-soz
+tvM
 abG
 eRC
 qsb
@@ -229410,7 +229451,7 @@ fKg
 gLc
 gLc
 loJ
-soz
+tvM
 abG
 mAo
 dec
@@ -229667,7 +229708,7 @@ fKg
 gLc
 gLc
 loJ
-soz
+tvM
 kaj
 kaj
 xvb
@@ -229924,8 +229965,8 @@ gLc
 gLc
 gLc
 loJ
-soz
-soz
+tvM
+tvM
 kaj
 ctH
 dec
@@ -230182,7 +230223,7 @@ gLc
 gLc
 loJ
 soz
-soz
+tvM
 abG
 dAv
 agN
@@ -230439,7 +230480,7 @@ gLc
 gLc
 loJ
 soz
-soz
+tvM
 abG
 hov
 qKT
@@ -230696,7 +230737,7 @@ gLc
 gLc
 loJ
 soz
-soz
+tvM
 abG
 qVv
 agN
@@ -230953,7 +230994,7 @@ gLc
 gLc
 loJ
 soz
-soz
+tvM
 kaj
 bsa
 qsb

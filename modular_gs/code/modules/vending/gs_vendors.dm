@@ -95,11 +95,26 @@
 	product_slogans = "Fatass."
 	vend_reply = "Pervert."
 	products = list(
-	            /obj/item/reagent_containers/cup/beaker/galbanic = 99,
-				/obj/item/reagent_containers/cup/beaker/lipoifier = 99,
+				/obj/item/melee/curator_whip/fattening = 99,
+				/obj/item/melee/curator_whip/permafattening = 99,
+				/obj/item/gavelhammer/fattening = 99,
+				/obj/item/gavelhammer/permafattening = 99,
 				/obj/item/gun/energy/fatoray/cannon = 99,
 				/obj/item/gun/energy/fatoray = 99,
+				/obj/item/gun/energy/laser/alter_ray/gainrate = 99,
+				/obj/item/gun/energy/laser/alter_ray/noloss = 99,
 				/obj/item/metal_food/mburger_calorite = 99,
+				/obj/item/food/burger/greaseburger = 99,
+				/obj/item/stack/sheet/mineral/calorite/ten = 99,
+				/obj/item/reagent_containers/cup/beaker/galbanic = 99,
+				/obj/item/reagent_containers/cup/beaker/lipoifier = 99,
+				/obj/item/reagent_containers/cup/beaker/macarenic = 99,
+				/obj/item/reagent_containers/cup/beaker/micro_calorite = 99,
+				/obj/item/reagent_containers/cup/beaker/fizulphite = 99,
+				/obj/item/reagent_containers/cup/beaker/extilphite = 99,
+				/obj/item/reagent_containers/cup/beaker/blueberry_juice = 99,
+				/obj/item/reagent_containers/cup/beaker/cornoil = 99,
+				/obj/item/reagent_containers/cup/beaker/flatulose = 99,
 				)
 
 	refill_canister = /obj/item/vending_refill/mealdor

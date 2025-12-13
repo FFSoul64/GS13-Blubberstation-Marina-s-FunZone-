@@ -22,12 +22,14 @@
 	name = "Unknown Outpost"
 	default_gravity = STANDARD_GRAVITY
 
-/area/xenoarch
+
+//lavaland xenoarch areas - seperate multi-Z level
+/area/xenoarch/lavaland
 	icon = 'modular_gs/icons/turf/areas.dmi'
 	icon_state = "xenogen"
 	default_gravity = STANDARD_GRAVITY
 
-/area/xenoarch/outside
+/area/xenoarch/lavaland/outside
 	icon_state = "yellow"
 	default_gravity = STANDARD_GRAVITY
 	outdoors = TRUE
@@ -44,29 +46,92 @@
 	area_flags = VALID_TERRITORY | UNIQUE_AREA
 
 
-/area/xenoarch/arch
+/area/xenoarch/lavaland/arch
 	name = "Xenoarchaeology"
 	icon_state = "xenoarch"
 
-/area/xenoarch/bot
+/area/xenoarch/lavaland/bot
 	name = "Xenoarchaeology Botany"
 	icon_state = "xenobot"
 
-/area/xenoarch/eng
+/area/xenoarch/lavaland/eng
 	name = "Xenoarchaeology Engineering"
 	icon_state = "xenoeng"
 
-/area/xenoarch/gen
+/area/xenoarch/lavaland/gen
 	name = "Xenoarchaeology Living Quarters"
 	icon_state = "xenogen"
 
-/area/xenoarch/sec
+/area/xenoarch/lavaland/sec
 	name = "Xenoarchaeology Security"
 	icon_state = "xenosec"
 
-/area/xenoarch/med
+/area/xenoarch/lavaland/med
 	name = "Xenoarchaeology Medical"
 	icon_state = "xenomed"
+
+/area/xenoarch/lavaland/bathroom
+	name = "Xenoarchaeology Bathroom"
+	icon_state = "xenomed"
+
+/area/xenoarch/lavaland/construction
+	name = "Xenoarchaeology Construction"
+	icon_state = "xenoeng"
+
+/area/xenoarch/lavaland/foyer
+	name = "Xenoarchaeology Foyer"
+	icon_state = "xenoarch"
+
+/area/xenoarch/lavaland/gym
+	name = "Xenoarchaeology Gym"
+	icon_state = "xenosec"
+
+/area/xenoarch/lavaland/library
+	name = "Xenoarchaeology Library"
+	icon_state = "xenobot"
+
+/area/xenoarch/lavaland/maint_east
+	name = "Xenoarchaeology East Maintenance"
+	icon_state = "yellow"
+
+/area/xenoarch/lavaland/maint_west
+	name = "Xenoarchaeology West Maintenance"
+	icon_state = "yellow"
+
+/area/xenoarch/lavaland/public
+	name = "Xenoarchaeology Public Area"
+	icon_state = "xenobot"
+
+/area/xenoarch/lavaland/calorite_temple
+	name = "Calorite Temple"
+	icon_state = "caloritetemple"
+	power_light = TRUE
+
+/area/xenoarch/lavaland/outside/caloriteresearch_powered
+	name = "Research Facility Ruins"
+	icon_state = "caloriteresearch"
+	power_light = TRUE
+
+/area/xenoarch/lavaland/outside/caloriteresearch_unpowered
+	name = "Research Facility Ruins"
+	icon_state = "caloriteresearch"
+	power_light = FALSE
+
+/area/xenoarch/lavaland/outside/donut_factory
+	name = "GATO Donut Factory"
+	icon_state = "donutfactory"
+
+/area/xenoarch/lavaland/outside/candy_outpost
+	name = "Candyland Survey Post"
+	icon_state = "candyoutpost"
+
+/area/xenoarch/lavaland/outside/candyland
+	name = "Candyland"
+	icon_state = "candyland"
+	power_light = TRUE
+
+//xenoarch areas end
+
 
 /area/ruin/powered/gluttony
 	icon_state = "dk_yellow"
@@ -118,32 +183,5 @@
 	name = "Syndicate Lavaland Approach"
 	icon_state = "red"
 
-
-/area/xenoarch/calorite_temple
-	name = "Calorite Temple"
-	icon_state = "caloritetemple"
-	power_light = TRUE
-
-
-/area/xenoarch/caloriteresearch_powered
-	name = "Research Facility Ruins"
-	icon_state = "caloriteresearch"
-	power_light = TRUE
-
-/area/xenoarch/caloriteresearch_unpowered
-	name = "Research Facility Ruins"
-	icon_state = "caloriteresearch"
-	power_light = FALSE
-
-/area/xenoarch/donut_factory
-	name = "GATO Donut Factory"
-	icon_state = "donutfactory"
-
-/area/xenoarch/candy_outpost
-	name = "Candyland Survey Post"
-	icon_state = "candyoutpost"
-
-/area/xenoarch/candyland
-	name = "Candyland"
-	icon_state = "candyland"
-	power_light = TRUE
+/area/station/commons/dorms/lower
+	name = "\improper Lower Level Dormitories"

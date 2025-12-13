@@ -1,6 +1,0 @@
-- CentCom_skyra_z2.dm was edited for GATOfication of status display
-- code/game/objects/items/cards_ids.dm had a path change for GATOfication 
-- code/game/machinery/requests_console.dm had an icon override in gato.dm
-- code/game/objects/items/devices/radio/intercom.dm - icon overriden in gato.dm 
-- code/game/machinery/newscaster/newscaster_machine.dm - icon overriden in gato.dm
-- code/modules/paperwork/folders.dm - icon overriden in gato.dm

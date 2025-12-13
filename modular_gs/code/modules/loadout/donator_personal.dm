@@ -7,7 +7,7 @@
 /datum/loadout_item/neck/gatobadge_middleman //these are available to players who were granted permission to have their characters to CC
 	name = "GATO Badge - Correspondent"
 	item_path = /obj/item/clothing/accessory/medal/gato_badge/middleman
-	ckeywhitelist = list("johnjimjim", "sonoida", "JohnJimJim")
+	ckeywhitelist = list("johnjimjim", "sonoida", "JohnJimJim", "JOHNJIMJIM", "johnjimjim")
 
 // /datum/loadout_item/suit/halsey_overcoat
 // 	name = "Halsey's Commander Overcoat"

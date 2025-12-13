@@ -1,0 +1,19 @@
+- CentCom_skyra_z2.dm was edited for GATOfication of status display
+- code/game/objects/items/cards_ids.dm had a path change for GATOfication 
+- code/game/machinery/requests_console.dm had an icon override in gato.dm
+- code/game/objects/items/devices/radio/intercom.dm - icon overriden in gato.dm 
+- code/game/machinery/newscaster/newscaster_machine.dm - icon overriden in gato.dm
+- code/modules/paperwork/folders.dm - icon overriden in gato.dm
+
+commented or changed out item pathing in following folders (removing donator items or plushie cameos from other codebases):
+- modular_skyrat\modules\modular_items\lewd_items\code\lewd_items\fleshlight.dm
+- modular_skyrat\modules\modular_items\lewd_items\code\lewd_machinery\lustwish.dm
+- modular_skyrat\modules\customization\game\objects\items\plushes.dm
+- modular_zubbers\code\modules\vending\games.dm
+- modular_zubbers\code\modules\loadout\categories\~donator\donator_personal.dm
+- modular_zubbers\code\modules\loadout\categories\toys.dm
+
+
+automapper changes in this file:
+- GS13-Blubberstation\_maps\bubber\automapper\automapper_config.toml - changed line 157 to move coordinates
+

@@ -6257,10 +6257,6 @@
 	},
 /area/station/ai_monitored/turret_protected/ai_upload)
 "aCO" = (
-/obj/item/toy/plush/skyrat/duffmoth{
-	resistance_flags = 2;
-	name = "lightly roasted moth plushie"
-	},
 /obj/structure/lattice/catwalk/mining,
 /turf/open/lava/fake,
 /area/station/maintenance/starboard/fore)
@@ -9379,6 +9375,8 @@
 /obj/structure/closet/secure_closet/bar,
 /obj/item/holosign_creator/robot_seat/bar,
 /obj/item/vending_refill/cigarette,
+/obj/item/book/manual/blubbery_bartender,
+/obj/item/book/manual/blubbery_bartender,
 /turf/open/floor/wood,
 /area/station/service/bar)
 "aNv" = (
@@ -70776,9 +70774,6 @@
 	pixel_y = 3;
 	pixel_x = -14;
 	name = "statue of the liberator"
-	},
-/obj/item/toy/plush/skyrat/fermis{
-	pixel_x = 3
 	},
 /obj/structure/window/plasma/spawner/directional/east,
 /turf/open/floor/glass/plasma,

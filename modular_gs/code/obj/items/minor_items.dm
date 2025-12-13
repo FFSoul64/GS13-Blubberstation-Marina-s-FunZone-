@@ -18,33 +18,42 @@
 // GS13 fatty liquid beakers defs, for admin stuff and mapping junk
 
 /obj/item/reagent_containers/cup/beaker/lipoifier
+	name = "lipoifier beaker"
 	list_reagents = list(/datum/reagent/consumable/lipoifier = 50)
 
 /obj/item/reagent_containers/cup/beaker/galbanic
+	name = "galbanic compound beaker"
 	list_reagents = list(/datum/reagent/fermi_fat = 50)
 
 /obj/item/reagent_containers/cup/beaker/cornoil
+	name = "corn oil beaker"
 	list_reagents = list(/datum/reagent/consumable/nutriment/fat/oil/corn = 50)
 
 /obj/item/reagent_containers/cup/beaker/blueberry_juice
+	name = "blueberry juice beaker"
 	list_reagents = list(/datum/reagent/blueberry_juice = 50)
 
 /obj/item/reagent_containers/cup/beaker/fizulphite
+	name = "fizulphite beaker"
 	list_reagents = list(/datum/reagent/consumable/fizulphite = 50)
 
 /obj/item/reagent_containers/cup/beaker/extilphite
+	name = "extilphite beaker"
 	list_reagents = list(/datum/reagent/consumable/extilphite = 50)
 
 /obj/item/reagent_containers/cup/beaker/calorite_blessing
 	list_reagents = list(/datum/reagent/consumable/caloriteblessing = 50)
 
 /obj/item/reagent_containers/cup/beaker/micro_calorite
+	name = "micro-calorite beaker"
 	list_reagents = list(/datum/reagent/micro_calorite = 50)
 
 /obj/item/reagent_containers/cup/beaker/flatulose
+	name = "flatulose beaker"
 	list_reagents = list(/datum/reagent/consumable/flatulose = 50)
 
 /obj/item/reagent_containers/cup/beaker/macarenic
+	name = "macarenic compound beaker"
 	list_reagents = list(/datum/reagent/fermi_slim = 50)
 
 /*
@@ -269,8 +278,8 @@
 /obj/item/gavelhammer/fattening
 	desc = "Some madman managed to create a weapon out of calorite... Luckily, it has a rubber handle for you to wield."
 	name = "Calorite Hammer"
-	icon = 'icons/obj/weapons/hammer.dmi'
-	icon_state = "toyhammer"
+	icon = 'modular_gs/icons/obj/weapons/calorite_hammer.dmi'
+	icon_state = "hammer"
 	damtype = FAT
 	throwforce = 40
 	force = 60
