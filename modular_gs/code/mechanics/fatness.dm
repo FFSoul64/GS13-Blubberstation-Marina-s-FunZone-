@@ -225,7 +225,7 @@
 	var/local_loss_rate = weight_loss_rate
 
 	if (HAS_TRAIT(src, TRAIT_UNIVERSAL_GAINER))
-		local_loss_rate = max(0.2, local_loss_rate)
+		local_loss_rate = min(0.5, local_loss_rate)
 	
 	local_loss_rate += get_weight_loss_modifiers()
 	
