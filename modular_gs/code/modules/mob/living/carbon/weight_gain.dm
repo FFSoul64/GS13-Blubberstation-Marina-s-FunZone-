@@ -3,6 +3,7 @@
 	fatty.handle_fatness()
 	fatty.handle_helplessness()
 	fatty.handle_modular_items()
+	fatty.handle_calorite_poisoning()
 
 	switch(fatty.get_fullness())
 		if(0 to FULLNESS_LEVEL_BLOATED)

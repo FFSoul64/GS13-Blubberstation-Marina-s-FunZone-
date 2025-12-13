@@ -7016,6 +7016,7 @@
 #include "modular_gs\code\modules\mob\living\genitals.dm"
 #include "modular_gs\code\modules\mob\living\species.dm"
 #include "modular_gs\code\modules\mob\living\basic\calorite_slime.dm"
+#include "modular_gs\code\modules\mob\living\carbon\calorite_poisoning.dm"
 #include "modular_gs\code\modules\mob\living\carbon\carbon_stripping.dm"
 #include "modular_gs\code\modules\mob\living\carbon\examine.dm"
 #include "modular_gs\code\modules\mob\living\carbon\weight_gain.dm"

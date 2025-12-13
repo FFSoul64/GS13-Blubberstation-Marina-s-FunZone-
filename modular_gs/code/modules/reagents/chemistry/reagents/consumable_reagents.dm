@@ -118,6 +118,7 @@
 /datum/reagent/micro_calorite/on_mob_life(mob/living/carbon/affected_mob, seconds_per_tick, times_fired)
 	. = ..()
 	affected_mob.adjust_hunger(10)
+	affected_mob.adjust_calorite_poisoning(10 * seconds_per_tick / 3600)	// 10 in the span of an hour
 
 /datum/reagent/micro_calorite/on_mob_add(mob/living/affected_mob, amount)
 	. = ..()

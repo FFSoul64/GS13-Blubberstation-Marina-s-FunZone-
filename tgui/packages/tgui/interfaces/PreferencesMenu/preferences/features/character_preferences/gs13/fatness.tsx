@@ -43,3 +43,9 @@ export const weight_gain_permanent: FeatureToggle = {
   description: 'Persists between round, hard to remove.',
   component: CheckboxInput,
 };
+
+export const severe_fatness_penalty: FeatureToggle = {
+  name: 'Severe fatness penalties',
+  description: 'Toggle if you want your character to be SIGNIFICANTLY affected by fattening mechanics, some of which may be persistent between rounds.',
+  component: CheckboxInput,
+};
