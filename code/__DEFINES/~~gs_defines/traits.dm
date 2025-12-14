@@ -35,7 +35,8 @@
 #define TRAIT_FAT_GOOD_SELF		"fat_good_self"
 #define TRAIT_FAT_BAD			"fat_bad"
 #define TRAIT_FAT_BAD_SELF		"fat_bad_self"
-#define TRAIT_LIPOLICIDE_TOLERANCE "lipolicide_tolerance"
+#define TRAIT_LIPOLICIDE_TOLERANCE	"lipolicide_tolerance"
+#define TRAIT_MACERINIC_TOLERANCE	"macerinic_tolerance"
 #define TRAIT_WEAKLEGS			"weak_legs"
 #define TRAIT_STRONGLEGS		"strong_legs"
 #define TRAIT_METAL_CRUNCHER 	"metal_cruncher"
@@ -43,6 +44,7 @@
 #define TRAIT_FATROUSAL         "fatrousal"
 #define TRAIT_MILKY				"milky" //basically faster milk production
 #define TRAIT_BIOFUEL			"biofuel_processor"
+#define TRAIT_LARGE_SURFACE_AREA	"too_fat_to_slip"
 
 //GS13 helplessness quirks
 #define TRAIT_HELPLESS_IMMOBILITY		"immobile_helpless"
