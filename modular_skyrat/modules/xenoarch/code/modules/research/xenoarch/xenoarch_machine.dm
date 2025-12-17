@@ -181,9 +181,11 @@
 			current_research -= 100
 			new /obj/item/disk/design_disk/bepis/remove_tech(src_turf)
 
+		//GS13 EDIT START
 		if("GATO Products")
 			gato_rewards(user)
 			return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+		//GS13 EDIT END
 
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 //GS13 Edit - GS13 xenoarch rewards here
