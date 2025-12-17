@@ -1,0 +1,10 @@
+author: "Swan"
+delete-after: True
+changes:
+  - bugfix: "makes sure we won't have problems with saving micro calorite poisoning"
+  - balance: "`UNIVERSAL_GAINER` trait (obtained through helplessness quirks) now locks the starting WL rate to any value BELOW 0.5"
+  - map: "removes the atmos project area from moon's atmos"
+  - map: "compresses atmos piping on moon so that it doesn't take up as much space"
+  - map: "makes piping on moon atmos better"
+  - map: "connects some disconnected pipenets"
+  - map: "improves the piping leading to the turbine and engine"
