@@ -157,7 +157,7 @@
 
 //If our target is a human we do our custom behavior. Otherwise it'll be business as usual so it doesn't try to fatten monkeys
 /datum/status_effect/slime_leech/calorite/tick(seconds_between_ticks)
-	if(ishuman(owner))
+	if(ishuman(owner) && !ismonkey(owner))
 		if(owner.stat == DEAD)
 			our_slime.stop_feeding(silent = TRUE)
 			return

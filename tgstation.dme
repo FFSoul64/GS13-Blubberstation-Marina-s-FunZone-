@@ -7052,6 +7052,7 @@
 #include "modular_gs\code\modules\weighing\scale.dm"
 #include "modular_gs\code\modules\weighing\weighing_datum.dm"
 #include "modular_gs\code\modules\weighing\weight_scanner.dm"
+#include "modular_gs\code\modules\xenoarch\xenoarch_machine.dm"
 #include "modular_gs\code\obj\items\bluespace_belt.dm"
 #include "modular_gs\code\obj\items\floor_tiles.dm"
 #include "modular_gs\code\obj\items\gato.dm"
