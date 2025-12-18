@@ -240,7 +240,7 @@
 	return max(0, fullness - fullness_reduction)
 
 /mob/living/carbon/proc/fullness_reduction()
-	var/max_fullness_reduction = max(fullness * 2, 2000)
+	var/max_fullness_reduction = max(fullness + 500, 600)
 	fullness_reduction -= 15
 	fullness_reduction = clamp(fullness_reduction, 0, max_fullness_reduction)
 
