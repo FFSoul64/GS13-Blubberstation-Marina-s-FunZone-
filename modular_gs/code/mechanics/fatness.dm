@@ -41,6 +41,18 @@
 	/// How many humanoid mobs have been digested by this mob?
 	var/carbons_digested = 0
 
+	/// Inflation related
+	var/datum/looping_sound/blueberry_inflation/blueberry_inflate_loop
+
+
+/mob/living/carbon/Initialize(mapload)
+	. = ..()
+	blueberry_inflate_loop = new(src, FALSE)
+
+/mob/living/carbon/Destroy()
+	QDEL_NULL(blueberry_inflate_loop)
+	return ..()
+
 /**
 * Adjusts the fatness level of the parent mob.
 *
@@ -118,10 +130,10 @@
 
 /**
  * Adds a weight gain modifier to the modifier list
- * 
+ *
  * If the modifier doesn't exist yet, adds it as an entry and sets it's value. If it does exist, adds value to it.
- * 
- * Arguments: 
+ *
+ * Arguments:
  * * source - value containing the identifier of the source, IDEALLY a string
  * * value - value to add to the modifier
  */
@@ -129,12 +141,12 @@
 	if (weight_gain_modifiers[source])
 		weight_gain_modifiers[source] += value
 		return
-	
+
 	weight_gain_modifiers[source] = value
 
 /**
  * Sets a weight gain modifier in the modifier list
- * 
+ *
  * Will always set the modifier to the set value, regardless of the previously stored value
  * Arguments:
  * * source - value containing the identifier of the source, IDEALLY a string
@@ -145,10 +157,10 @@
 
 /**
  * Adds a weight loss modifier to the modifier list
- * 
+ *
  * If the modifier doesn't exist yet, adds it as an entry and sets it's value. If it does exist, adds value to it.
- * 
- * Arguments: 
+ *
+ * Arguments:
  * * source - value containing the identifier of the source, IDEALLY a string
  * * value - value to add to the modifier
  */
@@ -156,12 +168,12 @@
 	if (weight_loss_modifiers[source])
 		weight_loss_modifiers[source] += value
 		return
-	
+
 	weight_loss_modifiers[source] = value
 
 /**
  * Sets a weight loss modifier in the modifier list
- * 
+ *
  * Will always set the modifier to the set value, regardless of the previously stored value
  * Arguments:
  * * source - value containing the identifier of the source, IDEALLY a string
@@ -174,28 +186,28 @@
 /mob/living/carbon/proc/get_weight_gain_modifier(source)
 	if (weight_gain_modifiers[source])
 		return weight_gain_modifiers[source]
-	
+
 	return 0
 
 /// returns the current value of given weight loss modifier. If such a modifier doesn't exits, returns 0
 /mob/living/carbon/proc/get_weight_loss_modifier(source)
 	if (weight_loss_modifiers[source])
 		return weight_loss_modifiers[source]
-	
+
 	return 0
 
 /// completely removes a weight gain modifier from the list
 /mob/living/carbon/proc/remove_weight_gain_modifier(source)
 	if (!weight_gain_modifiers[source])
 		return
-	
+
 	weight_gain_modifiers.Remove(source)
 
 /// completely removes a weight loss modifier from the list
 /mob/living/carbon/proc/remove_weight_loss_modifier(source)
 	if (!weight_loss_modifiers[source])
 		return
-	
+
 	weight_loss_modifiers.Remove(source)
 
 /// removes all weight gain modifiers
@@ -212,12 +224,12 @@
 
 	if (HAS_TRAIT(src, TRAIT_UNIVERSAL_GAINER))
 		local_gain_rate = max(0.2, local_gain_rate)
-	
+
 	local_gain_rate += get_weight_gain_modifiers()
-	
+
 	if (flip_gain_rate)
 		local_gain_rate = -local_gain_rate
-	
+
 	return local_gain_rate
 
 /// returns the final weight loss rate of a carbon, taking into account all modifiers, flips, traits etc
@@ -226,12 +238,12 @@
 
 	if (HAS_TRAIT(src, TRAIT_UNIVERSAL_GAINER))
 		local_loss_rate = min(0.5, local_loss_rate)
-	
+
 	local_loss_rate += get_weight_loss_modifiers()
-	
+
 	if (flip_loss_rate)
 		local_loss_rate = -local_loss_rate
-	
+
 	return local_loss_rate
 
 /mob/living/carbon/get_fullness(only_consumable)

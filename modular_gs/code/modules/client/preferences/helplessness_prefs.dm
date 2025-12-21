@@ -80,3 +80,10 @@
 	savefile_key = "stuckage_custom"
 	minimum = 0
 	maximum = 100
+
+/datum/preference/numeric/helplessness/blueberry_max_before_burst
+	category = WG_PREFERENCES
+	savefile_identifier = PREFERENCE_CHARACTER
+	savefile_key = "blueberry_max_before_burst"
+	minimum = 0
+	maximum = INFINITY
