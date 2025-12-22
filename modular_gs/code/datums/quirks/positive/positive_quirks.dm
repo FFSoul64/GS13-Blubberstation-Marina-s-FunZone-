@@ -162,7 +162,7 @@
 
 /datum/quirk/large_surface_area
 	name = "Large surface area"
-	desc = "All this weight may slow you down, but at least all the contanct area you got with the ground makes it hard to fall down..."
+	desc = "All this weight may slow you down, but at least all that contact area you got with the ground makes it hard to fall down..."
 	icon = "fa-shoe-prints"
 	value = 1
 	quirk_flags = QUIRK_HIDE_FROM_SCAN | QUIRK_PROCESSES

@@ -178,3 +178,8 @@
 	name = "Report Crimes"
 	desc = "A poster encouraging the swift reporting of crime or seditious behavior to station security."
 	icon_state = "poster22_legit"
+
+/obj/structure/sign/poster/gato/godhead
+	name = "Godhead Heavy Industries"
+	desc = "Outfitting Cruelty Squad since 2212. It's just like Gorbino's Quest."
+	icon_state = "godhead"
