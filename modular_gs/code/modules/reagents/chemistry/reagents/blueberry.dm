@@ -4,14 +4,20 @@
 #define BLUEBERRY_INFLATION_VOLUME 45
 
 #define BURST_IMMEDIATELY "Burst immediately"
-#define BURST_MESSAGE_TIMED "Burst with message"
 #define DELAY_BURST "Delay bursting"
 #define DELAY_BURST_MODIFIER 0.1
 
-#define BLUEBERRY_SPILL_BELLY "<span class='warning'>You feel wetness spread on your belly as juice beings leaking out of your belly button!</span>"
-#define BLUEBERRY_SPILL_PENIS "<span class='warning'>You feel your cock twitch as waves of juice surge out!</span>"
-#define BLUEBERRY_SPILL_VAGINA "<span class='warning'>You feel your pussy twitch as waves of juice surge out!</span>"
-#define BLUEBERRY_SPILL_BREASTS "<span class='warning'>The pressure in your chest becomes too much, as you feel juice start to spray out of your nipples!</span>"
+#define BLUEBERRY_SPILL_BELLY "<span class='warning'>You feel a wetness spread on your belly as juice leaks out of your belly button!</span>"
+#define BLUEBERRY_SPILL_PENIS "<span class='warning'>You feel your cock tingle as it leaks out juice!</span>"
+#define BLUEBERRY_SPILL_VAGINA "<span class='warning'>You feel your pussy tingle as it leaks out juice!</span>"
+#define BLUEBERRY_SPILL_BREASTS "<span class='warning'>You feel your breasts tighten, as juice leaks out of your nipples!</span>"
+
+#define BLUEBERRY_SPLASH_BELLY "<span class='warning'>You feel pressure and wetness spread on your belly as juice splutters out of your belly button!</span>"
+#define BLUEBERRY_SPLASH_PENIS "<span class='warning'>You feel your cock twitch as waves of juice surge out!</span>"
+#define BLUEBERRY_SPLASH_VAGINA "<span class='warning'>You feel your pussy twitch as waves of juice surge out!</span>"
+#define BLUEBERRY_SPLASH_BREASTS "<span class='warning'>The pressure in your breasts becomes too much, as you feel juice start to spray out of your nipples!</span>"
+#define BLUEBERRY_SPLASH_AMOUNT_PERCENTAGE 2
+#define BLUEBERRY_SPLASH_AMOUNT_MAX 100
 
 GLOBAL_LIST_INIT(blueberry_growing, list(
 	'modular_gs/sound/voice/gurgle1.ogg', 'modular_gs/sound/voice/gurgle2.ogg', 'modular_gs/sound/voice/gurgle3.ogg'
@@ -19,13 +25,13 @@ GLOBAL_LIST_INIT(blueberry_growing, list(
 GLOBAL_LIST_INIT(blueberry_growing_nearing_limit, list(
 	'modular_gs/sound/effects/inflation/creaking/Creak1.ogg', 'modular_gs/sound/effects/inflation/creaking/Creak2.ogg', 'modular_gs/sound/effects/inflation/creaking/Creak3.ogg', 'modular_gs/sound/effects/inflation/creaking/Creak4.ogg'
 ))
-GLOBAL_LIST_INIT(blueberry_growing_about_to_blow, list(
-	'modular_gs/sound/effects/inflation/tearing/Tear1.ogg'
+GLOBAL_LIST_INIT(blueberry_burst, list(
+	'modular_gs/sound/effects/inflation/pop/blueberry-inflation-pop.ogg'
 ))
 
 GLOBAL_LIST_INIT(blueberry_growing_flavour, list(
-	"<span class='danger'>Oof... Your belly groans under the increasing amount of pressure, as you feel the juice slosh inside you!</span>",
-	"<span class='danger'>You feel your belly surging outwards as more juice fills your insides!</span>"
+	"<span class='danger'>Oof... Your belly groans as you feel the juice slosh inside you!</span>",
+	"<span class='danger'>You feel like a juice filled balloon!</span>"
 	))
 
 GLOBAL_LIST_INIT(blueberry_nearing_limit__flavour, list(
@@ -53,7 +59,7 @@ GLOBAL_LIST_INIT(blueberry_about_to_blow_flavour, list(
 	purge_multiplier = 3
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 
-/datum/reagent/blueberry_juice/on_mob_life(mob/living/carbon/M)
+/datum/reagent/blueberry_juice/on_mob_life(mob/living/carbon/M, seconds_per_tick)
 	if(M?.client)
 		if(!(M?.client?.prefs?.read_preference(/datum/preference/toggle/blueberry_inflation)))
 			M.reagents.remove_reagent(/datum/reagent/blueberry_juice, volume)
@@ -66,7 +72,7 @@ GLOBAL_LIST_INIT(blueberry_about_to_blow_flavour, list(
 
 	// Add bursting mechanics
 	if(M?.client?.prefs?.read_preference(/datum/preference/numeric/helplessness/blueberry_max_before_burst) > 0)
-		handle_bursting(M)
+		handle_bursting(M, seconds_per_tick)
 	..()
 
 /datum/reagent/blueberry_juice/on_mob_add(mob/living/L, amount)
@@ -94,42 +100,59 @@ GLOBAL_LIST_INIT(blueberry_about_to_blow_flavour, list(
 /datum/reagent/blueberry_juice/proc/fat_hide()
 	return (124 * (volume * volume))/1000	//123'840 600% size, about 56'000 400% size, calc was: (3 * (volume * volume))/50
 
-/datum/reagent/blueberry_juice/proc/handle_bursting(mob/living/carbon/M)
-	// Change belly sprite and size based on current fullness
+/datum/reagent/blueberry_juice/proc/handle_bursting(mob/living/carbon/M, seconds_per_tick)
 	switch((M.reagents.get_reagent_amount(/datum/reagent/blueberry_juice)/M?.client?.prefs?.read_preference(/datum/preference/numeric/helplessness/blueberry_max_before_burst)))
 		if(0 to 0.7)
-			if (SPT_PROB(5, 10))
+			if (SPT_PROB(5, seconds_per_tick))
 				playsound(M.loc, pick(GLOB.blueberry_growing), BLUEBERRY_INFLATION_VOLUME, 1, 1, 1.2, ignore_walls = FALSE)
 				M.visible_message("<span class='warning'>[M]'s belly let's out an audible groan as the juice sloshes inside them!</span>", pick(GLOB.blueberry_growing_flavour))
+			if (SPT_PROB(1, seconds_per_tick))
+				splatter_juice(M)
 		if(0.7 to 0.9)
-			if (SPT_PROB(10, 10))
+			if (SPT_PROB(10, seconds_per_tick))
 				M.visible_message("<span class='warning'>[M]'s body softly creaks under the strain of being filled with juice!</span>", pick(GLOB.blueberry_nearing_limit__flavour))
 				playsound(M.loc, pick(GLOB.blueberry_growing_nearing_limit), BLUEBERRY_INFLATION_VOLUME, 1, 1, 1.2, ignore_walls = FALSE)
-			if (SPT_PROB(5, 10))
+			if (SPT_PROB(5, seconds_per_tick))
 				splatter_juice(M)
 		if(0.9 to INFINITY)
-			if (SPT_PROB(15, 10))
+			if (SPT_PROB(15, seconds_per_tick))
 				M.visible_message("<span class='warning'>[M]'s body softly creaks under the strain of being filled with juice!</span>", pick(GLOB.blueberry_about_to_blow_flavour))
 				playsound(M.loc, pick(GLOB.blueberry_growing_nearing_limit), BLUEBERRY_INFLATION_VOLUME, 1, 1, 1.2, ignore_walls = TRUE)
-			if (SPT_PROB(10, 10))
+			if (SPT_PROB(35, seconds_per_tick))
 				splatter_juice(M)
+			if (SPT_PROB(5, seconds_per_tick))
+				splatter_juice(M, TRUE)
 
 	if((M.reagents.get_reagent_amount(/datum/reagent/blueberry_juice)/M?.client?.prefs?.read_preference(/datum/preference/numeric/helplessness/blueberry_max_before_burst)) > (1 + M.burst_delay_modifier))
 		M.handle_burst()
 
 
-/datum/reagent/blueberry_juice/proc/splatter_juice(mob/living/carbon/M)
+/datum/reagent/blueberry_juice/proc/splatter_juice(mob/living/carbon/M, var/puddle = FALSE)
 	if(!ishuman(M))
 		return
 	var/mob/living/carbon/human/H= M
-	H.add_juice_splatter_floor(get_turf(H))
-	var/list/possible_descriptions = list(BLUEBERRY_SPILL_BELLY)
-	if(H.has_vagina())
-		possible_descriptions.Add(BLUEBERRY_SPILL_VAGINA)
-	if(H.has_penis())
-		possible_descriptions.Add(BLUEBERRY_SPILL_PENIS)
-	if(H.has_breasts())
-		possible_descriptions.Add(BLUEBERRY_SPILL_BREASTS)
+
+	var/list/possible_descriptions = list()
+	if(puddle)
+		H.add_juice_splatter_floor(get_turf(H), TRUE)
+		possible_descriptions.Add(BLUEBERRY_SPLASH_BELLY)
+		if(H.has_vagina())
+			possible_descriptions.Add(BLUEBERRY_SPLASH_VAGINA)
+		if(H.has_penis())
+			possible_descriptions.Add(BLUEBERRY_SPLASH_PENIS)
+		if(H.has_breasts())
+			possible_descriptions.Add(BLUEBERRY_SPLASH_BREASTS)
+		H.try_lewd_autoemote("moan")
+	else
+		H.add_juice_splatter_floor(get_turf(H), FALSE)
+		possible_descriptions.Add(BLUEBERRY_SPILL_BELLY)
+		if(H.has_vagina())
+			possible_descriptions.Add(BLUEBERRY_SPILL_VAGINA)
+		if(H.has_penis())
+			possible_descriptions.Add(BLUEBERRY_SPILL_PENIS)
+		if(H.has_breasts())
+			possible_descriptions.Add(BLUEBERRY_SPILL_BREASTS)
+		H.try_lewd_autoemote("blush")
 
 	to_chat(H, pick(possible_descriptions))
 
@@ -158,30 +181,43 @@ GLOBAL_LIST_INIT(blueberry_about_to_blow_flavour, list(
 	if (burst_triggered) // Don't open a thousand windows
 		return
 	burst_triggered = TRUE
-	var/list/buttons = list(BURST_IMMEDIATELY, BURST_MESSAGE_TIMED, DELAY_BURST)
+	var/list/buttons = list(BURST_IMMEDIATELY, DELAY_BURST)
 	var/burst_choice = tgui_alert(src, "Choose how you want to burst", "You feel ready to pop!", buttons)
 	if(!burst_choice || burst_choice == BURST_IMMEDIATELY)
-		playsound(loc, pick(GLOB.blueberry_growing_about_to_blow), BLUEBERRY_INFLATION_VOLUME, 1, 1, 1.2, ignore_walls = TRUE)
-		if (do_after(src, 1 SECONDS, src))
-			gib(DROP_ALL_REMAINS)
-	if(!burst_choice || burst_choice == BURST_MESSAGE_TIMED)
-		playsound(loc, pick(GLOB.blueberry_growing_about_to_blow), BLUEBERRY_INFLATION_VOLUME, 1, 1, 1.2, ignore_walls = TRUE)
-		if (do_after(src, 1 SECONDS, src))
-			gib(DROP_ALL_REMAINS)
+		burst()
 	if(!burst_choice || burst_choice == DELAY_BURST)
 		burst_delay_modifier = burst_delay_modifier * 2 // We double the buffer for each delay choice
 		burst_triggered = FALSE
 
 /mob/living/carbon/proc/burst(safe = FALSE)
+	var/safe_popping = client?.prefs?.read_preference(/datum/preference/toggle/reform_after_bursting)
+	playsound(loc, pick(GLOB.blueberry_burst), BLUEBERRY_INFLATION_VOLUME, 1, 1, 1.2, ignore_walls = TRUE)
+	if (do_after(src, 7 SECONDS, src)) // This is an annoyinh hardcoded value. But this is synced to the explosion in the sound effect. Perhaps a key/value pair for each explosion sound?
+		var/liquid_to_spill = reagents.get_reagent_amount(/datum/reagent/blueberry_juice)
+		var/turf/the_turf = get_turf(src)
+		the_turf.add_liquid(/datum/reagent/blueberry_juice, liquid_to_spill, FALSE, 312)
+		reagents.remove_reagent(/datum/reagent/blueberry_juice, liquid_to_spill)
+		var/datum/effect_system/fluid_spread/smoke/blueberry/smoke = new
+		smoke.set_up(2, holder = src, location = src)
+		smoke.start()
+		qdel(smoke) //And deleted again. Sad really.
+		burst_triggered = FALSE
 
+		if(!safe_popping)
+			gib(DROP_ALL_REMAINS)
 
 /// Used to add a cum decal to the floor while transferring viruses and DNA to it
-/mob/living/carbon/proc/add_juice_splatter_floor(turf/the_turf)
+/mob/living/carbon/proc/add_juice_splatter_floor(turf/the_turf, var/puddle = FALSE)
 	if(!the_turf)
 		the_turf = get_turf(src)
-	var/selected_type = pick(/obj/effect/decal/cleanable/juice, /obj/effect/decal/cleanable/juice/streak)
-	var/atom/stain = new selected_type(the_turf, get_static_viruses())
-	stain.add_mob_blood(src) //I'm not adding a new forensics category for cumstains
+	if(!puddle)
+		var/selected_type = pick(/obj/effect/decal/cleanable/juice, /obj/effect/decal/cleanable/juice/streak)
+		var/atom/stain = new selected_type(the_turf, get_static_viruses())
+		stain.add_mob_blood(src) //I'm not adding a new forensics category for cumstains
+	else
+		var/liquid_to_spill = min((reagents.get_reagent_amount(/datum/reagent/blueberry_juice) / 100 * BLUEBERRY_SPLASH_AMOUNT_PERCENTAGE), BLUEBERRY_SPLASH_AMOUNT_MAX) // Sploosh out BLUEBERRY_SPLASH_AMOUNT_PERCENTAGE percent of total juice, or 100 units, whichever is smallest.
+		the_turf.add_liquid(/datum/reagent/blueberry_juice, liquid_to_spill, FALSE, 312)
+		reagents.remove_reagent(/datum/reagent/blueberry_juice, liquid_to_spill)
 
 /obj/effect/decal/cleanable/juice
 	name = "berry juice"
@@ -193,6 +229,21 @@ GLOBAL_LIST_INIT(blueberry_about_to_blow_flavour, list(
 
 /obj/effect/decal/cleanable/juice/streak
 	random_icon_states = list("streak1", "streak2", "streak3", "streak4", "streak5")
+
+
+
+/////////////////////////////////////////////
+// Blueberry smoke
+/////////////////////////////////////////////
+// Used as an effect when a berry goes pop. Spreads the disease to whoever breathed it in.
+/obj/effect/particle_effect/fluid/smoke/blueberry
+	name = "blueberry smoke"
+	color = COLOR_BLUE_LIGHT
+	lifetime = 5 SECONDS
+
+/// A factory which produces green smoke that makes you cough.
+/datum/effect_system/fluid_spread/smoke/blueberry
+	effect_type = /obj/effect/particle_effect/fluid/smoke/blueberry
 
 // /obj/item/food/meat/steak/troll
 // 	name = "Troll steak"
