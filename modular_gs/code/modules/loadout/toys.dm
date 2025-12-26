@@ -43,11 +43,11 @@
 	item_path = /obj/item/toy/plush/gs13/protogen
 
 /datum/loadout_item/toys/yeen_plush
-	name = "Grumpy hyena Plush"
+	name = "Grumpy Hyena Plush"
 	item_path = /obj/item/toy/plush/gs13/yeen
 
 /datum/loadout_item/toys/noms_plush
-	name = "Strange blue creature Plush"
+	name = "Strange Blue Creature Plush"
 	item_path = /obj/item/toy/plush/gs13/noms
 
 /datum/loadout_item/toys/fala_plush
@@ -55,14 +55,21 @@
 	item_path = /obj/item/toy/plush/gs13/fala
 
 /datum/loadout_item/toys/val_plush
-	name = "Abhorent fen Plush"
+	name = "Abhorent Fen Plush"
 	item_path = /obj/item/toy/plush/gs13/val
 
 /datum/loadout_item/toys/isaac_plush
-	name = "Plump dragon Plush"
+	name = "Plump Dragon Plush"
 	item_path = /obj/item/toy/plush/gs13/isaac
 
 /datum/loadout_item/toys/kiki_plush
-	name = "Trashy racc plush"
+	name = "Trashy Racc Plush"
 	item_path = /obj/item/toy/plush/gs13/kiki
 
+/datum/loadout_item/toys/marina_plush
+	name = "Visage of the Moron Plush"
+	item_path = /obj/item/toy/plush/gs13/marina
+
+/datum/loadout_item/toys/isaac_hyper_plush
+	name = "Weird Dragon Thingy Plush"
+	item_path = /obj/item/toy/plush/gs13/isaac_hyper

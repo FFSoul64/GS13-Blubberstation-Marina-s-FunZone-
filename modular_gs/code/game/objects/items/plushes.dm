@@ -164,3 +164,17 @@
 	pred_plush = TRUE
 	prey_plush = TRUE
 
+/obj/item/toy/plush/gs13/marina
+	name = "Visage of the Moron"
+	desc = "Prepare all your senses (yes, all of them!) for a new level of nonsense!  Cuddle them, squeeze them, soak them in milk!  The Moronic Visage will keep you company whether you want too or not"
+	icon_state = "marina"
+	stuffed_icon_state = "marina_stuffed"
+	can_eat_food = TRUE
+	pred_plush = TRUE
+	prey_plush = TRUE
+
+/obj/item/toy/plush/gs13/isaac_hyper
+	name = "Weird Dragon Thingy Plush"
+	desc = "It looks like this was someones first time making a toy, and it's shoddily made. There is a lot of heart put into it, so much that it feels warm when you hug it! But that could be the uranium..."
+	icon_state = "isaac_hyper"
+	can_eat_food = TRUE
