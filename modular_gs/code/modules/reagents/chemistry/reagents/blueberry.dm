@@ -3,9 +3,10 @@
 /// Volume used for all blueberry noises
 #define BLUEBERRY_INFLATION_VOLUME 45
 
-#define BURST_IMMEDIATELY "Burst immediately"
-#define DELAY_BURST "Delay bursting"
-#define DELAY_BURST_MODIFIER 0.1
+#define BURST_IMMEDIATELY "Burst!"
+#define BURST_DELAY "Delay"
+#define BURST_CONFIRM "Yes, Kaboom!"
+#define BURST_ABORT "Abort bursting"
 
 #define BLUEBERRY_SPILL_BELLY "<span class='warning'>You feel a wetness spread on your belly as juice leaks out of your belly button!</span>"
 #define BLUEBERRY_SPILL_PENIS "<span class='warning'>You feel your cock tingle as it leaks out juice!</span>"
@@ -20,6 +21,8 @@
 #define BLUEBERRY_SPLASH_GENERIC "<span class='warning'>The pressure in your body just becomes to much, as juice starts to spill out of you!</span>"
 #define BLUEBERRY_SPLASH_AMOUNT_PERCENTAGE 2
 #define BLUEBERRY_SPLASH_AMOUNT_MAX 100
+
+#define BLUEBERRY_BURST_SPLASH_RANGE 2
 
 GLOBAL_LIST_INIT(blueberry_growing, list(
 	'modular_gs/sound/voice/gurgle1.ogg', 'modular_gs/sound/voice/gurgle2.ogg', 'modular_gs/sound/voice/gurgle3.ogg'
@@ -40,6 +43,12 @@ GLOBAL_LIST_INIT(blueberry_growing_flavour, list(
 GLOBAL_LIST_INIT(blueberry_nearing_limit__flavour, list(
 	"<span class='danger'>The pressure is getting unbearable! Your body softly creaks as it's struggling to contain all the juice inside you!</span>",
 	"<span class='danger'>Your body creaks and stretches, as your tight body tries to find more space for the juice!</span>"
+	))
+
+GLOBAL_LIST_INIT(blueberry_limit_reached_flavour, list(
+	"<span class='danger'>Oh god... too big...</span>",
+	"<span class='danger'>It's too much! I'm gonna pop!</span>",
+	"<span class='danger'>I can't...</span>"
 	))
 
 GLOBAL_LIST_INIT(blueberry_about_to_blow_flavour, list(
@@ -130,15 +139,22 @@ GLOBAL_LIST_INIT(blueberry_about_to_blow_flavour, list(
 		if(0.9 to INFINITY)
 			if (SPT_PROB(15, seconds_per_tick))
 				berry.visible_message("<span class='warning'>[berry]'s body softly creaks under the strain of being filled with juice!</span>", pick(GLOB.blueberry_about_to_blow_flavour))
-				playsound(berry.loc, pick(GLOB.blueberry_growing_nearing_limit), BLUEBERRY_INFLATION_VOLUME, 1, 1, 1.2, ignore_walls = TRUE)
+				playsound(berry.loc, pick(GLOB.blueberry_limit_reached_flavour), BLUEBERRY_INFLATION_VOLUME, 1, 1, 1.2, ignore_walls = TRUE)
 			if (SPT_PROB(35, seconds_per_tick))
 				splatter_juice(berry)
 			if (SPT_PROB(5, seconds_per_tick))
 				splatter_juice(berry, TRUE)
 
-	if((berry.reagents.get_reagent_amount(/datum/reagent/blueberry_juice)/berry?.client?.prefs?.read_preference(/datum/preference/numeric/helplessness/blueberry_max_before_burst)) > (1 + berry.burst_delay_modifier))
-		berry.trigger_burst()
-
+	if (berry.has_quirk(/datum/quirk/about_to_burst)) // Skip burst stuff if it already triggered
+		return
+	var/relative_fullness = berry.reagents.get_reagent_amount(/datum/reagent/blueberry_juice)/berry?.client?.prefs?.read_preference(/datum/preference/numeric/helplessness/blueberry_max_before_burst)
+	if(relative_fullness > 1)
+		if (SPT_PROB(relative_fullness * 15, seconds_per_tick)) // When you're at your limit, you have a chance of bursting every second, increading with how far over capacity you are.
+			if (!berry.check_prefs_in_view(/datum/preference/toggle/see_bursting, berry.loc))
+				berry.visible_message("<span class='warning'>[berry]'s body creaks loudly. But they seem to be holding on for now... (people with bursting presfs disabled are near)</span>", "<span class='warning'>Your body creaks loudly. But it seem to be holding on for now... (people with bursting presfs disabled are near)</span>")
+				return
+			berry.visible_message("<span class='warning'>[berry]'s body creaks loudly. They look ready to burst!</span>", pick(GLOB.blueberry_about_to_blow_flavour))
+			berry.trigger_burst()
 
 /**
  * Create a streak or puddle of juice from a carbon. If the character is a human, gather the equipped genitals and create flavour text based on them.
@@ -181,7 +197,6 @@ GLOBAL_LIST_INIT(blueberry_about_to_blow_flavour, list(
 
 	to_chat(berry, pick(possible_descriptions))
 
-
 /datum/looping_sound/blueberry_inflation
 	mid_sounds = list('modular_gs/sound/effects/inflation/berryloop.ogg')
 	mid_length = 8 SECONDS
@@ -190,9 +205,6 @@ GLOBAL_LIST_INIT(blueberry_about_to_blow_flavour, list(
 // Add BB Inflation related stuff to carbon
 /mob/living/carbon
 	var/datum/looping_sound/blueberry_inflation/blueberry_inflate_loop
-	var/burst_delay_modifier = DELAY_BURST_MODIFIER
-	var/burst_triggered = FALSE
-
 
 /mob/living/carbon/Initialize(mapload)
 	. = ..()
@@ -206,38 +218,46 @@ GLOBAL_LIST_INIT(blueberry_about_to_blow_flavour, list(
  * Initiates the burst popup. Giving the player the choice between bursting or delaying.
  */
 /mob/living/carbon/proc/trigger_burst()
-	if (burst_triggered) // Don't open a thousand windows
-		return
-	burst_triggered = TRUE
-	var/list/buttons = list(BURST_IMMEDIATELY, DELAY_BURST)
-	var/burst_choice = tgui_alert(src, "Don't worry, nothing will happen until you've made a choice here!\nChoose if you want to burst now, or if you'd rather delay for a bit. If click on the burst now option, you will have 7 seconds before you burst. If you click on the delay option, nothing will happen and you will get the option to burst again in 5 minutes.", "You feel ready to pop!", buttons)
+	add_quirk(/datum/quirk/about_to_burst)
+	var/list/buttons = list(BURST_DELAY, BURST_IMMEDIATELY)
+	var/burst_choice = tgui_alert(src, "Choose if you want to burst now, or if you want to delay. If you click on the burst now option, you will have 7 seconds before you burst. If you click on the delay option, nothing will happen and you will get the option to burst again in 5 minutes if you're still at your limit.", "You feel ready to pop!", buttons)
 	visible_message("<span class='warning'>[src]'s body wobbles violently, they look ready to burst!</span>", pick(GLOB.blueberry_about_to_blow_flavour))
 	if(!burst_choice || burst_choice == BURST_IMMEDIATELY)
-		burst()
-	if(!burst_choice || burst_choice == DELAY_BURST)
-		burst_delay_modifier = burst_delay_modifier * 2 // We double the buffer for each delay choice
-		burst_triggered = FALSE
+		var/safe_popping = client?.prefs?.read_preference(/datum/preference/toggle/safe_bursting)
+		if (!safe_popping) // Give the player one last warning before doing the deed.
+			var/list/buttons_confirm = list(BURST_ABORT, BURST_CONFIRM)
+			var/burst_confirm_choice = tgui_alert(src, "Your character will die after this, since you do not have safe bursting enabled!", "You feel like this is it...", buttons_confirm)
+			visible_message("<span class='warning'>[src]'s body wobbles violently, they look ready to burst!</span>", pick(GLOB.blueberry_about_to_blow_flavour))
+			if(!burst_confirm_choice || burst_confirm_choice == BURST_ABORT) // The about_to_burst quirk is self removing after 300 seconds. So if we delay, all we need to do is return.
+				return
+			if(!burst_confirm_choice || burst_confirm_choice == BURST_CONFIRM) // The about_to_burst quirk is self removing after 300 seconds. So if we delay, all we need to do is return.
+				burst()
+		else
+			burst()
+	if(!burst_choice || burst_choice == BURST_DELAY) // The about_to_burst quirk is self removing after 300 seconds. So if we delay, all we need to do is return.
+		return
 
 /**
  * Burst the carbon. Depending on the players prefs, this will cause the character to also Gib and die.
  */
 /mob/living/carbon/proc/burst()
-	var/safe_popping = client?.prefs?.read_preference(/datum/preference/toggle/reform_after_bursting)
+	var/safe_popping = client?.prefs?.read_preference(/datum/preference/toggle/safe_bursting)
 	playsound(loc, pick(GLOB.blueberry_burst), BLUEBERRY_INFLATION_VOLUME, 1, 1, 1.2, ignore_walls = TRUE)
 
 	if (!do_after(src, 7 SECONDS, src))
 		return
-
+	// Make a puddle of the late berries contents
 	var/liquid_to_spill = reagents.get_reagent_amount(/datum/reagent/blueberry_juice)
 	var/turf/the_turf = get_turf(src)
+	var splash_range = BLUEBERRY_BURST_SPLASH_RANGE + liquid_to_spill/500 //Bigger blueberry bursting makes longer range
 	the_turf.add_liquid(/datum/reagent/blueberry_juice, liquid_to_spill, FALSE, 312)
 	reagents.remove_reagent(/datum/reagent/blueberry_juice, liquid_to_spill)
+	// Spawn the smoke as an explosion splash effect
 	var/datum/effect_system/fluid_spread/smoke/blueberry/smoke = new
-	smoke.set_up(2, holder = src, location = src)
+	smoke.set_up(splash_range, holder = src, location = src)
 	smoke.start()
 	playsound(loc, BLUEBBERY_BURST_SOUND, BLUEBERRY_INFLATION_VOLUME * 1.5, 1, 1, 1.2, ignore_walls = TRUE)
 	qdel(smoke)
-	burst_triggered = FALSE
 
 	if(!safe_popping)
 		gib(DROP_ALL_REMAINS)
@@ -245,7 +265,7 @@ GLOBAL_LIST_INIT(blueberry_about_to_blow_flavour, list(
 /**
  * Spawn a streak or puddle of juice on the floor of a carbon.
  * Arguments:
- * * berry - The Carbon that's being berrified. The decal or puddle will be spawned on the turf below it.
+ * * the_turf - The decal or puddle will be spawned on the turf.
  * * puddle - whether to spawn a streak decal, or a skyrat puddle
  */
 /mob/living/carbon/proc/add_juice_splatter_floor(turf/the_turf, puddle = FALSE)
@@ -254,7 +274,7 @@ GLOBAL_LIST_INIT(blueberry_about_to_blow_flavour, list(
 	if(!puddle)
 		var/selected_type = pick(/obj/effect/decal/cleanable/juice, /obj/effect/decal/cleanable/juice/streak)
 		var/atom/stain = new selected_type(the_turf, get_static_viruses())
-		stain.add_mob_blood(src) //I'm not adding a new forensics category for cumstains
+		stain.add_mob_blood(src)
 	else
 		var/liquid_to_spill = min((reagents.get_reagent_amount(/datum/reagent/blueberry_juice) / 100 * BLUEBERRY_SPLASH_AMOUNT_PERCENTAGE), BLUEBERRY_SPLASH_AMOUNT_MAX) // Sploosh out BLUEBERRY_SPLASH_AMOUNT_PERCENTAGE percent of total juice, or 100 units, whichever is smallest.
 		the_turf.add_liquid(/datum/reagent/blueberry_juice, liquid_to_spill, FALSE, 312)
@@ -274,13 +294,13 @@ GLOBAL_LIST_INIT(blueberry_about_to_blow_flavour, list(
 /////////////////////////////////////////////
 // Blueberry smoke
 /////////////////////////////////////////////
-// Used as an effect when a berry goes pop. Spreads the disease to whoever breathed it in.
+// Used as an effect when a berry goes pop. Spreads the disease to whoever breathed it in. It's supposed to be more the splash than smoke.
 /obj/effect/particle_effect/fluid/smoke/blueberry
 	name = "blueberry smoke"
 	color = COLOR_BLUE_LIGHT
 	lifetime = 2 SECONDS
 
-/// A factory which produces green smoke that makes you cough.
+/// A factory which produces blue smoke that spreads the disease of the exploded berry.
 /datum/effect_system/fluid_spread/smoke/blueberry
 	effect_type = /obj/effect/particle_effect/fluid/smoke/blueberry
 

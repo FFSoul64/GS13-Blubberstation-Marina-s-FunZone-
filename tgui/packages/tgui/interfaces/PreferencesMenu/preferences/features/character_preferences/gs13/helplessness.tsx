@@ -97,7 +97,7 @@ export const stuckage_custom: Feature<number> = {
 };
 
 export const blueberry_max_before_burst: Feature<number> = {
-  name: 'Blueberry inflation limit',
+  name: 'Blueberry inflation bursting limit',
   description:
     'What is the maximum amount of blueberry juice your body can take before bursting. When your character reaches this amount of juice in their body, it will trigger a bursting pop up. You will not burst instantly, but will be given a choice how to handle it or even delay it all together.\nPut 0 to disable.',
   component: FeatureNumberInput,

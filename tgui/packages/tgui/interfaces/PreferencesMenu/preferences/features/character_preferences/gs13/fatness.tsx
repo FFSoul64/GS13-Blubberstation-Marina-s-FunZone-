@@ -51,9 +51,15 @@ export const severe_fatness_penalty: FeatureToggle = {
   component: CheckboxInput,
 };
 
-export const reform_after_bursting: FeatureToggle = {
-  name: 'Reform after bursting',
+export const safe_bursting: FeatureToggle = {
+  name: 'Safe bursting',
   description:
     'Toggle if you want your character to be unharmed after bursting. Basically putting them back into a non inflated state.',
+  component: CheckboxInput,
+};
+
+export const see_bursting: FeatureToggle = {
+  name: 'See bursting',
+  description: 'Toggle if you want to see people bursting by inflation.',
   component: CheckboxInput,
 };
