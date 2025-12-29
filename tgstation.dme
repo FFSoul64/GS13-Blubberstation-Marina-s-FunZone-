@@ -7021,6 +7021,7 @@
 #include "modular_gs\code\modules\mob\living\carbon\examine.dm"
 #include "modular_gs\code\modules\mob\living\carbon\weight_gain.dm"
 #include "modular_gs\code\modules\mob\living\carbon\weight_helpers.dm"
+#include "modular_gs\code\modules\mob\living\carbon\human\species_types\mootant.dm"
 #include "modular_gs\code\modules\mod\mod_clothes.dm"
 #include "modular_gs\code\modules\mod\modules\modules_fat.dm"
 #include "modular_gs\code\modules\nifs\nifs.dm"
