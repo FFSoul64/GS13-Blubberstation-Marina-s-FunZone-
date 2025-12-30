@@ -161,21 +161,3 @@
 	quirk_holder.reagents.add_reagent(/datum/reagent/blueberry_juice, (0.01 + min(0.49, (time_passed / 14693))) * seconds_per_tick)
 	time_passed += seconds_per_tick
 
-/datum/quirk/about_to_burst
-	name = "About to burst"
-	desc = "Your body is at its limit. The creaking and groaning can only mean one thing, you're about to burst!"
-	icon = "fa-circle-notch"
-	medical_record_text = "Patients body is showing signs of immense pressure."
-	value = 0
-	gain_text = span_notice("Your body is at its limit! You're going to pop!")
-	lose_text = span_notice("You feel some of the pressure subside, looks like you're safe again. For now...!")
-	erp_quirk = FALSE		// this is a lie, however we do it because we want it always on
-	quirk_flags = QUIRK_PROCESSES
-	maximum_process_stat = DEAD
-	var/time_passed = 0
-
-/datum/quirk/about_to_burst/process(seconds_per_tick)
-	time_passed += seconds_per_tick
-	if (time_passed < 300)
-		return
-	quirk_holder.remove_quirk(/datum/quirk/about_to_burst)
