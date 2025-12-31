@@ -25,20 +25,21 @@ GLOBAL_LIST_EMPTY(adipoelectric_transformer)
 	update_icon()
 
 /obj/machinery/adipoelectric_transformer/RefreshParts()
+	..()
 	recharge_speed = 0
-	for(var/datum/stock_part/capacitor/C in component_parts)
-		recharge_speed += C.rating
+	for(var/datum/stock_part/capacitor/capacitor in component_parts)
+		recharge_speed += capacitor.tier
 
 /obj/machinery/adipoelectric_transformer/process()
-	if(!is_operational())
+	if(!is_operational)
 		return
 	if(!attached)
 		src.visible_message("<span class='alert'>[src] buzzes. Seems like it's not attached to a working power net.</span>")
-		playsound(src, 'sound/machines/buzz-two.ogg', 50)
+		playsound(src, 'sound/machines/buzz/buzz-two.ogg', 50)
 		return PROCESS_KILL
 	PN = attached.powernet
 	if(PN)
-		power_avaliable = PN.netexcess
+		power_avaliable = PN.avail - PN.load
 		update_icon()
 		if(power_avaliable <= 0)
 			return
@@ -87,28 +88,30 @@ GLOBAL_LIST_EMPTY(adipoelectric_transformer)
 		open_machine()
 	update_icon()
 
-/obj/machinery/adipoelectric_transformer/open_machine()
+/obj/machinery/adipoelectric_transformer/open_machine(drop = TRUE, density_to_set = FALSE)
 	if(!(world.time >= emp_timer + 600))
 		return
 	. = ..()
 	GLOB.adipoelectric_transformer -= src
 	STOP_PROCESSING(SSobj, src)
 
-/obj/machinery/adipoelectric_transformer/close_machine()
+/obj/machinery/adipoelectric_transformer/close_machine(atom/movable/target, density_to_set = TRUE)
 	. = ..()
 	if(LAZYLEN(GLOB.adipoelectric_transformer) < 1 && occupant)
-		var/turf/T = loc
-		if(isturf(T) && !T.intact)
-			attached = locate() in T
+		var/turf/turf = loc
+		// if(isturf(turf) && !turf.intact)
+		if(isturf(turf))	// I have no fucking clue what "intact" meant
+			attached = locate() in turf
 		add_fingerprint(occupant)
 		GLOB.adipoelectric_transformer += src
 		START_PROCESSING(SSobj, src)
 	else
 		src.visible_message("<span class='alert'>[src] buzzes. There must be another a person going in an no other transformer active in the area.</span>")
-		playsound(src, 'sound/machines/buzz-two.ogg', 50)
+		playsound(src, 'sound/machines/buzz/buzz-two.ogg', 50)
 		open_machine()
 
 /obj/machinery/adipoelectric_transformer/update_icon()
+	. = ..()
 	cut_overlays()
 	if(occupant)
 		var/image/occupant_overlay
@@ -139,7 +142,7 @@ GLOBAL_LIST_EMPTY(adipoelectric_transformer)
 
 /obj/machinery/adipoelectric_transformer/examine(mob/user)
 	. = ..()
-	if(is_operational() && attached)
+	if(is_operational && attached)
 		if(PN)
 			if(lastprocessed)
 				. += "<span class='notice'>[src]'s last reading on display was <b>[lastprocessed * recharge_speed]</b> adipose units.</span>"
@@ -151,10 +154,10 @@ GLOBAL_LIST_EMPTY(adipoelectric_transformer)
 		. += "<span class='notice'><b>[src]'s display is currently offline.</b></span>"
 
 /obj/item/circuitboard/machine/adipoelectric_transformer
-	name = "Adipoelectric Transformer (Machine Board)"
+	name = "Adipoelectric Transformer"
 	build_path = /obj/machinery/adipoelectric_transformer
 	req_components = list(
-		/obj/item/stock_parts/capacitor = 5,
+		/datum/stock_part/capacitor = 5,
 		/obj/item/stack/sheet/glass = 1,
 		/obj/item/stack/sheet/mineral/calorite = 1)
 
@@ -163,5 +166,7 @@ GLOBAL_LIST_EMPTY(adipoelectric_transformer)
 	desc = "The circuit board for an Adipoelectric Transformer."
 	id = "adipoelectric_transformer"
 	build_path = /obj/item/circuitboard/machine/adipoelectric_transformer
-	category = list("Research Machinery")
-	departmental_flags = DEPARTMENTAL_FLAG_ENGINEERING
+	category = list(
+		RND_CATEGORY_MACHINE + RND_SUBCATEGORY_MACHINE_ENGINEERING
+	)
+	departmental_flags = DEPARTMENT_BITFLAG_ENGINEERING

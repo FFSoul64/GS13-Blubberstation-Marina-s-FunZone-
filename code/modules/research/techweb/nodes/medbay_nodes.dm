@@ -33,6 +33,7 @@
 		"jerrycan",
 		"reflex_hammer",
 		"blood_scanner",
+		"primitive_bluespace_belt",		// GS13 EDIT: makes the primitive bluespace belt unlocked on round start
 	)
 	experiments_to_unlock = list(
 		/datum/experiment/autopsy/human,

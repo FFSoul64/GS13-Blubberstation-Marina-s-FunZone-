@@ -23,17 +23,18 @@
 	update_icon()
 
 /obj/machinery/power/adipoelectric_generator/RefreshParts()
+	..()
 	laser_modifier = 0
 	max_fat = 0
-	for(var/datum/stock_part/micro_laser/C in component_parts)
-		laser_modifier += C.rating
-	for(var/datum/stock_part/matter_bin/C in component_parts)
-		max_fat += C.rating * 2
+	for(var/datum/stock_part/micro_laser/laser in component_parts)
+		laser_modifier += laser.tier
+	for(var/datum/stock_part/matter_bin/matter_bin in component_parts)
+		max_fat += matter_bin.tier * 2
 
 /obj/machinery/power/adipoelectric_generator/process()
 	if(!occupant)
 		src.visible_message("<span class='alert'>The [src] buzzes. It needs someone inside.</span>")
-		playsound(src, 'sound/machines/buzz-two.ogg', 50)
+		playsound(src, 'sound/machines/buzz/buzz-two.ogg', 50)
 		return PROCESS_KILL
 	if(occupant:fatness_real > 0 && powernet && anchored && (emp_timer < world.time))
 		active = TRUE
@@ -93,20 +94,32 @@
 		open_machine()
 	update_icon()
 
-/obj/machinery/power/adipoelectric_generator/open_machine()
+/obj/machinery/power/adipoelectric_generator/open_machine(drop = TRUE, density_to_set = FALSE)
 	. = ..()
 	STOP_PROCESSING(SSobj, src)
 
-/obj/machinery/power/adipoelectric_generator/close_machine()
+/obj/machinery/power/adipoelectric_generator/close_machine(atom/movable/target, density_to_set = TRUE)
 	. = ..()
-	if(occupant && anchored && !panel_open)
-		add_fingerprint(occupant)
-		START_PROCESSING(SSobj, src)
-	else
-		src.visible_message("<span class='alert'>[src] needs to be anchored to a working wire and have a person going inside!</span>")
+	if(!occupant)
+		src.visible_message(span_alert("[src] needs to have an occupant to work."))
 		open_machine()
+		return
+
+	if(!anchored)
+		src.visible_message(span_alert("[src] needs to be anchored to the floor."))
+		open_machine()
+		return
+
+	if(panel_open)
+		src.visible_message(span_alert("[src] needs to have it's panel closed."))
+		open_machine()
+		return
+
+	add_fingerprint(occupant)
+	START_PROCESSING(SSobj, src)
 
 /obj/machinery/power/adipoelectric_generator/update_icon()
+	. = ..()
 	cut_overlays()
 	if(panel_open)
 		icon_state = "state_open"
@@ -134,17 +147,17 @@
 
 /obj/machinery/power/adipoelectric_generator/examine(mob/user)
 	. = ..()
-	if(is_operational())
+	if(is_operational)
 		. += "<span class='notice'>[src]'s show it can produce <b>[conversion_rate * laser_modifier]W</b> per adipose unit, taking in <b>[max_fat]</b> max each time.</span>"
 	else
 		. += "<span class='notice'><b>[src]'s display is currently offline.</b></span>"
 
 /obj/item/circuitboard/machine/power/adipoelectric_generator
-	name = "Adipoelectric Generator (Machine Board)"
+	name = "Adipoelectric Generator"
 	build_path = /obj/machinery/power/adipoelectric_generator
 	req_components = list(
-		/obj/item/stock_parts/micro_laser = 5,
-		/obj/item/stock_parts/matter_bin = 1,
+		/datum/stock_part/micro_laser = 5,
+		/datum/stock_part/matter_bin = 1,
 		/obj/item/stack/cable_coil = 2)
 	needs_anchored = FALSE
 
@@ -153,5 +166,7 @@
 	desc = "The circuit board for an Adipoelectric Generator."
 	id = "adipoelectric_generator"
 	build_path = /obj/item/circuitboard/machine/power/adipoelectric_generator
-	category = list("Engineering Machinery")
-	departmental_flags = DEPARTMENTAL_FLAG_ENGINEERING
+	category = list(
+		RND_CATEGORY_MACHINE + RND_SUBCATEGORY_MACHINE_ENGINEERING
+	)
+	departmental_flags = DEPARTMENT_BITFLAG_ENGINEERING
