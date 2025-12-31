@@ -38,7 +38,7 @@ opt = argparse.ArgumentParser()
 opt.add_argument('ymlDir', help='The directory of YAML changelogs we will use.')
 
 args = opt.parse_args()
-archiveDir = os.path.join(args.ymlDir, 'bubber_archive') # BUBBER EDIT CHANGE: Changelog 2: Original: archiveDir = os.path.join(args.ymlDir, 'archive')
+archiveDir = os.path.join(args.ymlDir, 'gs13_archive') # BUBBER EDIT CHANGE: Changelog 2: Original: archiveDir = os.path.join(args.ymlDir, 'archive') # GS13 EDIT CHANGE, original: archiveDir = os.path.join(args.ymlDir, 'bubber_archive')
 
 all_changelog_entries = {}
 
