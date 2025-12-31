@@ -1,5 +1,0 @@
-author: "Swan"
-delete-after: True
-changes:
-  - rscadd: "adds macerinic tolerance trait. Makes it so macerinic works a lot worse"
-  - rscadd: "large surface area trait. Prevents people from slipping and sliding if they are fat enough"
