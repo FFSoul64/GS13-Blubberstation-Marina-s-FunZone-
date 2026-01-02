@@ -1929,6 +1929,11 @@
 /obj/effect/turf_decal/trimline/yellow/filled/warning,
 /turf/open/floor/iron,
 /area/station/engineering/atmos/mix)
+"aEW" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/visible/layer2,
+/obj/effect/spawner/structure/window/reinforced/plasma,
+/turf/open/floor/plating,
+/area/station/maintenance/aft/upper)
 "aFg" = (
 /obj/structure/cable/layer1,
 /obj/machinery/holopad/secure,
@@ -16487,9 +16492,9 @@
 /area/station/asteroid)
 "fsI" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/visible/layer2,
-/obj/effect/turf_decal/sand/plating,
-/turf/open/floor/plating/airless,
-/area/station/asteroid)
+/obj/structure/lattice/catwalk,
+/turf/open/space/basic,
+/area/space/nearstation)
 "fsR" = (
 /turf/closed/wall/r_wall,
 /area/station/maintenance/port/greater)
@@ -36011,10 +36016,9 @@
 /turf/open/floor/wood/large,
 /area/station/maintenance/port/greater)
 "lJz" = (
-/obj/effect/turf_decal/sand/plating,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/visible/layer2,
-/turf/open/floor/plating/airless,
-/area/station/asteroid)
+/turf/open/floor/plating,
+/area/station/maintenance/aft/upper)
 "lJT" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -48502,8 +48506,8 @@
 /area/station/science/cytology)
 "pJz" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
-/obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/visible/layer2,
+/obj/effect/spawner/structure/window/reinforced/plasma,
 /turf/open/floor/plating,
 /area/station/maintenance/disposal/incinerator)
 "pJA" = (
@@ -73410,7 +73414,7 @@
 /turf/open/floor/iron,
 /area/station/ai_monitored/command/storage/eva)
 "xQy" = (
-/obj/effect/spawner/structure/window/reinforced,
+/obj/effect/spawner/structure/window/reinforced/plasma,
 /turf/open/floor/plating/foam,
 /area/station/maintenance/aft/upper)
 "xQz" = (
@@ -172537,7 +172541,7 @@ xSe
 xSe
 vxC
 lJz
-fsI
+aEW
 fsI
 fsI
 wov
@@ -172792,7 +172796,7 @@ pxM
 pxM
 vxC
 vxC
-xQy
+vxC
 xQy
 vxC
 hNy

@@ -2218,6 +2218,13 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/station/maintenance/port/greater)
+"aCW" = (
+/mob/living/simple_animal/hostile/fatten/magehand,
+/obj/effect/turf_decal/siding/wideplating_new/terracotta{
+	dir = 8
+	},
+/turf/open/floor/mineral/calorite,
+/area/icemoon/underground/explored)
 "aCY" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/machinery/light/directional/west,
@@ -16674,6 +16681,11 @@
 	},
 /turf/open/floor/iron/white,
 /area/station/medical/treatment_center)
+"evt" = (
+/mob/living/simple_animal/hostile/fatten/magehand,
+/obj/effect/turf_decal/siding/wideplating_new/terracotta/corner,
+/turf/open/floor/mineral/calorite/strong,
+/area/icemoon/underground/explored)
 "evw" = (
 /obj/structure/window/reinforced/spawner/directional/north{
 	pixel_y = 2
@@ -20371,6 +20383,7 @@
 	pixel_x = 5;
 	pixel_y = 3
 	},
+/obj/effect/turf_decal/siding/wideplating_new/terracotta,
 /turf/open/floor/mineral/calorite,
 /area/icemoon/underground/explored)
 "fxR" = (
@@ -21222,6 +21235,12 @@
 /area/station/security/prison)
 "fKY" = (
 /obj/structure/cursedfatfountain,
+/obj/effect/turf_decal/siding/wideplating_new/terracotta{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/wideplating_new/terracotta{
+	dir = 4
+	},
 /turf/open/floor/mineral/calorite,
 /area/icemoon/underground/explored)
 "fKZ" = (
@@ -22486,6 +22505,7 @@
 	pixel_x = 0;
 	pixel_y = 5
 	},
+/obj/effect/turf_decal/siding/wideplating_new/terracotta,
 /turf/open/floor/mineral/calorite,
 /area/icemoon/underground/explored)
 "gck" = (
@@ -30818,14 +30838,12 @@
 /area/station/medical/storage)
 "isS" = (
 /obj/structure/chair/sofa/middle/brown,
-/obj/item/storage/belt{
-	pixel_x = 3;
-	pixel_y = 0
-	},
 /obj/item/clothing/under/color/grey/security{
 	pixel_x = -15;
 	pixel_y = -2
 	},
+/obj/item/bluespace_belt/primitive,
+/obj/effect/turf_decal/siding/wideplating_new/terracotta,
 /turf/open/floor/mineral/calorite/dance,
 /area/icemoon/underground/explored)
 "isU" = (
@@ -32158,6 +32176,10 @@
 /obj/effect/turf_decal/tile/yellow/diagonal_centre,
 /obj/structure/mineral_door/calorite,
 /obj/structure/trap/belch,
+/obj/effect/turf_decal/siding/wideplating_new/terracotta{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/wideplating_new/terracotta,
 /turf/open/floor/mineral/calorite/hide,
 /area/icemoon/underground/explored)
 "iOv" = (
@@ -34688,6 +34710,10 @@
 /obj/effect/turf_decal/tile/yellow/diagonal_centre,
 /obj/structure/mineral_door/calorite,
 /obj/structure/fans/tiny/invisible,
+/obj/effect/turf_decal/siding/wideplating_new/terracotta{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/wideplating_new/terracotta,
 /turf/open/floor/mineral/calorite/hide,
 /area/icemoon/underground/explored)
 "jyJ" = (
@@ -36686,6 +36712,7 @@
 /area/station/engineering/storage/tech)
 "kaZ" = (
 /obj/machinery/iv_drip/feeding_tube,
+/obj/effect/turf_decal/siding/wideplating_new/terracotta,
 /turf/open/floor/mineral/calorite,
 /area/icemoon/underground/explored)
 "kbd" = (
@@ -36959,6 +36986,9 @@
 /area/station/security/prison/rec)
 "keJ" = (
 /mob/living/simple_animal/hostile/fatten/magehand,
+/obj/effect/turf_decal/siding/wideplating_new/terracotta{
+	dir = 4
+	},
 /turf/open/floor/mineral/calorite,
 /area/icemoon/underground/explored)
 "keP" = (
@@ -39118,6 +39148,13 @@
 /obj/effect/landmark/generic_maintenance_landmark,
 /turf/open/floor/plating,
 /area/station/maintenance/port/greater)
+"kIA" = (
+/mob/living/simple_animal/hostile/fatten/magehand,
+/obj/effect/turf_decal/siding/wideplating_new/terracotta/corner{
+	dir = 1
+	},
+/turf/open/floor/mineral/calorite/strong,
+/area/icemoon/underground/explored)
 "kII" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 8
@@ -41534,6 +41571,13 @@
 	},
 /turf/open/floor/iron/white,
 /area/station/medical/medbay/aft)
+"lqK" = (
+/mob/living/simple_animal/hostile/fatten/magehand,
+/obj/effect/turf_decal/siding/wideplating_new/terracotta/corner{
+	dir = 8
+	},
+/turf/open/floor/mineral/calorite/strong,
+/area/icemoon/underground/explored)
 "lqM" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/duct,
@@ -46364,6 +46408,9 @@
 /area/station/hallway/primary/aft)
 "mKH" = (
 /obj/structure/scale,
+/obj/effect/turf_decal/siding/wideplating_new/terracotta/end{
+	dir = 1
+	},
 /turf/open/floor/mineral/calorite,
 /area/icemoon/underground/explored)
 "mKJ" = (
@@ -51003,6 +51050,7 @@
 /area/station/science/xenobiology)
 "nXD" = (
 /obj/structure/chair/sofa/right/brown,
+/obj/effect/turf_decal/siding/wideplating_new/terracotta,
 /turf/open/floor/mineral/calorite/dance,
 /area/icemoon/underground/explored)
 "nXH" = (
@@ -51846,6 +51894,13 @@
 	dir = 8
 	},
 /area/station/science/research)
+"ojb" = (
+/mob/living/simple_animal/hostile/fatten/magehand,
+/obj/effect/turf_decal/siding/wideplating_new/terracotta{
+	dir = 1
+	},
+/turf/open/floor/mineral/calorite,
+/area/icemoon/underground/explored)
 "oje" = (
 /turf/open/misc/asteroid/snow/coldroom,
 /area/station/service/kitchen/coldroom)
@@ -52380,6 +52435,11 @@
 	},
 /turf/open/floor/wood,
 /area/station/commons/dorms)
+"oqq" = (
+/mob/living/simple_animal/hostile/fatten/magehand,
+/obj/effect/turf_decal/siding/wideplating_new/terracotta,
+/turf/open/floor/mineral/calorite,
+/area/icemoon/underground/explored)
 "oqz" = (
 /obj/effect/turf_decal/tile/green{
 	dir = 4
@@ -54301,6 +54361,7 @@
 	pixel_x = -3;
 	pixel_y = 9
 	},
+/obj/effect/turf_decal/siding/wideplating_new/terracotta,
 /turf/open/floor/mineral/calorite,
 /area/icemoon/underground/explored)
 "oOw" = (
@@ -63921,6 +63982,13 @@
 /obj/effect/landmark/event_spawn,
 /turf/open/floor/iron,
 /area/station/cargo/storage)
+"rtC" = (
+/obj/structure/statue/calorite/fatty,
+/obj/effect/turf_decal/siding/wideplating_new/terracotta{
+	dir = 9
+	},
+/turf/open/floor/mineral/calorite,
+/area/icemoon/underground/explored)
 "rtR" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 8
@@ -80253,6 +80321,7 @@
 	pixel_x = -9;
 	pixel_y = 7
 	},
+/obj/effect/turf_decal/siding/wideplating_new/terracotta,
 /turf/open/floor/mineral/calorite,
 /area/icemoon/underground/explored)
 "vYU" = (
@@ -83576,6 +83645,7 @@
 	pixel_x = 0;
 	pixel_y = 5
 	},
+/obj/effect/turf_decal/siding/wideplating_new/terracotta,
 /turf/open/floor/mineral/calorite/dance,
 /area/icemoon/underground/explored)
 "wXW" = (
@@ -84637,6 +84707,9 @@
 /area/icemoon/underground/explored)
 "xkY" = (
 /mob/living/simple_animal/hostile/fatten/magehand,
+/obj/effect/turf_decal/siding/wideplating_new/terracotta/corner{
+	dir = 4
+	},
 /turf/open/floor/mineral/calorite/strong,
 /area/icemoon/underground/explored)
 "xkZ" = (
@@ -87021,6 +87094,9 @@
 /area/station/security/prison/safe)
 "xRS" = (
 /obj/structure/statue/calorite/fatty,
+/obj/effect/turf_decal/siding/wideplating_new/terracotta{
+	dir = 5
+	},
 /turf/open/floor/mineral/calorite,
 /area/icemoon/underground/explored)
 "xRZ" = (
@@ -116585,7 +116661,7 @@ ceu
 ceu
 ghx
 ceu
-xkY
+evt
 keJ
 xkY
 ceu
@@ -116842,9 +116918,9 @@ xRS
 ceu
 ceu
 ceu
-keJ
+oqq
 qzY
-keJ
+ojb
 ceu
 ghx
 ghx
@@ -117099,9 +117175,9 @@ txB
 wIj
 tXZ
 iOt
-xkY
-keJ
-xkY
+lqK
+aCW
+kIA
 ceu
 ghx
 ghx
@@ -117613,7 +117689,7 @@ wIj
 wIj
 tXZ
 iOt
-xkY
+evt
 keJ
 xkY
 ceu
@@ -117866,13 +117942,13 @@ ceu
 ceu
 gbT
 jFn
-xRS
+rtC
 ceu
 ceu
 ceu
-keJ
+oqq
 vsK
-keJ
+ojb
 ceu
 ghx
 ghx
@@ -118127,9 +118203,9 @@ ceu
 ceu
 ghx
 ceu
-xkY
-keJ
-xkY
+lqK
+aCW
+kIA
 ceu
 ghx
 ghx

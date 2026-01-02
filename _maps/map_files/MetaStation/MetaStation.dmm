@@ -20659,7 +20659,10 @@
 "hcv" = (
 /obj/effect/landmark/observer_start,
 /obj/structure/cable,
-/obj/effect/decal/big_gato,
+/obj/effect/decal/big_gato{
+	pixel_x = -32;
+	pixel_y = -16
+	},
 /turf/open/floor/iron/textured_large,
 /area/station/hallway/primary/central)
 "hcE" = (
@@ -38087,6 +38090,7 @@
 /obj/effect/turf_decal/tile/brown/half/contrasted{
 	dir = 1
 	},
+/obj/machinery/computer/shuttle/labor,
 /turf/open/floor/iron/dark,
 /area/station/command/bridge)
 "mXk" = (
