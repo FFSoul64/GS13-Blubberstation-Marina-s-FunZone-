@@ -737,7 +737,7 @@ SUBSYSTEM_DEF(ticker)
 
 /datum/controller/subsystem/ticker/proc/send_news_report()
 	var/news_message
-	var/news_source = "Nanotrasen News Network"
+	var/news_source = "GATO News Network" //gs13 - GATOified newscaters
 	var/decoded_station_name = html_decode(CONFIG_GET(string/cross_comms_name)) //decode station_name to avoid minor_announce double encode // SKYRAT EDIT: CROSS COMMS CONFIG
 	var/decoded_emergency_reason = html_decode(emergency_reason)
 

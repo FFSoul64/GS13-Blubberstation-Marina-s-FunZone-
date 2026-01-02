@@ -4,7 +4,7 @@
 /obj/machinery/modular_computer
 	name = "modular computer"
 	desc = "The frame of an advanced computer" //This should only show up when building a computer, it should examine the processor instead
-	icon = 'icons/obj/machines/modular_console.dmi'
+	icon = 'modular_gs/icons/obj/machines/modular_console.dmi' //GS13 - GATOified some computer  icon states
 	icon_state = "console"
 	idle_power_usage = BASE_MACHINE_IDLE_CONSUMPTION * 0.025
 	density = TRUE
