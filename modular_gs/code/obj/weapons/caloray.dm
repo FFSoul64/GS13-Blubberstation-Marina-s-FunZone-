@@ -19,13 +19,16 @@
 
 /obj/item/gun/medbeam/caloray/Initialize(mapload)
 	. = ..()
-	if(!cell)
-		cell = /obj/item/stock_parts/power_store/cell/high
 	update_appearance()
 
-/obj/item/gun/medbeam/caloray/empty/Initialize(mapload)
+/obj/item/gun/medbeam/caloray/empty_cell/Initialize(mapload)
 	. = ..()
 	cell = /obj/item/stock_parts/power_store/cell/high/empty
+	update_appearance()
+
+/obj/item/gun/medbeam/caloray/charged/Initialize(mapload)
+	. = ..()
+	cell = /obj/item/stock_parts/power_store/cell/high
 	update_appearance()
 
 /obj/item/gun/medbeam/caloray/examine(mob/user)
