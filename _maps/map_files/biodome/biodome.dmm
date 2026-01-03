@@ -66524,10 +66524,6 @@
 /obj/structure/lattice/catwalk,
 /turf/open/openspace,
 /area/station/biodome)
-"vJa" = (
-/obj/item/flashlight/lamp,
-/turf/open/space/openspace,
-/area/space)
 "vJo" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -163453,7 +163449,7 @@ hHc
 hHc
 hHc
 hHc
-vJa
+hHc
 hHc
 hHc
 kWt

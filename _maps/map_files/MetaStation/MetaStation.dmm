@@ -4245,6 +4245,7 @@
 	id_tag = "FitnessShower";
 	name = "Sauna"
 	},
+/obj/machinery/door/firedoor,
 /turf/open/floor/iron/white/smooth_edge{
 	dir = 4
 	},
@@ -21667,6 +21668,7 @@
 	dir = 8
 	},
 /obj/structure/cable,
+/obj/machinery/firealarm/directional/east,
 /turf/open/floor/iron/white/side{
 	dir = 5
 	},
@@ -63917,6 +63919,7 @@
 	name = "Fitness Room Shower"
 	},
 /obj/machinery/duct,
+/obj/machinery/door/firedoor,
 /turf/open/floor/iron/freezer,
 /area/station/commons/fitness/recreation)
 "vwq" = (
