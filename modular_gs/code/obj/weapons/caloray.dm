@@ -23,12 +23,12 @@
 
 /obj/item/gun/medbeam/caloray/empty_cell/Initialize(mapload)
 	. = ..()
-	cell = /obj/item/stock_parts/power_store/cell/high/empty
+	cell = new /obj/item/stock_parts/power_store/cell/high/empty
 	update_appearance()
 
 /obj/item/gun/medbeam/caloray/charged/Initialize(mapload)
 	. = ..()
-	cell = /obj/item/stock_parts/power_store/cell/high
+	cell = new /obj/item/stock_parts/power_store/cell/high
 	update_appearance()
 
 /obj/item/gun/medbeam/caloray/examine(mob/user)
@@ -168,7 +168,6 @@
 	return TRUE
 
 /obj/item/gun/medbeam/caloray/on_beam_tick(mob/living/carbon/target)
-	update_appearance()
 	if(mode == "fatten")
 		if(cell.charge() > 0)
 			var/energy_used = cell.use(power_use * intensity, TRUE)
@@ -185,6 +184,7 @@
 		else
 			LoseTarget()
 			return
+	update_appearance()
 
 /obj/effect/ebeam/caloray
 	name = "caloray beam"
