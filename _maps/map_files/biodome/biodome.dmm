@@ -12731,6 +12731,9 @@
 	dir = 5
 	},
 /obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/mining/glass{
+	name = "Cargo Bay"
+	},
 /turf/open/floor/wood/large,
 /area/station/cargo/office)
 "egZ" = (
@@ -26661,6 +26664,13 @@
 	},
 /turf/open/floor/iron/white/diagonal,
 /area/station/science/robotics/lab)
+"iMA" = (
+/obj/effect/turf_decal/stripes/asteroid/line,
+/mob/living/basic/pet/cat/fennec{
+	name = "Le Goob"
+	},
+/turf/open/misc/asteroid,
+/area/station/cargo/miningdock)
 "iMC" = (
 /obj/structure/chair/sofa/left/maroon{
 	dir = 4
@@ -120320,7 +120330,7 @@ tbV
 qID
 ktl
 rhP
-tcB
+iMA
 pAi
 bjT
 tbV

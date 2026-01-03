@@ -1036,6 +1036,10 @@
 	name = "Cargo Desk";
 	req_access = list("cargo")
 	},
+/obj/machinery/door/window/left/directional/east{
+	name = "Ore Redemption Window"
+	},
+/obj/structure/window/reinforced/spawner/directional/south,
 /turf/open/floor/plating,
 /area/station/cargo/lobby)
 "atf" = (
@@ -11298,46 +11302,11 @@
 /obj/effect/turf_decal/siding/wideplating_new{
 	dir = 4
 	},
-/obj/structure/sauna_oven,
-/obj/item/stack/sheet/mineral/wood{
-	pixel_x = -6;
-	pixel_y = -2
-	},
-/obj/item/stack/sheet/mineral/wood{
-	pixel_x = -6;
-	pixel_y = -2
-	},
-/obj/item/stack/sheet/mineral/wood{
-	pixel_x = -6;
-	pixel_y = -2
-	},
-/obj/item/stack/sheet/mineral/wood{
-	pixel_x = -6;
-	pixel_y = -2
-	},
-/obj/item/stack/sheet/mineral/wood{
-	pixel_x = -6;
-	pixel_y = -2
-	},
-/obj/item/stack/sheet/mineral/wood{
-	pixel_x = -6;
-	pixel_y = -2
-	},
-/obj/item/stack/sheet/mineral/wood{
-	pixel_x = -6;
-	pixel_y = -2
-	},
-/obj/item/stack/sheet/mineral/wood{
-	pixel_x = -6;
-	pixel_y = -2
-	},
-/obj/item/stack/sheet/mineral/wood{
-	pixel_x = -6;
-	pixel_y = -2
-	},
-/obj/item/stack/sheet/mineral/wood{
-	pixel_x = -6;
-	pixel_y = -2
+/obj/structure/fans/tiny,
+/obj/structure/chair/sofa/bench/solo{
+	dir = 4;
+	pixel_x = -7;
+	pixel_y = 0
 	},
 /turf/open/floor/iron/white/textured_large,
 /area/station/commons/fitness)
@@ -24321,7 +24290,7 @@
 	pixel_x = -15;
 	pixel_y = 0
 	},
-/obj/item/reagent_containers/cup/bucket/wooden,
+/obj/structure/fans/tiny,
 /turf/open/floor/iron/white/textured_large,
 /area/station/commons/fitness)
 "ilQ" = (
@@ -30544,6 +30513,7 @@
 	name = "Cargo Security Window"
 	},
 /obj/effect/turf_decal/tile/brown/fourcorners,
+/obj/structure/window/reinforced/spawner/directional/north,
 /turf/open/floor/iron,
 /area/station/cargo/lobby)
 "kkU" = (
@@ -32798,7 +32768,6 @@
 /turf/open/floor/plating,
 /area/station/maintenance/port/fore)
 "kXD" = (
-/obj/structure/bed/medical/emergency,
 /obj/item/radio/intercom/directional/south,
 /obj/machinery/camera/directional/south{
 	c_tag = "Medbay Foyer";
@@ -32811,6 +32780,7 @@
 	dir = 4
 	},
 /obj/effect/turf_decal/tile/blue/half/contrasted,
+/obj/machinery/self_actualization_device,
 /turf/open/floor/iron/white,
 /area/station/medical/medbay/lobby)
 "kXG" = (
@@ -33830,7 +33800,6 @@
 /area/station/service/library)
 "lrR" = (
 /obj/machinery/light/directional/south,
-/obj/structure/bed/medical/emergency,
 /obj/effect/turf_decal/trimline/blue/filled/warning{
 	dir = 1
 	},
@@ -33838,6 +33807,7 @@
 	dir = 4
 	},
 /obj/effect/turf_decal/tile/blue/half/contrasted,
+/obj/structure/scale,
 /turf/open/floor/iron/white,
 /area/station/medical/medbay/lobby)
 "lrZ" = (
@@ -67938,6 +67908,7 @@
 /obj/effect/turf_decal/siding/wideplating_new{
 	dir = 4
 	},
+/obj/structure/fans/tiny,
 /turf/open/floor/iron/white/textured_large,
 /area/station/commons/fitness)
 "wOy" = (
@@ -69123,7 +69094,7 @@
 	dir = 4
 	},
 /obj/effect/turf_decal/tile/yellow/half/contrasted,
-/obj/structure/scale,
+/obj/structure/bed/medical/emergency,
 /turf/open/floor/iron/white,
 /area/station/medical/medbay/lobby)
 "xiL" = (
@@ -69389,9 +69360,6 @@
 /obj/machinery/airalarm/directional/west,
 /turf/open/floor/iron/grimy,
 /area/station/tcommsat/computer)
-"xmC" = (
-/turf/open/floor/plating,
-/area/station/commons/fitness)
 "xmD" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/spawner/random/medical/memeorgans,
@@ -107912,7 +107880,7 @@ aag
 rjl
 htk
 ubs
-xmC
+cfy
 jlJ
 eZN
 ykK
