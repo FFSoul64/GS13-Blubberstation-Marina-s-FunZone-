@@ -496,7 +496,10 @@
 	lactates = DNA.features["breasts_lactation"]
 	uses_skin_color = DNA.features["breasts_uses_skincolor"]
 	set_size(DNA.features["breasts_size"])
-	set_genital_size = DNA.features["breasts_size"] // GS13 edit - minimum size, so that it doesn't change when the weight lowers
+	// GS13 EDIT
+	set_genital_size = DNA.features["breasts_size"] // minimum size, so that it doesn't change when the weight lowers
+	internal_fluid_datum = DNA.features["breast_produce"]
+	// GS13 END EDIT
 
 	return ..()
 

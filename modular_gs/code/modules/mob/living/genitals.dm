@@ -150,6 +150,25 @@
 	genital_size = min(genital_size, MAX_BREASTS_SIZE)
 	update_sprite_suffix()
 
+/obj/item/organ/genital/breasts/on_life(seconds_per_tick, times_fired)
+	. = ..()
+	if(!lactates)
+		return
+	
+	var/mob/living/carbon/human/affected_human = owner
+	if(owner.stat >= DEAD || !owner.client?.prefs?.read_preference(/datum/preference/toggle/erp) || !istype(affected_human))
+		return
+	
+	if(reagents.total_volume >= reagents.maximum_volume)
+		return
+
+	// var/regen = ((owner.nutrition / (NUTRITION_LEVEL_WELL_FED / NUTRITION_MULTIPLIER)) / NUTRITION_MULTIPLIER) * (reagents.maximum_volume / BREASTS_MULTIPLIER) * BASE_MULTIPLIER
+	var/regen = reagents.maximum_volume * 0.05
+	var/free_space = reagents.maximum_volume - reagents.total_volume
+	if(regen > free_space)
+		regen = free_space // so we aren't draining nutrition for milk that isn't actually being generated
+	reagents.add_reagent(internal_fluid_datum, regen)
+
 /datum/sprite_accessory/genital/breasts/alt_GS13/pair
 	name = "Pair (Alt GS13)"
 	icon = 'modular_gs/icons/obj/genitals/breasts_onmob.dmi'
