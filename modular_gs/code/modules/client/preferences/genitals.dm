@@ -115,3 +115,36 @@
 	relevant_mutant_bodypart = ORGAN_SLOT_BELLY
 	type_to_check = /datum/preference/choiced/genital/belly
 	skin_color_type = /datum/preference/toggle/genital_skin_color/belly
+
+// the tig bitties
+/datum/preference/choiced/breast_produce
+	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
+	savefile_identifier = PREFERENCE_CHARACTER
+	savefile_key = "breast_produce"
+	relevant_mutant_bodypart = ORGAN_SLOT_BREASTS
+
+/datum/preference/choiced/breast_produce/init_possible_values()
+	return GLOB.breast_produce
+
+/datum/preference/choiced/breast_produce/is_accessible(datum/preferences/preferences)
+	var/passed_initial_check = ..(preferences)
+	var/allowed = preferences.read_preference(/datum/preference/toggle/breasts_lactation)
+	var/erp_allowed = preferences.read_preference(/datum/preference/toggle/master_erp_preferences) && preferences.read_preference(/datum/preference/toggle/allow_genitals)
+	var/part_enabled = is_factual_sprite_accessory(relevant_mutant_bodypart, preferences.read_preference(/datum/preference/choiced/genital/breasts))
+	return erp_allowed && part_enabled && (passed_initial_check || allowed)
+
+/datum/preference/choiced/breast_produce/apply_to_human(mob/living/carbon/human/target, value)
+	target.dna.features["breast_produce"] = GLOB.breast_produce[value]
+
+/datum/preference/choiced/breast_produce/create_default_value()
+	return "breast milk"
+
+GLOBAL_LIST_INIT(breast_produce, list(
+	"breast milk" = /datum/reagent/consumable/breast_milk,
+	"nutriment" = /datum/reagent/consumable/nutriment,
+	"water" = /datum/reagent/water,
+	"honey" = /datum/reagent/consumable/alien_honey,
+	"strawberry milk" = /datum/reagent/consumable/pinkmilk,
+	"chocolate milk" = /datum/reagent/consumable/milk/chocolate_milk,
+	"weak lipoifier" = /datum/reagent/consumable/lipoifier/weak,
+	))

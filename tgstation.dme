@@ -7039,6 +7039,7 @@
 #include "modular_gs\code\modules\reagents\chemistry\reagents\food_reagents.dm"
 #include "modular_gs\code\modules\reagents\chemistry\recipes\fatchem.dm"
 #include "modular_gs\code\modules\reagents\chemistry\recipes\fatdrinks.dm"
+#include "modular_gs\code\modules\reagents\reagent_containers\condiment.dm"
 #include "modular_gs\code\modules\research\designs\autolathe.dm"
 #include "modular_gs\code\modules\research\designs\borg.dm"
 #include "modular_gs\code\modules\research\designs\nutri_designs.dm"
