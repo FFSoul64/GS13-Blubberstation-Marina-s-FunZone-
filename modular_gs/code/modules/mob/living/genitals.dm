@@ -177,7 +177,7 @@
 		return
 
 	// var/regen = ((owner.nutrition / (NUTRITION_LEVEL_WELL_FED / NUTRITION_MULTIPLIER)) / NUTRITION_MULTIPLIER) * (reagents.maximum_volume / BREASTS_MULTIPLIER) * BASE_MULTIPLIER
-	var/regen = reagents.maximum_volume * 0.05
+	var/regen = reagents.maximum_volume * 0.05 * seconds_per_tick
 	var/free_space = reagents.maximum_volume - reagents.total_volume
 	if(regen > free_space)
 		regen = free_space // so we aren't draining nutrition for milk that isn't actually being generated

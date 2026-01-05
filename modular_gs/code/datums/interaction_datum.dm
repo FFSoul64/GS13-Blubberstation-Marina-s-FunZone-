@@ -7,7 +7,7 @@
 		)
 	message = list("lifts their breasts into their mouth and begins sucking...")
 	category = "Sex"
-	usage = INTERACTION_SELF
+	usage = INTERACTION_ONLY_SELF
 	lewd = TRUE	// truth nuke
 	user_required_parts = list(ORGAN_SLOT_BREASTS)
 	user_pleasure = 1
@@ -33,7 +33,7 @@
 /datum/interaction/breast_feed_other
 	name = "Breast feed them"
 	description = "Feed someone else using your breasts!"
-	user_messages = list("You lift your breasts to &TARGET% 's mouth and start squeezing...")
+	user_messages = list("You lift your breasts to %TARGET% 's mouth and start squeezing...")
 	target_messages = list("%USER% brings their breasts to your mouth and starts squeezing...")
 	message = list("lifts their breasts into %TARGET% 's mouth and starts squeezing...")
 	category = "Sex"
