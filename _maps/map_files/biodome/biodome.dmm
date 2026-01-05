@@ -6893,6 +6893,7 @@
 	dir = 4
 	},
 /obj/structure/chair/beanbag/blue,
+/obj/machinery/light/small/directional/west,
 /turf/open/floor/wood/parquet,
 /area/station/commons/dorms)
 "cms" = (
@@ -12513,6 +12514,7 @@
 /obj/effect/turf_decal/siding/wood{
 	dir = 1
 	},
+/obj/machinery/light/small/directional/east,
 /turf/open/floor/wood/large,
 /area/station/commons/dorms)
 "ecS" = (
@@ -28030,6 +28032,7 @@
 	dir = 8
 	},
 /obj/structure/dresser,
+/obj/machinery/light/small/directional/east,
 /turf/open/floor/carpet/royalblue,
 /area/station/commons/dorms)
 "jlt" = (
@@ -35483,6 +35486,7 @@
 	dir = 4
 	},
 /obj/structure/chair/beanbag/purple,
+/obj/machinery/light/small/directional/west,
 /turf/open/floor/wood/parquet,
 /area/station/commons/dorms)
 "lCf" = (
@@ -45112,6 +45116,7 @@
 	dir = 8
 	},
 /obj/structure/dresser,
+/obj/machinery/light/small/directional/east,
 /turf/open/floor/carpet/purple,
 /area/station/commons/dorms)
 "oDR" = (
@@ -46154,6 +46159,13 @@
 	},
 /turf/open/floor/wood/parquet,
 /area/station/medical/psychology)
+"oVC" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 4
+	},
+/obj/machinery/light/small/directional/west,
+/turf/open/floor/wood/large,
+/area/station/commons/dorms)
 "oVE" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -51086,6 +51098,7 @@
 	normaldoorcontrol = 1;
 	specialfunctions = 4
 	},
+/obj/machinery/light/small/directional/west,
 /turf/open/floor/glass/reinforced,
 /area/station/commons/dorms)
 "qCM" = (
@@ -164999,7 +165012,7 @@ jJi
 fun
 phJ
 xMb
-hoa
+oVC
 rYa
 pzJ
 phJ
