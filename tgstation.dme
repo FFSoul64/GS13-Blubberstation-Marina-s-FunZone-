@@ -7075,6 +7075,7 @@
 #include "modular_gs\code\obj\structure\fountain.dm"
 #include "modular_gs\code\obj\structure\signs.dm"
 #include "modular_gs\code\obj\weapons\alter_rays.dm"
+#include "modular_gs\code\obj\weapons\caloray.dm"
 #include "modular_gs\code\obj\weapons\fatbeam.dm"
 #include "modular_gs\code\obj\weapons\fatoray.dm"
 #include "modular_gs\code\obj\weapons\fattening_batons.dm"

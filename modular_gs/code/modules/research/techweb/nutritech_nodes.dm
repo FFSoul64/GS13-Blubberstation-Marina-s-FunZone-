@@ -42,6 +42,7 @@
 		"alter_ray_reverser",
 		// "borg_upgrade_fatoray",
 		"bwomf_nanites",
+		"caloray",
 		// "docility_implant"
 		)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_3_POINTS)
