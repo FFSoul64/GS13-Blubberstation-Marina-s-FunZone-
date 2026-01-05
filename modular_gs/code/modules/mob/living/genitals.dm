@@ -148,6 +148,20 @@
 /obj/item/organ/genital/breasts/set_size(size)
 	genital_size = max(size, set_genital_size)		// mmmmmmm, they're getting so big~
 	genital_size = min(genital_size, MAX_BREASTS_SIZE)
+	var/breasts_capacity = 1
+	switch(genital_type)
+		if("pair")
+			breasts_capacity = 2
+		if("quad")
+			breasts_capacity = 2.5
+		if("sextuple")
+			breasts_capacity = 3
+	internal_fluid_maximum = genital_size * breasts_capacity * 60
+	if(internal_fluid_maximum > 3500)
+		internal_fluid_maximum = 3500
+	reagents.maximum_volume = internal_fluid_maximum
+	var/volume_to_remove = max(0, reagents.total_volume - reagents.maximum_volume)
+	reagents.remove_reagent(internal_fluid_datum, volume_to_remove)
 	update_sprite_suffix()
 
 /obj/item/organ/genital/breasts/on_life(seconds_per_tick, times_fired)
