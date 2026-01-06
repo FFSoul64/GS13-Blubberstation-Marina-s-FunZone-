@@ -138,7 +138,9 @@
 /obj/effect/turf_decal/siding/dark{
 	dir = 1
 	},
-/obj/machinery/byteforge,
+/obj/machinery/computer/quantum_console{
+	dir = 4
+	},
 /turf/open/floor/iron/dark/small,
 /area/station/cargo/bitrunning/den)
 "acp" = (
@@ -6891,6 +6893,7 @@
 	dir = 4
 	},
 /obj/structure/chair/beanbag/blue,
+/obj/machinery/light/small/directional/west,
 /turf/open/floor/wood/parquet,
 /area/station/commons/dorms)
 "cms" = (
@@ -12511,6 +12514,7 @@
 /obj/effect/turf_decal/siding/wood{
 	dir = 1
 	},
+/obj/machinery/light/small/directional/east,
 /turf/open/floor/wood/large,
 /area/station/commons/dorms)
 "ecS" = (
@@ -19604,21 +19608,10 @@
 /turf/open/floor/engine,
 /area/station/science/xenobiology)
 "gss" = (
-/obj/structure/rack/shelf{
-	name = "emergency snack shelf"
-	},
 /obj/effect/turf_decal/siding/dark{
 	dir = 9
 	},
-/obj/item/food/cornchips/random{
-	pixel_y = 2;
-	pixel_x = -2
-	},
-/obj/item/bitrunning_disk{
-	pixel_x = 6;
-	name = "generic disk";
-	pixel_y = -3
-	},
+/obj/machinery/byteforge,
 /turf/open/floor/iron/dark/small,
 /area/station/cargo/bitrunning/den)
 "gsu" = (
@@ -26943,9 +26936,8 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 4
 	},
-/obj/structure/chair/office/tactical{
-	dir = 8
-	},
+/obj/structure/table,
+/obj/item/flashlight/lamp,
 /turf/open/floor/wood/parquet,
 /area/station/cargo/bitrunning/den)
 "iTc" = (
@@ -28040,6 +28032,7 @@
 	dir = 8
 	},
 /obj/structure/dresser,
+/obj/machinery/light/small/directional/east,
 /turf/open/floor/carpet/royalblue,
 /area/station/commons/dorms)
 "jlt" = (
@@ -29737,9 +29730,10 @@
 /area/station/commons/toilet)
 "jPq" = (
 /obj/machinery/light/red/dim/directional/south,
-/obj/machinery/computer/quantum_console{
-	dir = 4
+/obj/structure/rack/shelf{
+	name = "emergency snack shelf"
 	},
+/obj/item/clothing/suit/costume/wellworn_shirt/messy/graphic/gamer,
 /turf/open/floor/wood/parquet,
 /area/station/cargo/bitrunning/den)
 "jPA" = (
@@ -33578,7 +33572,18 @@
 /turf/open/floor/iron,
 /area/station/cargo/storage)
 "kYd" = (
-/obj/machinery/quantum_server,
+/obj/structure/rack/shelf{
+	name = "emergency snack shelf"
+	},
+/obj/item/food/cornchips/random{
+	pixel_y = 2;
+	pixel_x = -2
+	},
+/obj/item/bitrunning_disk{
+	pixel_x = 6;
+	name = "generic disk";
+	pixel_y = -3
+	},
 /turf/open/floor/wood/parquet,
 /area/station/cargo/bitrunning/den)
 "kYm" = (
@@ -35481,6 +35486,7 @@
 	dir = 4
 	},
 /obj/structure/chair/beanbag/purple,
+/obj/machinery/light/small/directional/west,
 /turf/open/floor/wood/parquet,
 /area/station/commons/dorms)
 "lCf" = (
@@ -45110,6 +45116,7 @@
 	dir = 8
 	},
 /obj/structure/dresser,
+/obj/machinery/light/small/directional/east,
 /turf/open/floor/carpet/purple,
 /area/station/commons/dorms)
 "oDR" = (
@@ -45548,10 +45555,7 @@
 /obj/effect/turf_decal/siding/dark{
 	dir = 1
 	},
-/obj/structure/rack/shelf{
-	name = "emergency snack shelf"
-	},
-/obj/item/clothing/suit/costume/wellworn_shirt/messy/graphic/gamer,
+/obj/machinery/quantum_server,
 /turf/open/floor/iron/dark/small,
 /area/station/cargo/bitrunning/den)
 "oKR" = (
@@ -46155,6 +46159,13 @@
 	},
 /turf/open/floor/wood/parquet,
 /area/station/medical/psychology)
+"oVC" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 4
+	},
+/obj/machinery/light/small/directional/west,
+/turf/open/floor/wood/large,
+/area/station/commons/dorms)
 "oVE" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -51087,6 +51098,7 @@
 	normaldoorcontrol = 1;
 	specialfunctions = 4
 	},
+/obj/machinery/light/small/directional/west,
 /turf/open/floor/glass/reinforced,
 /area/station/commons/dorms)
 "qCM" = (
@@ -56066,7 +56078,9 @@
 /obj/effect/turf_decal/siding/dark{
 	dir = 5
 	},
-/obj/machinery/computer/order_console/bitrunning,
+/obj/structure/chair/office/tactical{
+	dir = 8
+	},
 /turf/open/floor/iron/dark/small,
 /area/station/cargo/bitrunning/den)
 "sfD" = (
@@ -72920,8 +72934,7 @@
 "xIV" = (
 /obj/machinery/power/apc/auto_name/directional/north,
 /obj/structure/cable,
-/obj/structure/table,
-/obj/item/flashlight/lamp,
+/obj/machinery/computer/order_console/bitrunning,
 /turf/open/floor/wood/parquet,
 /area/station/cargo/bitrunning/den)
 "xJc" = (
@@ -164999,7 +165012,7 @@ jJi
 fun
 phJ
 xMb
-hoa
+oVC
 rYa
 pzJ
 phJ
