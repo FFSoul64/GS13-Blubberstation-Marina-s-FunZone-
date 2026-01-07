@@ -395,13 +395,9 @@
 	if(warning_damage_flags & HYPERTORUS_FLAG_IRON_CONTENT_DAMAGE)
 		radio.talk_into(src, "Warning! Iron shards are damaging the internal core shielding!", engineering_channel)
 	if(warning_damage_flags & HYPERTORUS_FLAG_HIGH_FUEL_MIX_MOLE)
-		radio.talk_into(src, "Warning! Fuel mix moles have reached critical levels!", engineering_channel)	// GS13 EDIT to differentiate from the other warning about fuel mole count
+		radio.talk_into(src, "Warning! Fuel mix moles reaching critical levels!", engineering_channel)
 	if(warning_damage_flags & HYPERTORUS_FLAG_IRON_CONTENT_INCREASE)
 		radio.talk_into(src, "Warning! Iron amount inside the core is increasing!", engineering_channel)
-	// GS13 EDIT - to warn people about this shit
-	if(warning_damage_flags & HYPERTORUS_FLAG_REACHING_HIGH_FUEL_MIX_MOLE)
-		radio.talk_into(src, "Warning! Fuel mix moles approaching critical levels!", engineering_channel)
-	// GS13 END EDIT
 
 /**
  * Called by check_alert() in this file

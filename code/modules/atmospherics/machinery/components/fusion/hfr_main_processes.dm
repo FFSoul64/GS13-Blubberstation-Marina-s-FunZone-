@@ -447,10 +447,6 @@
 	// Apply damage cap
 	critical_threshold_proximity = min(critical_threshold_proximity_archived + (seconds_per_tick * DAMAGE_CAP_MULTIPLIER * melting_point), critical_threshold_proximity)
 
-	// if we are approaching the mole explosion threshold, send a warning
-	if(internal_fusion.total_moles() >= HYPERTORUS_NEAR_HYPERCRITICAL_MOLES)
-		warning_damage_flags |= HYPERTORUS_FLAG_REACHING_HIGH_FUEL_MIX_MOLE
-
 	// If we have a preposterous amount of mass in the fusion mix, things get bad extremely fast
 	if(internal_fusion.total_moles() >= HYPERTORUS_HYPERCRITICAL_MOLES)
 		var/hypercritical_damage_taken = max((internal_fusion.total_moles() - HYPERTORUS_HYPERCRITICAL_MOLES) * HYPERTORUS_HYPERCRITICAL_SCALE, 0)

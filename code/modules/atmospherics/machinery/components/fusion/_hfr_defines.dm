@@ -114,7 +114,7 @@
 /// Take this much damage per mole over the threshold per second
 #define HYPERTORUS_HYPERCRITICAL_SCALE 0.002
 /// Take at most this much damage per second
-#define HYPERTORUS_HYPERCRITICAL_MAX_DAMAGE 7.5	// GS13 edit - come on, fuck off. Not even a warning for this shit
+#define HYPERTORUS_HYPERCRITICAL_MAX_DAMAGE 20
 
 // If the moderator goes hypercritical, it cracks and starts to spill
 // If our pressure is weak, it can still spill, just weakly and infrequently
