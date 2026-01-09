@@ -12,6 +12,8 @@
 #define HELPLESSNESS_TRAIT "helplessness"
 #define TRAIT_NO_HELPLESSNESS "no_helplessness"
 #define TRAIT_NO_NECK "no_neck"
+#define TRAIT_LOW_FOV "fat_blocking_view"
+#define TRAIT_VERY_LOW_FOV "fat_blocking_view_HARD"
 
 #define TRAIT_RADRESONANCE "radresonance" //FIX THIS LATER
 #define COMSIG_MICRO_PICKUP_FEET "micro_force_grabbed"			//From /datum/element/mob_holder/micro

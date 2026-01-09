@@ -40,7 +40,7 @@
 
 /datum/quirk/helplessness/big_cheeks
 	name = "Big cheeks"
-	desc = "Your cheeks seem to bloat up exceptionally with weight, reducing your visibility. At 3440 BFI you will become nearsighted and your face will be hidden. WARNING! PICKING THIS QUIRK WILL MAKE YOU NEARSIGHTED AND HIDE YOUR FACE REGARDLESS OF YOUR NEARSIGHTEDNESS/HIDDEN FACE PREFERENCE!"
+	desc = "Your cheeks seem to bloat up exceptionally with weight, reducing your visibility. At 3440 BFI your visibility will dimminish and your face will be hidden. WARNING! PICKING THIS QUIRK WILL MAKE YOU NEARSIGHTED AND HIDE YOUR FACE REGARDLESS OF YOUR NEARSIGHTEDNESS/HIDDEN FACE PREFERENCE!"
 	icon = "fa-glasses"
 	medical_record_text = "Patients cheeks seem to accumulate significant amount of adipose, leading to worse eyesight at higher weights."
 	value = -4
@@ -146,7 +146,7 @@
 
 /datum/quirk/helplessness/thick_neck
 	name = "Thick neck"
-	desc = "Your neck is really thick. At 1840 BFI, you will be unable to wear anything around it."
+	desc = "Your neck is really thick. At 3440 BFI, you will be unable to wear anything around it."
 	medical_record_text = "Patiens has a very thick neck."
 	value = -1
 	gain_text = span_notice("You feel a tightness around your neck")
