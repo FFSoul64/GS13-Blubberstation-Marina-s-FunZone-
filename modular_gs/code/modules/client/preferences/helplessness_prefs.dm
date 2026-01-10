@@ -80,3 +80,8 @@
 	savefile_key = "stuckage_custom"
 	minimum = 0
 	maximum = 100
+
+/datum/preference/numeric/helplessness/no_neck
+	category = WG_PREFERENCES
+	savefile_identifier = PREFERENCE_CHARACTER
+	savefile_key = "no_neck"
