@@ -570,6 +570,7 @@
 	req_components = list(/datum/stock_part/matter_bin = 1)
 	var/static/list/fridges_name_paths = list(/obj/machinery/smartfridge = "plant produce",
 		/obj/machinery/smartfridge/food = "food",
+		/obj/machinery/smartfridge/hotbar = "hotbar",	// GS13 EDIT: adds the hotbar
 		/obj/machinery/smartfridge/drinks = "drinks",
 		/obj/machinery/smartfridge/extract = "slimes",
 		/obj/machinery/smartfridge/petri = "petri",
