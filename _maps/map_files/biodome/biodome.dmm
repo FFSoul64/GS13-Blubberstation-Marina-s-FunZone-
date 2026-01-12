@@ -1259,6 +1259,13 @@
 /obj/effect/spawner/structure/window,
 /turf/open/floor/plating,
 /area/station/service/chapel)
+"atn" = (
+/obj/machinery/atmospherics/components/binary/pump{
+	dir = 1;
+	name = "Atmos to Engine"
+	},
+/turf/open/floor/engine,
+/area/station/engineering/supermatter/room)
 "atv" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/disposalpipe/sorting/mail/flip{
@@ -28296,21 +28303,6 @@
 	},
 /turf/open/floor/iron,
 /area/station/cargo/miningdock)
-"joT" = (
-/obj/effect/turf_decal/tile/purple/half/contrasted{
-	dir = 1
-	},
-/obj/machinery/quantumpad{
-	map_pad_id = "station";
-	map_pad_link_id = "xenoarch";
-	mapped_quantum_pads = list("station","xenoarch");
-	name = "TO XENOARCH"
-	},
-/obj/structure/sign/warning/secure_area/directional/north{
-	name = "To Xenoarcheology"
-	},
-/turf/open/floor/iron/edge,
-/area/station/hallway/primary/central/fore)
 "joY" = (
 /obj/machinery/door/airlock/maintenance{
 	name = "Engineering Maintenance"
@@ -34217,6 +34209,21 @@
 /obj/effect/spawner/random/trash/garbage,
 /turf/open/openspace,
 /area/station/service/library/lounge)
+"leM" = (
+/obj/effect/turf_decal/tile/purple/half/contrasted{
+	dir = 1
+	},
+/obj/machinery/quantumpad{
+	map_pad_id = "station";
+	map_pad_link_id = "xenoarch";
+	mapped_quantum_pads = list("station","xenoarch");
+	name = "TO XENOARCH"
+	},
+/obj/structure/sign/warning/secure_area/directional/north{
+	name = "To Xenoarcheology"
+	},
+/turf/open/floor/iron/edge,
+/area/station/hallway/primary/central/fore)
 "leU" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -58713,12 +58720,6 @@
 /obj/effect/turf_decal/tile/dark_green/opposingcorners,
 /turf/open/floor/iron/white,
 /area/station/service/kitchen)
-"sVy" = (
-/obj/machinery/atmospherics/components/binary/pump{
-	dir = 1
-	},
-/turf/open/floor/engine,
-/area/station/engineering/supermatter/room)
 "sVz" = (
 /obj/effect/landmark/start/hangover,
 /obj/effect/decal/cleanable/confetti,
@@ -112531,7 +112532,7 @@ pSY
 myo
 tIT
 ruy
-sVy
+atn
 eHk
 nBy
 keR
@@ -176173,7 +176174,7 @@ lSi
 lSi
 lSi
 lSi
-joT
+leM
 cwW
 sro
 jzd

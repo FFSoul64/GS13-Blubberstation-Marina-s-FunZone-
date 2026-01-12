@@ -2098,7 +2098,6 @@
 /obj/effect/turf_decal/tile/purple{
 	dir = 8
 	},
-/obj/structure/cable,
 /obj/effect/turf_decal/trimline/purple/mid_joiner{
 	dir = 4
 	},
@@ -2153,11 +2152,6 @@
 /obj/structure/broken_flooring/singular/directional/north,
 /turf/open/floor/plating,
 /area/xenoarch/lavaland/lowerlevel)
-"bRF" = (
-/obj/machinery/power/apc/auto_name/directional/south,
-/obj/machinery/atmospherics/components/tank/air/layer4,
-/turf/open/floor/plating,
-/area/lavaland/underground/xenoarch/candy_outpost)
 "bSm" = (
 /obj/machinery/conveyor{
 	dir = 8;
@@ -11441,24 +11435,13 @@
 	},
 /area/xenoarch/lavaland/lowerlevel)
 "jOM" = (
-/obj/effect/turf_decal/tile/purple{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/purple{
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
 	dir = 8
 	},
 /obj/structure/cable,
-/obj/machinery/power/apc/auto_name/directional/west,
-/obj/effect/turf_decal/trimline/purple/line{
-	dir = 4
-	},
-/obj/effect/turf_decal/trimline/purple/mid_joiner{
-	dir = 4
-	},
-/turf/open/floor/iron/white/textured_edge{
-	dir = 4
-	},
-/area/xenoarch/lavaland/arch)
+/turf/open/floor/iron,
+/area/xenoarch/lavaland/maint_east)
 "jOO" = (
 /obj/effect/turf_decal/stripes/white/line{
 	dir = 4
@@ -18344,7 +18327,6 @@
 /turf/open/misc/asteroid/basalt/lava_land_surface,
 /area/lavaland/underground)
 "pyY" = (
-/obj/structure/cable,
 /obj/structure/cable,
 /obj/machinery/portable_atmospherics/scrubber,
 /obj/machinery/atmospherics/components/unary/portables_connector/visible/layer2,
@@ -101115,7 +101097,7 @@ sMe
 rRp
 bjZ
 bOP
-jOM
+oPY
 oPY
 uWX
 vjP
@@ -106025,7 +106007,7 @@ pLk
 pLk
 ual
 abH
-sXq
+jOM
 sXq
 jkL
 jkL
@@ -131405,7 +131387,7 @@ uxw
 vtg
 bia
 sJp
-bRF
+iZC
 dGx
 icb
 nZt
