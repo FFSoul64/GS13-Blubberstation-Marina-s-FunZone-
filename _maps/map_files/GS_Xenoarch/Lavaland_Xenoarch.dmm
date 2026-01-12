@@ -11434,14 +11434,6 @@
 	dir = 1
 	},
 /area/xenoarch/lavaland/lowerlevel)
-"jOM" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
-	dir = 8
-	},
-/obj/structure/cable,
-/turf/open/floor/iron,
-/area/xenoarch/lavaland/maint_east)
 "jOO" = (
 /obj/effect/turf_decal/stripes/white/line{
 	dir = 4
@@ -22388,7 +22380,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
 	dir = 8
 	},
-/obj/structure/cable,
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/xenoarch/lavaland/maint_east)
@@ -106007,7 +105998,7 @@ pLk
 pLk
 ual
 abH
-jOM
+sXq
 sXq
 jkL
 jkL
