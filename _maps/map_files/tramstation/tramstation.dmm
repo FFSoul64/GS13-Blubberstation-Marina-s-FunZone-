@@ -2711,11 +2711,11 @@
 /turf/open/floor/iron,
 /area/station/engineering/atmos)
 "amL" = (
-/obj/effect/turf_decal/trimline/purple/filled/corner{
-	dir = 4
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
+	},
+/obj/effect/turf_decal/trimline/purple/filled/line{
+	dir = 1
 	},
 /turf/open/floor/iron/white,
 /area/station/science/lobby)
@@ -57459,11 +57459,20 @@
 /turf/open/floor/iron,
 /area/station/security/courtroom/holding)
 "sUb" = (
-/obj/effect/turf_decal/trimline/purple/filled/line{
-	dir = 4
-	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/cable,
+/obj/machinery/quantumpad{
+	map_pad_id = "station";
+	map_pad_link_id = "xenoarch";
+	mapped_quantum_pads = list("station","xenoarch");
+	name = "TO XENOARCH"
+	},
+/obj/effect/turf_decal/trimline/purple/filled/warning{
+	dir = 9
+	},
+/obj/effect/turf_decal/trimline/purple/filled/warning{
+	dir = 6
+	},
 /turf/open/floor/iron/white,
 /area/station/science/lobby)
 "sUc" = (
@@ -63542,6 +63551,14 @@
 /obj/structure/lattice,
 /turf/open/space/openspace,
 /area/station/solars/starboard/fore)
+"uRD" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/cable,
+/obj/effect/turf_decal/trimline/purple/filled/line{
+	dir = 4
+	},
+/turf/open/floor/iron/white,
+/area/station/science/lobby)
 "uRR" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/effect/turf_decal/tile/bar/opposingcorners,
@@ -65497,6 +65514,15 @@
 /obj/structure/cable,
 /turf/open/floor/engine,
 /area/station/engineering/supermatter/room)
+"vzB" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/purple/filled/corner{
+	dir = 4
+	},
+/turf/open/floor/iron/white,
+/area/station/science/lobby)
 "vzY" = (
 /obj/machinery/duct,
 /obj/effect/decal/cleanable/dirt,
@@ -68145,7 +68171,6 @@
 /turf/closed/wall/r_wall,
 /area/station/engineering/atmos)
 "wxu" = (
-/obj/machinery/destructive_scanner,
 /obj/effect/turf_decal/trimline/purple/filled/warning{
 	dir = 6
 	},
@@ -68156,6 +68181,7 @@
 /obj/structure/cable,
 /obj/effect/landmark/event_spawn,
 /obj/structure/disposalpipe/segment,
+/obj/machinery/destructive_scanner,
 /turf/open/floor/iron/white,
 /area/station/science/lobby)
 "wxv" = (
@@ -183091,9 +183117,9 @@ bNW
 aHq
 lfQ
 dpC
-aHQ
-bVE
-vnu
+wBb
+uRD
+vzB
 sRZ
 oxL
 wwP
@@ -183348,7 +183374,7 @@ blg
 aHq
 lfQ
 iBx
-wBb
+nUy
 sUb
 amL
 qQc

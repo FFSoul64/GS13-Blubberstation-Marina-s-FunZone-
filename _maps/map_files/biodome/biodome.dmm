@@ -22574,6 +22574,22 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/grass/fairy,
 /area/station/ai_monitored/turret_protected/aisat/foyer)
+"hpo" = (
+/obj/effect/turf_decal/tile/purple/half/contrasted{
+	dir = 1
+	},
+/obj/machinery/quantumpad{
+	map_pad_id = "station";
+	map_pad_link_id = "xenoarch";
+	mapped_quantum_pads = list("station","xenoarch");
+	name = "TO XENOARCH"
+	},
+/obj/structure/sign/warning/secure_area/directional/north{
+	name = "To Xenoarcheology"
+	},
+/obj/effect/turf_decal/bot,
+/turf/open/floor/iron/edge,
+/area/station/hallway/primary/central/fore)
 "hpv" = (
 /obj/structure/disposalpipe/segment,
 /obj/effect/turf_decal/siding/dark_green/corner{
@@ -72869,7 +72885,6 @@
 /area/station/maintenance/department/chapel)
 "xDC" = (
 /obj/structure/table/wood,
-/obj/item/book/manual/gato_spacelaw,
 /obj/item/clothing/glasses/sunglasses/big{
 	pixel_x = 3;
 	pixel_y = 3
@@ -176154,7 +176169,7 @@ lSi
 lSi
 lSi
 lSi
-nSZ
+hpo
 cwW
 sro
 jzd

@@ -38484,6 +38484,7 @@
 	name = "Robotics Privacy Shutters"
 	},
 /obj/effect/mapping_helpers/airlock/access/all/science/robotics,
+/obj/effect/turf_decal/bot,
 /turf/open/floor/iron/dark,
 /area/station/science/robotics/lab)
 "moG" = (
@@ -44850,8 +44851,17 @@
 /area/station/hallway/primary/fore)
 "oAO" = (
 /obj/effect/turf_decal/stripes/corner,
-/obj/effect/turf_decal/tile/neutral/anticorner/contrasted{
-	dir = 8
+/obj/machinery/quantumpad{
+	map_pad_id = "station";
+	map_pad_link_id = "xenoarch";
+	mapped_quantum_pads = list("station","xenoarch");
+	name = "TO XENOARCH"
+	},
+/obj/effect/turf_decal/bot,
+/obj/structure/sign/warning/secure_area/directional/north{
+	name = "To Xenoarcheology";
+	pixel_x = 0;
+	pixel_y = 27
 	},
 /turf/open/floor/iron/dark,
 /area/station/hallway/primary/central/fore)
@@ -66418,7 +66428,10 @@
 "vqN" = (
 /obj/machinery/disposal/bin,
 /obj/effect/turf_decal/bot,
-/obj/machinery/firealarm/directional/south,
+/obj/machinery/firealarm/directional/south{
+	pixel_x = 0;
+	pixel_y = -20
+	},
 /obj/machinery/button/door/directional/south{
 	id = "robotics_shutters";
 	name = "Robotics Shutter Toggle";
