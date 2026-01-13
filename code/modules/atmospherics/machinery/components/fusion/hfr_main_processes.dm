@@ -453,7 +453,11 @@
 		// and makes the code more readable
 		// if this ever becomes a merge conflict, either ask me (Swan) or use your own judgement
 		// documentation of the issues this edit indendet to fix can be found in issue
-		// #111 on our GS13 Blubberstation repo and issue #5103 on Bubberstation repo
+		// #111 on our GS13 Blubberstation repo and issue #94786 on TG station repo
+		/* original code:
+		// var/hypercritical_damage_taken = max((internal_fusion.total_moles() - HYPERTORUS_HYPERCRITICAL_MOLES) * HYPERTORUS_HYPERCRITICAL_SCALE, 0)
+		// critical_threshold_proximity = max(critical_threshold_proximity + min(hypercritical_damage_taken, HYPERTORUS_HYPERCRITICAL_MAX_DAMAGE), 0) * seconds_per_tick
+		*/
 		var/moles_over_limit = internal_fusion.total_moles() - HYPERTORUS_HYPERCRITICAL_MOLES
 		var/hypercritical_damage_taken = max(moles_over_limit * HYPERTORUS_HYPERCRITICAL_SCALE, 0)
 		hypercritical_damage_taken = min(hypercritical_damage_taken, HYPERTORUS_HYPERCRITICAL_MAX_DAMAGE) * seconds_per_tick
