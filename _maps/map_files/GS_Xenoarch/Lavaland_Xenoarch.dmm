@@ -6124,10 +6124,6 @@
 /obj/structure/weightmachine,
 /turf/open/floor/iron/dark/smooth_large,
 /area/xenoarch/lavaland/gym)
-"ffq" = (
-/obj/structure/lattice/catwalk,
-/turf/open/misc/asteroid/basalt/lava_land_surface,
-/area/lavaland/underground)
 "ffy" = (
 /obj/machinery/light{
 	dir = 4
@@ -109462,7 +109458,7 @@ msl
 kHZ
 kHZ
 srH
-ffq
+mGd
 srH
 mGd
 srH
@@ -109978,7 +109974,7 @@ kHZ
 kHZ
 kHZ
 srH
-ffq
+mGd
 srH
 mGd
 srH
