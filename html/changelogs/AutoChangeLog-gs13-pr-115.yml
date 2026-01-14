@@ -1,0 +1,11 @@
+author: "Phantastic-Swan"
+delete-after: True
+changes:
+  - qol: "addict traits (smoker, junkie, alcoholic) should be a lot less painful, while also activating it's effects less often"
+  - qol: "the oversized trait no longer causes the player to be unable to be closed in machines"
+  - qol: "the oversized trait no longer makes the player break any chair they sit on - that behavior is now reserved for the real fat asses"
+  - qol: "small/micro quirks no longer make you trip when passing any other mob"
+  - balance: "High metabolization of nitrium no longer scales it's toxin damage with time"
+  - bugfix: "fixes HFRs damage from too high moles no longer scales quadratically with time"
+  - bugfix: "fixes micro calorite not clearing it's effects at very low concentrations"
+  - bugfix: "fixes a piece of addiction code I broke some time ago. Whoops."
