@@ -1,4 +1,0 @@
-author: "smerglemzerb"
-delete-after: True
-changes:
-  - bugfix: "Fixes player muscle examines showing up with player fat examines"

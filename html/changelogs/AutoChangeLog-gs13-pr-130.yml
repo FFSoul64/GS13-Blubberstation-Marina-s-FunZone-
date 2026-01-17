@@ -1,5 +1,0 @@
-author: "Phantastic-Swan"
-delete-after: True
-changes:
-  - bugfix: "fixes perma fat not properly scaling with WG/L rate modifiers"
-  - code_imp: "`adjust_perma` and `adjust_fatness` procs now return the amount of fat they applied onto their targets"
