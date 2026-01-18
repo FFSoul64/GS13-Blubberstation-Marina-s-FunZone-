@@ -1886,6 +1886,9 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/machinery/vending/games{
+	shut_up = 1
+	},
 /turf/open/indestructible/hoteltile{
 	icon_state = "floor"
 	},
@@ -1963,9 +1966,7 @@
 /obj/effect/turf_decal/trimline/purple/filled/line{
 	dir = 1
 	},
-/obj/machinery/vending/games{
-	shut_up = 1
-	},
+/obj/machinery/vending/gato_merch,
 /turf/open/indestructible/hoteltile{
 	icon_state = "floor"
 	},
@@ -20474,8 +20475,8 @@
 /obj/effect/turf_decal/siding{
 	dir = 5
 	},
-/obj/structure/closet/secure_closet/medical2,
 /obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/closet/secure_closet/medical3,
 /turf/open/floor/iron/white/smooth_large,
 /area/centcom/holding/cafe/park)
 "tNw" = (
@@ -62202,8 +62203,8 @@ ayI
 ayI
 ayI
 ayI
-ajj
-ajj
+ayI
+ayI
 ayI
 ajj
 ajj

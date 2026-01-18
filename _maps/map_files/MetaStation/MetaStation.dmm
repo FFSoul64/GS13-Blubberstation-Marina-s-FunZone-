@@ -7798,10 +7798,20 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/cable,
-/obj/effect/turf_decal/tile/purple/half/contrasted{
+/obj/machinery/quantumpad{
+	map_pad_id = "station";
+	map_pad_link_id = "xenoarch";
+	mapped_quantum_pads = list("station","xenoarch");
+	name = "TO XENOARCH"
+	},
+/obj/structure/sign/warning/secure_area/directional/north{
+	name = "To Xenoarcheology"
+	},
+/obj/effect/turf_decal/bot,
+/obj/effect/turf_decal/tile/purple/half{
 	dir = 1
 	},
-/turf/open/floor/iron/white,
+/turf/open/floor/iron/white/smooth_large,
 /area/station/science/lobby)
 "cGV" = (
 /obj/machinery/air_sensor/plasma_tank,
@@ -19986,6 +19996,7 @@
 	c_tag = "Engineering - Power Monitoring"
 	},
 /obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/machinery/computer/station_alert,
 /turf/open/floor/iron/dark,
 /area/station/engineering/main)
 "gMQ" = (
@@ -101778,7 +101789,7 @@ psp
 wBF
 epv
 udN
-ghk
+wHu
 cGG
 fak
 jUh

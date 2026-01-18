@@ -7367,7 +7367,6 @@
 /area/station/hallway/secondary/service)
 "aGK" = (
 /obj/structure/table,
-/obj/item/book/manual/gato_spacelaw,
 /turf/open/floor/iron,
 /area/station/commons/locker)
 "aGO" = (
@@ -10953,7 +10952,6 @@
 "aSw" = (
 /obj/structure/window/reinforced/spawner/directional/east,
 /obj/structure/window/reinforced/spawner/directional/west,
-/obj/item/book/manual/gato_spacelaw,
 /turf/open/floor/glass/reinforced,
 /area/station/command/bridge)
 "aSx" = (
@@ -50035,6 +50033,10 @@
 	},
 /turf/open/floor/iron,
 /area/station/service/hydroponics/garden)
+"iII" = (
+/obj/item/banner/gato,
+/turf/open/floor/iron/dark/textured_large,
+/area/station/hallway/primary/central)
 "iIQ" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 1
@@ -61989,6 +61991,7 @@
 /area/station/security/holding_cell)
 "nTA" = (
 /obj/item/radio/intercom/directional/north,
+/obj/item/banner/gato,
 /turf/open/floor/iron/dark/textured_large,
 /area/station/hallway/primary/central)
 "nTG" = (
@@ -70553,6 +70556,7 @@
 /obj/machinery/camera/directional/west{
 	c_tag = "Vault Lobby"
 	},
+/obj/machinery/vending/gato_merch,
 /turf/open/floor/iron/dark/textured_large,
 /area/station/hallway/primary/central)
 "rKP" = (
@@ -71154,6 +71158,10 @@
 	},
 /turf/open/floor/plating,
 /area/station/hallway/secondary/entry)
+"rXs" = (
+/obj/item/kirbyplants/organic,
+/turf/open/floor/iron/dark/textured_large,
+/area/station/hallway/primary/central)
 "rXJ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
@@ -74403,6 +74411,18 @@
 /obj/structure/filingcabinet/chestdrawer,
 /turf/open/floor/iron/dark,
 /area/station/security/warden)
+"tuZ" = (
+/obj/machinery/quantumpad{
+	map_pad_id = "station";
+	map_pad_link_id = "xenoarch";
+	mapped_quantum_pads = list("station","xenoarch");
+	name = "TO XENOARCH"
+	},
+/obj/effect/turf_decal/bot,
+/turf/open/floor/iron/edge{
+	dir = 1
+	},
+/area/station/hallway/primary/starboard)
 "tvd" = (
 /obj/structure/table,
 /obj/machinery/recharger{
@@ -76863,8 +76883,8 @@
 	},
 /area/station/hallway/secondary/entry)
 "uzr" = (
-/obj/item/kirbyplants/random,
 /obj/machinery/firealarm/directional/south,
+/obj/item/kirbyplants/organic,
 /turf/open/floor/iron/dark/textured_large,
 /area/station/hallway/primary/central)
 "uzL" = (
@@ -113817,7 +113837,7 @@ cAl
 tUq
 gia
 xbg
-xkH
+iII
 vFR
 oFd
 dSx
@@ -114849,7 +114869,7 @@ nTA
 btG
 oFd
 gFS
-rTH
+rXs
 aJw
 bwb
 ova
@@ -115105,7 +115125,7 @@ xbg
 qaR
 klG
 iLJ
-xkH
+rTH
 aJw
 aJw
 oXx
@@ -132828,7 +132848,7 @@ aVh
 sqp
 oeC
 tej
-vlZ
+tuZ
 oeC
 uMI
 ueJ

@@ -1994,7 +1994,6 @@
 /area/ruin/space/has_grav/bubbers/persistance/command/liason)
 "dV" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer2,
-/obj/structure/cable,
 /obj/effect/turf_decal/siding/wood{
 	dir = 6
 	},
@@ -3861,7 +3860,6 @@
 "hM" = (
 /obj/effect/turf_decal/siding/wood,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer2,
-/obj/structure/cable,
 /obj/structure/bookcase/random{
 	pixel_y = -32;
 	density = 0
@@ -7164,10 +7162,10 @@
 /obj/effect/turf_decal/siding/wood{
 	dir = 8
 	},
-/obj/structure/cable,
 /obj/structure/chair/sofa/corp/right{
 	dir = 4
 	},
+/obj/machinery/light/directional/west,
 /turf/open/floor/carpet/royalblack,
 /area/ruin/space/has_grav/bubbers/persistance/sec/prison/rec)
 "or" = (
@@ -8094,12 +8092,6 @@
 	},
 /turf/open/floor/carpet/black,
 /area/ruin/space/has_grav/bubbers/persistance/cargo)
-"qr" = (
-/obj/effect/turf_decal/siding/dark{
-	dir = 1
-	},
-/turf/closed/wall/r_wall/plastitanium/syndicate/nodiagonal,
-/area/ruin/space/has_grav/bubbers/persistance/sec/prison)
 "qs" = (
 /obj/structure/emergency_shield/cult/weak{
 	name = "Energy Shield"
@@ -9952,15 +9944,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/bubbers/persistance/sec/armory)
-"tQ" = (
-/obj/effect/turf_decal/siding/wideplating_new/dark/corner{
-	dir = 8
-	},
-/obj/effect/turf_decal/siding/dark{
-	dir = 9
-	},
-/turf/closed/wall/r_wall/plastitanium/syndicate/nodiagonal,
-/area/ruin/space/has_grav/bubbers/persistance/sec/prison)
 "tS" = (
 /obj/machinery/duct,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer2,
@@ -11179,7 +11162,6 @@
 /obj/structure/chair/stool{
 	dir = 4
 	},
-/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer2,
 /turf/open/floor/wood/tile,
 /area/ruin/space/has_grav/bubbers/persistance/sec/prison/rec)
@@ -11849,6 +11831,7 @@
 /obj/effect/mapping_helpers/airlock/cutaiwire,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer4,
+/obj/structure/cable,
 /turf/open/floor/catwalk_floor/iron_dark,
 /area/ruin/space/has_grav/bubbers/persistance/sec/prison/rec)
 "xt" = (
@@ -12427,6 +12410,7 @@
 /obj/effect/mapping_helpers/apc/cut_AI_wire,
 /obj/effect/mapping_helpers/apc/syndicate_access,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer4,
+/obj/structure/cable,
 /turf/open/floor/wood/tile,
 /area/ruin/space/has_grav/bubbers/persistance/sec/prison/rec)
 "yB" = (
@@ -21918,8 +21902,8 @@
 /area/ruin/space/has_grav/bubbers/persistance/service/dorms/janitor)
 "RB" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer2,
-/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer4,
+/obj/structure/cable,
 /turf/open/floor/wood/tile,
 /area/ruin/space/has_grav/bubbers/persistance/sec/prison/rec)
 "RC" = (
@@ -22857,7 +22841,6 @@
 /obj/effect/turf_decal/siding/wood{
 	dir = 9
 	},
-/obj/structure/cable,
 /obj/machinery/camera/autoname/directional/west{
 	name = "Persistence Exterior West";
 	network = list("persistence_ext")
@@ -23662,7 +23645,6 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
 	dir = 4
 	},
-/obj/structure/cable,
 /obj/structure/bookcase/random{
 	pixel_y = -32;
 	density = 0
@@ -26518,7 +26500,7 @@ VG
 it
 ZN
 Pz
-RB
+Iz
 yx
 it
 TD
@@ -26588,7 +26570,7 @@ it
 ln
 aC
 wh
-Iz
+RB
 xr
 Tc
 UB
@@ -27003,7 +26985,7 @@ CL
 Lf
 CL
 CL
-qr
+Zo
 yj
 WH
 Sr
@@ -27071,7 +27053,7 @@ CL
 NJ
 uI
 vD
-Lf
+CL
 mc
 Xa
 VL
@@ -27209,7 +27191,7 @@ CL
 FL
 xJ
 Os
-tQ
+CL
 iS
 TB
 VL

@@ -27148,10 +27148,15 @@
 	},
 /area/station/science/ordnance/bomb)
 "fcq" = (
-/obj/machinery/vending/assist,
 /obj/structure/window/reinforced/spawner/directional/north,
 /obj/effect/turf_decal/bot,
 /obj/effect/turf_decal/tile/purple/half,
+/obj/machinery/quantumpad{
+	map_pad_id = "station";
+	map_pad_link_id = "xenoarch";
+	mapped_quantum_pads = list("station","xenoarch");
+	name = "TO XENOARCH"
+	},
 /turf/open/floor/iron/white/side,
 /area/station/science)
 "fcw" = (
@@ -68472,10 +68477,11 @@
 /turf/open/floor/plating,
 /area/station/maintenance/xenobio_disposals)
 "mXC" = (
-/obj/item/banner/science/mundane,
 /obj/effect/turf_decal/trimline/purple/filled/line{
 	dir = 5
 	},
+/obj/machinery/vending/modularpc,
+/obj/effect/turf_decal/bot,
 /turf/open/floor/iron/white,
 /area/station/science)
 "mXD" = (
@@ -79181,8 +79187,6 @@
 /area/station/maintenance/abandon_holding_cell)
 "oXN" = (
 /obj/structure/window/reinforced/spawner/directional/north,
-/obj/machinery/vending/modularpc,
-/obj/effect/turf_decal/bot,
 /obj/effect/turf_decal/tile/purple/half,
 /turf/open/floor/iron/white/side,
 /area/station/science)
@@ -103003,15 +103007,14 @@
 /turf/open/floor/grass,
 /area/station/hallway/primary/central)
 "twL" = (
-/obj/structure/chair{
-	dir = 4
-	},
 /obj/effect/turf_decal/trimline/purple/filled/line{
 	dir = 9
 	},
 /obj/structure/cable,
 /obj/machinery/power/apc/auto_name/directional/west,
 /obj/structure/disposalpipe/segment,
+/obj/machinery/vending/assist,
+/obj/effect/turf_decal/bot,
 /turf/open/floor/iron/white,
 /area/station/science)
 "twQ" = (

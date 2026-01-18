@@ -1177,7 +1177,10 @@
 	},
 /obj/machinery/camera/autoname/science/directional/north,
 /obj/machinery/light/small/directional/north,
-/obj/machinery/firealarm/directional/north,
+/obj/machinery/firealarm/directional/north{
+	pixel_x = 0;
+	pixel_y = 20
+	},
 /turf/open/floor/iron/white,
 /area/station/science/research)
 "aqg" = (
@@ -52797,7 +52800,18 @@
 /area/station/hallway/primary/starboard)
 "oes" = (
 /obj/machinery/light/moonstation/directional/south,
-/obj/item/kirbyplants/random/fullysynthetic,
+/obj/machinery/quantumpad{
+	map_pad_id = "station";
+	map_pad_link_id = "xenoarch";
+	mapped_quantum_pads = list("station","xenoarch");
+	name = "TO XENOARCH"
+	},
+/obj/effect/turf_decal/bot,
+/obj/structure/sign/warning/secure_area/directional/south{
+	pixel_x = 1;
+	pixel_y = -24;
+	name = "Xenoarcheology Teleporter"
+	},
 /turf/open/floor/iron/white,
 /area/station/hallway/secondary/exit)
 "oeu" = (
