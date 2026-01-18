@@ -30,7 +30,7 @@
 	. = ..()
 	if (!.)
 		return
-	
+
 	if (istype(mover, /obj/projectile/beam))
 		var/obj/projectile/laser = mover
 		var/fat_power_to_add = max(laser.fat_added + 25, laser.fat_added * 1.1)
@@ -39,6 +39,10 @@
 
 /obj/structure/window/calorite/unanchored
 	anchored = FALSE
+
+MAPPING_DIRECTIONAL_HELPERS(/obj/structure/window/calorite/spawner, 0)
+MAPPING_DIRECTIONAL_HELPERS(/obj/structure/window/calorite/unanchored/spawner, 0)
+
 
 /obj/structure/window/calorite/fulltile
 	name = "full tile calorite window"

@@ -131,7 +131,6 @@
 	products = list(
 				/obj/item/toy/plush/gs13/gatito = 6,
 				/obj/item/soap/gato = 6,
-				/obj/item/book/manual/gato_spacelaw = 6,
 				/obj/item/book/manual/fatty_chems = 6,
 				/obj/item/book/lorebooks/welcome_to_gato = 6,
 				/obj/item/storage/fancy/cigarettes/gatito = 8,

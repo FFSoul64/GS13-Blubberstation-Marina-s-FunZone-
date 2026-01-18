@@ -66,13 +66,23 @@
 	starting_title = "Engineering Textbook"
 	page_link = "Guide_to_engineering"
 
+//GS13 EDIT START - OUR VERSION OF SPACE LAW
 /obj/item/book/manual/wiki/security_space_law
 	name = "Space Law"
-	desc = "A set of Nanotrasen guidelines for keeping law and order on their space stations."
+	desc = "A set of GATO guidelines for keeping law and order on their space stations."
 	icon_state = "bookSpaceLaw"
-	starting_author = "Nanotrasen"
+	starting_author = "GATO"
 	starting_title = "Space Law"
-	page_link = "Space_Law"
+	starting_content = {"<html>
+		<body>
+		<h2>GATO Laws, SOPs and other:</h2>
+		<p>You start skimming through the manual...</p>
+		<br></br>
+		<link>(https://github.com/sheepishgoat/GS13-Blubberstation/wiki/GATO_Laws)</link>
+		</body>
+		</html>"}
+
+//GS13 EDIT END
 
 //BUBBER EDIT ADDITION BEGIN: READING SPACE LAW HAS A CHANCE TO TEACH YOU LEGALESE
 /obj/item/book/manual/wiki/security_space_law/attack_self(mob/user)

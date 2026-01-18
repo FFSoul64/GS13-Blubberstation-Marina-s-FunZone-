@@ -1,6 +1,7 @@
 // THIS IS A SKYRAT UI FILE
-import { useBackend } from '../backend';
+
 import { Collapsible, Section } from 'tgui-core/components';
+import { useBackend } from '../backend';
 import { NtosWindow } from '../layouts';
 
 export const NtosNewsArchive = (props) => {
@@ -11,7 +12,7 @@ export const NtosNewsArchive = (props) => {
     <NtosWindow width={600} height={800}>
       <NtosWindow.Content scrollable>
         <Section textAlign="center">
-          Archives from the Nanotrasen News Network!
+          Archives from the GATO News Network!
         </Section>
         {stories.map((story) => (
           <Collapsible

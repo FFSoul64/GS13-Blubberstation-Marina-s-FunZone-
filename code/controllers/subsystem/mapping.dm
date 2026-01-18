@@ -454,6 +454,11 @@ Used by the AI doomsday and the self-destruct nuke.
 	INIT_ANNOUNCE("Loading [current_map.map_name]...")
 	LoadGroup(FailedZs, "Station", current_map.map_path, current_map.map_file, current_map.traits, ZTRAITS_STATION, height_autosetup = current_map.height_autosetup)
 
+	// loading the GS13 Xenoarch level
+	// station_start = world.maxz + 2
+	// INIT_ANNOUNCE("Loading Lavaland_Xenoarch.dmm...")
+	// LoadGroup(FailedZs, "Lavaland_Xenoarch", "map_files/GS_Xenoarch", "Lavaland_Xenoarch.dmm", default_traits = ZTRAITS_LAVALAND_XENOARCH) //GS13 EDIT
+
 	if(SSdbcore.Connect())
 		var/datum/db_query/query_round_map_name = SSdbcore.NewQuery({"
 			UPDATE [format_table_name("round")] SET map_name = :map_name WHERE id = :round_id
@@ -465,6 +470,8 @@ Used by the AI doomsday and the self-destruct nuke.
 
 	if(current_map.minetype == MINETYPE_LAVALAND)
 		LoadGroup(FailedZs, "Lavaland", "map_files/Mining", "Lavaland.dmm", default_traits = ZTRAITS_LAVALAND)
+		LoadGroup(FailedZs, "Lavaland_Xenoarch", "map_files/GS_Xenoarch", "Lavaland_Xenoarch.dmm", default_traits = ZTRAITS_LAVALAND_XENOARCH) //GS13 EDIT
+
 	else if (!isnull(current_map.minetype) && current_map.minetype != MINETYPE_NONE && current_map.minetype != MINETYPE_ICE)
 		INIT_ANNOUNCE("WARNING: An unknown minetype '[current_map.minetype]' was set! This is being ignored! Update the maploader code!")
 #endif

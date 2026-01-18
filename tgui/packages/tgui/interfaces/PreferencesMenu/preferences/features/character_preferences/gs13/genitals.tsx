@@ -101,3 +101,8 @@ export const erp_status_pref_inflation: FeatureChoiced = {
   name: 'ERP Inflation Status',
   component: FeatureDropdownInput,
 };
+
+export const breast_produce: FeatureChoiced = {
+  name: 'Breast produce',
+  component: FeatureDropdownInput,
+}

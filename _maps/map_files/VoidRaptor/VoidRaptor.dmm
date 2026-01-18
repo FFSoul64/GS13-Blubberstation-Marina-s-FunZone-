@@ -12194,7 +12194,14 @@
 	dir = 10
 	},
 /obj/structure/table,
-/obj/item/pai_card,
+/obj/item/pai_card{
+	pixel_x = -7;
+	pixel_y = 1
+	},
+/obj/item/stack/package_wrap{
+	pixel_x = 10;
+	pixel_y = -5
+	},
 /turf/open/floor/iron/white,
 /area/station/hallway/primary/fore)
 "dDP" = (
@@ -30625,9 +30632,19 @@
 /obj/structure/table,
 /obj/item/stock_parts/servo,
 /obj/item/stock_parts/servo,
-/obj/item/stock_parts/servo,
-/obj/item/stock_parts/capacitor,
+/obj/item/stock_parts/servo{
+	pixel_x = 0;
+	pixel_y = 0
+	},
+/obj/item/stock_parts/capacitor{
+	pixel_x = 7;
+	pixel_y = 2
+	},
 /obj/item/radio/intercom/directional/south,
+/obj/item/hand_labeler{
+	pixel_x = -16;
+	pixel_y = 7
+	},
 /turf/open/floor/iron/white/smooth_edge{
 	dir = 1
 	},
@@ -62493,11 +62510,15 @@
 /obj/effect/turf_decal/trimline/purple/filled/line{
 	dir = 8
 	},
-/obj/structure/table,
 /obj/machinery/airalarm/directional/west,
-/obj/item/stack/package_wrap,
-/obj/item/hand_labeler,
 /obj/machinery/light/cold/directional/west,
+/obj/machinery/quantumpad{
+	map_pad_id = "station";
+	map_pad_link_id = "xenoarch";
+	mapped_quantum_pads = list("station","xenoarch");
+	name = "TO XENOARCH"
+	},
+/obj/effect/turf_decal/bot,
 /turf/open/floor/iron/white/smooth_edge{
 	dir = 4
 	},

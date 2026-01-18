@@ -2108,7 +2108,7 @@
 /area/station/engineering/supermatter/room)
 "aHe" = (
 /obj/machinery/button/door/directional/west{
-	id = "Cabin5";
+	id = "Cabin3";
 	name = "Cabin Bolt Control";
 	normaldoorcontrol = 1;
 	pixel_x = 24;
@@ -10647,10 +10647,17 @@
 /obj/effect/turf_decal/trimline/purple/filled/line{
 	dir = 10
 	},
-/obj/structure/rack,
-/obj/item/pai_card,
 /obj/machinery/light/warm/dim/directional/west,
-/obj/machinery/firealarm/directional/west,
+/obj/machinery/quantumpad{
+	map_pad_id = "station";
+	map_pad_link_id = "xenoarch";
+	mapped_quantum_pads = list("station","xenoarch");
+	name = "TO XENOARCH"
+	},
+/obj/effect/turf_decal/bot,
+/obj/structure/sign/warning/secure_area/directional/west{
+	name = "Xenoarch Teleporter"
+	},
 /turf/open/floor/iron/dark,
 /area/station/science/lobby)
 "cZa" = (
@@ -15546,7 +15553,7 @@
 /area/station/medical/medbay/central)
 "etf" = (
 /obj/machinery/door/airlock{
-	id_tag = "Cabin7";
+	id_tag = "Cabin1";
 	name = "Cabin 1"
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -20910,7 +20917,7 @@
 /area/station/science/research)
 "fVj" = (
 /obj/machinery/door/airlock{
-	id_tag = "Cabin6";
+	id_tag = "Cabin2";
 	name = "Cabin 2"
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -27715,7 +27722,7 @@
 /area/station/maintenance/starboard/lesser)
 "hPL" = (
 /obj/machinery/door/airlock{
-	id_tag = "Cabin5";
+	id_tag = "Cabin3";
 	name = "Cabin 3"
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -29326,7 +29333,7 @@
 /area/station/medical/medbay/central)
 "ios" = (
 /obj/machinery/door/airlock{
-	id_tag = "Cabin4";
+	id_tag = "Cabin5";
 	name = "Cabin 5"
 	},
 /obj/effect/turf_decal/siding/wood,
@@ -32311,7 +32318,7 @@
 /area/station/cargo/storage)
 "jeX" = (
 /obj/machinery/button/door/directional/west{
-	id = "Cabin5";
+	id = "Cabin4";
 	name = "Cabin Bolt Control";
 	normaldoorcontrol = 1;
 	pixel_x = 24;
@@ -33584,7 +33591,7 @@
 /area/station/command/bridge)
 "jxl" = (
 /obj/machinery/button/door/directional/west{
-	id = "Cabin7";
+	id = "Cabin1";
 	name = "Cabin Bolt Control";
 	normaldoorcontrol = 1;
 	pixel_x = 24;
@@ -38969,6 +38976,10 @@
 /obj/machinery/destructive_scanner,
 /obj/effect/turf_decal/stripes/end,
 /obj/machinery/light/warm/dim/directional/west,
+/obj/machinery/firealarm/directional/west{
+	pixel_x = -25;
+	pixel_y = -9
+	},
 /turf/open/floor/iron/dark,
 /area/station/science/lobby)
 "kVP" = (
@@ -41579,12 +41590,19 @@
 /area/station/hallway/primary/port)
 "lHK" = (
 /obj/effect/turf_decal/trimline/purple/filled/line{
-	dir = 8
+	dir = 1
 	},
 /obj/structure/rack,
-/obj/item/assembly/igniter,
+/obj/item/pai_card{
+	pixel_x = -7;
+	pixel_y = 1
+	},
+/obj/item/assembly/igniter{
+	pixel_x = 6;
+	pixel_y = 3
+	},
 /obj/item/assembly/timer{
-	pixel_x = 3;
+	pixel_x = 7;
 	pixel_y = -4
 	},
 /turf/open/floor/iron/dark,
@@ -56764,7 +56782,7 @@
 /area/station/engineering/supermatter/room)
 "pWh" = (
 /obj/machinery/button/door/directional/west{
-	id = "Cabin6";
+	id = "Cabin2";
 	name = "Cabin Bolt Control";
 	normaldoorcontrol = 1;
 	pixel_x = 24;
@@ -79915,12 +79933,6 @@
 /obj/machinery/light/directional/south,
 /turf/open/floor/wood,
 /area/station/commons/fitness/recreation)
-"wDs" = (
-/obj/effect/turf_decal/trimline/purple/filled/line,
-/obj/structure/rack,
-/obj/item/clothing/gloves/latex,
-/turf/open/floor/iron/dark,
-/area/station/science/lobby)
 "wDt" = (
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/visible{
 	dir = 1
@@ -79960,8 +79972,8 @@
 /area/station/tcommsat/server)
 "wEn" = (
 /obj/machinery/door/airlock{
-	id_tag = "Cabin2";
-	name = "Decomissioned Cabin"
+	id_tag = "Cabin4";
+	name = "Cabin 4"
 	},
 /obj/effect/turf_decal/siding/wood,
 /obj/effect/turf_decal/siding/wood,
@@ -119140,7 +119152,7 @@ kVK
 eXe
 xqk
 eXe
-lHK
+eXe
 cYT
 jJX
 cRc
@@ -119398,7 +119410,7 @@ quJ
 egX
 ghV
 quJ
-wDs
+cuQ
 jJX
 cwu
 dmi
@@ -119650,7 +119662,7 @@ fLr
 wCP
 fLr
 vUS
-afL
+lHK
 quJ
 wmR
 quJ
