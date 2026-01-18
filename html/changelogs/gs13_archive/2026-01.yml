@@ -115,3 +115,20 @@
       smartfridge. Credit to Reny for the sprites.
   smerglemzerb:
   - bugfix: Fixes player muscle examines showing up with player fat examines
+2026-01-18:
+  evilew:
+  - map: added Xenoarch level that has its own 2 layer map, no ash storms and several
+      locations to explode (including the base outpost)
+  - map: added Xenoarch teleporters to all maps and the Mining Outpost
+  - map: GATOified & tweaked KiloStation
+  - map: fixed TramStation's broken GS13 related locations (like a calorite altar)
+  - map: fixing some screwed details in Ghost Cafe (blocked passages etc)
+  - map: fixed broken decal work on lavaland persistence
+  - bugfix: 'changed the contents of all Space Law books: they will now point towards
+      GS13 GitHub wiki (if someone has a prettier implementation than this, please
+      go ahead and tweak it, it''s barebones)'
+  - bugfix: moved the bloat censer cargo pack to an appropriate file
+  - rscadd: 'added a new supply pack: Hardlight Wheelchair Emitter'
+  - map: fixed errors in SM air loop on Biodome
+  - bugfix: prevented Lone Operative antag from spawning
+  - bugfix: fixed Fatoray Turrets not working properly
